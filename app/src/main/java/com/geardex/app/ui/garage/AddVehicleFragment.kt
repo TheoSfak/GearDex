@@ -1,9 +1,12 @@
 package com.geardex.app.ui.garage
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -11,6 +14,7 @@ import com.geardex.app.R
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.databinding.FragmentAddVehicleBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 
 @AndroidEntryPoint
 class AddVehicleFragment : Fragment() {
@@ -19,6 +23,21 @@ class AddVehicleFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: GarageViewModel by viewModels()
     private var selectedType: VehicleType = VehicleType.CAR
+    private var selectedImagePath: String? = null
+    private var cameraUri: Uri? = null
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        uri?.let { copyImageToInternal(it) }
+    }
+
+    private val takePhoto = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+        if (success) {
+            cameraUri?.let { uri ->
+                selectedImagePath = uri.path ?: getFileFromUri(uri)
+                showSelectedImage(uri)
+            }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddVehicleBinding.inflate(inflater, container, false)
@@ -42,11 +61,56 @@ class AddVehicleFragment : Fragment() {
             }
         }
 
+        binding.btnPickImage.setOnClickListener {
+            pickImage.launch("image/*")
+        }
+
+        binding.btnTakePhoto.setOnClickListener {
+            val file = File(requireContext().filesDir, "vehicle_images")
+            file.mkdirs()
+            val imageFile = File(file, "vehicle_${System.currentTimeMillis()}.jpg")
+            cameraUri = FileProvider.getUriForFile(
+                requireContext(),
+                "${requireContext().packageName}.fileprovider",
+                imageFile
+            )
+            selectedImagePath = imageFile.absolutePath
+            takePhoto.launch(cameraUri)
+        }
+
+        binding.btnRemoveImage.setOnClickListener {
+            selectedImagePath = null
+            binding.ivVehiclePhoto.setImageResource(R.drawable.ic_car)
+            binding.ivVehiclePhoto.scaleType = android.widget.ImageView.ScaleType.CENTER
+            binding.btnRemoveImage.visibility = View.GONE
+        }
+
         binding.btnSaveVehicle.setOnClickListener {
             if (validateAndSave()) {
                 findNavController().popBackStack()
             }
         }
+    }
+
+    private fun copyImageToInternal(uri: Uri) {
+        val dir = File(requireContext().filesDir, "vehicle_images")
+        dir.mkdirs()
+        val dest = File(dir, "vehicle_${System.currentTimeMillis()}.jpg")
+        requireContext().contentResolver.openInputStream(uri)?.use { input ->
+            dest.outputStream().use { output -> input.copyTo(output) }
+        }
+        selectedImagePath = dest.absolutePath
+        showSelectedImage(Uri.fromFile(dest))
+    }
+
+    private fun showSelectedImage(uri: Uri) {
+        binding.ivVehiclePhoto.setImageURI(uri)
+        binding.ivVehiclePhoto.scaleType = android.widget.ImageView.ScaleType.CENTER_CROP
+        binding.btnRemoveImage.visibility = View.VISIBLE
+    }
+
+    private fun getFileFromUri(uri: Uri): String {
+        return uri.lastPathSegment ?: ""
     }
 
     private fun validateAndSave(): Boolean {
@@ -75,7 +139,7 @@ class AddVehicleFragment : Fragment() {
             binding.tilKm.error = getString(R.string.error_invalid_number); return false
         } else binding.tilKm.error = null
 
-        viewModel.addVehicle(selectedType, make, model, year, plate, km)
+        viewModel.addVehicle(selectedType, make, model, year, plate, km, selectedImagePath)
         return true
     }
 

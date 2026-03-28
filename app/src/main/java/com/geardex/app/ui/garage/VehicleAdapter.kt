@@ -1,6 +1,7 @@
 package com.geardex.app.ui.garage
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import com.geardex.app.R
 import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.databinding.ItemVehicleBinding
+import java.io.File
 
 class VehicleAdapter(
     private val onClick: (Vehicle) -> Unit
@@ -39,6 +41,17 @@ class VehicleAdapter(
                 VehicleType.ATV -> R.drawable.ic_atv
             }
             binding.ivVehicleTypeIcon.setImageResource(iconRes)
+
+            // Vehicle hero image
+            val imagePath = vehicle.imagePath
+            if (imagePath != null && File(imagePath).exists()) {
+                binding.ivVehicleImage.visibility = View.VISIBLE
+                binding.viewImageGradient.visibility = View.VISIBLE
+                binding.ivVehicleImage.setImageURI(android.net.Uri.fromFile(File(imagePath)))
+            } else {
+                binding.ivVehicleImage.visibility = View.GONE
+                binding.viewImageGradient.visibility = View.GONE
+            }
 
             // Health score badge
             val score = scores[vehicle.id] ?: 100

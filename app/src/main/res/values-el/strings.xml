@@ -175,4 +175,12 @@
     <string name="widget_description">Εμφανίζει υγεία οχήματος και επόμενη υπενθύμνηση</string>
     <string name="widget_all_clear">Όλα εντάξει ✓</string>
     <string name="widget_no_vehicles">Δεν υπάρχουν οχήματα</string>
+
+    <!-- Vehicle Photo -->
+    <string name="vehicle_pick_photo">Συλλογή</string>
+    <string name="vehicle_take_photo">Κάμερα</string>
+
+    <!-- Footer -->
+    <string name="footer_credit">Δημιουργήθηκε με \u2764 από τον Theodore Sfakianakis</string>
+    <string name="footer_version">GearDex v1.0.0</string>
 </resources>

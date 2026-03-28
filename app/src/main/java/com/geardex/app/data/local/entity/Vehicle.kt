@@ -15,5 +15,6 @@ data class Vehicle(
     val year: Int,
     val licensePlate: String,
     val currentKm: Int,
+    val imagePath: String? = null,
     val createdAt: Long = System.currentTimeMillis()
 )

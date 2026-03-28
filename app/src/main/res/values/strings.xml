@@ -175,4 +175,12 @@
     <string name="widget_description">Shows your vehicle health score and next reminder</string>
     <string name="widget_all_clear">All clear ✓</string>
     <string name="widget_no_vehicles">No vehicles added</string>
+
+    <!-- Vehicle Photo -->
+    <string name="vehicle_pick_photo">Gallery</string>
+    <string name="vehicle_take_photo">Camera</string>
+
+    <!-- Footer -->
+    <string name="footer_credit">Created with \u2764 by Theodore Sfakianakis</string>
+    <string name="footer_version">GearDex v1.0.0</string>
 </resources>

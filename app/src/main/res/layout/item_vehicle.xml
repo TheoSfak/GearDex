@@ -13,30 +13,73 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Orange left accent stripe -->
-        <View
-            android:id="@+id/view_accent_stripe"
-            android:layout_width="4dp"
-            android:layout_height="0dp"
-            android:background="@color/geardex_orange"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Hero vehicle image -->
+        <ImageView
+            android:id="@+id/iv_vehicle_image"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:background="@color/surface_elevated"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Main content -->
+        <!-- Gradient overlay on image for text readability -->
+        <View
+            android:id="@+id/view_image_gradient"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_image_gradient"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_vehicle_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Type badge overlay on image -->
+        <TextView
+            android:id="@+id/tv_vehicle_type_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_badge"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.08"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Health score badge overlay -->
+        <TextView
+            android:id="@+id/tv_health_score"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_score_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Content below image (or top if no image) -->
         <LinearLayout
+            android:id="@+id/layout_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="14dp"
-            android:paddingEnd="14dp"
-            android:paddingTop="16dp"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="14dp"
             android:paddingBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/view_accent_stripe"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_vehicle_image">
 
-            <!-- Top row: icon + name + badge -->
+            <!-- Name row: icon + name + chevron -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,15 +88,15 @@
 
                 <!-- Vehicle type icon in circle -->
                 <FrameLayout
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:background="@drawable/bg_icon_circle"
-                    android:layout_marginEnd="14dp">
+                    android:layout_marginEnd="12dp">
 
                     <ImageView
                         android:id="@+id/iv_vehicle_type_icon"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_car"
                         app:tint="@color/geardex_orange" />
@@ -84,49 +127,15 @@
                         android:textSize="13sp"
                         android:textStyle="bold"
                         android:letterSpacing="0.05"
-                        android:layout_marginTop="3dp" />
+                        android:layout_marginTop="2dp" />
 
                 </LinearLayout>
 
-                <!-- Badge + chevron + score column -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="end|center_vertical">
-
-                    <TextView
-                        android:id="@+id/tv_vehicle_type_badge"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_badge"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="4dp"
-                        android:textColor="@color/white"
-                        android:textSize="10sp"
-                        android:textAllCaps="true"
-                        android:letterSpacing="0.08" />
-
-                    <TextView
-                        android:id="@+id/tv_health_score"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_marginTop="6dp"
-                        android:gravity="center"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/bg_score_badge" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_chevron_right"
-                        app:tint="@color/text_hint"
-                        android:layout_marginTop="6dp"
-                        android:layout_gravity="end" />
-
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/text_hint" />
 
             </LinearLayout>
 
@@ -135,10 +144,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/surface_elevated"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp" />
 
-            <!-- Bottom row: KM with icon -->
+            <!-- Bottom row: KM -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,7 +180,7 @@
             android:background="@color/geardex_orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/view_accent_stripe" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

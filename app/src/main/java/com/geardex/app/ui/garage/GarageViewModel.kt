@@ -45,7 +45,8 @@ class GarageViewModel @Inject constructor(
         model: String,
         year: Int,
         plate: String,
-        km: Int
+        km: Int,
+        imagePath: String? = null
     ) {
         viewModelScope.launch {
             val vehicle = Vehicle(
@@ -54,7 +55,8 @@ class GarageViewModel @Inject constructor(
                 model = model,
                 year = year,
                 licensePlate = plate,
-                currentKm = km
+                currentKm = km,
+                imagePath = imagePath
             )
             repository.addVehicle(vehicle)
         }
