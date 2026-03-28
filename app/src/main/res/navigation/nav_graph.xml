@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/garageFragment">
+
+    <fragment
+        android:id="@+id/garageFragment"
+        android:name="com.geardex.app.ui.garage.GarageFragment"
+        android:label="@string/nav_garage">
+        <action
+            android:id="@+id/action_garage_to_addVehicle"
+            app:destination="@id/addVehicleFragment" />
+        <action
+            android:id="@+id/action_garage_to_vehicleDetail"
+            app:destination="@id/vehicleDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addVehicleFragment"
+        android:name="com.geardex.app.ui.garage.AddVehicleFragment"
+        android:label="@string/garage_add_vehicle" />
+
+    <fragment
+        android:id="@+id/vehicleDetailFragment"
+        android:name="com.geardex.app.ui.garage.VehicleDetailFragment"
+        android:label="@string/vehicle_detail_label">
+        <argument
+            android:name="vehicleId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_vehicleDetail_to_editVehicle"
+            app:destination="@id/editVehicleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editVehicleFragment"
+        android:name="com.geardex.app.ui.garage.EditVehicleFragment"
+        android:label="@string/vehicle_edit_label">
+        <argument
+            android:name="vehicleId"
+            app:argType="long" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/logsFragment"
+        android:name="com.geardex.app.ui.logs.LogsFragment"
+        android:label="@string/nav_logs">
+        <action
+            android:id="@+id/action_logs_to_addFuel"
+            app:destination="@id/addFuelLogFragment" />
+        <action
+            android:id="@+id/action_logs_to_addService"
+            app:destination="@id/addServiceLogFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFuelLogFragment"
+        android:name="com.geardex.app.ui.logs.AddFuelLogFragment"
+        android:label="@string/logs_add_fuel" />
+
+    <fragment
+        android:id="@+id/addServiceLogFragment"
+        android:name="com.geardex.app.ui.logs.AddServiceLogFragment"
+        android:label="@string/logs_add_service" />
+
+    <fragment
+        android:id="@+id/gloveboxFragment"
+        android:name="com.geardex.app.ui.glovebox.GloveboxFragment"
+        android:label="@string/nav_glovebox">
+        <action
+            android:id="@+id/action_glovebox_to_addDocument"
+            app:destination="@id/addDocumentFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addDocumentFragment"
+        android:name="com.geardex.app.ui.glovebox.AddDocumentFragment"
+        android:label="@string/glovebox_add_document" />
+
+    <fragment
+        android:id="@+id/ekdromesFragment"
+        android:name="com.geardex.app.ui.ekdromes.EkdromesFragment"
+        android:label="@string/nav_ekdromes" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.geardex.app.ui.settings.SettingsFragment"
+        android:label="@string/settings_title" />
+
+    <!-- Global action: navigate to Settings from anywhere, never allow duplicates -->
+    <action
+        android:id="@+id/action_global_settings"
+        app:destination="@id/settingsFragment"
+        app:launchSingleTop="true"
+        app:restoreState="true" />
+
+</navigation>

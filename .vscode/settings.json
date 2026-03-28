@@ -1,0 +1,9 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "winget": true,
+        "java": true,
+        "where": true,
+        "refreshenv": true,
+        ".\\gradlew.bat": true
+    }
+}

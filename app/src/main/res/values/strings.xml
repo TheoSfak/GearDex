@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">GearDex</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_garage">Garage</string>
+    <string name="nav_logs">Logs</string>
+    <string name="nav_glovebox">Glovebox</string>
+    <string name="nav_ekdromes">Ekdromes</string>
+
+    <!-- Garage -->
+    <string name="garage_title">My Garage</string>
+    <string name="garage_empty_title">Your Garage is Empty</string>
+    <string name="garage_empty_subtitle">Add your first vehicle to get started</string>
+    <string name="garage_add_vehicle">Add Vehicle</string>
+    <string name="vehicle_type_car">Car</string>
+    <string name="vehicle_type_motorcycle">Motorcycle</string>
+    <string name="vehicle_type_atv">ATV</string>
+    <string name="vehicle_make">Make</string>
+    <string name="vehicle_model">Model</string>
+    <string name="vehicle_year">Year</string>
+    <string name="vehicle_plate">License Plate</string>
+    <string name="vehicle_km">Current KM</string>
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="vehicle_save">Save Vehicle</string>
+    <string name="vehicle_hint_make">e.g. Toyota, BMW</string>
+    <string name="vehicle_hint_model">e.g. Corolla, R1200GS</string>
+    <string name="vehicle_hint_plate">e.g. AAA-1234</string>
+
+    <!-- Logs / Dex -->
+    <string name="logs_title">The Logs</string>
+    <string name="logs_add_fuel">Log Fuel</string>
+    <string name="logs_add_service">Log Service</string>
+    <string name="logs_update_km">Update KM</string>
+    <string name="log_date">Date</string>
+    <string name="log_cost">Cost (€)</string>
+    <string name="log_km">Odometer (KM)</string>
+    <string name="log_liters">Liters</string>
+    <string name="log_fuel_economy">Fuel Economy</string>
+    <string name="log_mechanic">Mechanic</string>
+    <string name="log_notes">Notes</string>
+    <string name="log_save">Save Log</string>
+    <!-- Service fields - Car specific -->
+    <string name="service_timing_belt">Timing Belt</string>
+    <string name="service_cabin_filter">Cabin Filter</string>
+    <string name="service_air_filter">Air Filter</string>
+    <string name="service_oil_change">Oil Change</string>
+    <string name="service_brake_pads">Brake Pads</string>
+    <!-- Service fields - Motorcycle specific -->
+    <string name="service_chain_lube">Chain Lube</string>
+    <string name="service_valve_clearance">Valve Clearance</string>
+    <string name="service_fork_oil">Fork Oil</string>
+    <string name="service_tire_check">Tire Check</string>
+    <string name="log_fuel_economy_result">%1$.1f L/100km</string>
+    <string name="logs_no_vehicle">Select a vehicle first</string>
+
+    <!-- Digital Glovebox -->
+    <string name="glovebox_title">Digital Glovebox</string>
+    <string name="glovebox_add_document">Add Document</string>
+    <string name="glovebox_empty_title">No Documents Saved</string>
+    <string name="glovebox_empty_subtitle">Documents are stored securely on this device only</string>
+    <string name="glovebox_privacy_notice">Your data. Only on this device.</string>
+    <string name="doc_type_kteo">KTEO</string>
+    <string name="doc_type_insurance">Insurance</string>
+    <string name="doc_type_road_tax">Road Tax</string>
+    <string name="doc_type_receipt">Service Receipt</string>
+    <string name="doc_type_other">Other</string>
+    <string name="doc_expiry_date">Expiry Date</string>
+    <string name="doc_type">Document Type</string>
+    <string name="doc_pick_file">Pick File / Photo</string>
+    <string name="doc_take_photo">Take Photo</string>
+    <string name="doc_save">Save Document</string>
+    <string name="doc_export_zip">Export All as ZIP</string>
+    <string name="doc_expires_on">Expires: %1$s</string>
+    <string name="doc_no_expiry">No expiry date</string>
+
+    <!-- Ekdromes -->
+    <string name="ekdromes_title">Ekdromes</string>
+    <string name="ekdromes_suggest">Suggest an Ekdrome</string>
+    <string name="ekdromes_filter_region">Filter by Region</string>
+    <string name="ekdromes_filter_tags">Filter by Type</string>
+    <string name="ekdrome_tag_moto">Moto-Friendly</string>
+    <string name="ekdrome_tag_asphalt">Asphalt Only</string>
+    <string name="ekdrome_tag_offroad">4x4 / Off-Road</string>
+    <string name="ekdrome_tag_twisty">Twisty Curves</string>
+    <string name="ekdrome_region_crete">Crete</string>
+    <string name="ekdrome_region_peloponnese">Peloponnese</string>
+    <string name="ekdrome_region_macedonia">Macedonia</string>
+    <string name="ekdrome_region_epirus">Epirus</string>
+    <string name="ekdrome_region_attica">Attica</string>
+    <string name="ekdrome_difficulty_easy">Easy</string>
+    <string name="ekdrome_difficulty_medium">Medium</string>
+    <string name="ekdrome_difficulty_hard">Hard</string>
+    <string name="ekdromes_coming_soon">Community routes coming soon</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_el">Greek / Ελληνικά</string>
+    <string name="settings_sync_title">Cloud Sync</string>
+    <string name="settings_sync_not_configured">Cloud sync is not set up for this build.</string>
+    <string name="settings_email">Email</string>
+    <string name="settings_password">Password</string>
+    <string name="settings_sign_in">Sign In</string>
+    <string name="settings_register">Create Account</string>
+    <string name="settings_sign_out">Sign Out</string>
+    <string name="settings_sync_now">Sync Now</string>
+    <string name="settings_signed_in_as">Signed in as: %1$s</string>
+
+    <!-- Vehicle detail / edit -->
+    <string name="vehicle_detail_label">Vehicle Details</string>
+    <string name="vehicle_edit_label">Edit Vehicle</string>
+    <string name="vehicle_edit">Edit Vehicle</string>
+    <string name="vehicle_km_updated">Odometer updated</string>
+    <string name="confirm_delete">Confirm Delete</string>
+    <string name="confirm_delete_vehicle_message">Delete this vehicle? All associated logs will be removed.</string>
+
+    <!-- Camera -->
+    <string name="camera_permission_denied">Camera permission is required to take photos</string>
+
+    <!-- Garage vehicle count -->
+    <plurals name="garage_vehicle_count">
+        <item quantity="one">1 vehicle</item>
+        <item quantity="other">%1$d vehicles</item>
+    </plurals>
+
+    <!-- Common -->
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="ok">OK</string>
+    <string name="error_required_field">This field is required</string>
+    <string name="error_invalid_number">Please enter a valid number</string>
+</resources>

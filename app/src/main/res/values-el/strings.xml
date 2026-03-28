@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">GearDex</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_garage">Γκαράζ</string>
+    <string name="nav_logs">Αρχεία</string>
+    <string name="nav_glovebox">Ντοσιέ</string>
+    <string name="nav_ekdromes">Εκδρομές</string>
+
+    <!-- Garage -->
+    <string name="garage_title">Το Γκαράζ μου</string>
+    <string name="garage_empty_title">Το Γκαράζ σας είναι Άδειο</string>
+    <string name="garage_empty_subtitle">Προσθέστε το πρώτο σας όχημα</string>
+    <string name="garage_add_vehicle">Προσθήκη Οχήματος</string>
+    <string name="vehicle_type_car">Αυτοκίνητο</string>
+    <string name="vehicle_type_motorcycle">Μοτοσικλέτα</string>
+    <string name="vehicle_type_atv">ATV</string>
+    <string name="vehicle_make">Μάρκα</string>
+    <string name="vehicle_model">Μοντέλο</string>
+    <string name="vehicle_year">Έτος</string>
+    <string name="vehicle_plate">Πινακίδα</string>
+    <string name="vehicle_km">Τρέχοντα KM</string>
+    <string name="vehicle_type">Τύπος Οχήματος</string>
+    <string name="vehicle_save">Αποθήκευση Οχήματος</string>
+    <string name="vehicle_hint_make">π.χ. Toyota, BMW</string>
+    <string name="vehicle_hint_model">π.χ. Corolla, R1200GS</string>
+    <string name="vehicle_hint_plate">π.χ. ΑΑΑ-1234</string>
+
+    <!-- Logs / Dex -->
+    <string name="logs_title">Τα Αρχεία</string>
+    <string name="logs_add_fuel">Καταχώρηση Καυσίμου</string>
+    <string name="logs_add_service">Καταχώρηση Σέρβις</string>
+    <string name="logs_update_km">Ενημέρωση KM</string>
+    <string name="log_date">Ημερομηνία</string>
+    <string name="log_cost">Κόστος (€)</string>
+    <string name="log_km">Χιλιόμετρα</string>
+    <string name="log_liters">Λίτρα</string>
+    <string name="log_fuel_economy">Κατανάλωση</string>
+    <string name="log_mechanic">Μηχανικός</string>
+    <string name="log_notes">Σημειώσεις</string>
+    <string name="log_save">Αποθήκευση</string>
+    <!-- Service fields - Car specific -->
+    <string name="service_timing_belt">Ιμάντας Χρονισμού</string>
+    <string name="service_cabin_filter">Φίλτρο Καμπίνας</string>
+    <string name="service_air_filter">Φίλτρο Αέρα</string>
+    <string name="service_oil_change">Αλλαγή Λαδιού</string>
+    <string name="service_brake_pads">Τακάκια Φρένων</string>
+    <!-- Service fields - Motorcycle specific -->
+    <string name="service_chain_lube">Λίπανση Αλυσίδας</string>
+    <string name="service_valve_clearance">Ρύθμιση Βαλβίδων</string>
+    <string name="service_fork_oil">Λάδι Πιρούνας</string>
+    <string name="service_tire_check">Έλεγχος Ελαστικών</string>
+    <string name="log_fuel_economy_result">%1$.1f L/100km</string>
+    <string name="logs_no_vehicle">Επιλέξτε πρώτα όχημα</string>
+
+    <!-- Digital Glovebox -->
+    <string name="glovebox_title">Ψηφιακό Ντοσιέ</string>
+    <string name="glovebox_add_document">Προσθήκη Εγγράφου</string>
+    <string name="glovebox_empty_title">Δεν υπάρχουν Έγγραφα</string>
+    <string name="glovebox_empty_subtitle">Τα έγγραφα αποθηκεύονται ασφαλώς μόνο στη συσκευή</string>
+    <string name="glovebox_privacy_notice">Τα δεδομένα σας. Μόνο σε αυτή τη συσκευή.</string>
+    <string name="doc_type_kteo">ΚΤΕΟ</string>
+    <string name="doc_type_insurance">Ασφαλιστήριο</string>
+    <string name="doc_type_road_tax">Τέλη Κυκλοφορίας</string>
+    <string name="doc_type_receipt">Απόδειξη Σέρβις</string>
+    <string name="doc_type_other">Άλλο</string>
+    <string name="doc_expiry_date">Ημ. Λήξης</string>
+    <string name="doc_type">Τύπος Εγγράφου</string>
+    <string name="doc_pick_file">Επιλογή Αρχείου / Φωτογραφίας</string>
+    <string name="doc_take_photo">Λήψη Φωτογραφίας</string>
+    <string name="doc_save">Αποθήκευση Εγγράφου</string>
+    <string name="doc_export_zip">Εξαγωγή ως ZIP</string>
+    <string name="doc_expires_on">Λήγει: %1$s</string>
+    <string name="doc_no_expiry">Χωρίς ημ. λήξης</string>
+
+    <!-- Ekdromes -->
+    <string name="ekdromes_title">Εκδρομές</string>
+    <string name="ekdromes_suggest">Προτείνετε μια Εκδρομή</string>
+    <string name="ekdromes_filter_region">Φιλτράρισμα ανά Περιοχή</string>
+    <string name="ekdromes_filter_tags">Φιλτράρισμα ανά Τύπο</string>
+    <string name="ekdrome_tag_moto">Φιλικό για Μοτό</string>
+    <string name="ekdrome_tag_asphalt">Μόνο Άσφαλτος</string>
+    <string name="ekdrome_tag_offroad">4x4 / Off-Road</string>
+    <string name="ekdrome_tag_twisty">Στροφές</string>
+    <string name="ekdrome_region_crete">Κρήτη</string>
+    <string name="ekdrome_region_peloponnese">Πελοπόννησος</string>
+    <string name="ekdrome_region_macedonia">Μακεδονία</string>
+    <string name="ekdrome_region_epirus">Ήπειρος</string>
+    <string name="ekdrome_region_attica">Αττική</string>
+    <string name="ekdrome_difficulty_easy">Εύκολο</string>
+    <string name="ekdrome_difficulty_medium">Μέτριο</string>
+    <string name="ekdrome_difficulty_hard">Δύσκολο</string>
+    <string name="ekdromes_coming_soon">Διαδρομές κοινότητας σύντομα</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_language">Γλώσσα</string>
+    <string name="settings_language_en">Αγγλικά / English</string>
+    <string name="settings_language_el">Ελληνικά</string>
+    <string name="settings_sync_title">Συγχρονισμός Cloud</string>
+    <string name="settings_sync_not_configured">Ο συγχρονισμός cloud δεν είναι διαθέσιμος.</string>
+    <string name="settings_email">Email</string>
+    <string name="settings_password">Κωδικός</string>
+    <string name="settings_sign_in">Σύνδεση</string>
+    <string name="settings_register">Δημιουργία Λογαριασμού</string>
+    <string name="settings_sign_out">Αποσύνδεση</string>
+    <string name="settings_sync_now">Συγχρονισμός</string>
+    <string name="settings_signed_in_as">Συνδεδεμένος/η ως: %1$s</string>
+
+    <!-- Vehicle detail / edit -->
+    <string name="vehicle_detail_label">Στοιχεία Οχήματος</string>
+    <string name="vehicle_edit_label">Επεξεργασία Οχήματος</string>
+    <string name="vehicle_edit">Επεξεργασία Οχήματος</string>
+    <string name="vehicle_km_updated">Χιλιόμετρα ενημερώθηκαν</string>
+    <string name="confirm_delete">Επιβεβαίωση Διαγραφής</string>
+    <string name="confirm_delete_vehicle_message">Διαγραφή αυτού του οχήματος; Όλα τα σχετικά αρχεία θα αφαιρεθούν.</string>
+
+    <!-- Camera -->
+    <string name="camera_permission_denied">Απαιτείται άδεια κάμερας για λήψη φωτογραφιών</string>
+
+    <!-- Garage vehicle count -->
+    <plurals name="garage_vehicle_count">
+        <item quantity="one">1 όχημα</item>
+        <item quantity="other">%1$d οχήματα</item>
+    </plurals>
+
+    <!-- Common -->
+    <string name="cancel">Ακύρωση</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="ok">ΟΚ</string>
+    <string name="error_required_field">Αυτό το πεδίο είναι υποχρεωτικό</string>
+    <string name="error_invalid_number">Παρακαλώ εισάγετε έγκυρο αριθμό</string>
+</resources>

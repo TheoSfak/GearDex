@@ -1,0 +1,23 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/asLocalChanges.xml
+/.idea/
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+app/build/
+
+# Sensitive config - never commit these
+keystore.properties
+*.keystore
+*.jks
+firebase.properties
+google-services.json
