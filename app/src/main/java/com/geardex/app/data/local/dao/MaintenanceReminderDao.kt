@@ -25,4 +25,7 @@ interface MaintenanceReminderDao {
 
     @Query("UPDATE maintenance_reminders SET isDone = 1 WHERE id = :id")
     suspend fun markDone(id: Long)
+
+    @Query("SELECT * FROM maintenance_reminders WHERE isDone = 0")
+    fun getActiveRemindersFlow(): Flow<List<MaintenanceReminder>>
 }

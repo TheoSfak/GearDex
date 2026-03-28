@@ -18,4 +18,7 @@ interface ServiceLogDao {
 
     @Query("SELECT * FROM service_logs WHERE vehicleId = :vehicleId ORDER BY date DESC LIMIT 1")
     suspend fun getLastServiceLogForVehicle(vehicleId: Long): ServiceLog?
+
+    @Query("SELECT * FROM service_logs ORDER BY date DESC")
+    fun getAllServiceLogs(): Flow<List<ServiceLog>>
 }

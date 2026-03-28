@@ -21,6 +21,37 @@
             android:textStyle="bold"
             android:layout_marginBottom="24dp" />
 
+        <!-- OCR scan row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_scan_receipt"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/log_scan_receipt"
+                app:icon="@drawable/ic_camera"
+                app:iconGravity="start"
+                app:strokeColor="@color/geardex_orange"
+                android:textColor="@color/geardex_orange" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progress_ocr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/geardex_orange"
+                app:trackColor="@color/surface_elevated" />
+
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_odometer"
             style="@style/Widget.Geardex.TextInput"

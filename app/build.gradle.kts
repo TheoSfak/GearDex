@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.androidx.navigation.safeargs)
 }
@@ -152,4 +153,10 @@ dependencies {
 
     // Vico charts
     implementation("com.patrykandpatrick.vico:views:2.0.2")
+
+    // ML Kit Text Recognition (bundled — no Play Services needed, works offline)
+    implementation(libs.mlkit.text.recognition)
+
+    // Glance App Widget
+    implementation(libs.glance.appwidget)
 }

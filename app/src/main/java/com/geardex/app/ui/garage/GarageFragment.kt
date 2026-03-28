@@ -52,14 +52,21 @@ class GarageFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.vehicles.collect { vehicles ->
-                    adapter.submitList(vehicles)
-                    val isEmpty = vehicles.isEmpty()
-                    binding.layoutEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
-                    binding.recyclerVehicles.visibility = if (isEmpty) View.GONE else View.VISIBLE
-                    binding.tvGarageSubtitle.text = if (isEmpty) "" else {
-                        val count = vehicles.size
-                        resources.getQuantityString(R.plurals.garage_vehicle_count, count, count)
+                launch {
+                    viewModel.vehicles.collect { vehicles ->
+                        adapter.submitList(vehicles)
+                        val isEmpty = vehicles.isEmpty()
+                        binding.layoutEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
+                        binding.recyclerVehicles.visibility = if (isEmpty) View.GONE else View.VISIBLE
+                        binding.tvGarageSubtitle.text = if (isEmpty) "" else {
+                            val count = vehicles.size
+                            resources.getQuantityString(R.plurals.garage_vehicle_count, count, count)
+                        }
+                    }
+                }
+                launch {
+                    viewModel.scores.collect { scores ->
+                        adapter.scores = scores
                     }
                 }
             }

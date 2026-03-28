@@ -158,4 +158,21 @@
     <string name="analytics_economy_trend">Fuel Economy Trend</string>
     <string name="analytics_monthly_spend">Monthly Spend (€)</string>
     <string name="analytics_no_data">No log data yet</string>
+
+    <!-- Vehicle Health Score -->
+    <string name="vehicle_health_score">Health</string>
+    <string name="vehicle_health_good">Good</string>
+    <string name="vehicle_health_fair">Fair</string>
+    <string name="vehicle_health_poor">Poor</string>
+
+    <!-- OCR Receipt Scanner -->
+    <string name="log_scan_receipt">Scan Receipt</string>
+    <string name="log_ocr_scanning">Scanning…</string>
+    <string name="log_ocr_success">Receipt scanned — please verify the values</string>
+    <string name="log_ocr_no_data">Could not read receipt data</string>
+
+    <!-- Home Screen Widget -->
+    <string name="widget_description">Shows your vehicle health score and next reminder</string>
+    <string name="widget_all_clear">All clear ✓</string>
+    <string name="widget_no_vehicles">No vehicles added</string>
 </resources>

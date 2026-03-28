@@ -22,4 +22,5 @@ class ReminderRepository @Inject constructor(
     suspend fun markDone(id: Long) = dao.markDone(id)
 
     suspend fun deleteReminder(reminder: MaintenanceReminder) = dao.delete(reminder)
+    fun getActiveRemindersFlow(): Flow<List<MaintenanceReminder>> = dao.getActiveRemindersFlow()
 }

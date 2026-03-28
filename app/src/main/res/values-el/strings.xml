@@ -158,4 +158,21 @@
     <string name="analytics_economy_trend">Τάση Κατανάλωσης</string>
     <string name="analytics_monthly_spend">Μηνιαίες Δαπάνες (€)</string>
     <string name="analytics_no_data">Δεν υπάρχουν δεδομένα ακόμα</string>
+
+    <!-- Vehicle Health Score -->
+    <string name="vehicle_health_score">Υγεία</string>
+    <string name="vehicle_health_good">Καλή</string>
+    <string name="vehicle_health_fair">Μέτρια</string>
+    <string name="vehicle_health_poor">Κακή</string>
+
+    <!-- OCR Receipt Scanner -->
+    <string name="log_scan_receipt">Σάρωση Απόδειξης</string>
+    <string name="log_ocr_scanning">Σάρωση…</string>
+    <string name="log_ocr_success">Η απόδειξη σαρώθηκε — επαληθεύστε τις τιμές</string>
+    <string name="log_ocr_no_data">Δεν ήταν δυνατή η ανάγνωση της απόδειξης</string>
+
+    <!-- Home Screen Widget -->
+    <string name="widget_description">Εμφανίζει υγεία οχήματος και επόμενη υπενθύμνηση</string>
+    <string name="widget_all_clear">Όλα εντάξει ✓</string>
+    <string name="widget_no_vehicles">Δεν υπάρχουν οχήματα</string>
 </resources>

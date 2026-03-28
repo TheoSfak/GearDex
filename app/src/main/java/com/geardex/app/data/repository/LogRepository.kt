@@ -22,4 +22,5 @@ class LogRepository @Inject constructor(
     suspend fun deleteServiceLog(log: ServiceLog) = serviceLogDao.deleteServiceLog(log)
 
     suspend fun getLastServiceLog(vehicleId: Long): ServiceLog? = serviceLogDao.getLastServiceLogForVehicle(vehicleId)
+    fun getAllServiceLogs(): Flow<List<ServiceLog>> = serviceLogDao.getAllServiceLogs()
 }

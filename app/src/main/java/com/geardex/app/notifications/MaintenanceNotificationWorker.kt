@@ -3,6 +3,7 @@ package com.geardex.app.notifications
 import android.content.Context
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.glance.appwidget.updateAll
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -77,6 +78,9 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
                 }
             }
         }
+
+        // Refresh home screen widget
+        GearDexWidget().updateAll(applicationContext)
 
         return Result.success()
     }

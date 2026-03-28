@@ -21,6 +21,11 @@
     <color name="color_success">#4CAF50</color>
     <color name="color_error">#F44336</color>
 
+    <!-- Vehicle Health Score -->
+    <color name="score_good">#4CAF50</color>
+    <color name="score_fair">#FFC107</color>
+    <color name="score_poor">#F44336</color>
+
     <!-- Icon backgrounds -->
     <color name="icon_bg_orange">#33FF6D00</color>
     <color name="icon_bg_blue">#1A2196F3</color>

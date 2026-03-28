@@ -47,6 +47,19 @@
                 android:value="androidx.startup.InitializationProvider"
                 tools:node="remove" />
         </provider>
+
+        <!-- Home screen widget -->
+        <receiver
+            android:name=".notifications.GearDexWidgetReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/geardex_widget_info" />
+        </receiver>
+
     </application>
 
 </manifest>
