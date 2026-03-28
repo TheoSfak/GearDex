@@ -58,6 +58,7 @@ class GarageFragment : Fragment() {
                         val isEmpty = vehicles.isEmpty()
                         binding.layoutEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
                         binding.recyclerVehicles.visibility = if (isEmpty) View.GONE else View.VISIBLE
+                        binding.fabAddVehicle.visibility = if (isEmpty) View.GONE else View.VISIBLE
                         binding.tvGarageSubtitle.text = if (isEmpty) "" else {
                             val count = vehicles.size
                             resources.getQuantityString(R.plurals.garage_vehicle_count, count, count)
