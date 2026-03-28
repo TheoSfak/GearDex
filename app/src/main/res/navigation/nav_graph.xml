@@ -52,6 +52,9 @@
         <action
             android:id="@+id/action_logs_to_addService"
             app:destination="@id/addServiceLogFragment" />
+        <action
+            android:id="@+id/action_logs_to_addReminder"
+            app:destination="@id/addReminderFragment" />
     </fragment>
 
     <fragment
@@ -63,6 +66,11 @@
         android:id="@+id/addServiceLogFragment"
         android:name="com.geardex.app.ui.logs.AddServiceLogFragment"
         android:label="@string/logs_add_service" />
+
+    <fragment
+        android:id="@+id/addReminderFragment"
+        android:name="com.geardex.app.ui.logs.AddReminderFragment"
+        android:label="@string/reminder_add_title" />
 
     <fragment
         android:id="@+id/gloveboxFragment"

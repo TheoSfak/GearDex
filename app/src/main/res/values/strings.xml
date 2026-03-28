@@ -132,4 +132,30 @@
     <string name="ok">OK</string>
     <string name="error_required_field">This field is required</string>
     <string name="error_invalid_number">Please enter a valid number</string>
+
+    <!-- Reminders -->
+    <string name="nav_reminders">Reminders</string>
+    <string name="reminder_add_title">Add Reminder</string>
+    <string name="reminder_title">Reminder Title</string>
+    <string name="reminder_vehicle">Vehicle</string>
+    <string name="reminder_type">Reminder Type</string>
+    <string name="reminder_type_km">By KM</string>
+    <string name="reminder_type_date">By Date</string>
+    <string name="reminder_target_km">Target KM</string>
+    <string name="reminder_pick_date">Pick Target Date</string>
+    <string name="reminder_save">Save Reminder</string>
+    <string name="reminder_done">Done</string>
+    <string name="reminders_empty_title">No Active Reminders</string>
+    <string name="reminders_empty_subtitle">Tap + to add a maintenance reminder</string>
+
+    <!-- Analytics -->
+    <string name="nav_analytics">Analytics</string>
+    <string name="analytics_title">Cost &amp; Fuel Analytics</string>
+    <string name="analytics_avg_economy">Avg. L/100km</string>
+    <string name="analytics_total_fuel_cost">Total Fuel Cost</string>
+    <string name="analytics_total_service_cost">Total Service Cost</string>
+    <string name="analytics_total_km">Recorded KM</string>
+    <string name="analytics_economy_trend">Fuel Economy Trend</string>
+    <string name="analytics_monthly_spend">Monthly Spend (€)</string>
+    <string name="analytics_no_data">No log data yet</string>
 </resources>

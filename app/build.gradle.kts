@@ -88,6 +88,15 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+    // Room schema export directory for AutoMigration
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
+    }
 }
 
 dependencies {
@@ -140,4 +149,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Vico charts
+    implementation("com.patrykandpatrick.vico:views:2.0.2")
 }

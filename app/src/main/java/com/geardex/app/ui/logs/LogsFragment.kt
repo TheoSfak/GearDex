@@ -38,10 +38,18 @@ class LogsFragment : Fragment() {
         binding.recyclerLogs.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerLogs.adapter = fuelAdapter
 
+        // Lazily insert Reminders and Analytics child fragments
+        if (savedInstanceState == null) {
+            childFragmentManager.beginTransaction()
+                .replace(R.id.container_reminders, RemindersFragment())
+                .replace(R.id.container_analytics, AnalyticsFragment())
+                .commitNow()
+        }
+
         binding.tabLayout.addOnTabSelectedListener(object : com.google.android.material.tabs.TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: com.google.android.material.tabs.TabLayout.Tab?) {
                 currentTab = tab?.position ?: 0
-                binding.recyclerLogs.adapter = if (currentTab == 0) fuelAdapter else serviceAdapter
+                showTab(currentTab)
             }
             override fun onTabUnselected(tab: com.google.android.material.tabs.TabLayout.Tab?) {}
             override fun onTabReselected(tab: com.google.android.material.tabs.TabLayout.Tab?) {}
@@ -52,6 +60,9 @@ class LogsFragment : Fragment() {
         }
         binding.btnAddService.setOnClickListener {
             findNavController().navigate(R.id.action_logs_to_addService)
+        }
+        binding.fabAddReminder.setOnClickListener {
+            findNavController().navigate(R.id.action_logs_to_addReminder)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -77,8 +88,20 @@ class LogsFragment : Fragment() {
         }
     }
 
+    private fun showTab(tab: Int) {
+        binding.recyclerLogs.visibility = if (tab in 0..1) View.VISIBLE else View.GONE
+        binding.containerReminders.visibility = if (tab == 2) View.VISIBLE else View.GONE
+        binding.containerAnalytics.visibility = if (tab == 3) View.VISIBLE else View.GONE
+        binding.fabAddReminder.visibility = if (tab == 2) View.VISIBLE else View.GONE
+
+        if (tab in 0..1) {
+            binding.recyclerLogs.adapter = if (tab == 0) fuelAdapter else serviceAdapter
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+

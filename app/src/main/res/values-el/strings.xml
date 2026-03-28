@@ -132,4 +132,30 @@
     <string name="ok">ΟΚ</string>
     <string name="error_required_field">Αυτό το πεδίο είναι υποχρεωτικό</string>
     <string name="error_invalid_number">Παρακαλώ εισάγετε έγκυρο αριθμό</string>
+
+    <!-- Reminders -->
+    <string name="nav_reminders">Υπενθυμίσεις</string>
+    <string name="reminder_add_title">Προσθήκη Υπενθύμισης</string>
+    <string name="reminder_title">Τίτλος Υπενθύμισης</string>
+    <string name="reminder_vehicle">Όχημα</string>
+    <string name="reminder_type">Τύπος Υπενθύμισης</string>
+    <string name="reminder_type_km">Ανά KM</string>
+    <string name="reminder_type_date">Ανά Ημερομηνία</string>
+    <string name="reminder_target_km">Στόχος KM</string>
+    <string name="reminder_pick_date">Επιλογή Ημερομηνίας</string>
+    <string name="reminder_save">Αποθήκευση Υπενθύμισης</string>
+    <string name="reminder_done">Ολοκληρώθηκε</string>
+    <string name="reminders_empty_title">Δεν υπάρχουν Υπενθυμίσεις</string>
+    <string name="reminders_empty_subtitle">Πατήστε + για νέα υπενθύμιση συντήρησης</string>
+
+    <!-- Analytics -->
+    <string name="nav_analytics">Στατιστικά</string>
+    <string name="analytics_title">Στατιστικά Κόστους &amp; Καυσίμου</string>
+    <string name="analytics_avg_economy">Μέση Κατανάλωση L/100km</string>
+    <string name="analytics_total_fuel_cost">Συνολικό Κόστος Καυσίμου</string>
+    <string name="analytics_total_service_cost">Συνολικό Κόστος Σέρβις</string>
+    <string name="analytics_total_km">Καταγεγραμμένα KM</string>
+    <string name="analytics_economy_trend">Τάση Κατανάλωσης</string>
+    <string name="analytics_monthly_spend">Μηνιαίες Δαπάνες (€)</string>
+    <string name="analytics_no_data">Δεν υπάρχουν δεδομένα ακόμα</string>
 </resources>

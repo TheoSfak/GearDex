@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.geardex.app.data.local.GearDexDatabase
 import com.geardex.app.data.local.dao.FuelLogDao
 import com.geardex.app.data.local.dao.GloveboxDocumentDao
+import com.geardex.app.data.local.dao.MaintenanceReminderDao
 import com.geardex.app.data.local.dao.ServiceLogDao
 import com.geardex.app.data.local.dao.VehicleDao
 import dagger.Module
@@ -22,7 +23,7 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): GearDexDatabase =
         Room.databaseBuilder(context, GearDexDatabase::class.java, "geardex.db")
-            .fallbackToDestructiveMigration()
+            .fallbackToDestructiveMigration(dropAllTables = false)
             .build()
 
     @Provides
@@ -36,4 +37,7 @@ object DatabaseModule {
 
     @Provides
     fun provideGloveboxDocumentDao(db: GearDexDatabase): GloveboxDocumentDao = db.gloveboxDocumentDao()
+
+    @Provides
+    fun provideMaintenanceReminderDao(db: GearDexDatabase): MaintenanceReminderDao = db.maintenanceReminderDao()
 }
