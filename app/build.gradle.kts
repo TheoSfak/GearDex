@@ -33,9 +33,14 @@ android {
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Support all common ABIs for Play Store
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        }
 
         // Firebase build config fields (populated from firebase.properties)
         buildConfigField("boolean", "FIREBASE_ENABLED",
@@ -62,8 +67,10 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
         release {
+            isDebuggable = false
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
@@ -74,6 +81,24 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
+    }
+
+    bundle {
+        language {
+            // Keep all language splits so EN + EL both download
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    androidResources {
+        // Only bundle EN + EL localizations
+        localeFilters += listOf("en", "el")
     }
 
     compileOptions {
@@ -88,6 +113,14 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+
+    lint {
+        abortOnError = true
+        warningsAsErrors = false
+        checkReleaseBuilds = true
+        // Treat missing translations as error
+        error += "MissingTranslation"
     }
 
     // Room schema export directory for AutoMigration

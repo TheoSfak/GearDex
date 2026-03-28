@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 6-11 (API 23-30) backup rules.
+    Excludes Room databases and DataStore preferences to prevent corruption.
+-->
+<full-backup-content>
+    <exclude domain="database" path="." />
+    <exclude domain="sharedpref" path="." />
+    <exclude domain="root" path="datastore/" />
+</full-backup-content>
