@@ -26,17 +26,39 @@
     <color name="score_fair">#FFC107</color>
     <color name="score_poor">#F44336</color>
 
+    <!-- Per-Section Accent Colors (Modern Automotive jewel tones) -->
+    <color name="accent_fuel">#42A5F5</color>
+    <color name="accent_fuel_bg">#1A42A5F5</color>
+    <color name="accent_service">#66BB6A</color>
+    <color name="accent_service_bg">#1A66BB6A</color>
+    <color name="accent_glovebox">#AB47BC</color>
+    <color name="accent_glovebox_bg">#1AAB47BC</color>
+    <color name="accent_ekdromes">#26A69A</color>
+    <color name="accent_ekdromes_bg">#1A26A69A</color>
+    <color name="accent_reminder">#FFA726</color>
+    <color name="accent_reminder_bg">#1AFFA726</color>
+
     <!-- Icon backgrounds -->
     <color name="icon_bg_orange">#33FF6D00</color>
-    <color name="icon_bg_blue">#1A2196F3</color>
-    <color name="icon_bg_green">#1A4CAF50</color>
+    <color name="icon_bg_blue">#1A42A5F5</color>
+    <color name="icon_bg_green">#1A66BB6A</color>
+    <color name="icon_bg_purple">#1AAB47BC</color>
+    <color name="icon_bg_teal">#1A26A69A</color>
+    <color name="icon_bg_amber">#1AFFA726</color>
     <color name="icon_tint_fuel">#64B5F6</color>
     <color name="icon_tint_service">#81C784</color>
+    <color name="icon_tint_glovebox">#CE93D8</color>
+    <color name="icon_tint_ekdromes">#80CBC4</color>
+    <color name="icon_tint_reminder">#FFB74D</color>
+
+    <!-- Dividers -->
+    <color name="divider">#2E2E2E</color>
 
     <!-- Navigation -->
     <color name="nav_selected">#FF6D00</color>
     <color name="nav_unselected">#707070</color>
     <color name="nav_background">#1A1A1A</color>
+    <color name="nav_indicator">#33FF6D00</color>
 
     <!-- Legacy -->
     <color name="black">#FF000000</color>

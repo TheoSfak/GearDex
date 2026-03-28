@@ -58,7 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_km"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_odometer"
+            app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_odometer"
                 android:layout_width="match_parent"
@@ -73,7 +75,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_liters"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_liters"
+            app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_liters"
                 android:layout_width="match_parent"
@@ -88,7 +92,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_cost"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:startIconDrawable="@drawable/ic_money"
+            app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_cost"
                 android:layout_width="match_parent"
@@ -103,7 +109,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_notes"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="32dp"
+            app:startIconDrawable="@drawable/ic_notes"
+            app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_notes"
                 android:layout_width="match_parent"

@@ -37,7 +37,9 @@
             android:layout_marginBottom="16dp"
             android:hint="@string/reminder_title"
             app:boxStrokeColor="@color/geardex_orange"
-            app:hintTextColor="@color/text_secondary">
+            app:hintTextColor="@color/text_secondary"
+            app:startIconDrawable="@drawable/ic_reminder_bell"
+            app:startIconTint="@color/accent_reminder">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_reminder_title"
@@ -92,7 +94,9 @@
             android:layout_marginBottom="16dp"
             android:hint="@string/reminder_target_km"
             app:boxStrokeColor="@color/geardex_orange"
-            app:hintTextColor="@color/text_secondary">
+            app:hintTextColor="@color/text_secondary"
+            app:startIconDrawable="@drawable/ic_odometer"
+            app:startIconTint="@color/accent_reminder">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_target_km"

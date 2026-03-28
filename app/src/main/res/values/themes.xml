@@ -30,11 +30,21 @@
     <style name="Widget.Geardex.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardBackgroundColor">@color/surface_card</item>
         <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">12dp</item>
+        <item name="cardCornerRadius">14dp</item>
     </style>
 
     <style name="Widget.Geardex.Button" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/geardex_orange</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.Geardex.Button.Fuel" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/accent_fuel</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Widget.Geardex.Button.Service" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/accent_service</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -47,6 +57,16 @@
 
     <style name="Widget.Geardex.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
         <item name="backgroundTint">@color/geardex_orange</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Widget.Geardex.FAB.Glovebox" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/accent_glovebox</item>
+        <item name="tint">@color/white</item>
+    </style>
+
+    <style name="Widget.Geardex.FAB.Ekdromes" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/accent_ekdromes</item>
         <item name="tint">@color/white</item>
     </style>
 </resources>

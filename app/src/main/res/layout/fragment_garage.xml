@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:background="@drawable/bg_header_garage"
             android:paddingHorizontal="20dp"
             android:paddingTop="20dp"
             android:paddingBottom="12dp">

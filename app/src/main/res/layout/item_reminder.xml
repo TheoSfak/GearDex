@@ -6,14 +6,37 @@
     android:layout_marginHorizontal="16dp"
     android:layout_marginBottom="10dp"
     app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
+
+        <!-- Reminder bell icon circle -->
+        <FrameLayout
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/bg_icon_circle_amber"
+            android:layout_marginEnd="14dp"
+            android:layout_gravity="top">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_reminder_bell"
+                app:tint="@color/icon_tint_reminder" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
         <!-- Title row -->
         <LinearLayout
@@ -89,6 +112,7 @@
 
         </LinearLayout>
 
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

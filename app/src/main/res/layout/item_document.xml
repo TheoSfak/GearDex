@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="14dp"
     app:cardElevation="3dp">
 
     <LinearLayout
@@ -14,6 +14,22 @@
         android:orientation="horizontal"
         android:padding="14dp"
         android:gravity="center_vertical">
+
+        <!-- Document icon circle -->
+        <FrameLayout
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/bg_icon_circle_purple"
+            android:layout_marginEnd="14dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_document"
+                app:tint="@color/icon_tint_glovebox" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -35,7 +51,7 @@
                 android:id="@+id/tv_doc_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/geardex_orange"
+                android:textColor="@color/accent_glovebox"
                 android:textSize="12sp"
                 android:layout_marginTop="2dp" />
 
@@ -54,8 +70,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_delete"
-            android:tint="@color/text_secondary"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/text_secondary"
             android:contentDescription="@string/delete" />
 
     </LinearLayout>

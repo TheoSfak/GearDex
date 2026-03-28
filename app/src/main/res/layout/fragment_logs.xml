@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="@drawable/bg_header_logs"
             android:padding="16dp"
             android:gravity="center_vertical">
 
@@ -52,7 +53,11 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
                 android:text="@string/logs_add_fuel"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:backgroundTint="@color/accent_fuel"
+                app:icon="@drawable/ic_gas_station"
+                app:iconTint="@color/white"
+                app:iconGravity="textStart" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_service"
@@ -62,7 +67,12 @@
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
                 android:text="@string/logs_add_service"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:strokeColor="@color/accent_service"
+                android:textColor="@color/accent_service"
+                app:icon="@drawable/ic_tools"
+                app:iconTint="@color/accent_service"
+                app:iconGravity="textStart" />
 
         </LinearLayout>
 
@@ -72,8 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/surface_card"
-            app:tabIndicatorColor="@color/geardex_orange"
-            app:tabSelectedTextColor="@color/geardex_orange"
+            app:tabIndicatorColor="@color/accent_fuel"
+            app:tabSelectedTextColor="@color/accent_fuel"
             app:tabTextColor="@color/text_secondary"
             app:tabMode="scrollable">
 
