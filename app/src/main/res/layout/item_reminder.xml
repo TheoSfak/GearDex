@@ -1,118 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="3dp">
+    android:layout_marginHorizontal="@dimen/spacing_md"
+    android:layout_marginBottom="@dimen/item_margin_bottom">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md">
 
-        <!-- Reminder bell icon circle -->
-        <FrameLayout
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:background="@drawable/bg_icon_circle_amber"
-            android:layout_marginEnd="14dp"
-            android:layout_gravity="top">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_reminder_bell"
-                app:tint="@color/icon_tint_reminder" />
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-        <!-- Title row -->
+        <!-- Top row: icon + title + type chip -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_reminder_title"
+            <!-- Reminder bell icon circle — bigger -->
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="@dimen/spacing_md"
+                android:background="@drawable/bg_icon_circle_amber">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_reminder_bell"
+                    app:tint="@color/icon_tint_reminder" />
+
+            </FrameLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_reminder_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    tools:text="Oil Change" />
+
+                <TextView
+                    android:id="@+id/tv_reminder_vehicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    tools:text="BMW M3 (2021)" />
+
+            </LinearLayout>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_reminder_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
                 android:textSize="11sp"
                 app:chipBackgroundColor="@color/geardex_orange"
-                android:textColor="@android:color/white"
                 app:chipMinHeight="28dp" />
 
         </LinearLayout>
 
-        <!-- Subtitle: target km or date -->
+        <!-- Target info -->
         <TextView
             android:id="@+id/tv_reminder_target"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:paddingStart="64dp"
             android:textColor="@color/text_secondary"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            tools:text="Target: 50,000 km" />
 
-        <!-- Vehicle name -->
-        <TextView
-            android:id="@+id/tv_reminder_vehicle"
+        <!-- Progress bar showing how close to target -->
+        <ProgressBar
+            android:id="@+id/progress_reminder"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp" />
+            android:layout_height="8dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginStart="64dp"
+            android:max="100"
+            android:progress="60"
+            android:progressDrawable="@drawable/bg_progress_reminder"
+            tools:progress="60" />
 
         <!-- Action buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:gravity="end"
             android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_mark_done"
-                style="@style/Widget.Geardex.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginEnd="8dp"
-                android:text="@string/reminder_done"
-                android:textSize="13sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_delete_reminder"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="@dimen/spacing_sm"
                 android:text="@string/delete"
                 android:textColor="@color/color_error"
-                app:strokeColor="@color/color_error"
-                android:textSize="13sp" />
+                android:textSize="12sp"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:strokeColor="@color/color_error" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_mark_done"
+                style="@style/Widget.Geardex.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/reminder_done"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_check"
+                app:iconSize="16dp"
+                app:iconTint="@color/white" />
 
         </LinearLayout>
 
-        </LinearLayout>
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>

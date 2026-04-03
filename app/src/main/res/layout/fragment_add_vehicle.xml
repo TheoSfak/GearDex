@@ -10,25 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/form_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/garage_add_vehicle"
             android:textColor="@color/text_primary"
-            android:textSize="26sp"
+            android:textSize="@dimen/header_title_size"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="@dimen/form_section_spacing" />
 
         <!-- Vehicle Photo -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
+            app:cardCornerRadius="@dimen/card_corner_radius"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/surface_card"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="@dimen/form_section_spacing">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             app:singleSelection="true"
             app:selectionRequired="true"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="@dimen/form_section_spacing">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_type_car"
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_make"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:startIconDrawable="@drawable/ic_car"
             app:startIconTint="@color/geardex_orange">
             <com.google.android.material.textfield.TextInputEditText
@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_model"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:startIconDrawable="@drawable/ic_car"
             app:startIconTint="@color/geardex_orange">
             <com.google.android.material.textfield.TextInputEditText
@@ -183,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="@dimen/form_field_spacing">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_year"
@@ -228,7 +228,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_km"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="@dimen/form_section_spacing"
             app:startIconDrawable="@drawable/ic_odometer"
             app:startIconTint="@color/geardex_orange">
             <com.google.android.material.textfield.TextInputEditText
@@ -244,7 +244,7 @@
             android:id="@+id/btn_save_vehicle"
             style="@style/Widget.Geardex.Button"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/vehicle_save"
             android:textSize="16sp" />
 

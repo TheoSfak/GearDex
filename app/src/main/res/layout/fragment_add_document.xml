@@ -10,66 +10,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/form_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/glovebox_add_document"
             android:textColor="@color/text_primary"
-            android:textSize="26sp"
+            android:textSize="@dimen/header_title_size"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="@dimen/form_section_spacing" />
 
         <!-- Vehicle -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/vehicle_type"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            android:layout_marginBottom="6dp" />
-
-        <Spinner
-            android:id="@+id/spinner_vehicle"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Geardex.Dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/geardex_orange"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/doc_vehicle">
+            <AutoCompleteTextView
+                android:id="@+id/spinner_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Document Type -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/doc_type"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            android:layout_marginBottom="6dp" />
-
-        <Spinner
-            android:id="@+id/spinner_doc_type"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Geardex.Dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/geardex_orange"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="@dimen/form_section_spacing"
+            android:hint="@string/doc_type">
+            <AutoCompleteTextView
+                android:id="@+id/spinner_doc_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- File Picker -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_pick_file"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.Geardex.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/doc_pick_file"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="@dimen/spacing_sm" />
 
         <!-- Camera capture -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_take_photo"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.Geardex.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/doc_take_photo"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="@dimen/spacing_sm" />
 
         <TextView
             android:id="@+id/tv_picked_file"
@@ -77,17 +75,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_secondary"
             android:textSize="13sp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             android:hint="No file selected" />
 
         <!-- Expiry Date -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_pick_expiry"
-            style="?attr/materialButtonOutlinedStyle"
+            style="@style/Widget.Geardex.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/doc_expiry_date"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="@dimen/spacing_sm" />
 
         <TextView
             android:id="@+id/tv_expiry_date"
@@ -95,14 +93,14 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_secondary"
             android:textSize="13sp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="@dimen/form_section_spacing"
             android:hint="@string/doc_no_expiry" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_document"
             style="@style/Widget.Geardex.Button"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/doc_save"
             android:textSize="16sp" />
 

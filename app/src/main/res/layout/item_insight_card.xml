@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="6dp"
+    app:cardBackgroundColor="@color/surface_elevated"
+    app:cardCornerRadius="@dimen/item_card_corner"
+    app:cardElevation="@dimen/card_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/item_padding">
+
+        <!-- Severity indicator bar -->
+        <View
+            android:id="@+id/view_severity_bar"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/color_warning" />
+
+        <ImageView
+            android:id="@+id/iv_insight_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="8dp"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/tv_insight_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tv_insight_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -11,31 +11,94 @@
         android:orientation="vertical">
 
         <!-- Header -->
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_header_ekdromes"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp">
+            android:paddingHorizontal="@dimen/spacing_lg"
+            android:paddingTop="28dp"
+            android:paddingBottom="@dimen/spacing_lg">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ekdromes_title"
-                android:textColor="@color/text_primary"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ekdromes_title"
+                    android:textColor="@color/text_primary"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="-0.02" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/ekdromes_subtitle"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/bg_icon_circle"
+                android:backgroundTint="@color/accent_ekdromes_bg">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_nav_ekdromes"
+                    app:tint="@color/accent_ekdromes"
+                    android:importantForAccessibility="no" />
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <!-- Built-in / Community toggle -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout_routes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_dark"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/accent_ekdromes"
+            app:tabSelectedTextColor="@color/accent_ekdromes"
+            app:tabTextColor="@color/text_secondary"
+            app:tabTextAppearance="@style/TextAppearance.Material3.BodyMedium">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/community_tab_builtin" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/community_tab_community" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/community_tab_saved" />
+
+        </com.google.android.material.tabs.TabLayout>
 
         <!-- Region filter -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
-            android:paddingHorizontal="12dp"
-            android:paddingBottom="4dp">
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_xs">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_region"
@@ -51,8 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
-            android:paddingHorizontal="12dp"
-            android:paddingBottom="8dp">
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_sm">
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_tags"
@@ -62,14 +125,27 @@
 
         </HorizontalScrollView>
 
+        <!-- Empty state -->
+        <TextView
+            android:id="@+id/tv_empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingHorizontal="32dp"
+            android:text="@string/community_empty"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
         <!-- Routes list -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_ekdromes"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingHorizontal="12dp"
-            android:paddingBottom="80dp"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="96dp"
             android:clipToPadding="false" />
 
     </LinearLayout>
@@ -80,8 +156,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:text="@string/ekdromes_suggest"
+        android:layout_margin="@dimen/spacing_lg"
+        android:text="@string/community_submit_route"
         android:textColor="@color/white"
         app:backgroundTint="@color/accent_ekdromes"
         app:icon="@drawable/ic_nav_ekdromes"

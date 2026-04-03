@@ -27,37 +27,41 @@ class VehicleAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(vehicle: Vehicle) {
+            val ctx = binding.root.context
             binding.tvVehicleName.text = "${vehicle.make} ${vehicle.model} (${vehicle.year})"
             binding.tvVehiclePlate.text = vehicle.licensePlate
             binding.tvVehicleKm.text = "${vehicle.currentKm} km"
             binding.tvVehicleTypeBadge.text = when (vehicle.type) {
-                VehicleType.CAR -> binding.root.context.getString(R.string.vehicle_type_car)
-                VehicleType.MOTORCYCLE -> binding.root.context.getString(R.string.vehicle_type_motorcycle)
-                VehicleType.ATV -> binding.root.context.getString(R.string.vehicle_type_atv)
+                VehicleType.CAR -> ctx.getString(R.string.vehicle_type_car)
+                VehicleType.MOTORCYCLE -> ctx.getString(R.string.vehicle_type_motorcycle)
+                VehicleType.ATV -> ctx.getString(R.string.vehicle_type_atv)
             }
-            val iconRes = when (vehicle.type) {
-                VehicleType.CAR -> R.drawable.ic_car
-                VehicleType.MOTORCYCLE -> R.drawable.ic_motorcycle
-                VehicleType.ATV -> R.drawable.ic_atv
-            }
-            binding.ivVehicleTypeIcon.setImageResource(iconRes)
 
-            // Vehicle hero image
+            // Per-type icon + placeholder gradient
+            val (iconRes, placeholderBgRes) = when (vehicle.type) {
+                VehicleType.CAR -> Pair(R.drawable.ic_car, R.drawable.bg_vehicle_placeholder)
+                VehicleType.MOTORCYCLE -> Pair(R.drawable.ic_motorcycle, R.drawable.bg_vehicle_placeholder_moto)
+                VehicleType.ATV -> Pair(R.drawable.ic_atv, R.drawable.bg_vehicle_placeholder_atv)
+            }
+            binding.ivPlaceholderIcon.setImageResource(iconRes)
+            binding.viewPlaceholderBg.setBackgroundResource(placeholderBgRes)
+
+            // Vehicle hero image — photo sits on top of placeholder
             val imagePath = vehicle.imagePath
             if (imagePath != null && File(imagePath).exists()) {
                 binding.ivVehicleImage.visibility = View.VISIBLE
-                binding.viewImageGradient.visibility = View.VISIBLE
                 binding.ivVehicleImage.setImageURI(android.net.Uri.fromFile(File(imagePath)))
+                binding.ivPlaceholderIcon.visibility = View.GONE
             } else {
                 binding.ivVehicleImage.visibility = View.GONE
-                binding.viewImageGradient.visibility = View.GONE
+                binding.ivPlaceholderIcon.visibility = View.VISIBLE
             }
 
-            // Health score badge
+            // Health score badge with colored circle
             val score = scores[vehicle.id] ?: 100
             binding.tvHealthScore.text = score.toString()
             val color = scoreColor(score)
-            val badgeBg = binding.root.context.getDrawable(R.drawable.bg_score_badge)!!.mutate()
+            val badgeBg = ctx.getDrawable(R.drawable.bg_score_circle)!!.mutate()
             DrawableCompat.setTint(badgeBg, color)
             binding.tvHealthScore.background = badgeBg
             binding.viewScoreStrip.setBackgroundColor(color)

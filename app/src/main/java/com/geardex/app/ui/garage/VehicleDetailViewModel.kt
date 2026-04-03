@@ -23,8 +23,11 @@ class VehicleDetailViewModel @Inject constructor(
     val vehicle: StateFlow<Vehicle?> = repository.getVehicleByIdFlow(vehicleId)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
-    fun deleteVehicle(vehicle: Vehicle) {
-        viewModelScope.launch { repository.deleteVehicle(vehicle) }
+    fun deleteVehicle(vehicle: Vehicle, onComplete: () -> Unit = {}) {
+        viewModelScope.launch {
+            repository.deleteVehicle(vehicle)
+            onComplete()
+        }
     }
 
     fun updateKm(km: Int) {

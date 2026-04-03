@@ -1,15 +1,31 @@
 package com.geardex.app.ui.ekdromes
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.geardex.app.R
 import com.geardex.app.data.model.EkdromeRoute
 import com.geardex.app.databinding.ItemEkdromeBinding
 import java.util.Locale
 
-class EkdromeAdapter : ListAdapter<EkdromeRoute, EkdromeAdapter.EkdromeViewHolder>(DiffCallback) {
+class EkdromeAdapter(
+    private val onReviewClick: ((EkdromeRoute) -> Unit)? = null,
+    private val onCalculateCostClick: ((EkdromeRoute) -> Unit)? = null,
+    private val onItemClick: ((EkdromeRoute) -> Unit)? = null,
+    private val onBookmarkClick: ((EkdromeRoute) -> Unit)? = null
+) : ListAdapter<EkdromeRoute, EkdromeAdapter.EkdromeViewHolder>(DiffCallback) {
+
+    private var savedKeys: Set<String> = emptySet()
+
+    fun updateSavedKeys(keys: Set<String>) {
+        savedKeys = keys
+        notifyDataSetChanged()
+    }
 
     private val isGreek: Boolean
         get() = Locale.getDefault().language == "el"
@@ -28,6 +44,67 @@ class EkdromeAdapter : ListAdapter<EkdromeRoute, EkdromeAdapter.EkdromeViewHolde
                 if (greek) it.displayEl else it.displayEn
             }
             binding.tvEkdromeDescription.text = if (greek) route.descriptionEl else route.descriptionEn
+
+            // Bookmark icon
+            val key = if (route.firestoreId.isNotBlank()) route.firestoreId else "builtin_${route.id}"
+            val isSaved = savedKeys.contains(key)
+            binding.btnBookmark.setImageResource(
+                if (isSaved) R.drawable.ic_bookmark_filled else R.drawable.ic_bookmark_outline
+            )
+            binding.btnBookmark.setOnClickListener { onBookmarkClick?.invoke(route) }
+
+            // Card click → detail
+            binding.root.setOnClickListener { onItemClick?.invoke(route) }
+
+            // Route info (start → end)
+            if (route.startLocation.isNotEmpty() && route.endLocation.isNotEmpty()) {
+                val waypointText = if (route.waypoints.isNotEmpty()) {
+                    " → ${route.waypoints.joinToString(" → ")}"
+                } else ""
+                binding.tvEkdromeRouteInfo.text = "${route.startLocation}$waypointText → ${route.endLocation}"
+                binding.tvEkdromeRouteInfo.visibility = View.VISIBLE
+            } else {
+                binding.tvEkdromeRouteInfo.visibility = View.GONE
+            }
+
+            // View on Map
+            binding.btnViewOnMap.setOnClickListener {
+                val label = if (greek) route.nameEl else route.nameEn
+                val geoUri = Uri.parse("geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})")
+                val intent = Intent(Intent.ACTION_VIEW, geoUri)
+                it.context.startActivity(intent)
+            }
+
+            // Navigate button
+            if (route.startLocation.isNotEmpty() && route.endLocation.isNotEmpty()) {
+                binding.btnNavigate.visibility = View.VISIBLE
+                binding.btnNavigate.setOnClickListener {
+                    val allPoints = mutableListOf(route.startLocation)
+                    allPoints.addAll(route.waypoints)
+                    allPoints.add(route.endLocation)
+                    val path = allPoints.joinToString("/") { Uri.encode(it) }
+                    val mapsUrl = "https://www.google.com/maps/dir/$path"
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(mapsUrl))
+                    it.context.startActivity(intent)
+                }
+            } else {
+                binding.btnNavigate.visibility = View.GONE
+            }
+
+            // Reviews pill
+            binding.tvReviewCount.text = if (route.reviewCount > 0) {
+                "${route.reviewCount}"
+            } else {
+                if (greek) "Αξιολόγηση" else "Rate"
+            }
+            binding.layoutReviewsPill.setOnClickListener {
+                onReviewClick?.invoke(route)
+            }
+
+            // Calculate Cost
+            binding.btnCalculateCost.setOnClickListener {
+                onCalculateCostClick?.invoke(route)
+            }
         }
     }
 

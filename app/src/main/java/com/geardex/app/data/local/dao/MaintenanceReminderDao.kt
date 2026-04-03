@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import com.geardex.app.data.local.entity.MaintenanceReminder
 import kotlinx.coroutines.flow.Flow
 
@@ -12,10 +13,10 @@ import kotlinx.coroutines.flow.Flow
 interface MaintenanceReminderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(reminder: MaintenanceReminder): Long
+    suspend fun insertReminder(reminder: MaintenanceReminder): Long
 
     @Delete
-    suspend fun delete(reminder: MaintenanceReminder)
+    suspend fun deleteReminder(reminder: MaintenanceReminder)
 
     @Query("SELECT * FROM maintenance_reminders WHERE vehicleId = :vehicleId ORDER BY createdAt DESC")
     fun getRemindersForVehicle(vehicleId: Long): Flow<List<MaintenanceReminder>>
@@ -28,4 +29,19 @@ interface MaintenanceReminderDao {
 
     @Query("SELECT * FROM maintenance_reminders WHERE isDone = 0")
     fun getActiveRemindersFlow(): Flow<List<MaintenanceReminder>>
+
+    @Query("SELECT * FROM maintenance_reminders ORDER BY createdAt DESC")
+    suspend fun getAllRemindersSync(): List<MaintenanceReminder>
+
+    @Query("DELETE FROM maintenance_reminders")
+    suspend fun clearAll()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(reminders: List<MaintenanceReminder>)
+
+    @Transaction
+    suspend fun replaceAll(reminders: List<MaintenanceReminder>) {
+        clearAll()
+        insertAll(reminders)
+    }
 }

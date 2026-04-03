@@ -23,17 +23,45 @@ class DocumentAdapter(
     inner class DocumentViewHolder(private val binding: ItemDocumentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(doc: GloveboxDocument) {
+            val ctx = binding.root.context
             binding.tvDocName.text = doc.fileName
             binding.tvDocType.text = when (doc.documentType) {
-                DocumentType.KTEO -> binding.root.context.getString(R.string.doc_type_kteo)
-                DocumentType.INSURANCE -> binding.root.context.getString(R.string.doc_type_insurance)
-                DocumentType.ROAD_TAX -> binding.root.context.getString(R.string.doc_type_road_tax)
-                DocumentType.RECEIPT -> binding.root.context.getString(R.string.doc_type_receipt)
-                DocumentType.OTHER -> binding.root.context.getString(R.string.doc_type_other)
+                DocumentType.KTEO -> ctx.getString(R.string.doc_type_kteo)
+                DocumentType.INSURANCE -> ctx.getString(R.string.doc_type_insurance)
+                DocumentType.ROAD_TAX -> ctx.getString(R.string.doc_type_road_tax)
+                DocumentType.RECEIPT -> ctx.getString(R.string.doc_type_receipt)
+                DocumentType.OTHER -> ctx.getString(R.string.doc_type_other)
             }
             binding.tvDocExpiry.text = doc.expiryDate?.let {
-                binding.root.context.getString(R.string.doc_expires_on, dateFormat.format(Date(it)))
-            } ?: binding.root.context.getString(R.string.doc_no_expiry)
+                ctx.getString(R.string.doc_expires_on, dateFormat.format(Date(it)))
+            } ?: ctx.getString(R.string.doc_no_expiry)
+
+            // Expiry status badge
+            val now = System.currentTimeMillis()
+            val thirtyDays = 30L * 24 * 60 * 60 * 1000
+            val expiry = doc.expiryDate
+            when {
+                expiry == null -> {
+                    binding.tvDocStatus.text = "—"
+                    binding.tvDocStatus.setBackgroundResource(R.drawable.bg_pill_glovebox)
+                    binding.tvDocStatus.setTextColor(ctx.getColor(R.color.text_secondary))
+                }
+                expiry < now -> {
+                    binding.tvDocStatus.text = ctx.getString(R.string.doc_status_expired)
+                    binding.tvDocStatus.setBackgroundResource(R.drawable.bg_pill_expired)
+                    binding.tvDocStatus.setTextColor(ctx.getColor(R.color.color_error))
+                }
+                expiry < now + thirtyDays -> {
+                    binding.tvDocStatus.text = ctx.getString(R.string.doc_status_expiring)
+                    binding.tvDocStatus.setBackgroundResource(R.drawable.bg_pill_warning)
+                    binding.tvDocStatus.setTextColor(ctx.getColor(R.color.color_warning))
+                }
+                else -> {
+                    binding.tvDocStatus.text = ctx.getString(R.string.doc_status_valid)
+                    binding.tvDocStatus.setBackgroundResource(R.drawable.bg_pill_valid)
+                    binding.tvDocStatus.setTextColor(ctx.getColor(R.color.color_success))
+                }
+            }
 
             binding.root.setOnClickListener { onOpenClick(doc) }
             binding.btnDeleteDoc.setOnClickListener { onDeleteClick(doc) }

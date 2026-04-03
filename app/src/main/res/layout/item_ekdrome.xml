@@ -3,136 +3,293 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="14dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="5dp"
-    app:rippleColor="#1AFF6D00">
+    android:layout_marginBottom="@dimen/item_margin_bottom"
+    app:cardCornerRadius="@dimen/item_card_corner"
+    app:cardElevation="3dp"
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <!-- Orange header banner -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@color/geardex_orange"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="16dp">
+        <!-- Accent gradient strip -->
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_accent_gradient_ekdrome" />
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@drawable/ic_nav_ekdromes"
-                app:tint="@color/white"
-                android:alpha="0.9"
-                android:layout_marginEnd="10dp" />
-
-            <TextView
-                android:id="@+id/tv_ekdrome_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <!-- Rating -->
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:src="@drawable/ic_star"
-                app:tint="@color/white"
-                android:alpha="0.9"
-                android:layout_marginEnd="4dp" />
-
-            <TextView
-                android:id="@+id/tv_ekdrome_rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <!-- Card body -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="14dp">
+            android:orientation="vertical">
 
-            <!-- Region · Distance · Difficulty -->
+            <!-- ── Gradient Header ──────────────────────────── -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_ekdrome_header_gradient"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:paddingVertical="14dp">
 
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:src="@drawable/ic_location"
-                    app:tint="@color/text_hint"
-                    android:layout_marginEnd="4dp" />
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_nav_ekdromes"
+                    app:tint="@color/white"
+                    android:alpha="0.9"
+                    android:layout_marginEnd="12dp"
+                    android:importantForAccessibility="no" />
 
                 <TextView
-                    android:id="@+id/tv_ekdrome_region"
+                    android:id="@+id/tv_ekdrome_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
 
-                <TextView
-                    android:id="@+id/tv_ekdrome_distance"
+                <!-- Bookmark button -->
+                <ImageButton
+                    android:id="@+id/btn_bookmark"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_bookmark_outline"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/route_detail_save" />
+
+                <!-- Rating pill -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
+                    android:background="@drawable/bg_pill_rating"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" · "
-                    android:textColor="@color/text_hint"
-                    android:textSize="13sp" />
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_star"
+                        app:tint="#F9A825"
+                        android:layout_marginEnd="3dp"
+                        android:importantForAccessibility="no" />
 
-                <TextView
-                    android:id="@+id/tv_ekdrome_difficulty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
+                    <TextView
+                        android:id="@+id/tv_ekdrome_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Tags -->
-            <TextView
-                android:id="@+id/tv_ekdrome_tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_pill_tag"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
-
-            <!-- Description -->
-            <TextView
-                android:id="@+id/tv_ekdrome_description"
+            <!-- ── Card Body ────────────────────────────────── -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/text_secondary"
-                android:textSize="13sp"
-                android:maxLines="2"
-                android:ellipsize="end" />
+                android:orientation="vertical"
+                android:padding="@dimen/item_padding">
+
+                <!-- Top pill row: Region · Distance · Difficulty -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- Region pill -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_pill_ekdrome"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_location"
+                            app:tint="@color/accent_ekdromes"
+                            android:layout_marginEnd="4dp"
+                            android:importantForAccessibility="no" />
+
+                        <TextView
+                            android:id="@+id/tv_ekdrome_region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/accent_ekdromes"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Distance pill -->
+                    <TextView
+                        android:id="@+id/tv_ekdrome_distance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_pill_ekdrome"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textColor="@color/accent_ekdromes"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <!-- Difficulty pill -->
+                    <TextView
+                        android:id="@+id/tv_ekdrome_difficulty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_pill_difficulty"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:textColor="@color/color_warning"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Tags -->
+                <TextView
+                    android:id="@+id/tv_ekdrome_tags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_pill_tag"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <!-- Description -->
+                <TextView
+                    android:id="@+id/tv_ekdrome_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:lineSpacingMultiplier="1.3"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <!-- Route info (start → end) -->
+                <TextView
+                    android:id="@+id/tv_ekdrome_route_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/accent_ekdromes"
+                    android:textSize="12sp"
+                    android:textStyle="italic"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:visibility="gone" />
+
+                <!-- Button row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <!-- View on Map button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_view_on_map"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="@string/ekdrome_view_on_map"
+                        android:textSize="11sp"
+                        app:icon="@drawable/ic_location"
+                        app:iconSize="14dp"
+                        app:cornerRadius="18dp" />
+
+                    <!-- Navigate button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_navigate"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/ekdrome_navigate"
+                        android:textSize="11sp"
+                        app:icon="@drawable/ic_nav_ekdromes"
+                        app:iconSize="14dp"
+                        app:cornerRadius="18dp"
+                        android:visibility="gone" />
+
+                    <!-- Calculate Cost button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_calculate_cost"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/trip_cost_button"
+                        android:textSize="11sp"
+                        app:icon="@drawable/ic_fuel"
+                        app:iconSize="14dp"
+                        app:cornerRadius="18dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <!-- Reviews pill -->
+                    <LinearLayout
+                        android:id="@+id/layout_reviews_pill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_pill_ekdrome"
+                        android:paddingHorizontal="10dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/ic_star"
+                            app:tint="#F9A825"
+                            android:layout_marginEnd="3dp"
+                            android:importantForAccessibility="no" />
+
+                        <TextView
+                            android:id="@+id/tv_review_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

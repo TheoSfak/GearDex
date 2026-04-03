@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Route name EN -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name_en"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/community_name_en">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLength="80" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Route name EL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name_el"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_name_el">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_el"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLength="80" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Region spinner -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_region"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_region">
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdown_region"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Difficulty spinner -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_difficulty"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_difficulty">
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdown_difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Distance -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_distance"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_distance"
+            app:suffixText="km">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="5" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tags label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/community_tags"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:singleSelection="false" />
+
+        <!-- Description EN -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_desc_en"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_desc_en">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_desc_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:maxLength="200" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Description EL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_desc_el"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_desc_el">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_desc_el"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:maxLength="200" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Start Location -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_start_location"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/community_start_location"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_start_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLength="80" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- End Location -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_end_location"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/community_end_location"
+            app:startIconDrawable="@drawable/ic_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_end_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLength="80" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Waypoints section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/community_waypoints"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_waypoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="4dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_waypoint"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/community_add_waypoint"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconSize="16dp" />
+
+        <!-- Latitude / Longitude row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_latitude"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:hint="@string/community_latitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:maxLength="10" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_longitude"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:hint="@string/community_longitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:maxLength="10" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

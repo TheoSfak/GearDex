@@ -2,12 +2,11 @@ package com.geardex.app.ui.logs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.geardex.app.data.local.entity.ServiceLog
-import com.geardex.app.R
+import com.geardex.app.databinding.ItemServiceLogBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -16,23 +15,20 @@ class ServiceLogAdapter : ListAdapter<ServiceLog, ServiceLogAdapter.ServiceLogVi
 
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-    inner class ServiceLogViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
-        val tvDate: TextView = itemView.findViewById(R.id.tv_service_date)
-        val tvKm: TextView = itemView.findViewById(R.id.tv_service_km)
-        val tvCost: TextView = itemView.findViewById(R.id.tv_service_cost)
-        val tvMechanic: TextView = itemView.findViewById(R.id.tv_service_mechanic)
+    inner class ServiceLogViewHolder(private val binding: ItemServiceLogBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(log: ServiceLog) {
-            tvDate.text = dateFormat.format(Date(log.date))
-            tvKm.text = "${log.odometer} km"
-            tvCost.text = "€${log.cost}"
-            tvMechanic.text = log.mechanicName.ifEmpty { "—" }
+            binding.tvServiceDate.text = dateFormat.format(Date(log.date))
+            binding.tvServiceKm.text = "${log.odometer} km"
+            binding.tvServiceCost.text = "€${log.cost}"
+            binding.tvServiceMechanic.text = log.mechanicName.ifEmpty { "—" }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceLogViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_service_log, parent, false)
-        return ServiceLogViewHolder(view)
+        val binding = ItemServiceLogBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ServiceLogViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ServiceLogViewHolder, position: Int) = holder.bind(getItem(position))

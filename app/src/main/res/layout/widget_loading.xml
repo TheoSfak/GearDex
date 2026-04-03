@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#242424">
+    android:background="#FAFAFA">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GearDex"
-        android:textColor="#FFFFFF"
+        android:textColor="#212121"
         android:textStyle="bold"
         android:textSize="16sp" />
 </LinearLayout>

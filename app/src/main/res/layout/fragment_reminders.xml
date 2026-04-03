@@ -39,8 +39,8 @@
         android:id="@+id/recycler_reminders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="8dp"
-        android:paddingBottom="80dp"
+        android:paddingTop="@dimen/spacing_sm"
+        android:paddingBottom="96dp"
         android:clipToPadding="false" />
 
 </LinearLayout>

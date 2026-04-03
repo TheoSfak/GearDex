@@ -5,7 +5,7 @@
     <string name="nav_garage">Garage</string>
     <string name="nav_logs">Logs</string>
     <string name="nav_glovebox">Glovebox</string>
-    <string name="nav_ekdromes">Ekdromes</string>
+    <string name="nav_ekdromes">Excursions</string>
 
     <!-- Garage -->
     <string name="garage_title">My Garage</string>
@@ -52,6 +52,7 @@
     <string name="service_tire_check">Tire Check</string>
     <string name="log_fuel_economy_result">%1$.1f L/100km</string>
     <string name="logs_no_vehicle">Select a vehicle first</string>
+    <string name="logs_select_vehicle">Select a Vehicle</string>
 
     <!-- Digital Glovebox -->
     <string name="glovebox_title">Digital Glovebox</string>
@@ -66,34 +67,106 @@
     <string name="doc_type_other">Other</string>
     <string name="doc_expiry_date">Expiry Date</string>
     <string name="doc_type">Document Type</string>
+    <string name="doc_vehicle">Vehicle</string>
     <string name="doc_pick_file">Pick File / Photo</string>
     <string name="doc_take_photo">Take Photo</string>
     <string name="doc_save">Save Document</string>
     <string name="doc_export_zip">Export All as ZIP</string>
     <string name="doc_expires_on">Expires: %1$s</string>
     <string name="doc_no_expiry">No expiry date</string>
+    <string name="doc_status_valid">Valid</string>
+    <string name="doc_status_expiring">Expiring</string>
+    <string name="doc_status_expired">Expired</string>
 
     <!-- Ekdromes -->
-    <string name="ekdromes_title">Ekdromes</string>
-    <string name="ekdromes_suggest">Suggest an Ekdrome</string>
+    <string name="ekdromes_title">Excursions</string>
+    <string name="ekdromes_subtitle">Discover the best driving routes</string>
+    <string name="ekdromes_suggest">Suggest an Excursion</string>
+    <string name="ekdrome_view_on_map">View on Map</string>
+
+    <!-- Community Routes -->
+    <string name="community_tab_builtin">Built-in Routes</string>
+    <string name="community_tab_community">Community</string>
+    <string name="community_submit_route">Submit Route</string>
+    <string name="community_submit">Submit</string>
+    <string name="community_cancel">Cancel</string>
+    <string name="community_name_en">Route Name (English)</string>
+    <string name="community_name_el">Route Name (Greek)</string>
+    <string name="community_region">Region</string>
+    <string name="community_difficulty">Difficulty</string>
+    <string name="community_distance">Distance</string>
+    <string name="community_tags">Tags</string>
+    <string name="community_desc_en">Description (English)</string>
+    <string name="community_desc_el">Description (Greek)</string>
+    <string name="community_latitude">Latitude</string>
+    <string name="community_longitude">Longitude</string>
+    <string name="community_name_required">Route name is required</string>
+    <string name="community_submit_success">Route submitted! It will appear in the Community tab.</string>
+    <string name="community_submit_error">Failed to submit route. Check your connection.</string>
+    <string name="community_firebase_required">Community features are not available in this build.</string>
+    <string name="community_empty">No community routes yet.\nBe the first to submit one!</string>
+    <string name="community_start_location">Start Location (e.g. Chania)</string>
+    <string name="community_end_location">End Location (e.g. Hora Sfakion)</string>
+    <string name="community_waypoints">Waypoints (optional stops along the way)</string>
+    <string name="community_add_waypoint">+ Add Waypoint</string>
+    <string name="community_waypoint_hint">Waypoint %1$d</string>
+    <string name="ekdrome_navigate">Navigate</string>
+
+    <!-- Trip Cost Estimator -->
+    <string name="trip_cost_button">Cost</string>
+    <string name="trip_cost_title">Trip Cost Estimator</string>
+    <string name="trip_cost_select_vehicle">Select Vehicle</string>
+    <string name="trip_cost_route_distance">%1$s — %2$d km</string>
+    <string name="trip_cost_consumption_hint">Fuel Consumption</string>
+    <string name="trip_cost_fuel_price_hint">Fuel Price</string>
+    <string name="trip_cost_consumption_default">Default estimate for %1$s (editable)</string>
+    <string name="trip_cost_consumption_from_logs">Based on your fuel log average</string>
+    <string name="trip_cost_calculate">Calculate</string>
+    <string name="trip_cost_estimated_cost">Estimated Trip Cost</string>
+    <string name="trip_cost_breakdown">%1$s L needed · %2$s L/100km · €%3$s/L</string>
+    <string name="trip_cost_fill_fields">Please fill in consumption and fuel price</string>
+
+    <!-- Reviews -->
+    <string name="review_title">Reviews</string>
+    <string name="review_title_for">Reviews — %1$s</string>
+    <string name="review_add">Write Review</string>
+    <string name="review_rate_route">Rate This Route</string>
+    <string name="review_your_rating">Your Rating</string>
+    <string name="review_comment_hint">Comment (optional)</string>
+    <string name="review_empty">No reviews yet.\nBe the first to rate this route!</string>
+    <string name="review_submit_success">Review submitted!</string>
+    <string name="review_submit_error">Failed to submit review.</string>
     <string name="ekdromes_filter_region">Filter by Region</string>
     <string name="ekdromes_filter_tags">Filter by Type</string>
     <string name="ekdrome_tag_moto">Moto-Friendly</string>
     <string name="ekdrome_tag_asphalt">Asphalt Only</string>
     <string name="ekdrome_tag_offroad">4x4 / Off-Road</string>
     <string name="ekdrome_tag_twisty">Twisty Curves</string>
+    <string name="ekdrome_tag_scenic">Scenic</string>
     <string name="ekdrome_region_crete">Crete</string>
     <string name="ekdrome_region_peloponnese">Peloponnese</string>
     <string name="ekdrome_region_macedonia">Macedonia</string>
     <string name="ekdrome_region_epirus">Epirus</string>
     <string name="ekdrome_region_attica">Attica</string>
+    <string name="ekdrome_region_thessaly">Thessaly</string>
+    <string name="ekdrome_region_dodecanese">Dodecanese</string>
     <string name="ekdrome_difficulty_easy">Easy</string>
     <string name="ekdrome_difficulty_medium">Medium</string>
     <string name="ekdrome_difficulty_hard">Hard</string>
     <string name="ekdromes_coming_soon">Community routes coming soon</string>
 
+    <!-- Saved Routes -->
+    <string name="community_tab_saved">Saved</string>
+    <string name="saved_routes_empty">No saved routes yet.\nBookmark routes to find them here!</string>
+    <string name="route_detail_title">Route Details</string>
+    <string name="route_detail_save">Save Route</string>
+    <string name="route_detail_path">Route Path</string>
+    <string name="suggest_route_title">Suggest a Route</string>
+    <string name="suggest_route_location_section">Route Location</string>
+
     <!-- Settings -->
     <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Language &amp; cloud sync</string>
     <string name="settings_language">Language</string>
     <string name="settings_language_en">English</string>
     <string name="settings_language_el">Greek / Ελληνικά</string>
@@ -101,11 +174,32 @@
     <string name="settings_sync_not_configured">Cloud sync is not set up for this build.</string>
     <string name="settings_email">Email</string>
     <string name="settings_password">Password</string>
+    <string name="settings_google_sign_in">Sign in with Google</string>
+    <string name="settings_or">or</string>
     <string name="settings_sign_in">Sign In</string>
     <string name="settings_register">Create Account</string>
     <string name="settings_sign_out">Sign Out</string>
     <string name="settings_sync_now">Sync Now</string>
     <string name="settings_signed_in_as">Signed in as: %1$s</string>
+
+    <!-- PDF Export -->
+    <string name="pdf_export_vehicle">Export PDF Report</string>
+    <string name="pdf_export_section">Export Reports</string>
+    <string name="pdf_export_description">Generate a PDF report with all your vehicles, fuel logs, and service history.</string>
+    <string name="pdf_export_all">Export All Vehicles Report</string>
+    <string name="pdf_share_title">Share Report</string>
+    <string name="pdf_no_vehicles">No vehicles to export</string>
+
+    <!-- Google Maps API -->
+    <string name="settings_google_api_title">Google Maps API</string>
+    <string name="settings_google_api_description">Add your Google Maps API key to enable map features in excursions. The key is stored locally on your device only.</string>
+    <string name="settings_google_api_hint">API Key (e.g. AIzaSy…)</string>
+    <string name="settings_google_api_save">Save API Key</string>
+    <string name="settings_google_api_saved">API key saved ✓</string>
+    <string name="settings_google_api_cleared">API key removed</string>
+    <string name="settings_google_api_howto_title">How to get your API key</string>
+    <string name="settings_google_api_howto_steps">1. Go to Google Cloud Console\n2. Create a project (or select existing)\n3. Go to APIs &amp; Services → Library\n4. Enable "Maps SDK for Android"\n5. Go to APIs &amp; Services → Credentials\n6. Click "+ CREATE CREDENTIALS" → API Key\n7. Copy the key and paste it above\n\nFree tier: $200/month credit (≈ 28,000 map loads)</string>
+    <string name="settings_google_api_open_console">Open Google Cloud Console</string>
 
     <!-- Vehicle detail / edit -->
     <string name="vehicle_detail_label">Vehicle Details</string>
@@ -132,6 +226,7 @@
     <string name="ok">OK</string>
     <string name="error_required_field">This field is required</string>
     <string name="error_invalid_number">Please enter a valid number</string>
+    <string name="error_image_too_large">Image too large (max 5 MB)</string>
 
     <!-- Reminders -->
     <string name="nav_reminders">Reminders</string>
@@ -158,6 +253,8 @@
     <string name="analytics_economy_trend">Fuel Economy Trend</string>
     <string name="analytics_monthly_spend">Monthly Spend (€)</string>
     <string name="analytics_no_data">No log data yet</string>
+    <string name="analytics_subtitle">Track spending &amp; efficiency</string>
+    <string name="analytics_no_data_hint">Add fuel or service logs to see charts</string>
 
     <!-- Vehicle Health Score -->
     <string name="vehicle_health_score">Health</string>
@@ -183,4 +280,228 @@
     <!-- Footer -->
     <string name="footer_credit">Created with \u2764 by Theodore Sfakianakis</string>
     <string name="footer_version">GearDex v1.0.0</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_health">Health</string>
+    <string name="dashboard_cost_per_km">€ / km</string>
+    <string name="dashboard_total_fuel">Total Fuel</string>
+    <string name="dashboard_monthly_avg">Monthly Avg</string>
+    <string name="dashboard_smart_alerts">Smart Alerts</string>
+    <string name="dashboard_timeline">Activity Timeline</string>
+    <string name="dashboard_no_activity">No activity recorded yet</string>
+    <string name="dashboard_event_fuel">Fuel Fill</string>
+    <string name="dashboard_event_service">Service</string>
+
+    <!-- Insights -->
+    <string name="insight_fuel_drop_title">Fuel Economy Drop</string>
+    <string name="insight_fuel_drop_desc">Economy worsened by %1$d%% — now %2$.1f L/100km</string>
+    <string name="insight_service_due_title">Service Due Soon</string>
+    <string name="insight_service_overdue_title">Service Overdue</string>
+    <string name="insight_service_due_desc">%1$d km since last service — ~%2$d days left</string>
+    <string name="insight_doc_expiring_title">%1$s Expiring</string>
+    <string name="insight_doc_expired_title">%1$s Expired</string>
+    <string name="insight_doc_expiring_desc">Expires in %1$d days</string>
+    <string name="insight_doc_expired_desc">Expired %1$d days ago</string>
+    <string name="insight_high_spend_title">High Monthly Spend</string>
+    <string name="insight_high_spend_desc">€%1$.0f this month vs €%2$.0f average</string>
+    <string name="insight_milestone_title">Milestone Approaching</string>
+    <string name="insight_milestone_desc">%1$d km milestone — only %2$d km away!</string>
+    <string name="insight_expense_spike_title">%1$s Spending Spike</string>
+    <string name="insight_expense_spike_desc">€%1$.0f this month vs €%2$.0f average in this category</string>
+    <string name="insight_predicted_cost_title">Cost Forecast</string>
+    <string name="insight_predicted_cost_desc">Predicted next month: €%1$.0f vs €%2$.0f historical avg</string>
+
+    <!-- Health Detail -->
+    <string name="health_detail_title">Vehicle Health</string>
+    <string name="health_out_of_100">/ 100</string>
+    <string name="health_condition_excellent">Excellent Condition</string>
+    <string name="health_condition_good">Good Condition</string>
+    <string name="health_condition_fair">Fair Condition</string>
+    <string name="health_condition_poor">Needs Attention</string>
+    <string name="health_predicted_cost">Predicted Monthly Cost</string>
+    <string name="health_per_month">/ month</string>
+    <string name="health_breakdown">Score Breakdown</string>
+    <string name="health_pillar_maintenance">Maintenance Compliance</string>
+    <string name="health_pillar_fuel">Fuel Efficiency</string>
+    <string name="health_pillar_service">Service Regularity</string>
+    <string name="health_pillar_expense">Expense Pattern</string>
+    <string name="health_pillar_condition">Vehicle Condition</string>
+    <string name="health_tips_title">Tips to Improve</string>
+    <string name="health_tip_maintenance">Complete overdue maintenance reminders</string>
+    <string name="health_tip_fuel">Check tire pressure and air filter — fuel economy declining</string>
+    <string name="health_tip_service">Schedule a service — it\'s been a while</string>
+    <string name="health_tip_expense">Review recent expenses — spending spike detected</string>
+    <string name="health_tip_condition">Higher mileage vehicles need more frequent check-ups</string>
+    <string name="health_tip_great">Your vehicle is in great shape — keep it up!</string>
+    <string name="health_tap_for_details">Tap for details</string>
+    <string name="back">Back</string>
+
+    <!-- Expenses -->
+    <string name="nav_expenses">Expenses</string>
+    <string name="expenses_title">Expense Tracker</string>
+    <string name="expenses_add">Add Expense</string>
+    <string name="expenses_empty_title">No Expenses Recorded</string>
+    <string name="expenses_empty_subtitle">Tap + to log an expense</string>
+    <string name="expenses_this_month">This Month</string>
+    <string name="expenses_budget">Monthly Budget</string>
+    <string name="expenses_budget_remaining">Remaining</string>
+    <string name="expenses_budget_exceeded">Over Budget</string>
+    <string name="expenses_set_budget">Set Budget</string>
+    <string name="expenses_budget_hint">Monthly limit (€)</string>
+    <string name="expenses_no_budget">No budget set</string>
+    <string name="expenses_total">Total</string>
+    <string name="expense_category">Category</string>
+    <string name="expense_amount">Amount (€)</string>
+    <string name="expense_date">Date</string>
+    <string name="expense_description">Description</string>
+    <string name="expense_recurring">Recurring expense</string>
+    <string name="expense_interval">Repeat every (months)</string>
+    <string name="expense_save">Save Expense</string>
+    <string name="expense_cat_fuel">Fuel</string>
+    <string name="expense_cat_service">Service</string>
+    <string name="expense_cat_insurance">Insurance</string>
+    <string name="expense_cat_road_tax">Road Tax</string>
+    <string name="expense_cat_parking">Parking</string>
+    <string name="expense_cat_tolls">Tolls</string>
+    <string name="expense_cat_fines">Fines</string>
+    <string name="expense_cat_tires">Tires</string>
+    <string name="expense_cat_modifications">Modifications</string>
+    <string name="expense_cat_other">Other</string>
+    <string name="expense_budget_alert_title">Budget Alert</string>
+    <string name="expense_budget_alert_80">You have used 80%% of your monthly budget</string>
+    <string name="expense_budget_alert_100">You have exceeded your monthly budget!</string>
+
+    <!-- ── Trip Logger ─────────────────────────────────────── -->
+    <string name="nav_trips">Trips</string>
+    <string name="trip_add_title">Log Trip</string>
+    <string name="trip_start_odometer">Start Odometer (km)</string>
+    <string name="trip_end_odometer">End Odometer (km)</string>
+    <string name="trip_date">Trip Date</string>
+    <string name="trip_purpose">Purpose</string>
+    <string name="trip_notes">Notes (optional)</string>
+    <string name="trip_fuel_used">Fuel Used (L)</string>
+    <string name="trip_cost">Trip Cost (€)</string>
+    <string name="trip_purpose_commute">Commute</string>
+    <string name="trip_purpose_leisure">Leisure</string>
+    <string name="trip_purpose_business">Business</string>
+    <string name="trip_purpose_other">Other</string>
+    <string name="trip_total_distance">Total Distance</string>
+    <string name="trip_total_trips">Total Trips</string>
+    <string name="trip_empty_title">No trips recorded</string>
+    <string name="trip_empty_subtitle">Tap + to log your first trip</string>
+
+    <!-- ── Marketplace ─────────────────────────────────────── -->
+    <string name="nav_marketplace">Marketplace</string>
+    <string name="marketplace_title">Parts Marketplace</string>
+    <string name="marketplace_add_part">List a Part</string>
+    <string name="marketplace_part_name">Part Name</string>
+    <string name="marketplace_category">Category</string>
+    <string name="marketplace_vehicle_make">Vehicle Make</string>
+    <string name="marketplace_vehicle_model">Vehicle Model</string>
+    <string name="marketplace_vehicle_year">Vehicle Year</string>
+    <string name="marketplace_price">Price (€)</string>
+    <string name="marketplace_condition">Condition</string>
+    <string name="marketplace_description">Description</string>
+    <string name="marketplace_contact">Contact Info</string>
+    <string name="marketplace_region">Region</string>
+    <string name="marketplace_search_hint">Search parts…</string>
+    <string name="marketplace_empty">No parts listed yet</string>
+    <string name="marketplace_add_watchlist">Add to Watchlist</string>
+    <string name="marketplace_condition_new">New</string>
+    <string name="marketplace_condition_like_new">Used – Like New</string>
+    <string name="marketplace_condition_good">Used – Good</string>
+    <string name="marketplace_condition_fair">Used – Fair</string>
+    <string name="marketplace_condition_parts">For Parts</string>
+    <string name="marketplace_cat_engine">Engine</string>
+    <string name="marketplace_cat_brakes">Brakes</string>
+    <string name="marketplace_cat_suspension">Suspension</string>
+    <string name="marketplace_cat_electrical">Electrical</string>
+    <string name="marketplace_cat_body">Body</string>
+    <string name="marketplace_cat_exhaust">Exhaust</string>
+    <string name="marketplace_cat_tires">Tires</string>
+    <string name="marketplace_cat_wheels">Wheels</string>
+    <string name="marketplace_cat_interior">Interior</string>
+    <string name="marketplace_cat_accessories">Accessories</string>
+    <string name="marketplace_cat_other">Other</string>
+
+    <!-- ── Fleet Dashboard ─────────────────────────────────── -->
+    <string name="fleet_title">Fleet Dashboard</string>
+    <string name="fleet_total_vehicles">Total Vehicles</string>
+    <string name="fleet_total_km">Total Fleet KM</string>
+    <string name="fleet_total_cost">Total Fleet Cost</string>
+    <string name="fleet_cheapest">Cheapest to Run</string>
+    <string name="fleet_most_driven">Most Driven</string>
+    <string name="fleet_cost_per_km">Cost/km</string>
+    <string name="fleet_empty">Add 2+ vehicles to see fleet stats</string>
+
+    <!-- ── Drive Mode ──────────────────────────────────────── -->
+    <string name="nav_drive_mode">Drive Mode</string>
+    <string name="drive_mode_title">Drive Mode</string>
+    <string name="drive_start">Start Drive</string>
+    <string name="drive_stop">Stop Drive</string>
+    <string name="drive_speed">Speed</string>
+    <string name="drive_distance">Distance</string>
+    <string name="drive_duration">Duration</string>
+    <string name="drive_max_speed">Max Speed</string>
+    <string name="drive_avg_speed">Avg Speed</string>
+    <string name="drive_select_vehicle">Select vehicle before driving</string>
+    <string name="drive_session_saved">Drive session saved</string>
+    <string name="drive_sessions_title">Drive History</string>
+    <string name="drive_empty">No drive sessions yet</string>
+
+    <!-- ── Service Shop Directory ──────────────────────────── -->
+    <string name="nav_shops">Shops</string>
+    <string name="shop_directory_title">Service Shops</string>
+    <string name="shop_add_title">Add Shop</string>
+    <string name="shop_name_en">Shop Name (English)</string>
+    <string name="shop_name_el">Shop Name (Greek)</string>
+    <string name="shop_category">Category</string>
+    <string name="shop_region">Region</string>
+    <string name="shop_address">Address</string>
+    <string name="shop_phone">Phone</string>
+    <string name="shop_search_hint">Search shops…</string>
+    <string name="shop_empty">No shops listed yet</string>
+    <string name="shop_reviews">Reviews</string>
+    <string name="shop_add_review">Add Review</string>
+    <string name="shop_review_hint">Write your review…</string>
+    <string name="shop_cat_general">General Mechanic</string>
+    <string name="shop_cat_engine">Engine Specialist</string>
+    <string name="shop_cat_body">Body Shop</string>
+    <string name="shop_cat_tires">Tire Shop</string>
+    <string name="shop_cat_electrical">Electrical</string>
+    <string name="shop_cat_motorcycle">Motorcycle</string>
+    <string name="shop_cat_performance">Performance</string>
+    <string name="shop_cat_detailing">Detailing</string>
+
+    <!-- ── Parking Saver ──────────────────────────────────── -->
+    <string name="nav_parking">Parking</string>
+    <string name="parking_title">Parking Saver</string>
+    <string name="parking_save_current">Save Current Spot</string>
+    <string name="parking_get_location">Get My Location</string>
+    <string name="parking_address_hint">Address / Location Description</string>
+    <string name="parking_notes_hint">Notes (floor, section…)</string>
+    <string name="parking_set_timer">Set Meter Timer</string>
+    <string name="parking_set_timer_title">Meter Expires At</string>
+    <string name="parking_save">Save Parking Spot</string>
+    <string name="parking_history">Saved Spots</string>
+    <string name="parking_empty">No saved parking spots yet</string>
+    <string name="parking_saved">Parking spot saved!</string>
+    <string name="parking_deleted">Parking spot deleted</string>
+    <string name="parking_location_acquired">Location acquired ✓</string>
+    <string name="parking_location_denied">Location permission denied</string>
+    <string name="parking_no_address">No address specified</string>
+    <string name="parking_spot_label">Parking Spot</string>
+    <string name="parking_meter_until">Until %1$s</string>
+    <string name="parking_timer_set">Timer set for %1$s</string>
+    <string name="parking_open_map">Open in Maps</string>
+    <string name="parking_open_map_btn">Map</string>
+    <string name="parking_share_btn">Share</string>
+    <string name="parking_share_prefix">My parking spot:</string>
+    <string name="parking_share_title">Share Parking Location</string>
+    <string name="parking_meter_notif_title">Parking Meter Expiring!</string>
+    <string name="parking_meter_notif_body">Your meter at %1$s expires in 5 minutes</string>
+    <string name="parking_meter_notif_body_no_address">Your parking meter expires in 5 minutes</string>
+    <string name="parking_notif_channel">Parking Meter Alerts</string>
+    <string name="parking_notif_channel_desc">Notifications for parking meter expiry</string>
 </resources>

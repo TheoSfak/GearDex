@@ -1,15 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.Geardex" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Theme.Geardex" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/geardex_orange</item>
         <item name="colorPrimaryVariant">@color/geardex_orange_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/geardex_orange_light</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/surface_dark</item>
         <item name="colorOnSurface">@color/text_primary</item>
         <item name="android:windowBackground">@color/surface_dark</item>
         <item name="android:statusBarColor">@color/surface_dark</item>
         <item name="android:navigationBarColor">@color/nav_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="shapeAppearanceMediumComponent">@style/Shape.Geardex.Medium</item>
+    </style>
+
+    <style name="Shape.Geardex.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">@dimen/card_corner_radius</item>
     </style>
 
     <style name="Theme.Geardex.BottomNav" parent="Widget.Material3.BottomNavigationView">
@@ -27,37 +34,88 @@
         <item name="android:textColor">@color/text_secondary</item>
     </style>
 
+    <!-- ── Card Styles ────────────────────────────────────────────── -->
     <style name="Widget.Geardex.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardBackgroundColor">@color/surface_card</item>
-        <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">14dp</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
     </style>
 
+    <style name="Widget.Geardex.Card.Item" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/item_card_corner</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="rippleColor">#1A1976D2</item>
+    </style>
+
+    <style name="Widget.Geardex.Card.Vehicle" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardCornerRadius">@dimen/vehicle_card_corner</item>
+        <item name="rippleColor">#1A1976D2</item>
+    </style>
+
+    <style name="Widget.Geardex.Card.Stat" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/surface_elevated</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/item_card_corner</item>
+    </style>
+
+    <!-- ── Button Styles ──────────────────────────────────────────── -->
     <style name="Widget.Geardex.Button" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/geardex_orange</item>
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
     </style>
 
     <style name="Widget.Geardex.Button.Fuel" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/accent_fuel</item>
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
     </style>
 
     <style name="Widget.Geardex.Button.Service" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/accent_service</item>
         <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
     </style>
 
+    <style name="Widget.Geardex.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="strokeColor">@color/geardex_orange</item>
+        <item name="android:textColor">@color/geardex_orange</item>
+    </style>
+
+    <!-- ── Text Input Styles ──────────────────────────────────────── -->
     <style name="Widget.Geardex.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/geardex_orange</item>
         <item name="hintTextColor">@color/text_secondary</item>
         <item name="android:textColorHint">@color/text_hint</item>
         <item name="boxBackgroundColor">@color/surface_input</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
     </style>
 
+    <style name="Widget.Geardex.Dropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/geardex_orange</item>
+        <item name="hintTextColor">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="boxBackgroundColor">@color/surface_input</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="endIconTint">@color/geardex_orange</item>
+    </style>
+
+    <!-- ── FAB Styles ─────────────────────────────────────────────── -->
     <style name="Widget.Geardex.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
         <item name="backgroundTint">@color/geardex_orange</item>
         <item name="tint">@color/white</item>
+        <item name="shapeAppearance">@style/Shape.Geardex.FAB</item>
     </style>
 
     <style name="Widget.Geardex.FAB.Glovebox" parent="Widget.Material3.FloatingActionButton.Primary">
@@ -69,4 +127,22 @@
         <item name="backgroundTint">@color/accent_ekdromes</item>
         <item name="tint">@color/white</item>
     </style>
-</resources>
+
+    <style name="Shape.Geardex.FAB" parent="ShapeAppearance.Material3.Corner.Full">
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- ── Section Header ─────────────────────────────────────────── -->
+    <style name="Widget.Geardex.SectionHeader" parent="">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- ── Tab Text ───────────────────────────────────────────── -->
+    <style name="Widget.Geardex.TabText" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style></resources>

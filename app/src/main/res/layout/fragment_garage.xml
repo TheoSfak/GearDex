@@ -5,65 +5,96 @@
     android:layout_height="match_parent"
     android:background="@color/surface_dark">
 
-    <!-- Main content column: header + recycler/empty -->
+    <!-- Main content column: hero header + recycler/empty -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Header bar -->
-        <LinearLayout
+        <!-- ── Hero Header ─────────────────────────────────────── -->
+        <FrameLayout
             android:id="@+id/layout_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_header_garage"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="12dp">
+            android:background="@drawable/bg_header_garage">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="28dp"
+                android:paddingTop="32dp"
+                android:paddingBottom="24dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Top row: Title + icon -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/garage_title"
-                    android:textColor="@color/text_primary"
-                    android:textSize="26sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_garage_subtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_hint"
-                    android:textSize="13sp"
-                    android:layout_marginTop="2dp" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/garage_title"
+                            android:textColor="@color/text_primary"
+                            android:textSize="32sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="-0.02" />
+
+                        <TextView
+                            android:id="@+id/tv_garage_subtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <!-- Decorative icon -->
+                    <FrameLayout
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_icon_circle">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_car"
+                            app:tint="@color/geardex_orange" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <FrameLayout
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bg_icon_circle">
+        </FrameLayout>
 
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_car"
-                    app:tint="@color/geardex_orange" />
+        <!-- Fleet Dashboard quick-access button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fleet_dashboard"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:text="@string/fleet_title"
+            android:visibility="gone"
+            app:icon="@drawable/ic_dashboard"
+            app:iconTint="@color/accent_fleet"
+            app:backgroundTint="@color/accent_fleet_bg" />
 
-            </FrameLayout>
-
-        </LinearLayout>
-
-        <!-- Content area: recycler and empty state share the same bounded space -->
+        <!-- ── Content Area ────────────────────────────────────── -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -73,60 +104,62 @@
                 android:id="@+id/recycler_vehicles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp"
                 android:clipToPadding="false"
-                android:paddingBottom="88dp" />
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:paddingTop="@dimen/spacing_md"
+                android:paddingBottom="96dp" />
 
-            <!-- Empty state -->
+            <!-- Empty state — bolder, illustration-style -->
             <LinearLayout
                 android:id="@+id/layout_empty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone"
-                android:padding="40dp">
+                android:padding="@dimen/spacing_xxl"
+                android:visibility="gone">
 
                 <FrameLayout
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/bg_icon_circle"
-                    android:layout_marginBottom="24dp">
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginBottom="@dimen/spacing_xl"
+                    android:background="@drawable/bg_icon_circle_blue">
 
                     <ImageView
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
+                        android:importantForAccessibility="no"
                         android:src="@drawable/ic_car"
-                        app:tint="@color/geardex_orange" />
+                        app:tint="@color/accent_fuel" />
 
                 </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/garage_empty_title"
                     android:textColor="@color/text_primary"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:gravity="center" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:layout_marginBottom="@dimen/spacing_xl"
+                    android:gravity="center"
                     android:text="@string/garage_empty_subtitle"
                     android:textColor="@color/text_secondary"
-                    android:textSize="15sp"
-                    android:gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="28dp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_add_from_empty"
                     style="@style/Widget.Geardex.Button"
                     android:layout_width="wrap_content"
-                    android:layout_height="52dp"
-                    android:paddingHorizontal="32dp"
+                    android:layout_height="@dimen/button_height"
+                    android:paddingHorizontal="@dimen/spacing_xl"
                     android:text="@string/garage_add_vehicle"
                     app:icon="@drawable/ic_car"
                     app:iconTint="@color/white" />
@@ -137,17 +170,18 @@
 
     </LinearLayout>
 
-    <!-- FAB positioned by CoordinatorLayout -->
+    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_add_vehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/spacing_lg"
         android:text="@string/garage_add_vehicle"
         android:textColor="@color/white"
         app:backgroundTint="@color/geardex_orange"
         app:icon="@drawable/ic_car"
-        app:iconTint="@color/white" />
+        app:iconTint="@color/white"
+        app:shapeAppearance="@style/Shape.Geardex.FAB" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

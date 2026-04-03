@@ -21,4 +21,19 @@ interface GloveboxDocumentDao {
 
     @Query("SELECT * FROM glovebox_documents WHERE expiryDate IS NOT NULL AND expiryDate < :thresholdMs")
     suspend fun getExpiredDocuments(thresholdMs: Long): List<GloveboxDocument>
+
+    @Query("SELECT * FROM glovebox_documents ORDER BY addedAt DESC")
+    suspend fun getAllDocumentsSync(): List<GloveboxDocument>
+
+    @Query("DELETE FROM glovebox_documents")
+    suspend fun clearAll()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(documents: List<GloveboxDocument>)
+
+    @Transaction
+    suspend fun replaceAll(documents: List<GloveboxDocument>) {
+        clearAll()
+        insertAll(documents)
+    }
 }

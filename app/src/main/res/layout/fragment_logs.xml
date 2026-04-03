@@ -8,84 +8,99 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/surface_dark">
+        android:orientation="vertical">
 
-        <!-- Header -->
+        <!-- ── Hero Header ─────────────────────────────────────── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:background="@drawable/bg_header_logs"
-            android:padding="16dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="28dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:letterSpacing="-0.02"
                 android:text="@string/logs_title"
                 android:textColor="@color/text_primary"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinner_vehicle"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Geardex.Dropdown"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/geardex_orange" />
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_vehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
-        <!-- Action Buttons -->
+        <!-- ── Action Buttons Row ──────────────────────────────── -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="12dp">
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingBottom="@dimen/spacing_sm">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_fuel"
                 style="@style/Widget.Geardex.Button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
+                android:layout_marginEnd="@dimen/spacing_sm"
                 android:layout_weight="1"
-                android:layout_marginEnd="8dp"
                 android:text="@string/logs_add_fuel"
                 android:textSize="13sp"
                 app:backgroundTint="@color/accent_fuel"
                 app:icon="@drawable/ic_gas_station"
-                app:iconTint="@color/white"
-                app:iconGravity="textStart" />
+                app:iconGravity="textStart"
+                app:iconTint="@color/white" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_service"
-                style="?attr/materialButtonOutlinedStyle"
+                style="@style/Widget.Geardex.Button.Outlined"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
+                android:layout_marginStart="@dimen/spacing_sm"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
                 android:text="@string/logs_add_service"
-                android:textSize="13sp"
-                app:strokeColor="@color/accent_service"
                 android:textColor="@color/accent_service"
+                android:textSize="13sp"
                 app:icon="@drawable/ic_tools"
+                app:iconGravity="textStart"
                 app:iconTint="@color/accent_service"
-                app:iconGravity="textStart" />
+                app:strokeColor="@color/accent_service" />
 
         </LinearLayout>
 
-        <!-- Tabs -->
+        <!-- ── Tabs — pill indicator ───────────────────────────── -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/surface_card"
+            app:tabIndicator="@drawable/bg_tab_indicator"
             app:tabIndicatorColor="@color/accent_fuel"
+            app:tabIndicatorHeight="4dp"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@color/geardex_orange_soft"
             app:tabSelectedTextColor="@color/accent_fuel"
             app:tabTextColor="@color/text_secondary"
-            app:tabMode="scrollable">
+            app:tabTextAppearance="@style/Widget.Geardex.TabText">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -107,6 +122,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nav_analytics" />
 
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_expenses" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_trips" />
+
         </com.google.android.material.tabs.TabLayout>
 
         <!-- Fuel & Service logs RecyclerView (tabs 0 & 1) -->
@@ -114,8 +139,8 @@
             android:id="@+id/recycler_logs"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:padding="@dimen/spacing_md" />
 
         <!-- Reminders panel (tab 2) -->
         <androidx.fragment.app.FragmentContainerView
@@ -131,18 +156,59 @@
             android:layout_height="match_parent"
             android:visibility="gone" />
 
+        <!-- Expenses panel (tab 4) -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/container_expenses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <!-- Trips panel (tab 5) -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/container_trips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
     </LinearLayout>
 
-    <!-- FAB for adding a reminder (floats over content, visible on Reminders tab only) -->
+    <!-- FAB for adding a reminder -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_reminder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/spacing_lg"
+        android:backgroundTint="@color/geardex_orange"
         android:contentDescription="@string/reminder_add_title"
         android:src="@drawable/ic_add"
-        android:backgroundTint="@color/geardex_orange"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:shapeAppearance="@style/Shape.Geardex.FAB" />
+
+    <!-- FAB for adding an expense -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_lg"
+        android:backgroundTint="@color/accent_expense"
+        android:contentDescription="@string/expenses_add"
+        android:src="@drawable/ic_add"
+        android:visibility="gone"
+        app:shapeAppearance="@style/Shape.Geardex.FAB" />
+
+    <!-- FAB for adding a trip -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/spacing_lg"
+        android:backgroundTint="@color/accent_trip"
+        android:contentDescription="@string/trip_add_title"
+        android:src="@drawable/ic_add"
+        android:visibility="gone"
+        app:shapeAppearance="@style/Shape.Geardex.FAB" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

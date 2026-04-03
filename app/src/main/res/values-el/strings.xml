@@ -52,6 +52,7 @@
     <string name="service_tire_check">Έλεγχος Ελαστικών</string>
     <string name="log_fuel_economy_result">%1$.1f L/100km</string>
     <string name="logs_no_vehicle">Επιλέξτε πρώτα όχημα</string>
+    <string name="logs_select_vehicle">Επιλέξτε Όχημα</string>
 
     <!-- Digital Glovebox -->
     <string name="glovebox_title">Ψηφιακό Ντοσιέ</string>
@@ -66,34 +67,106 @@
     <string name="doc_type_other">Άλλο</string>
     <string name="doc_expiry_date">Ημ. Λήξης</string>
     <string name="doc_type">Τύπος Εγγράφου</string>
+    <string name="doc_vehicle">Όχημα</string>
     <string name="doc_pick_file">Επιλογή Αρχείου / Φωτογραφίας</string>
     <string name="doc_take_photo">Λήψη Φωτογραφίας</string>
     <string name="doc_save">Αποθήκευση Εγγράφου</string>
     <string name="doc_export_zip">Εξαγωγή ως ZIP</string>
     <string name="doc_expires_on">Λήγει: %1$s</string>
     <string name="doc_no_expiry">Χωρίς ημ. λήξης</string>
+    <string name="doc_status_valid">Ενεργό</string>
+    <string name="doc_status_expiring">Λήγει σύντομα</string>
+    <string name="doc_status_expired">Ληγμένο</string>
 
     <!-- Ekdromes -->
     <string name="ekdromes_title">Εκδρομές</string>
+    <string name="ekdromes_subtitle">Ανακαλύψτε τις καλύτερες διαδρομές</string>
     <string name="ekdromes_suggest">Προτείνετε μια Εκδρομή</string>
+    <string name="ekdrome_view_on_map">Προβολή στον Χάρτη</string>
+
+    <!-- Community Routes -->
+    <string name="community_tab_builtin">Ενσωματωμένες</string>
+    <string name="community_tab_community">Κοινότητα</string>
+    <string name="community_submit_route">Υποβολή Διαδρομής</string>
+    <string name="community_submit">Υποβολή</string>
+    <string name="community_cancel">Άκυρο</string>
+    <string name="community_name_en">Όνομα Διαδρομής (Αγγλικά)</string>
+    <string name="community_name_el">Όνομα Διαδρομής (Ελληνικά)</string>
+    <string name="community_region">Περιοχή</string>
+    <string name="community_difficulty">Δυσκολία</string>
+    <string name="community_distance">Απόσταση</string>
+    <string name="community_tags">Ετικέτες</string>
+    <string name="community_desc_en">Περιγραφή (Αγγλικά)</string>
+    <string name="community_desc_el">Περιγραφή (Ελληνικά)</string>
+    <string name="community_latitude">Γεωγραφικό Πλάτος</string>
+    <string name="community_longitude">Γεωγραφικό Μήκος</string>
+    <string name="community_name_required">Το όνομα διαδρομής είναι υποχρεωτικό</string>
+    <string name="community_submit_success">Η διαδρομή υποβλήθηκε! Θα εμφανιστεί στην Κοινότητα.</string>
+    <string name="community_submit_error">Αποτυχία υποβολής. Ελέγξτε τη σύνδεσή σας.</string>
+    <string name="community_firebase_required">Οι λειτουργίες κοινότητας δεν είναι διαθέσιμες σε αυτή την έκδοση.</string>
+    <string name="community_empty">Δεν υπάρχουν διαδρομές κοινότητας ακόμα.\nΓίνετε ο πρώτος που θα υποβάλει!</string>
+    <string name="community_start_location">Αφετηρία (π.χ. Χανιά)</string>
+    <string name="community_end_location">Προορισμός (π.χ. Χώρα Σφακίων)</string>
+    <string name="community_waypoints">Ενδιάμεσες στάσεις (προαιρετικά)</string>
+    <string name="community_add_waypoint">+ Προσθήκη Στάσης</string>
+    <string name="community_waypoint_hint">Στάση %1$d</string>
+    <string name="ekdrome_navigate">Πλοήγηση</string>
+
+    <!-- Εκτίμηση Κόστους Διαδρομής -->
+    <string name="trip_cost_button">Κόστος</string>
+    <string name="trip_cost_title">Εκτίμηση Κόστους Διαδρομής</string>
+    <string name="trip_cost_select_vehicle">Επιλέξτε Όχημα</string>
+    <string name="trip_cost_route_distance">%1$s — %2$d χλμ</string>
+    <string name="trip_cost_consumption_hint">Κατανάλωση Καυσίμου</string>
+    <string name="trip_cost_fuel_price_hint">Τιμή Καυσίμου</string>
+    <string name="trip_cost_consumption_default">Προεπιλογή για %1$s (επεξεργάσιμη)</string>
+    <string name="trip_cost_consumption_from_logs">Βάσει μέσου όρου καυσίμων σας</string>
+    <string name="trip_cost_calculate">Υπολογισμός</string>
+    <string name="trip_cost_estimated_cost">Εκτιμώμενο Κόστος Διαδρομής</string>
+    <string name="trip_cost_breakdown">%1$s L απαιτούνται · %2$s L/100χλμ · €%3$s/L</string>
+    <string name="trip_cost_fill_fields">Συμπληρώστε κατανάλωση και τιμή καυσίμου</string>
+
+    <!-- Κριτικές -->
+    <string name="review_title">Κριτικές</string>
+    <string name="review_title_for">Κριτικές — %1$s</string>
+    <string name="review_add">Γράψε Κριτική</string>
+    <string name="review_rate_route">Αξιολόγησε τη Διαδρομή</string>
+    <string name="review_your_rating">Η Βαθμολογία σου</string>
+    <string name="review_comment_hint">Σχόλιο (προαιρετικό)</string>
+    <string name="review_empty">Δεν υπάρχουν κριτικές ακόμα.\nΓίνετε ο πρώτος που θα αξιολογήσει!</string>
+    <string name="review_submit_success">Η κριτική υποβλήθηκε!</string>
+    <string name="review_submit_error">Αποτυχία υποβολής κριτικής.</string>
     <string name="ekdromes_filter_region">Φιλτράρισμα ανά Περιοχή</string>
     <string name="ekdromes_filter_tags">Φιλτράρισμα ανά Τύπο</string>
     <string name="ekdrome_tag_moto">Φιλικό για Μοτό</string>
     <string name="ekdrome_tag_asphalt">Μόνο Άσφαλτος</string>
     <string name="ekdrome_tag_offroad">4x4 / Off-Road</string>
     <string name="ekdrome_tag_twisty">Στροφές</string>
+    <string name="ekdrome_tag_scenic">Πανοραμική</string>
     <string name="ekdrome_region_crete">Κρήτη</string>
     <string name="ekdrome_region_peloponnese">Πελοπόννησος</string>
     <string name="ekdrome_region_macedonia">Μακεδονία</string>
     <string name="ekdrome_region_epirus">Ήπειρος</string>
     <string name="ekdrome_region_attica">Αττική</string>
+    <string name="ekdrome_region_thessaly">Θεσσαλία</string>
+    <string name="ekdrome_region_dodecanese">Δωδεκάνησα</string>
     <string name="ekdrome_difficulty_easy">Εύκολο</string>
     <string name="ekdrome_difficulty_medium">Μέτριο</string>
     <string name="ekdrome_difficulty_hard">Δύσκολο</string>
     <string name="ekdromes_coming_soon">Διαδρομές κοινότητας σύντομα</string>
 
+    <!-- Αποθηκευμένες Διαδρομές -->
+    <string name="community_tab_saved">Αποθηκευμένα</string>
+    <string name="saved_routes_empty">Δεν υπάρχουν αποθηκευμένες διαδρομές.\nΠροσθέστε σελιδοδείκτη σε διαδρομές για να τις βρείτε εδώ!</string>
+    <string name="route_detail_title">Λεπτομέρειες Διαδρομής</string>
+    <string name="route_detail_save">Αποθήκευση Διαδρομής</string>
+    <string name="route_detail_path">Πορεία Διαδρομής</string>
+    <string name="suggest_route_title">Πρότεινε Διαδρομή</string>
+    <string name="suggest_route_location_section">Τοποθεσία Διαδρομής</string>
+
     <!-- Settings -->
     <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_subtitle">Γλώσσα &amp; συγχρονισμός cloud</string>
     <string name="settings_language">Γλώσσα</string>
     <string name="settings_language_en">Αγγλικά / English</string>
     <string name="settings_language_el">Ελληνικά</string>
@@ -101,11 +174,33 @@
     <string name="settings_sync_not_configured">Ο συγχρονισμός cloud δεν είναι διαθέσιμος.</string>
     <string name="settings_email">Email</string>
     <string name="settings_password">Κωδικός</string>
+    <string name="settings_google_sign_in">Σύνδεση με Google</string>
+    <string name="settings_or">ή</string>
     <string name="settings_sign_in">Σύνδεση</string>
     <string name="settings_register">Δημιουργία Λογαριασμού</string>
     <string name="settings_sign_out">Αποσύνδεση</string>
     <string name="settings_sync_now">Συγχρονισμός</string>
     <string name="settings_signed_in_as">Συνδεδεμένος/η ως: %1$s</string>
+
+    <!-- Εξαγωγή PDF -->
+    <string name="pdf_export_vehicle">Εξαγωγή Αναφοράς PDF</string>
+    <string name="pdf_export_section">Εξαγωγή Αναφορών</string>
+    <string name="pdf_export_description">Δημιουργήστε αναφορά PDF με όλα τα οχήματα, καύσιμα και ιστορικό σέρβις.</string>
+    <string name="pdf_export_all">Εξαγωγή Αναφοράς Όλων των Οχημάτων</string>
+    <string name="pdf_share_title">Κοινοποίηση Αναφοράς</string>
+    <string name="pdf_no_vehicles">Δεν υπάρχουν οχήματα για εξαγωγή</string>
+
+    <!-- Google Maps API -->
+    <string name="settings_google_api_title">Google Maps API</string>
+    <string name="settings_google_api_description">Προσθέστε το Google Maps API key σας για λειτουργίες χάρτη στις εκδρομές. Το κλειδί αποθηκεύεται τοπικά στη συσκευή σας μόνο.</string>
+    <string name="settings_google_api_hint">API Key (π.χ. AIzaSy…)</string>
+    <string name="settings_google_api_save">Αποθήκευση API Key</string>
+    <string name="settings_google_api_saved">API key αποθηκεύτηκε ✓</string>
+    <string name="settings_google_api_cleared">API key αφαιρέθηκε</string>
+    <string name="settings_google_api_howto_title">Πώς να αποκτήσετε API key</string>
+    <string name="settings_google_api_howto_steps">1. Πηγαίνετε στο Google Cloud Console\n2. Δημιουργήστε project (ή επιλέξτε υπάρχον)\n3. Πηγαίνετε στο APIs &amp; Services → Library\n4. Ενεργοποιήστε "Maps SDK for Android"\n5. Πηγαίνετε στο APIs &amp; Services → Credentials\n6. Κλικ "+ CREATE CREDENTIALS" → API Key\n7. Αντιγράψτε το key και επικολλήστε παραπάνω\n\
+Δωρεάν: $200/μήνα credit (≈ 28.000 φορτώσεις χάρτη)</string>
+    <string name="settings_google_api_open_console">Άνοιγμα Google Cloud Console</string>
 
     <!-- Vehicle detail / edit -->
     <string name="vehicle_detail_label">Στοιχεία Οχήματος</string>
@@ -132,6 +227,7 @@
     <string name="ok">ΟΚ</string>
     <string name="error_required_field">Αυτό το πεδίο είναι υποχρεωτικό</string>
     <string name="error_invalid_number">Παρακαλώ εισάγετε έγκυρο αριθμό</string>
+    <string name="error_image_too_large">Η εικόνα είναι πολύ μεγάλη (μέγ. 5 MB)</string>
 
     <!-- Reminders -->
     <string name="nav_reminders">Υπενθυμίσεις</string>
@@ -158,6 +254,8 @@
     <string name="analytics_economy_trend">Τάση Κατανάλωσης</string>
     <string name="analytics_monthly_spend">Μηνιαίες Δαπάνες (€)</string>
     <string name="analytics_no_data">Δεν υπάρχουν δεδομένα ακόμα</string>
+    <string name="analytics_subtitle">Παρακολούθηση δαπανών &amp; απόδοσης</string>
+    <string name="analytics_no_data_hint">Προσθέστε καύσιμα ή σέρβις για γραφήματα</string>
 
     <!-- Vehicle Health Score -->
     <string name="vehicle_health_score">Υγεία</string>
@@ -183,4 +281,228 @@
     <!-- Footer -->
     <string name="footer_credit">Δημιουργήθηκε με \u2764 από τον Theodore Sfakianakis</string>
     <string name="footer_version">GearDex v1.0.0</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Πίνακας Ελέγχου</string>
+    <string name="dashboard_health">Υγεία</string>
+    <string name="dashboard_cost_per_km">€ / km</string>
+    <string name="dashboard_total_fuel">Σύνολο Καυσίμου</string>
+    <string name="dashboard_monthly_avg">Μέσος Μηνιαίος</string>
+    <string name="dashboard_smart_alerts">Έξυπνες Ειδοποιήσεις</string>
+    <string name="dashboard_timeline">Χρονολόγιο Δραστηριότητας</string>
+    <string name="dashboard_no_activity">Δεν υπάρχει καταγεγραμμένη δραστηριότητα</string>
+    <string name="dashboard_event_fuel">Ανεφοδιασμός</string>
+    <string name="dashboard_event_service">Σέρβις</string>
+
+    <!-- Insights -->
+    <string name="insight_fuel_drop_title">Πτώση Κατανάλωσης</string>
+    <string name="insight_fuel_drop_desc">Η κατανάλωση χειροτέρεψε κατά %1$d%% — τώρα %2$.1f L/100km</string>
+    <string name="insight_service_due_title">Σέρβις Σύντομα</string>
+    <string name="insight_service_overdue_title">Σέρβις Εκπρόθεσμο</string>
+    <string name="insight_service_due_desc">%1$d km από τελευταίο σέρβις — ~%2$d μέρες ακόμα</string>
+    <string name="insight_doc_expiring_title">%1$s Λήγει</string>
+    <string name="insight_doc_expired_title">%1$s Έληξε</string>
+    <string name="insight_doc_expiring_desc">Λήγει σε %1$d μέρες</string>
+    <string name="insight_doc_expired_desc">Έληξε πριν %1$d μέρες</string>
+    <string name="insight_high_spend_title">Υψηλά Μηνιαία Έξοδα</string>
+    <string name="insight_high_spend_desc">€%1$.0f αυτόν τον μήνα vs €%2$.0f μέσος όρος</string>
+    <string name="insight_milestone_title">Ορόσημο Πλησιάζει</string>
+    <string name="insight_milestone_desc">Ορόσημο %1$d km — μόνο %2$d km ακόμα!</string>
+    <string name="insight_expense_spike_title">Αύξηση Εξόδων %1$s</string>
+    <string name="insight_expense_spike_desc">€%1$.0f αυτόν τον μήνα vs €%2$.0f μέσος όρος σε αυτήν την κατηγορία</string>
+    <string name="insight_predicted_cost_title">Πρόβλεψη Κόστους</string>
+    <string name="insight_predicted_cost_desc">Αναμενόμενο: €%1$.0f vs €%2$.0f ιστορικός μέσος</string>
+
+    <!-- Health Detail -->
+    <string name="health_detail_title">Υγεία Οχήματος</string>
+    <string name="health_out_of_100">/ 100</string>
+    <string name="health_condition_excellent">Εξαιρετική Κατάσταση</string>
+    <string name="health_condition_good">Καλή Κατάσταση</string>
+    <string name="health_condition_fair">Μέτρια Κατάσταση</string>
+    <string name="health_condition_poor">Χρειάζεται Προσοχή</string>
+    <string name="health_predicted_cost">Προβλεπόμενο Μηνιαίο Κόστος</string>
+    <string name="health_per_month">/ μήνα</string>
+    <string name="health_breakdown">Ανάλυση Βαθμολογίας</string>
+    <string name="health_pillar_maintenance">Συμμόρφωση Συντήρησης</string>
+    <string name="health_pillar_fuel">Απόδοση Καυσίμου</string>
+    <string name="health_pillar_service">Κανονικότητα Σέρβις</string>
+    <string name="health_pillar_expense">Πρότυπο Εξόδων</string>
+    <string name="health_pillar_condition">Κατάσταση Οχήματος</string>
+    <string name="health_tips_title">Συμβουλές Βελτίωσης</string>
+    <string name="health_tip_maintenance">Ολοκληρώστε τις εκπρόθεσμες υπενθυμίσεις συντήρησης</string>
+    <string name="health_tip_fuel">Ελέγξτε πίεση ελαστικών και φίλτρο αέρα — η κατανάλωση αυξάνεται</string>
+    <string name="health_tip_service">Προγραμματίστε σέρβις — έχει περάσει αρκετός καιρός</string>
+    <string name="health_tip_expense">Εξετάστε τα πρόσφατα έξοδα — εντοπίστηκε αύξηση</string>
+    <string name="health_tip_condition">Οχήματα με υψηλά χιλιόμετρα χρειάζονται πιο συχνούς ελέγχους</string>
+    <string name="health_tip_great">Το όχημά σας είναι σε εξαιρετική κατάσταση — συνεχίστε έτσι!</string>
+    <string name="health_tap_for_details">Πατήστε για λεπτομέρειες</string>
+    <string name="back">Πίσω</string>
+
+    <!-- Expenses -->
+    <string name="nav_expenses">Έξοδα</string>
+    <string name="expenses_title">Παρακολούθηση Εξόδων</string>
+    <string name="expenses_add">Προσθήκη Εξόδου</string>
+    <string name="expenses_empty_title">Δεν υπάρχουν Έξοδα</string>
+    <string name="expenses_empty_subtitle">Πατήστε + για καταγραφή εξόδου</string>
+    <string name="expenses_this_month">Αυτόν τον Μήνα</string>
+    <string name="expenses_budget">Μηνιαίο Budget</string>
+    <string name="expenses_budget_remaining">Υπόλοιπο</string>
+    <string name="expenses_budget_exceeded">Υπέρβαση Budget</string>
+    <string name="expenses_set_budget">Ορισμός Budget</string>
+    <string name="expenses_budget_hint">Μηνιαίο όριο (€)</string>
+    <string name="expenses_no_budget">Δεν έχει οριστεί budget</string>
+    <string name="expenses_total">Σύνολο</string>
+    <string name="expense_category">Κατηγορία</string>
+    <string name="expense_amount">Ποσό (€)</string>
+    <string name="expense_date">Ημερομηνία</string>
+    <string name="expense_description">Περιγραφή</string>
+    <string name="expense_recurring">Επαναλαμβανόμενο έξοδο</string>
+    <string name="expense_interval">Επανάληψη κάθε (μήνες)</string>
+    <string name="expense_save">Αποθήκευση Εξόδου</string>
+    <string name="expense_cat_fuel">Καύσιμα</string>
+    <string name="expense_cat_service">Σέρβις</string>
+    <string name="expense_cat_insurance">Ασφάλεια</string>
+    <string name="expense_cat_road_tax">Τέλη Κυκλοφορίας</string>
+    <string name="expense_cat_parking">Στάθμευση</string>
+    <string name="expense_cat_tolls">Διόδια</string>
+    <string name="expense_cat_fines">Πρόστιμα</string>
+    <string name="expense_cat_tires">Ελαστικά</string>
+    <string name="expense_cat_modifications">Τροποποιήσεις</string>
+    <string name="expense_cat_other">Άλλο</string>
+    <string name="expense_budget_alert_title">Ειδοποίηση Budget</string>
+    <string name="expense_budget_alert_80">Έχετε χρησιμοποιήσει 80%% του μηνιαίου budget σας</string>
+    <string name="expense_budget_alert_100">Έχετε ξεπεράσει το μηνιαίο budget σας!</string>
+
+    <!-- ── Trip Logger ─────────────────────────────────────── -->
+    <string name="nav_trips">Διαδρομές</string>
+    <string name="trip_add_title">Καταγραφή Διαδρομής</string>
+    <string name="trip_start_odometer">Αρχικό Χιλιομετρητή (km)</string>
+    <string name="trip_end_odometer">Τελικό Χιλιομετρητή (km)</string>
+    <string name="trip_date">Ημερομηνία Διαδρομής</string>
+    <string name="trip_purpose">Σκοπός</string>
+    <string name="trip_notes">Σημειώσεις (προαιρετικά)</string>
+    <string name="trip_fuel_used">Καύσιμα (L)</string>
+    <string name="trip_cost">Κόστος Διαδρομής (€)</string>
+    <string name="trip_purpose_commute">Μετακίνηση</string>
+    <string name="trip_purpose_leisure">Αναψυχή</string>
+    <string name="trip_purpose_business">Επαγγελματικό</string>
+    <string name="trip_purpose_other">Άλλο</string>
+    <string name="trip_total_distance">Συνολική Απόσταση</string>
+    <string name="trip_total_trips">Σύνολο Διαδρομών</string>
+    <string name="trip_empty_title">Δεν υπάρχουν διαδρομές</string>
+    <string name="trip_empty_subtitle">Πατήστε + για να καταγράψετε την πρώτη σας</string>
+
+    <!-- ── Marketplace ─────────────────────────────────────── -->
+    <string name="nav_marketplace">Αγορά</string>
+    <string name="marketplace_title">Αγορά Ανταλλακτικών</string>
+    <string name="marketplace_add_part">Καταχώρηση Εξαρτήματος</string>
+    <string name="marketplace_part_name">Όνομα Εξαρτήματος</string>
+    <string name="marketplace_category">Κατηγορία</string>
+    <string name="marketplace_vehicle_make">Μάρκα Οχήματος</string>
+    <string name="marketplace_vehicle_model">Μοντέλο Οχήματος</string>
+    <string name="marketplace_vehicle_year">Χρονολογία Οχήματος</string>
+    <string name="marketplace_price">Τιμή (€)</string>
+    <string name="marketplace_condition">Κατάσταση</string>
+    <string name="marketplace_description">Περιγραφή</string>
+    <string name="marketplace_contact">Στοιχεία Επικοινωνίας</string>
+    <string name="marketplace_region">Περιοχή</string>
+    <string name="marketplace_search_hint">Αναζήτηση ανταλλακτικών…</string>
+    <string name="marketplace_empty">Δεν υπάρχουν ανταλλακτικά ακόμα</string>
+    <string name="marketplace_add_watchlist">Προσθήκη στη Λίστα</string>
+    <string name="marketplace_condition_new">Καινούργιο</string>
+    <string name="marketplace_condition_like_new">Μεταχειρισμένο – Σαν Καινούργιο</string>
+    <string name="marketplace_condition_good">Μεταχειρισμένο – Καλό</string>
+    <string name="marketplace_condition_fair">Μεταχειρισμένο – Μέτριο</string>
+    <string name="marketplace_condition_parts">Για Ανταλλακτικά</string>
+    <string name="marketplace_cat_engine">Κινητήρας</string>
+    <string name="marketplace_cat_brakes">Φρένα</string>
+    <string name="marketplace_cat_suspension">Ανάρτηση</string>
+    <string name="marketplace_cat_electrical">Ηλεκτρικά</string>
+    <string name="marketplace_cat_body">Αμάξωμα</string>
+    <string name="marketplace_cat_exhaust">Εξάτμιση</string>
+    <string name="marketplace_cat_tires">Ελαστικά</string>
+    <string name="marketplace_cat_wheels">Ζάντες</string>
+    <string name="marketplace_cat_interior">Εσωτερικό</string>
+    <string name="marketplace_cat_accessories">Αξεσουάρ</string>
+    <string name="marketplace_cat_other">Άλλο</string>
+
+    <!-- ── Fleet Dashboard ─────────────────────────────────── -->
+    <string name="fleet_title">Πίνακας Στόλου</string>
+    <string name="fleet_total_vehicles">Συνολικά Οχήματα</string>
+    <string name="fleet_total_km">Σύνολο χλμ. Στόλου</string>
+    <string name="fleet_total_cost">Συνολικό Κόστος Στόλου</string>
+    <string name="fleet_cheapest">Φθηνότερο σε Λειτουργία</string>
+    <string name="fleet_most_driven">Περισσότερο Χρησιμοποιημένο</string>
+    <string name="fleet_cost_per_km">Κόστος/χλμ</string>
+    <string name="fleet_empty">Προσθέστε 2+ οχήματα για στατιστικά στόλου</string>
+
+    <!-- ── Drive Mode ──────────────────────────────────────── -->
+    <string name="nav_drive_mode">Λειτουργία Οδήγησης</string>
+    <string name="drive_mode_title">Λειτουργία Οδήγησης</string>
+    <string name="drive_start">Έναρξη Οδήγησης</string>
+    <string name="drive_stop">Τέλος Οδήγησης</string>
+    <string name="drive_speed">Ταχύτητα</string>
+    <string name="drive_distance">Απόσταση</string>
+    <string name="drive_duration">Διάρκεια</string>
+    <string name="drive_max_speed">Μέγ. Ταχύτητα</string>
+    <string name="drive_avg_speed">Μέση Ταχύτητα</string>
+    <string name="drive_select_vehicle">Επιλέξτε όχημα πριν ξεκινήσετε</string>
+    <string name="drive_session_saved">Η οδήγηση αποθηκεύτηκε</string>
+    <string name="drive_sessions_title">Ιστορικό Οδήγησης</string>
+    <string name="drive_empty">Δεν υπάρχουν οδηγήσεις ακόμα</string>
+
+    <!-- ── Service Shop Directory ──────────────────────────── -->
+    <string name="nav_shops">Συνεργεία</string>
+    <string name="shop_directory_title">Κατάλογος Συνεργείων</string>
+    <string name="shop_add_title">Προσθήκη Συνεργείου</string>
+    <string name="shop_name_en">Όνομα Συνεργείου (Αγγλικά)</string>
+    <string name="shop_name_el">Όνομα Συνεργείου (Ελληνικά)</string>
+    <string name="shop_category">Κατηγορία</string>
+    <string name="shop_region">Περιοχή</string>
+    <string name="shop_address">Διεύθυνση</string>
+    <string name="shop_phone">Τηλέφωνο</string>
+    <string name="shop_search_hint">Αναζήτηση συνεργείων…</string>
+    <string name="shop_empty">Δεν υπάρχουν συνεργεία ακόμα</string>
+    <string name="shop_reviews">Κριτικές</string>
+    <string name="shop_add_review">Προσθήκη Κριτικής</string>
+    <string name="shop_review_hint">Γράψτε την κριτική σας…</string>
+    <string name="shop_cat_general">Γενικός Μηχανικός</string>
+    <string name="shop_cat_engine">Ειδικός Κινητήρα</string>
+    <string name="shop_cat_body">Φανοποιείο</string>
+    <string name="shop_cat_tires">Ελαστικά</string>
+    <string name="shop_cat_electrical">Ηλεκτρολόγος</string>
+    <string name="shop_cat_motorcycle">Μοτοσικλέτες</string>
+    <string name="shop_cat_performance">Βελτιώσεις</string>
+    <string name="shop_cat_detailing">Detailing</string>
+
+    <!-- ── Parking Saver ──────────────────────────────────── -->
+    <string name="nav_parking">Πάρκινγκ</string>
+    <string name="parking_title">Αποθήκευση Πάρκινγκ</string>
+    <string name="parking_save_current">Αποθήκευση Τρέχουσας Θέσης</string>
+    <string name="parking_get_location">Λήψη Τοποθεσίας</string>
+    <string name="parking_address_hint">Διεύθυνση / Περιγραφή</string>
+    <string name="parking_notes_hint">Σημειώσεις (όροφος, τομέα…)</string>
+    <string name="parking_set_timer">Ρύθμιση Χρονοδιακόπτη</string>
+    <string name="parking_set_timer_title">Λήξη Παρκόμετρου</string>
+    <string name="parking_save">Αποθήκευση Θέσης</string>
+    <string name="parking_history">Αποθηκευμένες Θέσεις</string>
+    <string name="parking_empty">Δεν υπάρχουν αποθηκευμένες θέσεις</string>
+    <string name="parking_saved">Η θέση αποθηκεύτηκε!</string>
+    <string name="parking_deleted">Η θέση διαγράφηκε</string>
+    <string name="parking_location_acquired">Η τοποθεσία βρέθηκε ✓</string>
+    <string name="parking_location_denied">Άρνηση πρόσβασης τοποθεσίας</string>
+    <string name="parking_no_address">Χωρίς καθορισμένη διεύθυνση</string>
+    <string name="parking_spot_label">Θέση Πάρκινγκ</string>
+    <string name="parking_meter_until">Μέχρι %1$s</string>
+    <string name="parking_timer_set">Χρονοδιακόπτης για %1$s</string>
+    <string name="parking_open_map">Άνοιγμα σε Χάρτες</string>
+    <string name="parking_open_map_btn">Χάρτης</string>
+    <string name="parking_share_btn">Κοινοποίηση</string>
+    <string name="parking_share_prefix">Η θέση μου:</string>
+    <string name="parking_share_title">Κοινοποίηση Θέσης Πάρκινγκ</string>
+    <string name="parking_meter_notif_title">Λήξη Παρκόμετρου!</string>
+    <string name="parking_meter_notif_body">Το παρκόμετρο λήγει σε 5 λεπτά (%1$s)</string>
+    <string name="parking_meter_notif_body_no_address">Το παρκόμετρο λήγει σε 5 λεπτά</string>
+    <string name="parking_notif_channel">Ειδοποιήσεις Παρκόμετρου</string>
+    <string name="parking_notif_channel_desc">Ειδοποιήσεις για λήξη παρκόμετρου</string>
 </resources>

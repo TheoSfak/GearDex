@@ -13,7 +13,10 @@
             app:destination="@id/addVehicleFragment" />
         <action
             android:id="@+id/action_garage_to_vehicleDetail"
-            app:destination="@id/vehicleDetailFragment" />
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_garage_to_fleetDashboard"
+            app:destination="@id/fleetDashboardFragment" />
     </fragment>
 
     <fragment
@@ -55,6 +58,12 @@
         <action
             android:id="@+id/action_logs_to_addReminder"
             app:destination="@id/addReminderFragment" />
+        <action
+            android:id="@+id/action_logs_to_addExpense"
+            app:destination="@id/addExpenseFragment" />
+        <action
+            android:id="@+id/action_logs_to_addTrip"
+            app:destination="@id/addTripFragment" />
     </fragment>
 
     <fragment
@@ -73,6 +82,11 @@
         android:label="@string/reminder_add_title" />
 
     <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.geardex.app.ui.logs.AddExpenseFragment"
+        android:label="@string/expenses_add" />
+
+    <fragment
         android:id="@+id/gloveboxFragment"
         android:name="com.geardex.app.ui.glovebox.GloveboxFragment"
         android:label="@string/nav_glovebox">
@@ -89,12 +103,84 @@
     <fragment
         android:id="@+id/ekdromesFragment"
         android:name="com.geardex.app.ui.ekdromes.EkdromesFragment"
-        android:label="@string/nav_ekdromes" />
+        android:label="@string/nav_ekdromes">
+        <action
+            android:id="@+id/action_ekdromes_to_routeDetail"
+            app:destination="@id/routeDetailFragment" />
+        <action
+            android:id="@+id/action_ekdromes_to_suggestRoute"
+            app:destination="@id/suggestRouteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/routeDetailFragment"
+        android:name="com.geardex.app.ui.ekdromes.RouteDetailFragment"
+        android:label="@string/route_detail_title">
+        <argument android:name="routeId" app:argType="integer" />
+        <argument android:name="sourceType" app:argType="string" android:defaultValue="builtin" />
+        <argument android:name="firestoreId" app:argType="string" android:defaultValue="" />
+        <argument android:name="nameEn" app:argType="string" android:defaultValue="" />
+        <argument android:name="nameEl" app:argType="string" android:defaultValue="" />
+        <argument android:name="region" app:argType="string" android:defaultValue="CRETE" />
+        <argument android:name="difficulty" app:argType="string" android:defaultValue="MEDIUM" />
+        <argument android:name="tags" app:argType="string" android:defaultValue="" />
+        <argument android:name="distanceKm" app:argType="integer" android:defaultValue="0" />
+        <argument android:name="rating" app:argType="float" android:defaultValue="0" />
+        <argument android:name="descriptionEn" app:argType="string" android:defaultValue="" />
+        <argument android:name="descriptionEl" app:argType="string" android:defaultValue="" />
+        <argument android:name="latitude" app:argType="float" android:defaultValue="0" />
+        <argument android:name="longitude" app:argType="float" android:defaultValue="0" />
+        <argument android:name="startLocation" app:argType="string" android:defaultValue="" />
+        <argument android:name="endLocation" app:argType="string" android:defaultValue="" />
+        <argument android:name="waypoints" app:argType="string" android:defaultValue="" />
+        <argument android:name="reviewCount" app:argType="integer" android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/suggestRouteFragment"
+        android:name="com.geardex.app.ui.ekdromes.SuggestRouteFragment"
+        android:label="@string/suggest_route_title" />
 
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.geardex.app.ui.settings.SettingsFragment"
         android:label="@string/settings_title" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.geardex.app.ui.garage.DashboardFragment"
+        android:label="@string/dashboard_title">
+        <argument
+            android:name="vehicleId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_dashboard_to_editVehicle"
+            app:destination="@id/editVehicleFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_healthDetail"
+            app:destination="@id/healthDetailFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_driveMode"
+            app:destination="@id/driveModeFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_marketplace"
+            app:destination="@id/marketplaceFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_shopDirectory"
+            app:destination="@id/shopDirectoryFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_parking"
+            app:destination="@id/parkingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/healthDetailFragment"
+        android:name="com.geardex.app.ui.garage.HealthDetailFragment"
+        android:label="@string/health_detail_title">
+        <argument
+            android:name="vehicleId"
+            app:argType="long" />
+    </fragment>
 
     <!-- Global action: navigate to Settings from anywhere, never allow duplicates -->
     <action
@@ -102,5 +188,59 @@
         app:destination="@id/settingsFragment"
         app:launchSingleTop="true"
         app:restoreState="true" />
+
+    <!-- ── Trip Logger ──────────────────────────────────── -->
+    <fragment
+        android:id="@+id/addTripFragment"
+        android:name="com.geardex.app.ui.logs.AddTripFragment"
+        android:label="@string/trip_add_title" />
+
+    <!-- ── Marketplace ──────────────────────────────────── -->
+    <fragment
+        android:id="@+id/marketplaceFragment"
+        android:name="com.geardex.app.ui.marketplace.MarketplaceFragment"
+        android:label="@string/marketplace_title">
+        <action
+            android:id="@+id/action_marketplace_to_addPart"
+            app:destination="@id/addPartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addPartFragment"
+        android:name="com.geardex.app.ui.marketplace.AddPartFragment"
+        android:label="@string/marketplace_add_part" />
+
+    <!-- ── Fleet Dashboard ──────────────────────────────── -->
+    <fragment
+        android:id="@+id/fleetDashboardFragment"
+        android:name="com.geardex.app.ui.garage.FleetDashboardFragment"
+        android:label="@string/fleet_title" />
+
+    <!-- ── Drive Mode ───────────────────────────────────── -->
+    <fragment
+        android:id="@+id/driveModeFragment"
+        android:name="com.geardex.app.ui.garage.DriveModeFragment"
+        android:label="@string/drive_mode_title" />
+
+    <!-- ── Shop Directory ───────────────────────────────── -->
+    <fragment
+        android:id="@+id/shopDirectoryFragment"
+        android:name="com.geardex.app.ui.shops.ShopDirectoryFragment"
+        android:label="@string/shop_directory_title">
+        <action
+            android:id="@+id/action_shopDirectory_to_addShop"
+            app:destination="@id/addShopFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addShopFragment"
+        android:name="com.geardex.app.ui.shops.AddShopFragment"
+        android:label="@string/shop_add_title" />
+
+    <!-- ── Parking Saver ──────────────────────────────────── -->
+    <fragment
+        android:id="@+id/parkingFragment"
+        android:name="com.geardex.app.ui.parking.ParkingFragment"
+        android:label="@string/parking_title" />
 
 </navigation>

@@ -13,10 +13,15 @@ import java.util.Date
 import java.util.Locale
 
 class ReminderAdapter(
-    private val vehicleNames: Map<Long, String>,
     private val onMarkDone: (MaintenanceReminder) -> Unit,
     private val onDelete: (MaintenanceReminder) -> Unit
 ) : ListAdapter<MaintenanceReminder, ReminderAdapter.ViewHolder>(DiffCallback) {
+
+    var vehicleNames: Map<Long, String> = emptyMap()
+        set(value) {
+            field = value
+            notifyItemRangeChanged(0, itemCount)
+        }
 
     companion object DiffCallback : DiffUtil.ItemCallback<MaintenanceReminder>() {
         override fun areItemsTheSame(old: MaintenanceReminder, new: MaintenanceReminder) = old.id == new.id

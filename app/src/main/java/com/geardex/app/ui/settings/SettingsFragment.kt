@@ -1,9 +1,13 @@
 package com.geardex.app.ui.settings
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
@@ -13,10 +17,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentSettingsBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Locale
+
+private const val TAG = "SettingsFragment"
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment() {
@@ -24,6 +33,23 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SettingsViewModel by viewModels()
+
+    private val googleSignInLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        try {
+            val account = task.getResult(ApiException::class.java)
+            val idToken = account?.idToken
+            if (idToken != null) {
+                viewModel.signInWithGoogle(idToken)
+            } else {
+                Log.w(TAG, "Google sign-in: no ID token")
+            }
+        } catch (e: ApiException) {
+            Log.w(TAG, "Google sign-in failed", e)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +64,8 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupLanguageChips()
         setupAuthSection()
+        setupExportSection()
+        setupGoogleApiSection()
         observeViewModel()
     }
 
@@ -93,8 +121,68 @@ class SettingsFragment : Fragment() {
             viewModel.register(email, password)
         }
 
+        binding.btnGoogleSignIn.setOnClickListener {
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(viewModel.webClientId)
+                .requestEmail()
+                .build()
+            val client = GoogleSignIn.getClient(requireActivity(), gso)
+            googleSignInLauncher.launch(client.signInIntent)
+        }
+
         binding.btnSignOut.setOnClickListener { viewModel.signOut() }
         binding.btnSyncNow.setOnClickListener { viewModel.syncNow() }
+    }
+
+    private fun setupExportSection() {
+        binding.btnExportAllPdf.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch {
+                val file = viewModel.exportAllVehiclesPdf()
+                if (file != null) {
+                    val uri = androidx.core.content.FileProvider.getUriForFile(
+                        requireContext(), "${requireContext().packageName}.provider", file
+                    )
+                    val intent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                        type = "application/pdf"
+                        putExtra(android.content.Intent.EXTRA_STREAM, uri)
+                        addFlags(android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    }
+                    startActivity(android.content.Intent.createChooser(intent, getString(R.string.pdf_share_title)))
+                } else {
+                    Snackbar.make(binding.root, getString(R.string.pdf_no_vehicles), Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setupGoogleApiSection() {
+        val savedKey = viewModel.getSavedApiKey()
+        if (!savedKey.isNullOrBlank()) {
+            binding.etGoogleApiKey.setText(savedKey)
+            binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_saved)
+            binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.color_success, null))
+            binding.tvApiKeyStatus.visibility = View.VISIBLE
+        }
+
+        binding.btnSaveApiKey.setOnClickListener {
+            val key = binding.etGoogleApiKey.text?.toString()?.trim() ?: ""
+            if (key.isBlank()) {
+                viewModel.clearApiKey()
+                binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_cleared)
+                binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.text_secondary, null))
+                binding.tvApiKeyStatus.visibility = View.VISIBLE
+            } else {
+                viewModel.saveApiKey(key)
+                binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_saved)
+                binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.color_success, null))
+                binding.tvApiKeyStatus.visibility = View.VISIBLE
+            }
+        }
+
+        binding.btnOpenGoogleConsole.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://console.cloud.google.com/apis/credentials"))
+            startActivity(intent)
+        }
     }
 
     private fun observeViewModel() {

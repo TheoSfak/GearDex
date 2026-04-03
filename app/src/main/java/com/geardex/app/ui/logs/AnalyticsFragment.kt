@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -49,29 +48,15 @@ class AnalyticsFragment : Fragment() {
                 launch {
                     viewModel.vehicles.collect { vehicles ->
                         val names = vehicles.map { "${it.make} ${it.model}" }
-                        val adapter = ArrayAdapter(
-                            requireContext(),
-                            android.R.layout.simple_spinner_item,
-                            names
-                        ).apply {
-                            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        }
-                        binding.spinnerAnalyticsVehicle.adapter = adapter
-                        binding.spinnerAnalyticsVehicle.onItemSelectedListener =
-                            object : AdapterView.OnItemSelectedListener {
-                                override fun onItemSelected(
-                                    parent: AdapterView<*>?,
-                                    v: View?,
-                                    position: Int,
-                                    id: Long
-                                ) {
-                                    if (position in vehicles.indices) {
-                                        viewModel.selectVehicle(vehicles[position].id)
-                                    }
-                                }
-                                override fun onNothingSelected(parent: AdapterView<*>?) = Unit
+                        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, names)
+                        binding.spinnerAnalyticsVehicle.setAdapter(adapter)
+                        binding.spinnerAnalyticsVehicle.setOnItemClickListener { _, _, position, _ ->
+                            if (position in vehicles.indices) {
+                                viewModel.selectVehicle(vehicles[position].id)
                             }
+                        }
                         if (vehicles.isNotEmpty() && viewModel.selectedVehicleId.value < 0) {
+                            binding.spinnerAnalyticsVehicle.setText(names[0], false)
                             viewModel.selectVehicle(vehicles[0].id)
                         }
                     }

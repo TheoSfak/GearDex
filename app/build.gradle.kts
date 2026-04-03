@@ -32,8 +32,8 @@ android {
         applicationId = "com.geardex.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 5
+        versionName = "1.5.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -51,6 +51,8 @@ android {
             "\"${firebaseProperties.getProperty("firebase.apiKey", "")}\"")
         buildConfigField("String", "FIREBASE_PROJECT_ID",
             "\"${firebaseProperties.getProperty("firebase.projectId", "")}\"")
+        buildConfigField("String", "GOOGLE_WEB_CLIENT_ID",
+            "\"${firebaseProperties.getProperty("google.webClientId", "")}\"")
     }
 
     signingConfigs {
@@ -192,4 +194,7 @@ dependencies {
 
     // Glance App Widget
     implementation(libs.glance.appwidget)
+
+    // Google Sign-In
+    implementation(libs.play.services.auth)
 }

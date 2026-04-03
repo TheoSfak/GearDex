@@ -34,10 +34,12 @@ class GloveboxViewModel @Inject constructor(
         inputStream: InputStream,
         fileName: String,
         documentType: DocumentType,
-        expiryDate: Long?
+        expiryDate: Long?,
+        onComplete: () -> Unit = {}
     ) {
         viewModelScope.launch {
             gloveboxRepository.saveDocument(vehicleId, inputStream, fileName, documentType, expiryDate)
+            onComplete()
         }
     }
 

@@ -31,10 +31,10 @@ class GarageViewModel @Inject constructor(
         logRepository.getAllServiceLogs(),
         reminderRepository.getActiveRemindersFlow()
     ) { vehicleList, allServiceLogs, activeReminders ->
+        // Group once, then look up per vehicle — O(n) instead of O(n*m)
+        val serviceByVehicle = allServiceLogs.groupBy { it.vehicleId }
         vehicleList.associate { vehicle ->
-            val lastService = allServiceLogs
-                .filter { it.vehicleId == vehicle.id }
-                .maxByOrNull { it.odometer }
+            val lastService = serviceByVehicle[vehicle.id]?.maxByOrNull { it.odometer }
             vehicle.id to HealthScoreCalculator.compute(vehicle, lastService, activeReminders)
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
@@ -46,7 +46,8 @@ class GarageViewModel @Inject constructor(
         year: Int,
         plate: String,
         km: Int,
-        imagePath: String? = null
+        imagePath: String? = null,
+        onComplete: () -> Unit = {}
     ) {
         viewModelScope.launch {
             val vehicle = Vehicle(
@@ -59,6 +60,7 @@ class GarageViewModel @Inject constructor(
                 imagePath = imagePath
             )
             repository.addVehicle(vehicle)
+            onComplete()
         }
     }
 }

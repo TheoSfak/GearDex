@@ -22,6 +22,7 @@ firebaseBom = "33.7.0"
 coroutinesPlayServices = "1.10.1"
 mlkitTextRecognition = "16.0.1"
 glance = "1.1.1"
+playServicesAuth = "21.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -65,6 +66,7 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutinesPlayServices" }
 mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkitTextRecognition" }
 glance-appwidget = { group = "androidx.glance", name = "glance-appwidget", version.ref = "glance" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

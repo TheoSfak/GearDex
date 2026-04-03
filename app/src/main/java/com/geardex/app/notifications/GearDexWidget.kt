@@ -27,7 +27,9 @@ import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.di.WidgetEntryPoint
 import com.geardex.app.ui.garage.HealthScoreCalculator
 import dagger.hilt.android.EntryPointAccessors
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -40,9 +42,13 @@ class GearDexWidget : GlanceAppWidget() {
             WidgetEntryPoint::class.java
         )
 
-        val vehicles = entryPoint.vehicleRepository().getAllVehicles().first()
-        val activeReminders = entryPoint.reminderRepository().getActiveRemindersFlow().first()
-        val allServiceLogs = entryPoint.logRepository().getAllServiceLogs().first()
+        val (vehicles, activeReminders, allServiceLogs) = withContext(Dispatchers.IO) {
+            Triple(
+                entryPoint.vehicleRepository().getAllVehicles().first(),
+                entryPoint.reminderRepository().getActiveRemindersFlow().first(),
+                entryPoint.logRepository().getAllServiceLogs().first()
+            )
+        }
 
         val vehicle = vehicles.firstOrNull()
 
@@ -74,14 +80,14 @@ class GearDexWidget : GlanceAppWidget() {
         Box(
             modifier = GlanceModifier
                 .fillMaxSize()
-                .background(Color(0xFF242424))
+                .background(Color(0xFFFAFAFA))
                 .padding(12.dp),
             contentAlignment = Alignment.TopStart
         ) {
             if (vehicle == null) {
                 Text(
                     text = "No vehicles added",
-                    style = TextStyle(color = androidx.glance.unit.ColorProvider(Color.White), fontSize = 14.sp)
+                    style = TextStyle(color = androidx.glance.unit.ColorProvider(Color(0xFF212121)), fontSize = 14.sp)
                 )
             } else {
                 Column(modifier = GlanceModifier.fillMaxWidth().wrapContentHeight()) {
@@ -90,7 +96,7 @@ class GearDexWidget : GlanceAppWidget() {
                     Text(
                         text = "${vehicle.make} ${vehicle.model}",
                         style = TextStyle(
-                            color = androidx.glance.unit.ColorProvider(Color.White),
+                            color = androidx.glance.unit.ColorProvider(Color(0xFF212121)),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -130,7 +136,7 @@ class GearDexWidget : GlanceAppWidget() {
                         text = reminderText,
                         modifier = GlanceModifier.padding(top = 6.dp),
                         style = TextStyle(
-                            color = androidx.glance.unit.ColorProvider(Color(0xFFB0B0B0)),
+                            color = androidx.glance.unit.ColorProvider(Color(0xFF757575)),
                             fontSize = 12.sp
                         )
                     )

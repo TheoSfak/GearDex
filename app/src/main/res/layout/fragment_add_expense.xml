@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/form_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_section_spacing"
+            android:text="@string/expenses_add"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/header_title_size"
+            android:textStyle="bold" />
+
+        <!-- Vehicle selector -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_vehicle"
+            style="@style/Widget.Geardex.Dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/doc_vehicle">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_expense_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Category dropdown -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_category"
+            style="@style/Widget.Geardex.Dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/expense_category">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_expense_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Amount -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_amount"
+            style="@style/Widget.Geardex.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/expense_amount"
+            app:startIconDrawable="@drawable/ic_money"
+            app:startIconTint="@color/accent_expense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textColor="@color/text_primary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Date picker -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_date"
+            style="@style/Widget.Geardex.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/expense_date"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/accent_expense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="none"
+                android:textColor="@color/text_primary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Description -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_description"
+            style="@style/Widget.Geardex.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/expense_description"
+            app:startIconDrawable="@drawable/ic_notes"
+            app:startIconTint="@color/accent_expense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:minLines="2"
+                android:textColor="@color/text_primary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Recurring toggle -->
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_recurring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:text="@string/expense_recurring"
+            android:textColor="@color/text_primary"
+            app:thumbTint="@color/accent_expense"
+            app:trackTintMode="src_in" />
+
+        <!-- Recurring interval (hidden by default) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_expense_interval"
+            style="@style/Widget.Geardex.TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/form_section_spacing"
+            android:hint="@string/expense_interval"
+            android:visibility="gone"
+            app:startIconDrawable="@drawable/ic_calendar"
+            app:startIconTint="@color/accent_expense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_expense_interval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textColor="@color/text_primary" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Save button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_expense"
+            style="@style/Widget.Geardex.Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/expense_save"
+            android:textSize="16sp"
+            app:backgroundTint="@color/accent_expense" />
+
+    </LinearLayout>
+</ScrollView>

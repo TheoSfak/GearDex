@@ -58,9 +58,11 @@ class AnalyticsViewModel @Inject constructor(
         val totalFuelCost = fuel.sumOf { it.cost }
         val totalServiceCost = service.sumOf { it.cost }
 
-        // Total km = difference between max and min odometer readings
+        // Total km recorded = chronological sum of positive odometer deltas
         val fuelKm = if (fuel.size >= 2) {
-            (fuel.maxOfOrNull { it.odometer } ?: 0) - (fuel.minOfOrNull { it.odometer } ?: 0)
+            fuel.sortedBy { it.date }
+                .zipWithNext { a, b -> (b.odometer - a.odometer).coerceAtLeast(0) }
+                .sum()
         } else 0
 
         // Economy trend: reversed so oldest = leftmost (index 0)

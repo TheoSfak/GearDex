@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/form_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/vehicle_edit"
             android:textColor="@color/text_primary"
-            android:textSize="26sp"
+            android:textSize="@dimen/header_title_size"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="@dimen/form_section_spacing" />
 
         <!-- Vehicle Type Selector -->
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             app:singleSelection="true"
             app:selectionRequired="true"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="@dimen/form_section_spacing">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_type_car"
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_make"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="@dimen/form_field_spacing">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_make"
                 android:layout_width="match_parent"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_model"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="@dimen/form_field_spacing">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_model"
                 android:layout_width="match_parent"
@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="@dimen/form_field_spacing">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_year"
@@ -144,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/vehicle_km"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="@dimen/form_section_spacing">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_km"
                 android:layout_width="match_parent"
@@ -157,7 +157,7 @@
             android:id="@+id/btn_save_vehicle"
             style="@style/Widget.Geardex.Button"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/save"
             android:textSize="16sp" />
 

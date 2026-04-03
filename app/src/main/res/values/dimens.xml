@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── Spacing Grid (8dp baseline) ────────────────────────────── -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    <dimen name="spacing_xxl">48dp</dimen>
+
+    <!-- ── Card Dimensions ────────────────────────────────────────── -->
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="card_corner_radius_small">14dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+
+    <!-- ── Item Cards ─────────────────────────────────────────────── -->
+    <dimen name="item_card_corner">16dp</dimen>
+    <dimen name="item_card_padding">16dp</dimen>
+    <dimen name="item_padding">16dp</dimen>
+    <dimen name="item_card_margin_bottom">12dp</dimen>
+    <dimen name="item_margin_bottom">12dp</dimen>
+    <dimen name="item_icon_circle">44dp</dimen>
+    <dimen name="item_icon_circle_size">44dp</dimen>
+    <dimen name="item_icon_size">22dp</dimen>
+
+    <!-- ── Screen Headers ─────────────────────────────────────────── -->
+    <dimen name="header_padding_horizontal">24dp</dimen>
+    <dimen name="header_padding_top">24dp</dimen>
+    <dimen name="header_padding_bottom">16dp</dimen>
+    <dimen name="header_title_size">28sp</dimen>
+
+    <!-- ── Buttons ────────────────────────────────────────────────── -->
+    <dimen name="button_height">52dp</dimen>
+    <dimen name="button_corner_radius">14dp</dimen>
+
+    <!-- ── Vehicle Card ───────────────────────────────────────────── -->
+    <dimen name="vehicle_image_height">180dp</dimen>
+    <dimen name="vehicle_card_corner">22dp</dimen>
+
+    <!-- ── Bottom Sheet / Form ────────────────────────────────────── -->
+    <dimen name="form_padding">24dp</dimen>
+    <dimen name="form_field_spacing">16dp</dimen>
+    <dimen name="form_section_spacing">28dp</dimen>
+
+    <!-- ── Accent Strip ───────────────────────────────────────────── -->
+    <dimen name="accent_strip_width">4dp</dimen>
+</resources>

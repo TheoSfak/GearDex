@@ -106,9 +106,8 @@ class AddFuelLogFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val rawText = withContext(Dispatchers.IO) {
-                    val bitmap = BitmapFactory.decodeStream(
-                        requireContext().contentResolver.openInputStream(uri)
-                    )
+                    val bitmap = decodeSampledBitmap(uri, 1600, 1600)
+                        ?: throw IllegalStateException("Cannot decode image")
                     val image = InputImage.fromBitmap(bitmap, 0)
                     val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
                     recognizer.process(image).await().text
@@ -124,6 +123,25 @@ class AddFuelLogFragment : Fragment() {
                 binding.btnScanReceipt.isEnabled = true
             }
         }
+    }
+
+    private fun decodeSampledBitmap(uri: Uri, reqWidth: Int, reqHeight: Int): android.graphics.Bitmap? {
+        val resolver = requireContext().contentResolver
+        val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        resolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, options) }
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight)
+        options.inJustDecodeBounds = false
+        return resolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, options) }
+    }
+
+    private fun calculateInSampleSize(options: BitmapFactory.Options, reqW: Int, reqH: Int): Int {
+        val (w, h) = options.outWidth to options.outHeight
+        var size = 1
+        if (h > reqH || w > reqW) {
+            val halfH = h / 2; val halfW = w / 2
+            while (halfH / size >= reqH && halfW / size >= reqW) size *= 2
+        }
+        return size
     }
 
     private fun applyOcrResult(result: OcrResult): Boolean {

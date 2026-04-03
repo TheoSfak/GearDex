@@ -23,4 +23,15 @@ class LogRepository @Inject constructor(
 
     suspend fun getLastServiceLog(vehicleId: Long): ServiceLog? = serviceLogDao.getLastServiceLogForVehicle(vehicleId)
     fun getAllServiceLogs(): Flow<List<ServiceLog>> = serviceLogDao.getAllServiceLogs()
+
+    suspend fun getAverageFuelEconomy(vehicleId: Long): Double? = fuelLogDao.getAverageFuelEconomy(vehicleId)
+
+    // Sync operations
+    suspend fun getAllFuelLogsSync(): List<FuelLog> = fuelLogDao.getAllFuelLogsSync()
+    suspend fun getAllServiceLogsSync(): List<ServiceLog> = serviceLogDao.getAllServiceLogsSync()
+
+    suspend fun getFuelLogsSync(vehicleId: Long): List<FuelLog> = fuelLogDao.getFuelLogsForVehicleSync(vehicleId)
+    suspend fun getServiceLogsSync(vehicleId: Long): List<ServiceLog> = serviceLogDao.getServiceLogsForVehicleSync(vehicleId)
+    suspend fun replaceAllFuelLogs(logs: List<FuelLog>) { fuelLogDao.replaceAll(logs) }
+    suspend fun replaceAllServiceLogs(logs: List<ServiceLog>) { serviceLogDao.replaceAll(logs) }
 }

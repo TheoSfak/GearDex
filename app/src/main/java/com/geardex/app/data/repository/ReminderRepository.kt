@@ -17,10 +17,14 @@ class ReminderRepository @Inject constructor(
         dao.getAllActiveReminders()
 
     suspend fun addReminder(reminder: MaintenanceReminder): Long =
-        dao.insert(reminder)
+        dao.insertReminder(reminder)
 
     suspend fun markDone(id: Long) = dao.markDone(id)
 
-    suspend fun deleteReminder(reminder: MaintenanceReminder) = dao.delete(reminder)
+    suspend fun deleteReminder(reminder: MaintenanceReminder) = dao.deleteReminder(reminder)
     fun getActiveRemindersFlow(): Flow<List<MaintenanceReminder>> = dao.getActiveRemindersFlow()
+
+    // Sync operations
+    suspend fun getAllRemindersSync(): List<MaintenanceReminder> = dao.getAllRemindersSync()
+    suspend fun replaceAllReminders(reminders: List<MaintenanceReminder>) { dao.replaceAll(reminders) }
 }

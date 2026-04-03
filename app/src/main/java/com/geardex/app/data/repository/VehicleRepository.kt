@@ -1,11 +1,14 @@
 package com.geardex.app.data.repository
 
+import android.util.Log
 import com.geardex.app.data.local.dao.VehicleDao
 import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.remote.FirestoreSyncRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
+
+private const val TAG = "VehicleRepository"
 
 @Singleton
 class VehicleRepository @Inject constructor(
@@ -21,44 +24,34 @@ class VehicleRepository @Inject constructor(
 
     suspend fun addVehicle(vehicle: Vehicle): Long {
         val id = vehicleDao.insertVehicle(vehicle)
-        firestoreSync.uploadVehicle(vehicle.copy(id = id))
+        runCatching { firestoreSync.uploadVehicle(vehicle.copy(id = id)) }
+            .onFailure { Log.w(TAG, "Firestore upload failed for new vehicle", it) }
         return id
     }
 
     suspend fun updateVehicle(vehicle: Vehicle) {
         vehicleDao.updateVehicle(vehicle)
-        firestoreSync.uploadVehicle(vehicle)
+        runCatching { firestoreSync.uploadVehicle(vehicle) }
+            .onFailure { Log.w(TAG, "Firestore upload failed for vehicle update", it) }
     }
 
     suspend fun deleteVehicle(vehicle: Vehicle) {
         vehicleDao.deleteVehicle(vehicle)
-        firestoreSync.deleteVehicle(vehicle)
+        runCatching { firestoreSync.deleteVehicle(vehicle) }
+            .onFailure { Log.w(TAG, "Firestore delete failed for vehicle", it) }
     }
 
     suspend fun updateKm(vehicleId: Long, km: Int) {
         vehicleDao.updateKm(vehicleId, km)
         val vehicle = vehicleDao.getVehicleById(vehicleId) ?: return
-        firestoreSync.uploadVehicle(vehicle)
+        runCatching { firestoreSync.uploadVehicle(vehicle) }
+            .onFailure { Log.w(TAG, "Firestore upload failed for km update", it) }
     }
 
     suspend fun getAllVehiclesSync(): List<Vehicle> = vehicleDao.getAllVehiclesSync()
 
-    /**
-     * Called after login. Downloads remote vehicles.
-     * - If Firestore has data: replace local with remote (Firestore wins).
-     * - If Firestore is empty: upload all local vehicles to Firestore.
-     */
-    suspend fun syncAfterLogin() {
-        val remoteVehicles = firestoreSync.downloadVehicles()
-        if (remoteVehicles.isNotEmpty()) {
-            vehicleDao.clearAll()
-            vehicleDao.insertAll(remoteVehicles)
-        } else {
-            val localVehicles = vehicleDao.getAllVehiclesSync()
-            if (localVehicles.isNotEmpty()) {
-                firestoreSync.uploadAll(localVehicles)
-            }
-        }
+    suspend fun replaceAllLocal(vehicles: List<Vehicle>) {
+        vehicleDao.replaceAll(vehicles)
     }
 }
 

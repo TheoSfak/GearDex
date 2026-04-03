@@ -9,32 +9,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/form_padding">
 
         <!-- Vehicle -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/reminder_vehicle"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            android:layout_marginBottom="4dp" />
-
-        <Spinner
-            android:id="@+id/spinner_reminder_vehicle"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Geardex.Dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/surface_card"
-            android:layout_marginBottom="16dp"
-            android:padding="8dp"
-            android:textColor="@color/text_primary" />
+            android:layout_marginBottom="@dimen/form_field_spacing"
+            android:hint="@string/reminder_vehicle">
+            <AutoCompleteTextView
+                android:id="@+id/spinner_reminder_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/text_primary" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Title -->
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Geardex.TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             android:hint="@string/reminder_title"
             app:boxStrokeColor="@color/geardex_orange"
             app:hintTextColor="@color/text_secondary"
@@ -63,7 +60,7 @@
             android:id="@+id/toggle_reminder_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -88,10 +85,10 @@
         <!-- KM input (shown when KM type selected) -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layout_target_km"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Geardex.TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             android:hint="@string/reminder_target_km"
             app:boxStrokeColor="@color/geardex_orange"
             app:hintTextColor="@color/text_secondary"
@@ -112,7 +109,7 @@
             android:id="@+id/layout_target_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             android:orientation="vertical"
             android:visibility="gone">
 

@@ -18,4 +18,25 @@ interface FuelLogDao {
 
     @Delete
     suspend fun deleteFuelLog(fuelLog: FuelLog)
+
+    @Query("SELECT * FROM fuel_logs ORDER BY date DESC")
+    suspend fun getAllFuelLogsSync(): List<FuelLog>
+
+    @Query("SELECT * FROM fuel_logs WHERE vehicleId = :vehicleId ORDER BY date DESC")
+    suspend fun getFuelLogsForVehicleSync(vehicleId: Long): List<FuelLog>
+
+    @Query("SELECT AVG(fuelEconomy) FROM fuel_logs WHERE vehicleId = :vehicleId AND fuelEconomy IS NOT NULL")
+    suspend fun getAverageFuelEconomy(vehicleId: Long): Double?
+
+    @Query("DELETE FROM fuel_logs")
+    suspend fun clearAll()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(logs: List<FuelLog>)
+
+    @Transaction
+    suspend fun replaceAll(logs: List<FuelLog>) {
+        clearAll()
+        insertAll(logs)
+    }
 }

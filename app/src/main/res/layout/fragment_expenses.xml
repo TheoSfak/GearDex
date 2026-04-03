@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:orientation="vertical">
+
+    <!-- ── Summary Cards ─────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_sm">
+
+        <!-- This Month Total -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Geardex.Card.Item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_wallet"
+                    app:tint="@color/accent_expense" />
+
+                <TextView
+                    android:id="@+id/tv_month_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="€342.50" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expenses_this_month"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Budget Remaining -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Geardex.Card.Item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_md">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_shield"
+                    app:tint="@color/color_success" />
+
+                <TextView
+                    android:id="@+id/tv_budget_remaining"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="€157.50" />
+
+                <TextView
+                    android:id="@+id/tv_budget_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expenses_budget_remaining"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- ── Budget Progress Bar ────────────────────────────── -->
+    <LinearLayout
+        android:id="@+id/layout_budget_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_sm">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_budget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:indicatorColor="@color/accent_expense"
+            app:trackColor="@color/accent_expense_bg"
+            app:trackCornerRadius="4dp"
+            app:trackThickness="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_set_budget"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/spacing_sm"
+            android:text="@string/expenses_set_budget"
+            android:textColor="@color/accent_expense"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+    <!-- ── Category Breakdown Chips ──────────────────────── -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_sm"
+        app:singleLine="true"
+        app:singleSelection="false" />
+
+    <!-- ── Empty State ────────────────────────────────────── -->
+    <LinearLayout
+        android:id="@+id/layout_expenses_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/expenses_empty_title"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/expenses_empty_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- ── Expense List ───────────────────────────────────── -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_expenses"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/spacing_md"
+        android:paddingBottom="96dp" />
+
+</LinearLayout>

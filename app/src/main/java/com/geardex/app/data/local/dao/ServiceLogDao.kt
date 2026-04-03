@@ -21,4 +21,22 @@ interface ServiceLogDao {
 
     @Query("SELECT * FROM service_logs ORDER BY date DESC")
     fun getAllServiceLogs(): Flow<List<ServiceLog>>
+
+    @Query("SELECT * FROM service_logs ORDER BY date DESC")
+    suspend fun getAllServiceLogsSync(): List<ServiceLog>
+
+    @Query("SELECT * FROM service_logs WHERE vehicleId = :vehicleId ORDER BY date DESC")
+    suspend fun getServiceLogsForVehicleSync(vehicleId: Long): List<ServiceLog>
+
+    @Query("DELETE FROM service_logs")
+    suspend fun clearAll()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(logs: List<ServiceLog>)
+
+    @Transaction
+    suspend fun replaceAll(logs: List<ServiceLog>) {
+        clearAll()
+        insertAll(logs)
+    }
 }

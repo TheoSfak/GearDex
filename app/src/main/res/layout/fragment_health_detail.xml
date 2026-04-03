@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_xl">
+
+        <!-- ── Back + Title ──────────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_lg"
+            android:paddingBottom="@dimen/spacing_md">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back"
+                android:src="@drawable/ic_back"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_sm"
+                android:text="@string/health_detail_title"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:letterSpacing="-0.02" />
+
+        </LinearLayout>
+
+        <!-- ── Vehicle Name ──────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tv_health_vehicle_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:paddingHorizontal="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            tools:text="BMW M3 · 2021" />
+
+        <!-- ── Circular Gauge ────────────────────────────────── -->
+        <com.geardex.app.ui.garage.HealthGaugeView
+            android:id="@+id/gauge_health"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/spacing_md" />
+
+        <!-- ── Overall Label ─────────────────────────────────── -->
+        <TextView
+            android:id="@+id/tv_overall_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/spacing_lg"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            tools:text="Good Condition" />
+
+        <!-- ── Predicted Monthly Cost Card ────────────────────── -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_predicted_cost"
+            style="@style/Widget.Geardex.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_md"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_lg">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_wallet"
+                    app:tint="@color/accent_expense" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_md"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/health_predicted_cost"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_predicted_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="€285" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/health_per_month"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ── Pillar Breakdown Section ──────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginBottom="@dimen/spacing_md"
+            android:text="@string/health_breakdown"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Pillar 1: Maintenance Compliance -->
+        <include
+            android:id="@+id/pillar_maintenance"
+            layout="@layout/item_health_pillar" />
+
+        <!-- Pillar 2: Fuel Efficiency -->
+        <include
+            android:id="@+id/pillar_fuel"
+            layout="@layout/item_health_pillar" />
+
+        <!-- Pillar 3: Service Regularity -->
+        <include
+            android:id="@+id/pillar_service"
+            layout="@layout/item_health_pillar" />
+
+        <!-- Pillar 4: Expense Pattern -->
+        <include
+            android:id="@+id/pillar_expense"
+            layout="@layout/item_health_pillar" />
+
+        <!-- Pillar 5: Vehicle Condition -->
+        <include
+            android:id="@+id/pillar_condition"
+            layout="@layout/item_health_pillar" />
+
+        <!-- ── Tips Section ──────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:layout_marginBottom="@dimen/spacing_sm"
+            android:text="@string/health_tips_title"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_health_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill_tip"
+            android:padding="@dimen/spacing_md"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:lineSpacingExtra="4dp"
+            tools:text="• Keep up with maintenance reminders\n• Track fuel economy regularly" />
+
+    </LinearLayout>
+</ScrollView>

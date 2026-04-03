@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/item_margin_bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_md">
+
+        <!-- Rank -->
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/bg_icon_circle_teal"
+            android:textColor="@color/accent_fleet"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="1" />
+
+        <!-- Vehicle Name + KM -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_vehicle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Honda CB500F" />
+
+            <TextView
+                android:id="@+id/tv_vehicle_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                tools:text="12,340 km" />
+
+        </LinearLayout>
+
+        <!-- Cost/km -->
+        <TextView
+            android:id="@+id/tv_cost_per_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent_fleet"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="€0.12/km" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

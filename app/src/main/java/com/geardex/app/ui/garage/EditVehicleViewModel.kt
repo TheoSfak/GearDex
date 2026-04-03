@@ -26,7 +26,11 @@ class EditVehicleViewModel @Inject constructor(
         .map { list -> list.find { it.id == vehicleId } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
-    fun saveChanges(type: VehicleType, make: String, model: String, year: Int, plate: String, km: Int) {
+    fun saveChanges(
+        type: VehicleType, make: String, model: String,
+        year: Int, plate: String, km: Int,
+        onComplete: () -> Unit = {}
+    ) {
         val current = vehicle.value ?: return
         viewModelScope.launch {
             repository.updateVehicle(
@@ -39,6 +43,7 @@ class EditVehicleViewModel @Inject constructor(
                     currentKm = km
                 )
             )
+            onComplete()
         }
     }
 }

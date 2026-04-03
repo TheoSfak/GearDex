@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_ekdromes"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingTop="24dp"
+            android:paddingBottom="@dimen/spacing_lg">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back"
+                app:tint="@color/text_primary"
+                android:contentDescription="@string/community_cancel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/suggest_route_title"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Name EN -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_name_en">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Name EL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_name_el">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name_el"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Region dropdown -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:hint="@string/community_region">
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdown_region"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Difficulty dropdown -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:hint="@string/community_difficulty">
+
+            <AutoCompleteTextView
+                android:id="@+id/dropdown_difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Distance -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_distance"
+            app:suffixText="km">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tags -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/community_tags"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="4dp" />
+
+        <!-- Description EN -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_desc_en">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_desc_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="3"
+                android:gravity="top" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Description EL -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_desc_el">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_desc_el"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="3"
+                android:gravity="top" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Location Section Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/suggest_route_location_section"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Start Location -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_start_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_start_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- End Location -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:hint="@string/community_end_location">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_end_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Waypoints -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="@string/community_waypoints"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_waypoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/spacing_md" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_waypoint"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:text="@string/community_add_waypoint"
+            android:textColor="@color/accent_ekdromes" />
+
+        <!-- GPS Coordinates -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:hint="@string/community_latitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:hint="@string/community_longitude">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <!-- Submit Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_lg"
+            android:text="@string/community_submit_route"
+            app:backgroundTint="@color/accent_ekdromes"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

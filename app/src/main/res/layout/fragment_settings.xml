@@ -9,241 +9,535 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_title"
-            android:textColor="@color/text_primary"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
-
-        <!-- ── Language Section ── -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_language"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            android:letterSpacing="0.1"
-            android:layout_marginBottom="12dp" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group_language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:selectionRequired="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_en"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_language_en"
-                android:checkable="true"
-                style="@style/Widget.Material3.Chip.Filter" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_el"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/settings_language_el"
-                android:checkable="true"
-                style="@style/Widget.Material3.Chip.Filter" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <!-- ── Divider ── -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/surface_elevated"
-            android:layout_marginVertical="28dp" />
-
-        <!-- ── Cloud Sync Section ── -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_sync_title"
-            android:textColor="@color/text_secondary"
-            android:textSize="13sp"
-            android:letterSpacing="0.1"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Not configured notice -->
-        <TextView
-            android:id="@+id/tv_firebase_not_configured"
+        <!-- ── Hero Header ───────────────────────────────── -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings_sync_not_configured"
-            android:textColor="@color/text_hint"
-            android:textSize="13sp"
-            android:visibility="gone" />
-
-        <!-- Logged OUT state -->
-        <LinearLayout
-            android:id="@+id/layout_logged_out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_email"
-                style="@style/Widget.Geardex.TextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/settings_email"
-                android:layout_marginBottom="12dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_primary"
-                    android:inputType="textEmailAddress" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_password"
-                style="@style/Widget.Geardex.TextInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/settings_password"
-                app:endIconMode="password_toggle"
-                android:layout_marginBottom="16dp">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_primary"
-                    android:inputType="textPassword" />
-            </com.google.android.material.textfield.TextInputLayout>
+            android:background="@drawable/bg_header_analytics"
+            android:paddingHorizontal="@dimen/spacing_lg"
+            android:paddingTop="28dp"
+            android:paddingBottom="@dimen/spacing_lg">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_sign_in"
-                    style="@style/Widget.Geardex.Button"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/settings_sign_in"
-                    android:layout_marginEnd="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_title"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="-0.02" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_register"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/settings_register"
-                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/settings_subtitle"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_auth_error"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_error"
-                android:textSize="13sp"
-                android:layout_marginTop="8dp"
-                android:visibility="gone" />
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/bg_icon_circle"
+                android:backgroundTint="#33FFFFFF">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@android:color/white"
+                    android:importantForAccessibility="no" />
 
-        <!-- Logged IN state -->
+            </FrameLayout>
+
+        </FrameLayout>
+
         <LinearLayout
-            android:id="@+id/layout_logged_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:padding="@dimen/spacing_md">
 
-            <TextView
-                android:id="@+id/tv_signed_in_as"
+            <!-- ── Language Card ──────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="@dimen/spacing_md"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
 
-            <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Section header with accent bar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="22dp"
+                            android:background="@drawable/bg_section_accent_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_sm"
+                            android:text="@string/settings_language"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group_language"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="true"
+                        app:selectionRequired="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_en"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_language_en"
+                            android:checkable="true"
+                            style="@style/Widget.Material3.Chip.Filter" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_el"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_language_el"
+                            android:checkable="true"
+                            style="@style/Widget.Material3.Chip.Filter" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Cloud Sync Card ────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginBottom="@dimen/spacing_md"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_sync_now"
-                    style="@style/Widget.Geardex.Button"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/settings_sync_now"
-                    android:layout_marginEnd="8dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_sign_out"
-                    style="?attr/materialButtonOutlinedStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:text="@string/settings_sign_out"
-                    android:textColor="#CF6679"
-                    app:strokeColor="#CF6679"
-                    android:layout_marginStart="8dp" />
+                    <!-- Section header with accent bar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_md">
 
-            </LinearLayout>
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="22dp"
+                            android:background="@drawable/bg_section_accent_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_sm"
+                            android:text="@string/settings_sync_title"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- Not configured notice -->
+                    <TextView
+                        android:id="@+id/tv_firebase_not_configured"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_sync_not_configured"
+                        android:textColor="@color/text_hint"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <!-- Logged OUT state -->
+                    <LinearLayout
+                        android:id="@+id/layout_logged_out"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Google Sign-In button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_google_sign_in"
+                            style="?attr/materialButtonOutlinedStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:text="@string/settings_google_sign_in"
+                            android:textColor="@color/text_primary"
+                            app:icon="@drawable/ic_google"
+                            app:iconGravity="textStart"
+                            app:iconTint="@null"
+                            app:strokeColor="@color/divider"
+                            android:layout_marginBottom="@dimen/spacing_sm" />
+
+                        <!-- OR divider -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="@dimen/spacing_sm">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/divider" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="@dimen/spacing_md"
+                                android:text="@string/settings_or"
+                                android:textColor="@color/text_hint"
+                                android:textSize="12sp" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"
+                                android:background="@color/divider" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_email"
+                            style="@style/Widget.Geardex.TextInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/settings_email"
+                            android:layout_marginBottom="12dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_primary"
+                                android:inputType="textEmailAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_password"
+                            style="@style/Widget.Geardex.TextInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/settings_password"
+                            app:endIconMode="password_toggle"
+                            android:layout_marginBottom="16dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_primary"
+                                android:inputType="textPassword" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_sign_in"
+                                style="@style/Widget.Geardex.Button"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_sign_in"
+                                android:layout_marginEnd="8dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_register"
+                                style="?attr/materialButtonOutlinedStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_register"
+                                android:layout_marginStart="8dp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_auth_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_error"
+                            android:textSize="13sp"
+                            android:layout_marginTop="8dp"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <!-- Logged IN state -->
+                    <LinearLayout
+                        android:id="@+id/layout_logged_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_signed_in_as"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="16dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_sync_now"
+                                style="@style/Widget.Geardex.Button"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_sync_now"
+                                android:layout_marginEnd="8dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_sign_out"
+                                style="?attr/materialButtonOutlinedStyle"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_sign_out"
+                                android:textColor="#CF6679"
+                                app:strokeColor="#CF6679"
+                                android:layout_marginStart="8dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Loading indicator -->
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_auth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:visibility="gone"
+                        app:trackColor="@color/surface_card"
+                        app:indicatorColor="@color/geardex_orange" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Export Reports Card ─────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginEnd="@dimen/spacing_sm"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_pdf"
+                            app:tint="@color/geardex_orange" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pdf_export_section"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:text="@string/pdf_export_description"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_export_all_pdf"
+                        style="@style/Widget.Geardex.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:text="@string/pdf_export_all"
+                        app:icon="@drawable/ic_pdf" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Google Maps API Card ───────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <!-- Section header with accent bar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="22dp"
+                            android:background="@drawable/bg_section_accent_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_sm"
+                            android:text="@string/settings_google_api_title"
+                            android:textColor="@color/text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_google_api_description"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:lineSpacingMultiplier="1.4"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_google_api_key"
+                        style="@style/Widget.Geardex.TextInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/settings_google_api_hint"
+                        android:layout_marginBottom="@dimen/spacing_sm">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_google_api_key"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_primary"
+                            android:inputType="textNoSuggestions"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_save_api_key"
+                        style="@style/Widget.Geardex.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/settings_google_api_save"
+                        android:layout_marginBottom="@dimen/spacing_md" />
+
+                    <TextView
+                        android:id="@+id/tv_api_key_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_success"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <!-- How to get API key instructions -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider"
+                        android:layout_marginVertical="@dimen/spacing_md" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_google_api_howto_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="@dimen/spacing_sm" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_google_api_howto_steps"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:lineSpacingMultiplier="1.5" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_open_google_console"
+                        style="?attr/materialButtonOutlinedStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="@dimen/spacing_md"
+                        android:text="@string/settings_google_api_open_console"
+                        app:icon="@drawable/ic_open_in_new" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-
-        <!-- Loading indicator -->
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progress_auth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:visibility="gone"
-            app:trackColor="@color/surface_card"
-            app:indicatorColor="@color/geardex_orange" />
-
-        <!-- Spacer to push footer down -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <!-- Footer -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/surface_elevated"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/footer_credit"
-            android:textColor="@color/text_hint"
-            android:textSize="12sp"
-            android:gravity="center"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/footer_version"
-            android:textColor="@color/text_hint"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:layout_marginBottom="12dp" />
 
     </LinearLayout>
 

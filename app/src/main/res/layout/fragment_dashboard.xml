@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark">
+
+    <!-- ── Collapsing Hero AppBar ──────────────────────────────── -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="@color/surface_card"
+            app:titleEnabled="false">
+
+            <!-- Placeholder gradient (shown when no photo) -->
+            <View
+                android:id="@+id/view_dashboard_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_vehicle_placeholder"
+                app:layout_collapseMode="parallax" />
+
+            <!-- Vehicle photo (parallax scroll) -->
+            <ImageView
+                android:id="@+id/iv_dashboard_vehicle_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                android:importantForAccessibility="no"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.5" />
+
+            <!-- Dark gradient for text legibility -->
+            <View
+                android:id="@+id/view_header_gradient"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_vehicle_image_overlay" />
+
+            <!-- Vehicle info text overlaid on hero -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingBottom="20dp"
+                app:layout_collapseMode="parallax">
+
+                <TextView
+                    android:id="@+id/tv_dashboard_type_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_type_badge_pill"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
+
+                <TextView
+                    android:id="@+id/tv_dashboard_vehicle_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="4"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="-0.02"
+                    tools:text="BMW M3" />
+
+                <TextView
+                    android:id="@+id/tv_dashboard_vehicle_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#60000000"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="3"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="14sp"
+                    tools:text="2021  ·  ABC-1234  ·  45,230 km" />
+
+            </LinearLayout>
+
+            <!-- Pinned mini-toolbar on collapse -->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- ── Scrolling Content ───────────────────────────────────── -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/spacing_xl">
+
+            <!-- ── Health Score Hero Card ──────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_health"
+                style="@style/Widget.Geardex.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/spacing_xl">
+
+                    <TextView
+                        android:id="@+id/tv_health_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/score_good"
+                        android:textSize="52sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="-0.03"
+                        tools:text="87" />
+
+                    <TextView
+                        android:id="@+id/tv_health_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/dashboard_health"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:letterSpacing="0.03" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/health_tap_for_details"
+                            android:textColor="@color/text_hint"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="2dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_right"
+                            app:tint="@color/text_hint" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Stat Cards Row ──────────────────────────────── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/spacing_sm"
+                android:layout_marginTop="@dimen/spacing_sm">
+
+                <!-- Cost per KM -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_cost_km"
+                    style="@style/Widget.Geardex.Card.Stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_md">
+
+                        <TextView
+                            android:id="@+id/tv_cost_km_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/accent_fuel"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/dashboard_cost_per_km"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Total Fuel -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_fuel_total"
+                    style="@style/Widget.Geardex.Card.Stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_md">
+
+                        <TextView
+                            android:id="@+id/tv_fuel_total_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/accent_fuel"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/dashboard_total_fuel"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Monthly Avg -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_monthly"
+                    style="@style/Widget.Geardex.Card.Stat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_md">
+
+                        <TextView
+                            android:id="@+id/tv_monthly_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/geardex_orange"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/dashboard_monthly_avg"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- ── Insights Section ────────────────────────────── -->
+            <LinearLayout
+                android:id="@+id/layout_insights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/spacing_lg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_sm"
+                    android:letterSpacing="0.02"
+                    android:paddingHorizontal="@dimen/header_padding_horizontal"
+                    android:text="@string/dashboard_smart_alerts"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_insights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/spacing_md" />
+
+            </LinearLayout>
+
+            <!-- ── Timeline Section ────────────────────────────── -->
+            <TextView
+                android:id="@+id/tv_timeline_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_sm"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:letterSpacing="0.02"
+                android:paddingHorizontal="@dimen/header_padding_horizontal"
+                android:text="@string/dashboard_timeline"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_timeline_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="@dimen/spacing_xl"
+                android:text="@string/dashboard_no_activity"
+                android:textColor="@color/text_hint"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_timeline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="@dimen/spacing_md" />
+
+            <!-- ── Update KM Card ──────────────────────────────── -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Geardex.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_lg"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_lg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/spacing_md">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_marginEnd="@dimen/spacing_sm"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_speed"
+                            app:tint="@color/geardex_orange" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/logs_update_km"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_update_km"
+                            style="@style/Widget.Geardex.TextInput"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/spacing_md"
+                            android:layout_weight="1"
+                            android:hint="@string/vehicle_km">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/et_update_km"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:textColor="@color/text_primary" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_update_km"
+                            style="@style/Widget.Geardex.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/button_height"
+                            android:text="@string/save" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ── Action Buttons ──────────────────────────────── -->
+
+            <!-- Quick Actions Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_drive_mode"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/nav_drive_mode"
+                    android:textSize="11sp"
+                    app:icon="@drawable/ic_speed"
+                    app:iconTint="@color/accent_drive"
+                    app:backgroundTint="@color/accent_drive_bg" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_marketplace"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="4dp"
+                    android:text="@string/nav_marketplace"
+                    android:textSize="11sp"
+                    app:icon="@drawable/ic_shopping_cart"
+                    app:iconTint="@color/accent_marketplace"
+                    app:backgroundTint="@color/accent_marketplace_bg" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_shops"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/nav_shops"
+                    android:textSize="11sp"
+                    app:icon="@drawable/ic_store"
+                    app:iconTint="@color/accent_shop"
+                    app:backgroundTint="@color/accent_shop_bg" />
+
+            </LinearLayout>
+
+            <!-- Parking Row -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_parking"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:text="@string/parking_title"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_parking"
+                app:iconTint="@color/accent_parking"
+                app:backgroundTint="@color/accent_parking_bg" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_export_pdf"
+                style="@style/Widget.Geardex.Button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:text="@string/pdf_export_vehicle"
+                app:icon="@drawable/ic_pdf" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_vehicle"
+                style="@style/Widget.Geardex.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:text="@string/vehicle_edit" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_vehicle"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginHorizontal="@dimen/spacing_md"
+                android:layout_marginTop="@dimen/spacing_md"
+                android:layout_marginBottom="@dimen/spacing_xl"
+                android:text="@string/delete"
+                android:textColor="@color/color_error"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:strokeColor="@color/color_error" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

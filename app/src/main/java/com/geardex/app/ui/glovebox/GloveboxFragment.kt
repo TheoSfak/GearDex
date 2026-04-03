@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.animation.AnimationUtils
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentGloveboxBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +60,7 @@ class GloveboxFragment : Fragment() {
         binding.recyclerDocuments.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = this@GloveboxFragment.adapter
+            layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_slide_up)
         }
 
         binding.fabAddDocument.setOnClickListener {

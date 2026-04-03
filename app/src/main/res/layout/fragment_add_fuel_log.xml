@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="@dimen/form_padding">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/logs_add_fuel"
             android:textColor="@color/text_primary"
-            android:textSize="26sp"
+            android:textSize="@dimen/header_title_size"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="@dimen/form_section_spacing" />
 
         <!-- OCR scan row -->
         <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="@dimen/form_section_spacing">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_scan_receipt"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_km"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:startIconDrawable="@drawable/ic_odometer"
             app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_liters"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:startIconDrawable="@drawable/ic_liters"
             app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
@@ -92,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_cost"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="@dimen/form_field_spacing"
             app:startIconDrawable="@drawable/ic_money"
             app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/log_notes"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="@dimen/form_section_spacing"
             app:startIconDrawable="@drawable/ic_notes"
             app:startIconTint="@color/accent_fuel">
             <com.google.android.material.textfield.TextInputEditText
@@ -125,7 +125,7 @@
             android:id="@+id/btn_save_fuel"
             style="@style/Widget.Geardex.Button"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="@string/log_save"
             android:textSize="16sp" />
 

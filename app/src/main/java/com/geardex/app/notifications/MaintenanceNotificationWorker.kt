@@ -27,7 +27,6 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
 
     override suspend fun doWork(): Result {
         val vehicles = vehicleRepository.getAllVehiclesSync()
-        var notificationId = 200
 
         // Existing: notify when km since last service exceeds threshold
         vehicles.forEach { vehicle ->
@@ -36,14 +35,13 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
             if (kmSinceService >= NotificationHelper.KM_SERVICE_THRESHOLD) {
                 val title = "${vehicle.make} ${vehicle.model}"
                 val message = "Service due: $kmSinceService km since last visit (limit: ${NotificationHelper.KM_SERVICE_THRESHOLD} km)"
-                showNotification(notificationId++, title, message)
+                showNotification(stableId("service", vehicle.id), title, message)
             }
         }
 
         // New: check custom reminders
         val vehicleMap = vehicles.associateBy { it.id }
         val nowMs = System.currentTimeMillis()
-        val sevenDaysMs = TimeUnit.DAYS.toMillis(7)
 
         reminderRepository.getAllActiveReminders().forEach { reminder ->
             val vehicle = vehicleMap[reminder.vehicleId] ?: return@forEach
@@ -54,13 +52,13 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
                     val daysLeft = (targetDate - nowMs) / TimeUnit.DAYS.toMillis(1)
                     if (targetDate >= nowMs && daysLeft <= 7) {
                         showNotification(
-                            notificationId++,
+                            stableId("reminder", reminder.id),
                             "$vehicleName — ${reminder.title}",
                             "Due in $daysLeft day(s)"
                         )
                     } else if (targetDate < nowMs) {
                         showNotification(
-                            notificationId++,
+                            stableId("reminder", reminder.id),
                             "$vehicleName — ${reminder.title}",
                             "Overdue!"
                         )
@@ -70,7 +68,7 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
                     val targetKm = reminder.targetKm ?: return@forEach
                     if (vehicle.currentKm >= targetKm) {
                         showNotification(
-                            notificationId++,
+                            stableId("reminder", reminder.id),
                             "$vehicleName — ${reminder.title}",
                             "Target reached: ${vehicle.currentKm} / $targetKm km"
                         )
@@ -103,5 +101,8 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
             manager.notify(id, notification)
         }
     }
+
+    private fun stableId(prefix: String, entityId: Long): Int =
+        "${prefix}_$entityId".hashCode() and 0x7FFFFFFF
 }
 

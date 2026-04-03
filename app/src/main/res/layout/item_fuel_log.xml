@@ -1,86 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="3dp"
-    app:strokeColor="@color/accent_fuel_bg"
-    app:strokeWidth="1dp">
+    android:layout_marginBottom="@dimen/item_margin_bottom">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="14dp"
-        android:gravity="center_vertical">
+        android:orientation="horizontal">
 
-        <!-- Fuel icon circle -->
-        <FrameLayout
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:background="@drawable/bg_icon_circle_blue"
-            android:layout_marginEnd="14dp">
+        <!-- Gradient accent strip — wider for impact -->
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_accent_gradient_fuel" />
 
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_fuel"
-                app:tint="@color/icon_tint_fuel" />
-
-        </FrameLayout>
-
-        <!-- Left text block -->
+        <!-- Main content area -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_fuel_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_hint"
-                android:textSize="11sp"
-                android:letterSpacing="0.05" />
-
-            <TextView
-                android:id="@+id/tv_fuel_liters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginTop="2dp" />
-
-        </LinearLayout>
-
-        <!-- Right: economy + cost -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="end">
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:paddingVertical="@dimen/spacing_md">
 
-            <TextView
-                android:id="@+id/tv_fuel_economy"
-                android:layout_width="wrap_content"
+            <!-- Top row: date pill + cost badge -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/accent_fuel"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_fuel_cost"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_fuel_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill_fuel"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/accent_fuel"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    tools:text="12 Mar 2024" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tv_fuel_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill_fuel"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/accent_fuel"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="€45.20" />
+
+            </LinearLayout>
+
+            <!-- Hero row: icon + liters (big) + economy -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_hint"
-                android:textSize="12sp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Fuel icon circle — bigger -->
+                <FrameLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="@dimen/spacing_md"
+                    android:background="@drawable/bg_icon_circle_blue">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_fuel"
+                        app:tint="@color/icon_tint_fuel" />
+
+                </FrameLayout>
+
+                <!-- Liters — hero value -->
+                <TextView
+                    android:id="@+id/tv_fuel_liters"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="42.5 L" />
+
+                <!-- Economy — accent colored, prominent -->
+                <TextView
+                    android:id="@+id/tv_fuel_economy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/accent_fuel"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="7.2 L/100km" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

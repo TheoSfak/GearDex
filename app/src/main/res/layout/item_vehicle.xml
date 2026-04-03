@@ -1,182 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Vehicle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="14dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="18dp"
-    app:cardElevation="6dp"
-    app:rippleColor="#1AFF6D00">
+    android:layout_marginBottom="@dimen/item_margin_bottom"
+    app:cardElevation="6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Hero vehicle image -->
-        <ImageView
-            android:id="@+id/iv_vehicle_image"
+        <!-- ── Hero Image Area ────────────────────────────────── -->
+
+        <!-- Gradient placeholder (always rendered behind image) -->
+        <View
+            android:id="@+id/view_placeholder_bg"
             android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:background="@color/surface_elevated"
-            android:visibility="gone"
+            android:layout_height="220dp"
+            android:background="@drawable/bg_vehicle_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Gradient overlay on image for text readability -->
+        <!-- Large semi-transparent vehicle icon (shows when no photo) -->
+        <ImageView
+            android:id="@+id/iv_placeholder_icon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_car"
+            app:tint="#40FFFFFF"
+            android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="@id/view_placeholder_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_placeholder_bg"
+            app:layout_constraintStart_toStartOf="@id/view_placeholder_bg"
+            app:layout_constraintTop_toTopOf="@id/view_placeholder_bg" />
+
+        <!-- Actual vehicle photo (sits on top of placeholder) -->
+        <ImageView
+            android:id="@+id/iv_vehicle_image"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Dark gradient overlay for text readability -->
         <View
             android:id="@+id/view_image_gradient"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:background="@drawable/bg_image_gradient"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/iv_vehicle_image"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_vehicle_image_overlay"
+            app:layout_constraintBottom_toBottomOf="@id/view_placeholder_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Type badge overlay on image -->
+        <!-- ── Badges ──────────────────────────────────────────── -->
+
+        <!-- Type badge pill — top-left -->
         <TextView
             android:id="@+id/tv_vehicle_type_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_badge"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="4dp"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:background="@drawable/bg_type_badge_pill"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="10sp"
-            android:textAllCaps="true"
-            android:letterSpacing="0.08"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Health score badge overlay -->
+        <!-- Health score badge — top-right -->
         <TextView
             android:id="@+id/tv_health_score"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_margin="10dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:background="@drawable/bg_score_circle"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:background="@drawable/bg_score_badge"
-            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Content below image (or top if no image) -->
-        <LinearLayout
-            android:id="@+id/layout_content"
+        <!-- ── Text Overlay on Gradient ────────────────────────── -->
+
+        <!-- Vehicle name — white bold on dark gradient -->
+        <TextView
+            android:id="@+id/tv_vehicle_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingTop="14dp"
-            android:paddingBottom="12dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:shadowColor="#80000000"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="4"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="-0.01"
+            app:layout_constraintBottom_toTopOf="@id/tv_vehicle_plate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_vehicle_image">
+            tools:text="BMW M3 (2021)" />
 
-            <!-- Name row: icon + name + chevron -->
-            <LinearLayout
-                android:layout_width="match_parent"
+        <!-- License plate — lighter white -->
+        <TextView
+            android:id="@+id/tv_vehicle_plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="16dp"
+            android:letterSpacing="0.08"
+            android:shadowColor="#60000000"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            android:textColor="#CCFFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_placeholder_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="ABC-1234" />
+
+        <!-- ── Content Below Image ─────────────────────────────── -->
+
+        <LinearLayout
+            android:id="@+id/layout_km_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="14dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_placeholder_bg">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="10dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_speed"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/tv_vehicle_km"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:layout_weight="1"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="45,230 km" />
 
-                <!-- Vehicle type icon in circle -->
-                <FrameLayout
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:background="@drawable/bg_icon_circle"
-                    android:layout_marginEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/iv_vehicle_type_icon"
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_car"
-                        app:tint="@color/geardex_orange" />
-
-                </FrameLayout>
-
-                <!-- Name block -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_vehicle_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/text_primary"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="-0.01" />
-
-                    <TextView
-                        android:id="@+id/tv_vehicle_plate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/geardex_orange"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.05"
-                        android:layout_marginTop="2dp" />
-
-                </LinearLayout>
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:tint="@color/text_hint" />
-
-            </LinearLayout>
-
-            <!-- Separator -->
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/surface_elevated"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Bottom row: KM -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_speed"
-                    app:tint="@color/text_hint"
-                    android:layout_marginEnd="6dp" />
-
-                <TextView
-                    android:id="@+id/tv_vehicle_km"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_chevron_right"
+                app:tint="@color/text_hint" />
 
         </LinearLayout>
 
-        <!-- Health score color strip at card bottom -->
+        <!-- Health color strip at card bottom -->
         <View
             android:id="@+id/view_score_strip"
             android:layout_width="0dp"
-            android:layout_height="4dp"
+            android:layout_height="5dp"
             android:background="@color/geardex_orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

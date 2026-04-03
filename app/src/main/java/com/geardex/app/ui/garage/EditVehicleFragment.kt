@@ -67,38 +67,40 @@ class EditVehicleFragment : Fragment() {
         }
 
         binding.btnSaveVehicle.setOnClickListener {
-            if (validateAndSave()) findNavController().popBackStack()
+            validateAndSave()
         }
     }
 
-    private fun validateAndSave(): Boolean {
+    private fun validateAndSave() {
         val make = binding.etMake.text?.toString()?.trim() ?: ""
         val model = binding.etModel.text?.toString()?.trim() ?: ""
         val yearStr = binding.etYear.text?.toString()?.trim() ?: ""
         val plate = binding.etPlate.text?.toString()?.trim() ?: ""
         val kmStr = binding.etKm.text?.toString()?.trim() ?: ""
 
-        if (make.isEmpty()) { binding.tilMake.error = getString(R.string.error_required_field); return false }
+        if (make.isEmpty()) { binding.tilMake.error = getString(R.string.error_required_field); return }
         else binding.tilMake.error = null
 
-        if (model.isEmpty()) { binding.tilModel.error = getString(R.string.error_required_field); return false }
+        if (model.isEmpty()) { binding.tilModel.error = getString(R.string.error_required_field); return }
         else binding.tilModel.error = null
 
         val year = yearStr.toIntOrNull()
         if (year == null || year < 1900 || year > 2100) {
-            binding.tilYear.error = getString(R.string.error_invalid_number); return false
+            binding.tilYear.error = getString(R.string.error_invalid_number); return
         } else binding.tilYear.error = null
 
-        if (plate.isEmpty()) { binding.tilPlate.error = getString(R.string.error_required_field); return false }
+        if (plate.isEmpty()) { binding.tilPlate.error = getString(R.string.error_required_field); return }
         else binding.tilPlate.error = null
 
         val km = kmStr.toIntOrNull()
         if (km == null || km < 0) {
-            binding.tilKm.error = getString(R.string.error_invalid_number); return false
+            binding.tilKm.error = getString(R.string.error_invalid_number); return
         } else binding.tilKm.error = null
 
-        viewModel.saveChanges(selectedType, make, model, year, plate, km)
-        return true
+        binding.btnSaveVehicle.isEnabled = false
+        viewModel.saveChanges(selectedType, make, model, year, plate, km) {
+            binding.btnSaveVehicle.post { findNavController().popBackStack() }
+        }
     }
 
     override fun onDestroyView() {

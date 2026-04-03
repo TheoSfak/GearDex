@@ -1,78 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/surface_card"
-    app:cardCornerRadius="14dp"
-    app:cardElevation="3dp">
+    android:layout_marginBottom="@dimen/item_margin_bottom">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="14dp"
-        android:gravity="center_vertical">
+        android:orientation="horizontal">
 
-        <!-- Document icon circle -->
-        <FrameLayout
-            android:layout_width="46dp"
-            android:layout_height="46dp"
-            android:background="@drawable/bg_icon_circle_purple"
-            android:layout_marginEnd="14dp">
+        <!-- Gradient accent strip — wider -->
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_accent_gradient_glovebox" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_document"
-                app:tint="@color/icon_tint_glovebox" />
-
-        </FrameLayout>
-
+        <!-- Main content -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:paddingVertical="@dimen/spacing_md">
 
-            <TextView
-                android:id="@+id/tv_doc_name"
-                android:layout_width="wrap_content"
+            <!-- Top row: type pill + status badge + delete -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_primary"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:maxLines="1"
-                android:ellipsize="end" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_doc_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/accent_glovebox"
-                android:textSize="12sp"
-                android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/tv_doc_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill_glovebox"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/accent_glovebox"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    tools:text="Insurance" />
 
-            <TextView
-                android:id="@+id/tv_doc_expiry"
-                android:layout_width="wrap_content"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Expiry status badge -->
+                <TextView
+                    android:id="@+id/tv_doc_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pill_valid"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/color_success"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    tools:text="Valid" />
+
+                <ImageButton
+                    android:id="@+id/btn_delete_doc"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="@dimen/spacing_xs"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/delete"
+                    android:importantForAccessibility="yes"
+                    android:src="@drawable/ic_delete"
+                    app:tint="@color/text_hint" />
+
+            </LinearLayout>
+
+            <!-- Main row: icon + name + expiry -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Document icon — bigger -->
+                <FrameLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="@dimen/spacing_md"
+                    android:background="@drawable/bg_icon_circle_purple">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_document"
+                        app:tint="@color/icon_tint_glovebox" />
+
+                </FrameLayout>
+
+                <!-- Name + expiry date -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_doc_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        tools:text="Car Insurance 2024" />
+
+                    <TextView
+                        android:id="@+id/tv_doc_expiry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        tools:text="Expires: 15 Jun 2025" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/btn_delete_doc"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_delete"
-            app:tint="@color/text_secondary"
-            android:contentDescription="@string/delete" />
 
     </LinearLayout>
 

@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.animation.AnimationUtils
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentLogsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,12 +38,15 @@ class LogsFragment : Fragment() {
 
         binding.recyclerLogs.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerLogs.adapter = fuelAdapter
+        binding.recyclerLogs.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_slide_up)
 
-        // Lazily insert Reminders and Analytics child fragments
+        // Lazily insert Reminders, Analytics and Expenses child fragments
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()
                 .replace(R.id.container_reminders, RemindersFragment())
                 .replace(R.id.container_analytics, AnalyticsFragment())
+                .replace(R.id.container_expenses, ExpensesFragment())
+                .replace(R.id.container_trips, TripsFragment())
                 .commitNow()
         }
 
@@ -64,22 +68,27 @@ class LogsFragment : Fragment() {
         binding.fabAddReminder.setOnClickListener {
             findNavController().navigate(R.id.action_logs_to_addReminder)
         }
+        binding.fabAddExpense.setOnClickListener {
+            findNavController().navigate(R.id.action_logs_to_addExpense)
+        }
+        binding.fabAddTrip.setOnClickListener {
+            findNavController().navigate(R.id.action_logs_to_addTrip)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.vehicles.collect { vehicles ->
                         val names = vehicles.map { "${it.make} ${it.model}" }
-                        val spinnerAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, names)
-                        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                        binding.spinnerVehicle.adapter = spinnerAdapter
-                        binding.spinnerVehicle.onItemSelectedListener = object : android.widget.AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(parent: android.widget.AdapterView<*>?, v: View?, pos: Int, id: Long) {
-                                if (vehicles.isNotEmpty()) viewModel.selectVehicle(vehicles[pos].id)
-                            }
-                            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
+                        val dropdownAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, names)
+                        binding.spinnerVehicle.setAdapter(dropdownAdapter)
+                        binding.spinnerVehicle.setOnItemClickListener { _, _, pos, _ ->
+                            if (vehicles.isNotEmpty()) viewModel.selectVehicle(vehicles[pos].id)
                         }
-                        if (vehicles.isNotEmpty()) viewModel.selectVehicle(vehicles[0].id)
+                        if (vehicles.isNotEmpty()) {
+                            binding.spinnerVehicle.setText(names[0], false)
+                            viewModel.selectVehicle(vehicles[0].id)
+                        }
                     }
                 }
                 launch { viewModel.fuelLogs.collect { fuelAdapter.submitList(it) } }
@@ -92,10 +101,28 @@ class LogsFragment : Fragment() {
         binding.recyclerLogs.visibility = if (tab in 0..1) View.VISIBLE else View.GONE
         binding.containerReminders.visibility = if (tab == 2) View.VISIBLE else View.GONE
         binding.containerAnalytics.visibility = if (tab == 3) View.VISIBLE else View.GONE
+        binding.containerExpenses.visibility = if (tab == 4) View.VISIBLE else View.GONE
+        binding.containerTrips.visibility = if (tab == 5) View.VISIBLE else View.GONE
         binding.fabAddReminder.visibility = if (tab == 2) View.VISIBLE else View.GONE
+        binding.fabAddExpense.visibility = if (tab == 4) View.VISIBLE else View.GONE
+        binding.fabAddTrip.visibility = if (tab == 5) View.VISIBLE else View.GONE
 
         if (tab in 0..1) {
             binding.recyclerLogs.adapter = if (tab == 0) fuelAdapter else serviceAdapter
+        }
+
+        // Notify expenses child fragment of selected vehicle
+        if (tab == 4) {
+            val expensesFragment = childFragmentManager.findFragmentById(R.id.container_expenses) as? ExpensesFragment
+            val vehicleId = viewModel.selectedVehicleId.value
+            if (vehicleId > 0) expensesFragment?.updateVehicle(vehicleId)
+        }
+
+        // Notify trips child fragment of selected vehicle
+        if (tab == 5) {
+            val tripsFragment = childFragmentManager.findFragmentById(R.id.container_trips) as? TripsFragment
+            val vehicleId = viewModel.selectedVehicleId.value
+            if (vehicleId > 0) tripsFragment?.updateVehicle(vehicleId)
         }
     }
 

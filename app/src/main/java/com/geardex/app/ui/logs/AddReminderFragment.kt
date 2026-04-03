@@ -31,6 +31,7 @@ class AddReminderFragment : Fragment() {
 
     private var vehicles = emptyList<com.geardex.app.data.local.entity.Vehicle>()
     private var selectedDate: Long? = null
+    private var selectedVehicleIndex = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAddReminderBinding.inflate(inflater, container, false)
@@ -62,14 +63,19 @@ class AddReminderFragment : Fragment() {
             picker.show(parentFragmentManager, "date_picker")
         }
 
+        binding.spinnerReminderVehicle.setOnItemClickListener { _, _, pos, _ -> selectedVehicleIndex = pos }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.vehicles.collect { list ->
                     vehicles = list
                     val names = list.map { "${it.make} ${it.model}" }
-                    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, names)
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                    binding.spinnerReminderVehicle.adapter = adapter
+                    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, names)
+                    binding.spinnerReminderVehicle.setAdapter(adapter)
+                    if (names.isNotEmpty()) {
+                        binding.spinnerReminderVehicle.setText(names[0], false)
+                        selectedVehicleIndex = 0
+                    }
                 }
             }
         }
@@ -84,7 +90,7 @@ class AddReminderFragment : Fragment() {
             return
         }
 
-        val vehicleIndex = binding.spinnerReminderVehicle.selectedItemPosition
+        val vehicleIndex = selectedVehicleIndex
         if (vehicles.isEmpty() || vehicleIndex < 0) {
             Snackbar.make(binding.root, getString(R.string.logs_no_vehicle), Snackbar.LENGTH_SHORT).show()
             return

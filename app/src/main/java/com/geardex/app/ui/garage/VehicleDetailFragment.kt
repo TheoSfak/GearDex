@@ -74,13 +74,16 @@ class VehicleDetailFragment : Fragment() {
         }
 
         binding.btnDeleteVehicle.setOnClickListener {
+            val vehicleToDelete = viewModel.vehicle.value ?: return@setOnClickListener
             AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.confirm_delete))
                 .setMessage(getString(R.string.confirm_delete_vehicle_message))
                 .setPositiveButton(getString(R.string.delete)) { _, _ ->
-                    viewModel.vehicle.value?.let { v ->
-                        viewModel.deleteVehicle(v)
-                        findNavController().popBackStack(R.id.garageFragment, false)
+                    binding.btnDeleteVehicle.isEnabled = false
+                    viewModel.deleteVehicle(vehicleToDelete) {
+                        binding.btnDeleteVehicle.post {
+                            findNavController().popBackStack(R.id.garageFragment, false)
+                        }
                     }
                 }
                 .setNegativeButton(getString(R.string.cancel), null)

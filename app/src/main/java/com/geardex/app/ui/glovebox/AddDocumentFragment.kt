@@ -15,11 +15,15 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.geardex.app.R
 import com.geardex.app.data.local.entity.DocumentType
 import com.geardex.app.databinding.FragmentAddDocumentBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -36,6 +40,8 @@ class AddDocumentFragment : Fragment() {
     private var selectedExpiryDate: Long? = null
     private var cameraImageUri: Uri? = null
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private var selectedVehicleIndex = 0
+    private var selectedDocTypeIndex = 0
 
     private val documentTypes = listOf(
         DocumentType.KTEO, DocumentType.INSURANCE,
@@ -73,15 +79,16 @@ class AddDocumentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Document type spinner
+        // Document type dropdown
         val typeLabels = listOf(
             getString(R.string.doc_type_kteo), getString(R.string.doc_type_insurance),
             getString(R.string.doc_type_road_tax), getString(R.string.doc_type_receipt),
             getString(R.string.doc_type_other)
         )
-        val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, typeLabels)
-        typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerDocType.adapter = typeAdapter
+        val typeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, typeLabels)
+        binding.spinnerDocType.setAdapter(typeAdapter)
+        binding.spinnerDocType.setText(typeLabels[0], false)
+        binding.spinnerDocType.setOnItemClickListener { _, _, pos, _ -> selectedDocTypeIndex = pos }
 
         binding.btnPickFile.setOnClickListener {
             pickFileLauncher.launch("*/*")
@@ -117,21 +124,32 @@ class AddDocumentFragment : Fragment() {
             val vehicles = viewModel.vehicles.value
             if (vehicles.isEmpty()) return@setOnClickListener
 
-            val selectedVehiclePos = binding.spinnerVehicle.selectedItemPosition
-            val vehicleId = vehicles.getOrNull(selectedVehiclePos)?.id ?: return@setOnClickListener
-            val docType = documentTypes[binding.spinnerDocType.selectedItemPosition]
+            val vehicleId = vehicles.getOrNull(selectedVehicleIndex)?.id ?: return@setOnClickListener
+            val docType = documentTypes[selectedDocTypeIndex]
 
             val stream = requireContext().contentResolver.openInputStream(uri) ?: return@setOnClickListener
-            viewModel.saveDocument(vehicleId, stream, pickedFileName, docType, selectedExpiryDate)
-            findNavController().popBackStack()
+            binding.btnSaveDocument.isEnabled = false
+            viewModel.saveDocument(vehicleId, stream, pickedFileName, docType, selectedExpiryDate) {
+                binding.btnSaveDocument.post { findNavController().popBackStack() }
+            }
         }
 
-        // Vehicle spinner
-        val vehicles = viewModel.vehicles.value
-        val vehicleNames = vehicles.map { "${it.make} ${it.model}" }
-        val vehicleAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, vehicleNames)
-        vehicleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerVehicle.adapter = vehicleAdapter
+        // Vehicle dropdown — observe reactively so it populates after Room loads
+        binding.spinnerVehicle.setOnItemClickListener { _, _, pos, _ -> selectedVehicleIndex = pos }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.vehicles.collect { vehicles ->
+                    val names = vehicles.map { "${it.make} ${it.model}" }
+                    val vehicleAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, names)
+                    binding.spinnerVehicle.setAdapter(vehicleAdapter)
+                    if (names.isNotEmpty()) {
+                        binding.spinnerVehicle.setText(names[0], false)
+                        selectedVehicleIndex = 0
+                    }
+                }
+            }
+        }
     }
 
     private fun launchCamera() {

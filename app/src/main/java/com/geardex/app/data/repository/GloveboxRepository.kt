@@ -5,7 +5,9 @@ import com.geardex.app.data.local.dao.GloveboxDocumentDao
 import com.geardex.app.data.local.entity.DocumentType
 import com.geardex.app.data.local.entity.GloveboxDocument
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -39,7 +41,7 @@ class GloveboxRepository @Inject constructor(
         originalFileName: String,
         documentType: DocumentType,
         expiryDate: Long?
-    ): Long {
+    ): Long = withContext(Dispatchers.IO) {
         val destFile = File(docsDir, "${System.currentTimeMillis()}_$originalFileName")
         sourceStream.use { input ->
             FileOutputStream(destFile).use { output -> input.copyTo(output) }
@@ -51,11 +53,10 @@ class GloveboxRepository @Inject constructor(
             fileName = originalFileName,
             expiryDate = expiryDate
         )
-        return dao.insertDocument(doc)
+        dao.insertDocument(doc)
     }
 
-    suspend fun deleteDocument(document: GloveboxDocument) {
-        // Delete the physical file from local storage securely
+    suspend fun deleteDocument(document: GloveboxDocument) = withContext(Dispatchers.IO) {
         val file = File(document.localFilePath)
         if (file.exists()) file.delete()
         dao.deleteDocument(document)
@@ -66,11 +67,9 @@ class GloveboxRepository @Inject constructor(
      * Returns the ZIP file path for the user to share/export manually.
      * No network call is made.
      */
-    suspend fun exportAllAsZip(): File {
+    suspend fun exportAllAsZip(): File = withContext(Dispatchers.IO) {
         val zipFile = File(context.cacheDir, "geardex_glovebox_export.zip")
-        val allDocs = dao.getAllDocuments()
         ZipOutputStream(FileOutputStream(zipFile)).use { zipOut ->
-            // We collect synchronously here; fine for export flow
             val files = docsDir.listFiles() ?: emptyArray()
             for (file in files) {
                 if (!file.exists()) continue
@@ -81,6 +80,10 @@ class GloveboxRepository @Inject constructor(
                 }
             }
         }
-        return zipFile
+        zipFile
     }
+
+    // Sync operations
+    suspend fun getAllDocumentsSync(): List<GloveboxDocument> = dao.getAllDocumentsSync()
+    suspend fun replaceAllDocuments(documents: List<GloveboxDocument>) { dao.replaceAll(documents) }
 }

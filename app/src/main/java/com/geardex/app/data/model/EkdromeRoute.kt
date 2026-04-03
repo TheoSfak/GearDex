@@ -10,7 +10,14 @@ data class EkdromeRoute(
     val distanceKm: Int,
     val rating: Float,
     val descriptionEn: String,
-    val descriptionEl: String
+    val descriptionEl: String,
+    val latitude: Double = 0.0,
+    val longitude: Double = 0.0,
+    val startLocation: String = "",
+    val endLocation: String = "",
+    val waypoints: List<String> = emptyList(),
+    val firestoreId: String = "",
+    val reviewCount: Int = 0
 )
 
 enum class EkdromeRegion(val displayEn: String, val displayEl: String) {
@@ -19,14 +26,17 @@ enum class EkdromeRegion(val displayEn: String, val displayEl: String) {
     PELOPONNESE("Peloponnese", "Πελοπόννησος"),
     MACEDONIA("Macedonia", "Μακεδονία"),
     EPIRUS("Epirus", "Ήπειρος"),
-    ATTICA("Attica", "Αττική")
+    ATTICA("Attica", "Αττική"),
+    THESSALY("Thessaly", "Θεσσαλία"),
+    DODECANESE("Dodecanese", "Δωδεκάνησα")
 }
 
 enum class EkdromeTag(val displayEn: String, val displayEl: String) {
     MOTO("Moto", "Μοτό"),
     ASPHALT("Asphalt", "Άσφαλτος"),
     OFFROAD("Off-Road", "Εκτός Δρόμου"),
-    TWISTY("Twisty", "Στροφές")
+    TWISTY("Twisty", "Στροφές"),
+    SCENIC("Scenic", "Πανοραμική")
 }
 
 enum class EkdromeDifficulty(val displayEn: String, val displayEl: String) {
@@ -34,3 +44,13 @@ enum class EkdromeDifficulty(val displayEn: String, val displayEl: String) {
     MEDIUM("Medium", "Μέτριο"),
     HARD("Hard", "Δύσκολο")
 }
+
+data class RouteReview(
+    val id: String = "",
+    val routeId: String = "",
+    val rating: Float = 0f,
+    val comment: String = "",
+    val userName: String = "",
+    val userUid: String = "",
+    val createdAt: Long = 0L
+)

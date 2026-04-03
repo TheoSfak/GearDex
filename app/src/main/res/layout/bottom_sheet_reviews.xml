@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="24dp"
+    android:background="@color/surface_card">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_pill_ekdrome" />
+
+    <!-- Title + average rating -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tv_reviews_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/review_title"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill_rating"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_star"
+                app:tint="#F9A825"
+                android:layout_marginEnd="3dp"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:id="@+id/tv_average_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Add review button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_review"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/review_add"
+        android:textSize="12sp"
+        app:icon="@drawable/ic_star"
+        app:iconSize="16dp"
+        app:cornerRadius="18dp" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/tv_reviews_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:gravity="center"
+        android:text="@string/review_empty"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!-- Reviews list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="400dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp" />
+
+</LinearLayout>

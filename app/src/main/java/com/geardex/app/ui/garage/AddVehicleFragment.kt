@@ -26,16 +26,20 @@ class AddVehicleFragment : Fragment() {
     private var selectedImagePath: String? = null
     private var cameraUri: Uri? = null
 
+    companion object {
+        private const val MAX_IMAGE_BYTES = 5L * 1024 * 1024 // 5 MB
+    }
+
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let { copyImageToInternal(it) }
     }
 
     private val takePhoto = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
         if (success) {
-            cameraUri?.let { uri ->
-                selectedImagePath = uri.path ?: getFileFromUri(uri)
-                showSelectedImage(uri)
-            }
+            cameraUri?.let { uri -> showSelectedImage(uri) }
+        } else {
+            // User cancelled — reset the path set before launching camera
+            selectedImagePath = null
         }
     }
 
@@ -71,7 +75,7 @@ class AddVehicleFragment : Fragment() {
             val imageFile = File(file, "vehicle_${System.currentTimeMillis()}.jpg")
             cameraUri = FileProvider.getUriForFile(
                 requireContext(),
-                "${requireContext().packageName}.fileprovider",
+                "${requireContext().packageName}.provider",
                 imageFile
             )
             selectedImagePath = imageFile.absolutePath
@@ -86,15 +90,21 @@ class AddVehicleFragment : Fragment() {
         }
 
         binding.btnSaveVehicle.setOnClickListener {
-            if (validateAndSave()) {
-                findNavController().popBackStack()
-            }
+            validateAndSave()
         }
     }
 
     private fun copyImageToInternal(uri: Uri) {
         val dir = File(requireContext().filesDir, "vehicle_images")
         dir.mkdirs()
+        // Validate file size (max 5 MB)
+        val size = requireContext().contentResolver.openFileDescriptor(uri, "r")?.use { it.statSize } ?: 0L
+        if (size > MAX_IMAGE_BYTES) {
+            com.google.android.material.snackbar.Snackbar.make(
+                binding.root, getString(R.string.error_image_too_large), com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
+            ).show()
+            return
+        }
         val dest = File(dir, "vehicle_${System.currentTimeMillis()}.jpg")
         requireContext().contentResolver.openInputStream(uri)?.use { input ->
             dest.outputStream().use { output -> input.copyTo(output) }
@@ -113,34 +123,36 @@ class AddVehicleFragment : Fragment() {
         return uri.lastPathSegment ?: ""
     }
 
-    private fun validateAndSave(): Boolean {
+    private fun validateAndSave() {
         val make = binding.etMake.text?.toString()?.trim() ?: ""
         val model = binding.etModel.text?.toString()?.trim() ?: ""
         val yearStr = binding.etYear.text?.toString()?.trim() ?: ""
         val plate = binding.etPlate.text?.toString()?.trim() ?: ""
         val kmStr = binding.etKm.text?.toString()?.trim() ?: ""
 
-        if (make.isEmpty()) { binding.tilMake.error = getString(R.string.error_required_field); return false }
+        if (make.isEmpty()) { binding.tilMake.error = getString(R.string.error_required_field); return }
         else binding.tilMake.error = null
 
-        if (model.isEmpty()) { binding.tilModel.error = getString(R.string.error_required_field); return false }
+        if (model.isEmpty()) { binding.tilModel.error = getString(R.string.error_required_field); return }
         else binding.tilModel.error = null
 
         val year = yearStr.toIntOrNull()
         if (year == null || year < 1900 || year > 2100) {
-            binding.tilYear.error = getString(R.string.error_invalid_number); return false
+            binding.tilYear.error = getString(R.string.error_invalid_number); return
         } else binding.tilYear.error = null
 
-        if (plate.isEmpty()) { binding.tilPlate.error = getString(R.string.error_required_field); return false }
+        if (plate.isEmpty()) { binding.tilPlate.error = getString(R.string.error_required_field); return }
         else binding.tilPlate.error = null
 
         val km = kmStr.toIntOrNull()
         if (km == null || km < 0) {
-            binding.tilKm.error = getString(R.string.error_invalid_number); return false
+            binding.tilKm.error = getString(R.string.error_invalid_number); return
         } else binding.tilKm.error = null
 
-        viewModel.addVehicle(selectedType, make, model, year, plate, km, selectedImagePath)
-        return true
+        binding.btnSaveVehicle.isEnabled = false
+        viewModel.addVehicle(selectedType, make, model, year, plate, km, selectedImagePath) {
+            binding.btnSaveVehicle.post { findNavController().popBackStack() }
+        }
     }
 
     override fun onDestroyView() {

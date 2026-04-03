@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.animation.AnimationUtils
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentRemindersBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,19 +33,19 @@ class RemindersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        reminderAdapter = ReminderAdapter(
+            onMarkDone = { viewModel.markDone(it) },
+            onDelete = { viewModel.deleteReminder(it) }
+        )
         binding.recyclerReminders.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerReminders.adapter = reminderAdapter
+        binding.recyclerReminders.layoutAnimation = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_slide_up)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.vehicles.collect { vehicles ->
-                        val vehicleNames = vehicles.associate { it.id to "${it.make} ${it.model}" }
-                        reminderAdapter = ReminderAdapter(
-                            vehicleNames = vehicleNames,
-                            onMarkDone = { viewModel.markDone(it) },
-                            onDelete = { viewModel.deleteReminder(it) }
-                        )
-                        binding.recyclerReminders.adapter = reminderAdapter
+                        reminderAdapter?.vehicleNames = vehicles.associate { it.id to "${it.make} ${it.model}" }
 
                         if (vehicles.isNotEmpty() && viewModel.selectedVehicleId.value < 0) {
                             viewModel.selectVehicle(vehicles[0].id)

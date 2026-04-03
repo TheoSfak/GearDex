@@ -25,11 +25,25 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintBottom_toTopOf="@id/tv_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:navGraph="@navigation/nav_graph" />
+
+    <TextView
+        android:id="@+id/tv_footer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/footer_credit"
+        android:textColor="@color/text_hint"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:paddingVertical="4dp"
+        android:background="@color/nav_background"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
