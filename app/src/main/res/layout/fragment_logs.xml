@@ -141,36 +141,43 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_logs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:clipToPadding="false"
-            android:padding="@dimen/spacing_md" />
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingTop="@dimen/spacing_md"
+            android:paddingBottom="96dp" />
 
         <!-- Reminders panel (tab 2) -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_reminders"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:visibility="gone" />
 
         <!-- Analytics panel (tab 3) -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_analytics"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:visibility="gone" />
 
         <!-- Expenses panel (tab 4) -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_expenses"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:visibility="gone" />
 
         <!-- Trips panel (tab 5) -->
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/container_trips"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:visibility="gone" />
 
     </LinearLayout>
