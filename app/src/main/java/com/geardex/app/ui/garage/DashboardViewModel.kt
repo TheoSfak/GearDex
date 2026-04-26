@@ -94,6 +94,13 @@ class DashboardViewModel @Inject constructor(
         servicePlanRepository.buildSummaries(v, plans)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
+    val costForecast: StateFlow<CostForecast?> = combine(
+        vehicle.filterNotNull(), fuelLogs, serviceLogs, expenses, servicePlans
+    ) { v, fuel, service, exp, plans ->
+        val summaries = servicePlanRepository.buildSummaries(v, plans)
+        CostForecastCalculator.build(v, fuel, service, exp, summaries)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
+
     fun updateKm(km: Int) {
         viewModelScope.launch { vehicleRepository.updateKm(vehicleId, km) }
     }

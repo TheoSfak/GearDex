@@ -345,6 +345,17 @@
     <string name="dashboard_no_activity">Δεν υπάρχει καταγεγραμμένη δραστηριότητα</string>
     <string name="dashboard_event_fuel">Ανεφοδιασμός</string>
     <string name="dashboard_event_service">Σέρβις</string>
+    <string name="forecast_title">Πρόβλεψη Κόστους</string>
+    <string name="forecast_confidence">Ακρίβεια: %1$d%%</string>
+    <string name="forecast_30_days">30 ημέρες</string>
+    <string name="forecast_90_days">90 ημέρες</string>
+    <string name="forecast_365_days">365 ημέρες</string>
+    <string name="forecast_empty">Πρόσθεσε καύσιμα, έξοδα ή σέρβις για καλύτερη πρόβλεψη.</string>
+    <string name="forecast_driver_fuel">Τάση καυσίμων</string>
+    <string name="forecast_driver_service_plan">Προγραμματισμένη συντήρηση</string>
+    <string name="forecast_driver_recurring">Επαναλαμβανόμενο έξοδο</string>
+    <string name="forecast_driver_routine">Απόθεμα σέρβις</string>
+    <string name="forecast_driver_format">%1$s · %2$s / έτος</string>
 
     <!-- Insights -->
     <string name="insight_fuel_drop_title">Πτώση Κατανάλωσης</string>

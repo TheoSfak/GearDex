@@ -345,6 +345,17 @@
     <string name="dashboard_no_activity">No activity recorded yet</string>
     <string name="dashboard_event_fuel">Fuel Fill</string>
     <string name="dashboard_event_service">Service</string>
+    <string name="forecast_title">Cost Forecast</string>
+    <string name="forecast_confidence">Confidence: %1$d%%</string>
+    <string name="forecast_30_days">30 days</string>
+    <string name="forecast_90_days">90 days</string>
+    <string name="forecast_365_days">365 days</string>
+    <string name="forecast_empty">Add fuel, expenses, or service logs to improve the forecast.</string>
+    <string name="forecast_driver_fuel">Fuel trend</string>
+    <string name="forecast_driver_service_plan">Planned maintenance</string>
+    <string name="forecast_driver_recurring">Recurring expense</string>
+    <string name="forecast_driver_routine">Routine service reserve</string>
+    <string name="forecast_driver_format">%1$s · %2$s / year</string>
 
     <!-- Insights -->
     <string name="insight_fuel_drop_title">Fuel Economy Drop</string>

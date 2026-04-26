@@ -2,10 +2,12 @@ package com.geardex.app.ui.garage
 
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
@@ -18,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geardex.app.R
+import com.geardex.app.data.local.entity.ExpenseCategory
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.data.repository.ServicePlanStatus
 import com.geardex.app.data.repository.ServicePlanSummary
@@ -28,6 +31,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.util.Locale
 
 @AndroidEntryPoint
 class DashboardFragment : Fragment() {
@@ -223,6 +227,13 @@ class DashboardFragment : Fragment() {
                         bindServicePlanSummary(summaries)
                     }
                 }
+
+                // Cost forecast
+                launch {
+                    viewModel.costForecast.collect { forecast ->
+                        bindCostForecast(forecast)
+                    }
+                }
             }
         }
     }
@@ -254,6 +265,65 @@ class DashboardFragment : Fragment() {
         }
         binding.tvServicePlanStatus.setTextColor(ContextCompat.getColor(ctx, colorRes))
     }
+
+    private fun bindCostForecast(forecast: CostForecast?) {
+        if (forecast == null) return
+        binding.tvForecastYearTotal.text = formatEuro(forecast.total365)
+        binding.tvForecast30.text = formatEuro(forecast.total30)
+        binding.tvForecast90.text = formatEuro(forecast.total90)
+        binding.tvForecast365.text = formatEuro(forecast.total365)
+        binding.tvForecastConfidence.text = getString(R.string.forecast_confidence, forecast.confidence)
+        binding.tvForecastEmpty.visibility = if (forecast.drivers.isEmpty()) View.VISIBLE else View.GONE
+        binding.layoutForecastDrivers.visibility = if (forecast.drivers.isEmpty()) View.GONE else View.VISIBLE
+        binding.layoutForecastDrivers.removeAllViews()
+        forecast.drivers.forEach { driver ->
+            binding.layoutForecastDrivers.addView(createForecastDriverRow(driver))
+        }
+    }
+
+    private fun createForecastDriverRow(driver: CostForecastDriver): TextView {
+        val ctx = requireContext()
+        return TextView(ctx).apply {
+            text = getString(
+                R.string.forecast_driver_format,
+                forecastDriverLabel(driver),
+                formatEuro(driver.amount365)
+            )
+            setTextColor(ContextCompat.getColor(ctx, R.color.text_secondary))
+            textSize = 13f
+            typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
+            setPadding(0, 6, 0, 0)
+        }
+    }
+
+    private fun forecastDriverLabel(driver: CostForecastDriver): String = when (driver.type) {
+        ForecastDriverType.FUEL -> getString(R.string.forecast_driver_fuel)
+        ForecastDriverType.ROUTINE_SERVICE -> getString(R.string.forecast_driver_routine)
+        ForecastDriverType.RECURRING_EXPENSE -> {
+            val category = driver.expenseCategory?.let { expenseCategoryLabel(it) } ?: driver.title
+            "${getString(R.string.forecast_driver_recurring)}: $category"
+        }
+        ForecastDriverType.SERVICE_PLAN -> {
+            val plan = driver.servicePlanType?.let { requireContext().servicePlanTypeLabel(it) } ?: driver.title
+            "${getString(R.string.forecast_driver_service_plan)}: $plan"
+        }
+    }
+
+    private fun expenseCategoryLabel(category: ExpenseCategory): String = when (category) {
+        ExpenseCategory.FUEL -> getString(R.string.expense_cat_fuel)
+        ExpenseCategory.SERVICE -> getString(R.string.expense_cat_service)
+        ExpenseCategory.INSURANCE -> getString(R.string.expense_cat_insurance)
+        ExpenseCategory.ROAD_TAX -> getString(R.string.expense_cat_road_tax)
+        ExpenseCategory.PARKING -> getString(R.string.expense_cat_parking)
+        ExpenseCategory.TOLLS -> getString(R.string.expense_cat_tolls)
+        ExpenseCategory.FINES -> getString(R.string.expense_cat_fines)
+        ExpenseCategory.TIRES -> getString(R.string.expense_cat_tires)
+        ExpenseCategory.MODIFICATIONS -> getString(R.string.expense_cat_modifications)
+        ExpenseCategory.OTHER -> getString(R.string.expense_cat_other)
+    }
+
+    private fun formatEuro(amount: Double): String =
+        String.format(Locale.getDefault(), "€%,.0f", amount)
 
     private fun decodeSampledBitmap(path: String, reqWidth: Int, reqHeight: Int): android.graphics.Bitmap? {
         val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
