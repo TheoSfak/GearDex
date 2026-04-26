@@ -8,6 +8,7 @@ import com.geardex.app.data.local.entity.FuelLog
 import com.geardex.app.data.local.entity.ServiceLog
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.data.repository.LogRepository
+import com.geardex.app.data.repository.ServicePlanRepository
 import com.geardex.app.data.repository.VehicleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,7 +23,8 @@ import javax.inject.Inject
 @HiltViewModel
 class LogsViewModel @Inject constructor(
     private val logRepository: LogRepository,
-    private val vehicleRepository: VehicleRepository
+    private val vehicleRepository: VehicleRepository,
+    private val servicePlanRepository: ServicePlanRepository
 ) : ViewModel() {
 
     val vehicles = vehicleRepository.getAllVehicles()
@@ -90,6 +92,7 @@ class LogsViewModel @Inject constructor(
                 tireCheck = checks["tireCheck"] ?: false
             )
             logRepository.addServiceLog(log)
+            servicePlanRepository.applyServiceLog(log)
             vehicleRepository.updateKm(vehicleId, odometer)
         }
     }

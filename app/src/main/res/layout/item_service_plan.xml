@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Geardex.Card.Item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/item_margin_bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="@dimen/spacing_md"
+                android:background="@drawable/bg_icon_circle_teal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_tools"
+                    app:tint="@color/accent_service_plan" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_plan_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Oil Change" />
+
+                <TextView
+                    android:id="@+id/tv_plan_interval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    tools:text="Every 6000 km  ·  Every 6 months" />
+
+            </LinearLayout>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_plan_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="11sp"
+                app:chipMinHeight="28dp"
+                tools:text="OK" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_plan_remaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            tools:text="5200 km left  ·  162 days left" />
+
+        <ProgressBar
+            android:id="@+id/progress_plan"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:max="100"
+            android:progress="20"
+            android:progressBackgroundTint="@color/surface_elevated"
+            tools:progress="64" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_plan_delete"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="@dimen/spacing_sm"
+                android:text="@string/delete"
+                android:textColor="@color/color_error"
+                android:textSize="12sp"
+                app:cornerRadius="@dimen/button_corner_radius"
+                app:strokeColor="@color/color_error" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_plan_done"
+                style="@style/Widget.Geardex.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/service_plan_done_now"
+                android:textSize="12sp"
+                app:icon="@drawable/ic_check"
+                app:iconSize="16dp"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

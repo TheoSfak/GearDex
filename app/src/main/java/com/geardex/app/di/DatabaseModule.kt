@@ -14,6 +14,7 @@ import com.geardex.app.data.local.dao.GloveboxDocumentDao
 import com.geardex.app.data.local.dao.LocalRouteReviewDao
 import com.geardex.app.data.local.dao.MaintenanceReminderDao
 import com.geardex.app.data.local.dao.SavedRouteDao
+import com.geardex.app.data.local.dao.ServicePlanDao
 import com.geardex.app.data.local.dao.ServiceLogDao
 import com.geardex.app.data.local.dao.TripDao
 import com.geardex.app.data.local.dao.VehicleDao
@@ -49,6 +50,9 @@ object DatabaseModule {
 
     @Provides
     fun provideServiceLogDao(db: GearDexDatabase): ServiceLogDao = db.serviceLogDao()
+
+    @Provides
+    fun provideServicePlanDao(db: GearDexDatabase): ServicePlanDao = db.servicePlanDao()
 
     @Provides
     fun provideGloveboxDocumentDao(db: GearDexDatabase): GloveboxDocumentDao = db.gloveboxDocumentDao()

@@ -11,6 +11,8 @@ import com.geardex.app.data.repository.GloveboxRepository
 import com.geardex.app.data.repository.LogRepository
 import com.geardex.app.data.repository.PdfReportGenerator
 import com.geardex.app.data.repository.ReminderRepository
+import com.geardex.app.data.repository.ServicePlanRepository
+import com.geardex.app.data.repository.ServicePlanSummary
 import com.geardex.app.data.repository.VehicleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
@@ -30,6 +32,7 @@ class DashboardViewModel @Inject constructor(
     private val reminderRepository: ReminderRepository,
     private val gloveboxRepository: GloveboxRepository,
     private val expenseRepository: ExpenseRepository,
+    private val servicePlanRepository: ServicePlanRepository,
     private val pdfReportGenerator: PdfReportGenerator
 ) : ViewModel() {
 
@@ -43,6 +46,15 @@ class DashboardViewModel @Inject constructor(
     private val reminders = reminderRepository.getRemindersForVehicle(vehicleId)
     private val documents = gloveboxRepository.getDocumentsForVehicle(vehicleId)
     private val expenses = expenseRepository.getExpensesForVehicle(vehicleId)
+    private val servicePlans = servicePlanRepository.getPlansForVehicle(vehicleId)
+
+    init {
+        viewModelScope.launch {
+            vehicleRepository.getVehicleById(vehicleId)?.let { vehicle ->
+                servicePlanRepository.seedDefaultsIfEmpty(vehicle)
+            }
+        }
+    }
 
     val timeline: StateFlow<List<TimelineEvent>> = combine(
         fuelLogs, serviceLogs, reminders, documents
@@ -75,6 +87,12 @@ class DashboardViewModel @Inject constructor(
         val lastService = services.maxByOrNull { it.date }
         HealthScoreCalculator.computeBreakdown(v, lastService, rems, fuel, exp)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
+
+    val servicePlanSummaries: StateFlow<List<ServicePlanSummary>> = combine(
+        vehicle.filterNotNull(), servicePlans
+    ) { v, plans ->
+        servicePlanRepository.buildSummaries(v, plans)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     fun updateKm(km: Int) {
         viewModelScope.launch { vehicleRepository.updateKm(vehicleId, km) }

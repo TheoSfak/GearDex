@@ -15,6 +15,7 @@ import com.geardex.app.data.local.dao.GloveboxDocumentDao
 import com.geardex.app.data.local.dao.LocalRouteReviewDao
 import com.geardex.app.data.local.dao.MaintenanceReminderDao
 import com.geardex.app.data.local.dao.SavedRouteDao
+import com.geardex.app.data.local.dao.ServicePlanDao
 import com.geardex.app.data.local.dao.ServiceLogDao
 import com.geardex.app.data.local.dao.TripDao
 import com.geardex.app.data.local.dao.VehicleDao
@@ -33,6 +34,8 @@ import com.geardex.app.data.local.entity.MaintenanceReminder
 import com.geardex.app.data.local.entity.ReminderType
 import com.geardex.app.data.local.entity.SavedRoute
 import com.geardex.app.data.local.entity.ServiceLog
+import com.geardex.app.data.local.entity.ServicePlan
+import com.geardex.app.data.local.entity.ServicePlanType
 import com.geardex.app.data.local.entity.Trip
 import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.local.entity.VehicleType
@@ -62,19 +65,26 @@ class Converters {
 
     @TypeConverter
     fun toExpenseCategory(value: String): ExpenseCategory = ExpenseCategory.valueOf(value)
+
+    @TypeConverter
+    fun fromServicePlanType(value: ServicePlanType): String = value.name
+
+    @TypeConverter
+    fun toServicePlanType(value: String): ServicePlanType = ServicePlanType.valueOf(value)
 }
 
 @Database(
-    entities = [Vehicle::class, FuelLog::class, ServiceLog::class, GloveboxDocument::class, MaintenanceReminder::class, Expense::class, SavedRoute::class, Trip::class, WatchlistItem::class, DriveSession::class, FavoriteShop::class, ParkingSpot::class, CustomRoute::class, LocalRouteReview::class],
-    version = 8,
+    entities = [Vehicle::class, FuelLog::class, ServiceLog::class, GloveboxDocument::class, MaintenanceReminder::class, Expense::class, SavedRoute::class, Trip::class, WatchlistItem::class, DriveSession::class, FavoriteShop::class, ParkingSpot::class, CustomRoute::class, LocalRouteReview::class, ServicePlan::class],
+    version = 9,
     exportSchema = true,
-    autoMigrations = [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4), AutoMigration(from = 4, to = 5), AutoMigration(from = 5, to = 6), AutoMigration(from = 6, to = 7), AutoMigration(from = 7, to = 8)]
+    autoMigrations = [AutoMigration(from = 1, to = 2), AutoMigration(from = 2, to = 3), AutoMigration(from = 3, to = 4), AutoMigration(from = 4, to = 5), AutoMigration(from = 5, to = 6), AutoMigration(from = 6, to = 7), AutoMigration(from = 7, to = 8), AutoMigration(from = 8, to = 9)]
 )
 @TypeConverters(Converters::class)
 abstract class GearDexDatabase : RoomDatabase() {
     abstract fun vehicleDao(): VehicleDao
     abstract fun fuelLogDao(): FuelLogDao
     abstract fun serviceLogDao(): ServiceLogDao
+    abstract fun servicePlanDao(): ServicePlanDao
     abstract fun gloveboxDocumentDao(): GloveboxDocumentDao
     abstract fun maintenanceReminderDao(): MaintenanceReminderDao
     abstract fun expenseDao(): ExpenseDao

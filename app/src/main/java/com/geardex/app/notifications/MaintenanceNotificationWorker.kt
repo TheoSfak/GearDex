@@ -11,6 +11,8 @@ import com.geardex.app.R
 import com.geardex.app.data.local.entity.ReminderType
 import com.geardex.app.data.repository.LogRepository
 import com.geardex.app.data.repository.ReminderRepository
+import com.geardex.app.data.repository.ServicePlanRepository
+import com.geardex.app.data.repository.ServicePlanStatus
 import com.geardex.app.data.repository.VehicleRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
@@ -22,7 +24,8 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
     @Assisted workerParams: WorkerParameters,
     private val vehicleRepository: VehicleRepository,
     private val logRepository: LogRepository,
-    private val reminderRepository: ReminderRepository
+    private val reminderRepository: ReminderRepository,
+    private val servicePlanRepository: ServicePlanRepository
 ) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
@@ -75,6 +78,31 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
                     }
                 }
             }
+        }
+
+        // Service plan: recurring local maintenance checks by km/date.
+        val enabledPlans = servicePlanRepository.getAllEnabledPlansSync()
+        vehicles.forEach { vehicle ->
+            val plans = enabledPlans.filter { it.vehicleId == vehicle.id }
+            servicePlanRepository.buildSummaries(vehicle, plans)
+                .filter { it.status == ServicePlanStatus.DUE || it.status == ServicePlanStatus.OVERDUE }
+                .forEach { summary ->
+                    val vehicleName = "${vehicle.make} ${vehicle.model}"
+                    val planName = summary.plan.title
+                    val distance = summary.kmRemaining?.let { remaining ->
+                        if (remaining < 0) "${-remaining} km overdue" else "$remaining km left"
+                    }
+                    val days = summary.daysRemaining?.let { remaining ->
+                        if (remaining < 0) "${-remaining} days overdue" else "$remaining days left"
+                    }
+                    val message = listOfNotNull(distance, days).joinToString(" · ")
+                        .ifBlank { "Maintenance is due" }
+                    showNotification(
+                        stableId("service_plan", summary.plan.id),
+                        "$vehicleName — $planName",
+                        message
+                    )
+                }
         }
 
         // Refresh home screen widget

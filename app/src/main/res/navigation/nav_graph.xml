@@ -168,6 +168,18 @@
         <action
             android:id="@+id/action_dashboard_to_parking"
             app:destination="@id/parkingFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_servicePlan"
+            app:destination="@id/servicePlanFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/servicePlanFragment"
+        android:name="com.geardex.app.ui.garage.ServicePlanFragment"
+        android:label="@string/service_plan_title">
+        <argument
+            android:name="vehicleId"
+            app:argType="long" />
     </fragment>
 
     <fragment

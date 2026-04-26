@@ -19,6 +19,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geardex.app.R
 import com.geardex.app.data.local.entity.VehicleType
+import com.geardex.app.data.repository.ServicePlanStatus
+import com.geardex.app.data.repository.ServicePlanSummary
 import com.geardex.app.databinding.FragmentDashboardBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -103,6 +105,11 @@ class DashboardFragment : Fragment() {
 
         binding.btnParking.setOnClickListener {
             findNavController().navigate(R.id.action_dashboard_to_parking)
+        }
+
+        binding.cardServicePlan.setOnClickListener {
+            val action = DashboardFragmentDirections.actionDashboardToServicePlan(args.vehicleId)
+            findNavController().navigate(action)
         }
 
         binding.btnDeleteVehicle.setOnClickListener {
@@ -209,8 +216,43 @@ class DashboardFragment : Fragment() {
                         timelineAdapter.submitList(events)
                     }
                 }
+
+                // Service plan
+                launch {
+                    viewModel.servicePlanSummaries.collect { summaries ->
+                        bindServicePlanSummary(summaries)
+                    }
+                }
             }
         }
+    }
+
+    private fun bindServicePlanSummary(summaries: List<ServicePlanSummary>) {
+        val ctx = requireContext()
+        val attentionCount = summaries.count { it.status != ServicePlanStatus.OK }
+        binding.tvServicePlanStatus.text = if (attentionCount > 0) {
+            getString(R.string.service_plan_dashboard_attention, attentionCount)
+        } else {
+            getString(R.string.service_plan_dashboard_all_clear)
+        }
+        val next = summaries.firstOrNull()
+        binding.tvServicePlanNext.text = next?.let {
+            val details = buildList {
+                ctx.servicePlanDistanceText(it.kmRemaining)?.let { text -> add(text) }
+                ctx.servicePlanDateText(it.daysRemaining)?.let { text -> add(text) }
+            }.joinToString("  ·  ")
+            getString(
+                R.string.service_plan_dashboard_next,
+                "${ctx.servicePlanTitle(it.plan)}${if (details.isBlank()) "" else "  ·  $details"}"
+            )
+        } ?: getString(R.string.service_plan_empty)
+        val colorRes = when (next?.status) {
+            ServicePlanStatus.OVERDUE -> R.color.color_error
+            ServicePlanStatus.DUE -> R.color.geardex_orange
+            ServicePlanStatus.SOON -> R.color.color_warning
+            else -> R.color.color_success
+        }
+        binding.tvServicePlanStatus.setTextColor(ContextCompat.getColor(ctx, colorRes))
     }
 
     private fun decodeSampledBitmap(path: String, reqWidth: Int, reqHeight: Int): android.graphics.Bitmap? {

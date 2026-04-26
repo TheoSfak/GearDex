@@ -79,6 +79,8 @@
     <!-- Parking Saver -->
     <color name="accent_parking">#0288D1</color>
     <color name="accent_parking_bg">#1A0288D1</color>
+    <color name="accent_service_plan">#00897B</color>
+    <color name="accent_service_plan_bg">#1A00897B</color>
 
     <!-- Legacy -->
     <color name="black">#FF000000</color>
