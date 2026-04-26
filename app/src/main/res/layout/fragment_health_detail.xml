@@ -41,7 +41,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:letterSpacing="-0.02" />
+                android:letterSpacing="0" />
 
         </LinearLayout>
 

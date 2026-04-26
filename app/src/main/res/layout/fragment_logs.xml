@@ -17,23 +17,24 @@
             android:background="@drawable/bg_header_logs"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="28dp"
-            android:paddingTop="28dp"
-            android:paddingBottom="20dp">
+            android:paddingHorizontal="@dimen/spacing_lg"
+            android:paddingTop="24dp"
+            android:paddingBottom="18dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:letterSpacing="-0.02"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="@string/logs_title"
-                android:textColor="@color/text_primary"
-                android:textSize="30sp"
+                android:textColor="@color/white"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Geardex.Dropdown"
-                android:layout_width="wrap_content"
+                android:layout_width="156dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/logs_select_vehicle">
 

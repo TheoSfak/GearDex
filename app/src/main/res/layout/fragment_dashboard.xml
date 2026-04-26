@@ -84,7 +84,7 @@
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     android:textStyle="bold"
-                    android:letterSpacing="-0.02"
+                    android:letterSpacing="0"
                     tools:text="BMW M3" />
 
                 <TextView

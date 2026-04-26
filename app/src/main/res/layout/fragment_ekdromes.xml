@@ -16,8 +16,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_header_ekdromes"
             android:paddingHorizontal="@dimen/spacing_lg"
-            android:paddingTop="28dp"
-            android:paddingBottom="@dimen/spacing_lg">
+            android:paddingTop="26dp"
+            android:paddingBottom="18dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -28,17 +28,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/ekdromes_title"
-                    android:textColor="@color/text_primary"
+                    android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="-0.02" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/ekdromes_subtitle"
-                    android:textColor="@color/text_secondary"
+                    android:textColor="#E6FFFFFF"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -47,15 +46,14 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_gravity="end|center_vertical"
-                android:background="@drawable/bg_icon_circle"
-                android:backgroundTint="@color/accent_ekdromes_bg">
+                android:background="@drawable/bg_garage_header_badge">
 
                 <ImageView
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_nav_ekdromes"
-                    app:tint="@color/accent_ekdromes"
+                    app:tint="@color/white"
                     android:importantForAccessibility="no" />
 
             </FrameLayout>
