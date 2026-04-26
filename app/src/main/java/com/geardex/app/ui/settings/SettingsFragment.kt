@@ -3,7 +3,6 @@
 package com.geardex.app.ui.settings
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +17,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.geardex.app.BuildConfig
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentSettingsBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -68,6 +68,7 @@ class SettingsFragment : Fragment() {
         setupLanguageChips()
         setupAuthSection()
         setupExportSection()
+        setupUpdateSection()
         setupGoogleApiSection()
         observeViewModel()
     }
@@ -155,6 +156,18 @@ class SettingsFragment : Fragment() {
                     Snackbar.make(binding.root, getString(R.string.pdf_no_vehicles), Snackbar.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun setupUpdateSection() {
+        binding.cardGithubUpdates.visibility = if (BuildConfig.ENABLE_UPDATE_CHECK) View.VISIBLE else View.GONE
+        binding.tvGithubVersion.text = getString(R.string.settings_update_current_version, BuildConfig.VERSION_NAME)
+        binding.btnCheckUpdates.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                "https://github.com/${BuildConfig.GITHUB_REPO}/releases/latest".toUri()
+            )
+            startActivity(intent)
         }
     }
 

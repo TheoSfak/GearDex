@@ -190,6 +190,12 @@
     <string name="settings_sync_now">Sync Now</string>
     <string name="settings_signed_in_as">Signed in as: %1$s</string>
 
+    <!-- GitHub Updates -->
+    <string name="settings_update_title">GitHub Updates</string>
+    <string name="settings_update_current_version">Installed version: %1$s</string>
+    <string name="settings_update_description">Open the latest GitHub release to download and install an update.</string>
+    <string name="settings_update_check">Check for updates</string>
+
     <!-- PDF Export -->
     <string name="pdf_export_vehicle">Export PDF Report</string>
     <string name="pdf_export_section">Export Reports</string>

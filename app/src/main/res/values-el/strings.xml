@@ -190,6 +190,12 @@
     <string name="settings_sync_now">Συγχρονισμός</string>
     <string name="settings_signed_in_as">Συνδεδεμένος/η ως: %1$s</string>
 
+    <!-- Ενημερώσεις GitHub -->
+    <string name="settings_update_title">Ενημερώσεις GitHub</string>
+    <string name="settings_update_current_version">Εγκατεστημένη έκδοση: %1$s</string>
+    <string name="settings_update_description">Άνοιξε την τελευταία έκδοση στο GitHub για λήψη και εγκατάσταση ενημέρωσης.</string>
+    <string name="settings_update_check">Έλεγχος ενημερώσεων</string>
+
     <!-- Εξαγωγή PDF -->
     <string name="pdf_export_vehicle">Εξαγωγή Αναφοράς PDF</string>
     <string name="pdf_export_section">Εξαγωγή Αναφορών</string>
