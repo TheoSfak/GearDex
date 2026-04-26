@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="@string/footer_credit"
         android:textColor="@color/text_hint"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:gravity="center"
         android:paddingVertical="4dp"
         android:background="@color/nav_background"

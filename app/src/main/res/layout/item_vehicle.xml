@@ -73,7 +73,7 @@
             android:paddingVertical="6dp"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold"
             android:letterSpacing="0.1"
             app:layout_constraintStart_toStartOf="parent"

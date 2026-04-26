@@ -3,6 +3,7 @@ package com.geardex.app.ui.garage
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -61,7 +62,7 @@ class VehicleAdapter(
             val score = scores[vehicle.id] ?: 100
             binding.tvHealthScore.text = score.toString()
             val color = scoreColor(score)
-            val badgeBg = ctx.getDrawable(R.drawable.bg_score_circle)!!.mutate()
+            val badgeBg = AppCompatResources.getDrawable(ctx, R.drawable.bg_score_circle)!!.mutate()
             DrawableCompat.setTint(badgeBg, color)
             binding.tvHealthScore.background = badgeBg
             binding.viewScoreStrip.setBackgroundColor(color)

@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.pdf.PdfDocument
+import androidx.core.graphics.toColorInt
 import com.geardex.app.data.local.entity.FuelLog
 import com.geardex.app.data.local.entity.ServiceLog
 import com.geardex.app.data.local.entity.Vehicle
@@ -27,38 +28,38 @@ class PdfReportGenerator @Inject constructor(@ApplicationContext private val con
     private val dateTimeFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
     private val titlePaint = Paint().apply {
-        color = Color.parseColor("#1976D2")
+        color = "#1976D2".toColorInt()
         textSize = 22f
         isFakeBoldText = true
         isAntiAlias = true
     }
 
     private val headerPaint = Paint().apply {
-        color = Color.parseColor("#333333")
+        color = "#333333".toColorInt()
         textSize = 16f
         isFakeBoldText = true
         isAntiAlias = true
     }
 
     private val textPaint = Paint().apply {
-        color = Color.parseColor("#444444")
+        color = "#444444".toColorInt()
         textSize = 11f
         isAntiAlias = true
     }
 
     private val smallPaint = Paint().apply {
-        color = Color.parseColor("#666666")
+        color = "#666666".toColorInt()
         textSize = 9f
         isAntiAlias = true
     }
 
     private val linePaint = Paint().apply {
-        color = Color.parseColor("#DDDDDD")
+        color = "#DDDDDD".toColorInt()
         strokeWidth = 1f
     }
 
     private val accentPaint = Paint().apply {
-        color = Color.parseColor("#1976D2")
+        color = "#1976D2".toColorInt()
         textSize = 11f
         isFakeBoldText = true
         isAntiAlias = true

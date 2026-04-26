@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">GearDex</string>
+    <string name="placeholder_dash">—</string>
+    <string name="placeholder_money_zero">€0</string>
+    <string name="placeholder_km_zero">0 km</string>
+    <string name="placeholder_distance_zero">0.0 km</string>
+    <string name="placeholder_speed_zero">0 km/h</string>
+    <string name="placeholder_timer_zero">00:00</string>
 
     <!-- Bottom Navigation -->
     <string name="nav_garage">Garage</string>
@@ -59,7 +65,9 @@
     <string name="glovebox_add_document">Add Document</string>
     <string name="glovebox_empty_title">No Documents Saved</string>
     <string name="glovebox_empty_subtitle">Documents are stored securely on this device only</string>
-    <string name="glovebox_privacy_notice">Your data. Only on this device.</string>
+    <string name="glovebox_privacy_notice">Encrypted and stored only on this device</string>
+    <string name="doc_open_failed">Could not open this document</string>
+    <string name="doc_no_file_selected">No file selected</string>
     <string name="doc_type_kteo">KTEO</string>
     <string name="doc_type_insurance">Insurance</string>
     <string name="doc_type_road_tax">Road Tax</string>
@@ -276,6 +284,8 @@
     <!-- Vehicle Photo -->
     <string name="vehicle_pick_photo">Gallery</string>
     <string name="vehicle_take_photo">Camera</string>
+    <string name="vehicle_photo_preview">Vehicle photo preview</string>
+    <string name="favorite_shop">Favorite shop</string>
 
     <!-- Footer -->
     <string name="footer_credit">Created with \u2764 by Theodore Sfakianakis</string>
@@ -298,11 +308,20 @@
     <string name="insight_fuel_drop_desc">Economy worsened by %1$d%% — now %2$.1f L/100km</string>
     <string name="insight_service_due_title">Service Due Soon</string>
     <string name="insight_service_overdue_title">Service Overdue</string>
-    <string name="insight_service_due_desc">%1$d km since last service — ~%2$d days left</string>
+    <plurals name="insight_service_due_desc">
+        <item quantity="one">%1$d km since last service — ~%2$d day left</item>
+        <item quantity="other">%1$d km since last service — ~%2$d days left</item>
+    </plurals>
     <string name="insight_doc_expiring_title">%1$s Expiring</string>
     <string name="insight_doc_expired_title">%1$s Expired</string>
-    <string name="insight_doc_expiring_desc">Expires in %1$d days</string>
-    <string name="insight_doc_expired_desc">Expired %1$d days ago</string>
+    <plurals name="insight_doc_expiring_desc">
+        <item quantity="one">Expires in %1$d day</item>
+        <item quantity="other">Expires in %1$d days</item>
+    </plurals>
+    <plurals name="insight_doc_expired_desc">
+        <item quantity="one">Expired %1$d day ago</item>
+        <item quantity="other">Expired %1$d days ago</item>
+    </plurals>
     <string name="insight_high_spend_title">High Monthly Spend</string>
     <string name="insight_high_spend_desc">€%1$.0f this month vs €%2$.0f average</string>
     <string name="insight_milestone_title">Milestone Approaching</string>
@@ -504,4 +523,8 @@
     <string name="parking_meter_notif_body_no_address">Your parking meter expires in 5 minutes</string>
     <string name="parking_notif_channel">Parking Meter Alerts</string>
     <string name="parking_notif_channel_desc">Notifications for parking meter expiry</string>
+
+    <!-- Update notifications (GitHub flavor only) -->
+    <string name="update_notification_title">New version available</string>
+    <string name="update_notification_message">GearDex %s is available. Tap to download the latest version.</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.geardex.app.ui.settings
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geardex.app.data.remote.FirebaseManager
@@ -132,10 +133,10 @@ class SettingsViewModel @Inject constructor(
     fun getSavedApiKey(): String? = prefs.getString("google_maps_api_key", null)
 
     fun saveApiKey(key: String) {
-        prefs.edit().putString("google_maps_api_key", key).apply()
+        prefs.edit() {putString("google_maps_api_key", key)}
     }
 
     fun clearApiKey() {
-        prefs.edit().remove("google_maps_api_key").apply()
+        prefs.edit() {remove("google_maps_api_key")}
     }
 }

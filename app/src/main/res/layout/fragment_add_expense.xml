@@ -34,6 +34,7 @@
                 android:id="@+id/spinner_expense_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/doc_vehicle"
                 android:inputType="none"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />
@@ -53,6 +54,7 @@
                 android:id="@+id/spinner_expense_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/expense_category"
                 android:inputType="none"
                 android:textColor="@color/text_primary"
                 android:textSize="14sp" />

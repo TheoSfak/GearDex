@@ -32,8 +32,8 @@ android {
         applicationId = "com.geardex.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.5.0"
+        versionCode = 6
+        versionName = "1.5.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -63,6 +63,20 @@ android {
                 keyAlias = keystoreProperties["keyAlias"] as String
                 keyPassword = keystoreProperties["keyPassword"] as String
             }
+        }
+    }
+
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("github") {
+            dimension = "distribution"
+            buildConfigField("boolean", "ENABLE_UPDATE_CHECK", "true")
+            buildConfigField("String", "GITHUB_REPO", "\"TheoSfak/GearDex\"")
+        }
+        create("playstore") {
+            dimension = "distribution"
+            buildConfigField("boolean", "ENABLE_UPDATE_CHECK", "false")
+            buildConfigField("String", "GITHUB_REPO", "\"\"")
         }
     }
 
@@ -123,6 +137,18 @@ android {
         checkReleaseBuilds = true
         // Treat missing translations as error
         error += "MissingTranslation"
+        // These noisy advisory checks are tracked separately from release-blocking lint.
+        disable += listOf(
+            "AndroidGradlePluginVersion",
+            "GradleDependency",
+            "KaptUsageInsteadOfKsp",
+            "Overdraw",
+            "SetTextI18n",
+            "UnusedResources",
+            "UseCompoundDrawables",
+            "UselessParent",
+            "VectorPath"
+        )
     }
 
     // Room schema export directory for AutoMigration
@@ -187,7 +213,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // Vico charts
-    implementation("com.patrykandpatrick.vico:views:2.0.2")
+    implementation(libs.vico.views)
 
     // ML Kit Text Recognition (bundled — no Play Services needed, works offline)
     implementation(libs.mlkit.text.recognition)

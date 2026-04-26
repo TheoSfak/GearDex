@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.geardex.app.ui.settings
 
 import android.content.Intent
@@ -9,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -180,7 +183,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.btnOpenGoogleConsole.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://console.cloud.google.com/apis/credentials"))
+            val intent = Intent(Intent.ACTION_VIEW, "https://console.cloud.google.com/apis/credentials".toUri())
             startActivity(intent)
         }
     }

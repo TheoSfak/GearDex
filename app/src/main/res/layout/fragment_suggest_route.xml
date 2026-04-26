@@ -91,6 +91,7 @@
                 android:id="@+id/dropdown_region"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/community_region"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -108,6 +109,7 @@
                 android:id="@+id/dropdown_difficulty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/community_difficulty"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -266,7 +268,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_md"
             android:layout_marginTop="@dimen/spacing_sm"
-            android:orientation="horizontal">
+            android:baselineAligned="false" android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"

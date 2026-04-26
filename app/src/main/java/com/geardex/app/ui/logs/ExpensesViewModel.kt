@@ -1,6 +1,9 @@
+@file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+
 package com.geardex.app.ui.logs
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geardex.app.data.local.dao.CategoryTotal
@@ -108,7 +111,7 @@ class ExpensesViewModel @Inject constructor(
     }
 
     fun setBudget(vehicleId: Long, amount: Double) {
-        prefs.edit().putFloat("budget_$vehicleId", amount.toFloat()).apply()
+        prefs.edit() {putFloat("budget_$vehicleId", amount.toFloat())}
         refreshSummary(vehicleId)
     }
 

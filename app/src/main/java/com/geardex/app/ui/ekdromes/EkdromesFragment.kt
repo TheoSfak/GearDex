@@ -296,8 +296,9 @@ class EkdromesFragment : Fragment() {
 
     private fun showReviewsBottomSheet(route: EkdromeRoute) {
         val bottomSheet = BottomSheetDialog(requireContext())
+        val sheetParent = android.widget.FrameLayout(requireContext())
         val sheetView = LayoutInflater.from(requireContext())
-            .inflate(R.layout.bottom_sheet_reviews, null)
+            .inflate(R.layout.bottom_sheet_reviews, sheetParent, false)
         bottomSheet.setContentView(sheetView)
 
         val routeId = viewModel.getRouteReviewId(route)

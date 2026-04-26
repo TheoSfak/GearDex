@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -174,9 +175,9 @@ class ParkingFragment : Fragment() {
             val label = Uri.encode(
                 spot.address.ifBlank { getString(R.string.parking_spot_label) }
             )
-            Uri.parse("geo:${spot.latitude},${spot.longitude}?q=${spot.latitude},${spot.longitude}($label)")
+            "geo:${spot.latitude},${spot.longitude}?q=${spot.latitude},${spot.longitude}($label)".toUri()
         } else {
-            Uri.parse("geo:0,0?q=${Uri.encode(spot.address)}")
+            "geo:0,0?q=${Uri.encode(spot.address)}".toUri()
         }
         startActivity(
             Intent.createChooser(

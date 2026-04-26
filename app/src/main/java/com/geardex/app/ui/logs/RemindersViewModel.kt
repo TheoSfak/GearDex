@@ -1,3 +1,5 @@
+@file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+
 package com.geardex.app.ui.logs
 
 import androidx.lifecycle.ViewModel

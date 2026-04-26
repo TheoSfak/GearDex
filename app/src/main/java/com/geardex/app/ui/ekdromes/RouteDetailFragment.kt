@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -181,7 +182,7 @@ class RouteDetailFragment : Fragment() {
         // View on Map
         binding.btnViewOnMap.setOnClickListener {
             val label = if (greek) route.nameEl else route.nameEn
-            val geoUri = Uri.parse("geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})")
+            val geoUri = "geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})".toUri()
             startActivity(Intent(Intent.ACTION_VIEW, geoUri))
         }
 
@@ -194,7 +195,7 @@ class RouteDetailFragment : Fragment() {
                 allPoints.add(route.endLocation)
                 val path = allPoints.joinToString("/") { Uri.encode(it) }
                 val mapsUrl = "https://www.google.com/maps/dir/$path"
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mapsUrl)))
+                startActivity(Intent(Intent.ACTION_VIEW, mapsUrl.toUri()))
             }
         }
 

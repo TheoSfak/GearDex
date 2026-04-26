@@ -77,6 +77,7 @@ android:textColor="@color/accent_glovebox"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_gravity="center"
+                    android:importantForAccessibility="no"
                     android:src="@drawable/ic_shield"
                     app:tint="@color/accent_glovebox" />
 
@@ -85,7 +86,7 @@ android:textColor="@color/accent_glovebox"
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Documents are encrypted and stored only on this device"
+                android:text="@string/glovebox_privacy_notice"
                 android:textColor="@color/text_secondary"
                 android:textSize="12sp" />
 
@@ -118,6 +119,7 @@ android:textColor="@color/accent_glovebox"
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
+                    android:importantForAccessibility="no"
                     android:src="@drawable/ic_shield"
                     app:tint="@color/accent_glovebox" />
 

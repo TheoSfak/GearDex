@@ -32,6 +32,7 @@
                 android:id="@+id/spinner_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/doc_vehicle"
                 android:inputType="none"
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +48,7 @@
                 android:id="@+id/spinner_doc_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/doc_type"
                 android:inputType="none"
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,7 +78,7 @@
             android:textColor="@color/text_secondary"
             android:textSize="13sp"
             android:layout_marginBottom="@dimen/form_field_spacing"
-            android:hint="No file selected" />
+            android:hint="@string/doc_no_file_selected" />
 
         <!-- Expiry Date -->
         <com.google.android.material.button.MaterialButton

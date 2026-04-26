@@ -34,4 +34,6 @@ class LogRepository @Inject constructor(
     suspend fun getServiceLogsSync(vehicleId: Long): List<ServiceLog> = serviceLogDao.getServiceLogsForVehicleSync(vehicleId)
     suspend fun replaceAllFuelLogs(logs: List<FuelLog>) { fuelLogDao.replaceAll(logs) }
     suspend fun replaceAllServiceLogs(logs: List<ServiceLog>) { serviceLogDao.replaceAll(logs) }
+    suspend fun upsertFuelLogs(logs: List<FuelLog>) { fuelLogDao.insertAll(logs) }
+    suspend fun upsertServiceLogs(logs: List<ServiceLog>) { serviceLogDao.insertAll(logs) }
 }

@@ -23,6 +23,12 @@ class GloveboxViewModel @Inject constructor(
     private val vehicleRepository: VehicleRepository
 ) : ViewModel() {
 
+    init {
+        viewModelScope.launch {
+            gloveboxRepository.migratePlaintextDocumentsToEncrypted()
+        }
+    }
+
     val documents: StateFlow<List<GloveboxDocument>> = gloveboxRepository.getAllDocuments()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
@@ -49,5 +55,9 @@ class GloveboxViewModel @Inject constructor(
 
     suspend fun exportZip(): File = withContext(Dispatchers.IO) {
         gloveboxRepository.exportAllAsZip()
+    }
+
+    suspend fun prepareDocumentForViewing(document: GloveboxDocument): File = withContext(Dispatchers.IO) {
+        gloveboxRepository.prepareDocumentForViewing(document)
     }
 }

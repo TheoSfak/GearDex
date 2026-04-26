@@ -34,12 +34,14 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Geardex.Dropdown"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/logs_select_vehicle">
 
                 <AutoCompleteTextView
                     android:id="@+id/spinner_vehicle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/logs_select_vehicle"
                     android:inputType="none"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp" />

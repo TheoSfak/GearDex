@@ -43,8 +43,11 @@ class InsightAdapter : ListAdapter<DashboardInsight, InsightAdapter.InsightViewH
                         ctx.getString(R.string.insight_service_overdue_title)
                     else
                         ctx.getString(R.string.insight_service_due_title)
-                    binding.tvInsightDescription.text = ctx.getString(
-                        R.string.insight_service_due_desc, insight.kmSinceLastService, insight.estimatedDaysLeft
+                    binding.tvInsightDescription.text = ctx.resources.getQuantityString(
+                        R.plurals.insight_service_due_desc,
+                        insight.estimatedDaysLeft,
+                        insight.kmSinceLastService,
+                        insight.estimatedDaysLeft
                     )
                 }
                 is DashboardInsight.DocumentExpiring -> {
@@ -61,10 +64,20 @@ class InsightAdapter : ListAdapter<DashboardInsight, InsightAdapter.InsightViewH
                         ctx.getString(R.string.insight_doc_expired_title, docName)
                     else
                         ctx.getString(R.string.insight_doc_expiring_title, docName)
-                    binding.tvInsightDescription.text = if (insight.daysLeft <= 0)
-                        ctx.getString(R.string.insight_doc_expired_desc, -insight.daysLeft)
-                    else
-                        ctx.getString(R.string.insight_doc_expiring_desc, insight.daysLeft)
+                    binding.tvInsightDescription.text = if (insight.daysLeft <= 0) {
+                        val daysExpired = -insight.daysLeft
+                        ctx.resources.getQuantityString(
+                            R.plurals.insight_doc_expired_desc,
+                            daysExpired,
+                            daysExpired
+                        )
+                    } else {
+                        ctx.resources.getQuantityString(
+                            R.plurals.insight_doc_expiring_desc,
+                            insight.daysLeft,
+                            insight.daysLeft
+                        )
+                    }
                 }
                 is DashboardInsight.HighMonthlySpend -> {
                     binding.ivInsightIcon.setImageResource(R.drawable.ic_money)

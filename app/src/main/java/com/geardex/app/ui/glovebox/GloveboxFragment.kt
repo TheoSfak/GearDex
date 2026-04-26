@@ -1,12 +1,11 @@
 package com.geardex.app.ui.glovebox
 
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -15,8 +14,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.animation.AnimationUtils
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.geardex.app.R
 import com.geardex.app.databinding.FragmentGloveboxBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,17 +41,22 @@ class GloveboxFragment : Fragment() {
 
         adapter = DocumentAdapter(
             onOpenClick = { doc ->
-                val file = java.io.File(doc.localFilePath)
-                if (file.exists()) {
-                    val uri = FileProvider.getUriForFile(
-                        requireContext(), "${requireContext().packageName}.provider", file
-                    )
-                    val intent = Intent(Intent.ACTION_VIEW).apply {
-                        setDataAndType(uri, requireContext().contentResolver.getType(uri) ?: "*/*")
-                        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    runCatching { viewModel.prepareDocumentForViewing(doc) }
+                        .onSuccess { file ->
+                            val uri = FileProvider.getUriForFile(
+                                requireContext(), "${requireContext().packageName}.provider", file
+                            )
+                            val intent = Intent(Intent.ACTION_VIEW).apply {
+                                setDataAndType(uri, requireContext().contentResolver.getType(uri) ?: "*/*")
+                                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            }
+                            startActivity(Intent.createChooser(intent, doc.fileName))
+                        }
+                        .onFailure {
+                            Toast.makeText(requireContext(), R.string.doc_open_failed, Toast.LENGTH_SHORT).show()
+                        }
                     }
-                    startActivity(Intent.createChooser(intent, doc.fileName))
-                }
             },
             onDeleteClick = { doc -> viewModel.deleteDocument(doc) }
         )

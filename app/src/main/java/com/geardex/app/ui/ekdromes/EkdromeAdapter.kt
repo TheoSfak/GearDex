@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@ class EkdromeAdapter(
 
     fun updateSavedKeys(keys: Set<String>) {
         savedKeys = keys
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemCount)
     }
 
     private val isGreek: Boolean
@@ -70,7 +71,7 @@ class EkdromeAdapter(
             // View on Map
             binding.btnViewOnMap.setOnClickListener {
                 val label = if (greek) route.nameEl else route.nameEn
-                val geoUri = Uri.parse("geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})")
+                val geoUri = "geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})".toUri()
                 val intent = Intent(Intent.ACTION_VIEW, geoUri)
                 it.context.startActivity(intent)
             }
@@ -84,7 +85,7 @@ class EkdromeAdapter(
                     allPoints.add(route.endLocation)
                     val path = allPoints.joinToString("/") { Uri.encode(it) }
                     val mapsUrl = "https://www.google.com/maps/dir/$path"
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(mapsUrl))
+                    val intent = Intent(Intent.ACTION_VIEW, mapsUrl.toUri())
                     it.context.startActivity(intent)
                 }
             } else {

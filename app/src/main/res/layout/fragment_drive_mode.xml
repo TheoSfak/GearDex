@@ -33,6 +33,7 @@
                 android:id="@+id/spinner_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/doc_vehicle"
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -73,7 +74,7 @@
                         android:id="@+id/tv_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="00:00"
+                        android:text="@string/placeholder_timer_zero"
                         android:textColor="@color/accent_drive"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -108,7 +109,7 @@
                         android:id="@+id/tv_distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0.0 km"
+                        android:text="@string/placeholder_distance_zero"
                         android:textColor="@color/accent_drive"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -143,7 +144,7 @@
                         android:id="@+id/tv_avg_speed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0 km/h"
+                        android:text="@string/placeholder_speed_zero"
                         android:textColor="@color/accent_drive"
                         android:textSize="24sp"
                         android:textStyle="bold" />

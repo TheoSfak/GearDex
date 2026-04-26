@@ -41,6 +41,7 @@
                     android:scaleType="center"
                     android:src="@drawable/ic_car"
                     android:background="@color/surface_elevated"
+                    android:contentDescription="@string/vehicle_photo_preview"
                     app:tint="@color/text_hint"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -182,7 +183,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:baselineAligned="false" android:orientation="horizontal"
             android:layout_marginBottom="@dimen/form_field_spacing">
 
             <com.google.android.material.textfield.TextInputLayout

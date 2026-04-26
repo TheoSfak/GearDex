@@ -38,6 +38,11 @@ interface VehicleDao {
     suspend fun insertAll(vehicles: List<Vehicle>)
 
     @Transaction
+    suspend fun upsertAll(vehicles: List<Vehicle>) {
+        insertAll(vehicles)
+    }
+
+    @Transaction
     suspend fun replaceAll(vehicles: List<Vehicle>) {
         clearAll()
         insertAll(vehicles)

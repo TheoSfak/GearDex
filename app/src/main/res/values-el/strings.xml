@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">GearDex</string>
+    <string name="placeholder_dash">—</string>
+    <string name="placeholder_money_zero">€0</string>
+    <string name="placeholder_km_zero">0 km</string>
+    <string name="placeholder_distance_zero">0.0 km</string>
+    <string name="placeholder_speed_zero">0 km/h</string>
+    <string name="placeholder_timer_zero">00:00</string>
 
     <!-- Bottom Navigation -->
     <string name="nav_garage">Γκαράζ</string>
@@ -59,7 +65,9 @@
     <string name="glovebox_add_document">Προσθήκη Εγγράφου</string>
     <string name="glovebox_empty_title">Δεν υπάρχουν Έγγραφα</string>
     <string name="glovebox_empty_subtitle">Τα έγγραφα αποθηκεύονται ασφαλώς μόνο στη συσκευή</string>
-    <string name="glovebox_privacy_notice">Τα δεδομένα σας. Μόνο σε αυτή τη συσκευή.</string>
+    <string name="glovebox_privacy_notice">Κρυπτογραφημένα και αποθηκευμένα μόνο σε αυτή τη συσκευή</string>
+    <string name="doc_open_failed">Δεν ήταν δυνατό το άνοιγμα του εγγράφου</string>
+    <string name="doc_no_file_selected">Δεν έχει επιλεγεί αρχείο</string>
     <string name="doc_type_kteo">ΚΤΕΟ</string>
     <string name="doc_type_insurance">Ασφαλιστήριο</string>
     <string name="doc_type_road_tax">Τέλη Κυκλοφορίας</string>
@@ -277,6 +285,8 @@
     <!-- Vehicle Photo -->
     <string name="vehicle_pick_photo">Συλλογή</string>
     <string name="vehicle_take_photo">Κάμερα</string>
+    <string name="vehicle_photo_preview">Προεπισκόπηση φωτογραφίας οχήματος</string>
+    <string name="favorite_shop">Αγαπημένο συνεργείο</string>
 
     <!-- Footer -->
     <string name="footer_credit">Δημιουργήθηκε με \u2764 από τον Theodore Sfakianakis</string>
@@ -299,11 +309,20 @@
     <string name="insight_fuel_drop_desc">Η κατανάλωση χειροτέρεψε κατά %1$d%% — τώρα %2$.1f L/100km</string>
     <string name="insight_service_due_title">Σέρβις Σύντομα</string>
     <string name="insight_service_overdue_title">Σέρβις Εκπρόθεσμο</string>
-    <string name="insight_service_due_desc">%1$d km από τελευταίο σέρβις — ~%2$d μέρες ακόμα</string>
+    <plurals name="insight_service_due_desc">
+        <item quantity="one">%1$d km από τελευταίο σέρβις — ~%2$d μέρα ακόμα</item>
+        <item quantity="other">%1$d km από τελευταίο σέρβις — ~%2$d μέρες ακόμα</item>
+    </plurals>
     <string name="insight_doc_expiring_title">%1$s Λήγει</string>
     <string name="insight_doc_expired_title">%1$s Έληξε</string>
-    <string name="insight_doc_expiring_desc">Λήγει σε %1$d μέρες</string>
-    <string name="insight_doc_expired_desc">Έληξε πριν %1$d μέρες</string>
+    <plurals name="insight_doc_expiring_desc">
+        <item quantity="one">Λήγει σε %1$d μέρα</item>
+        <item quantity="other">Λήγει σε %1$d μέρες</item>
+    </plurals>
+    <plurals name="insight_doc_expired_desc">
+        <item quantity="one">Έληξε πριν %1$d μέρα</item>
+        <item quantity="other">Έληξε πριν %1$d μέρες</item>
+    </plurals>
     <string name="insight_high_spend_title">Υψηλά Μηνιαία Έξοδα</string>
     <string name="insight_high_spend_desc">€%1$.0f αυτόν τον μήνα vs €%2$.0f μέσος όρος</string>
     <string name="insight_milestone_title">Ορόσημο Πλησιάζει</string>
@@ -505,4 +524,8 @@
     <string name="parking_meter_notif_body_no_address">Το παρκόμετρο λήγει σε 5 λεπτά</string>
     <string name="parking_notif_channel">Ειδοποιήσεις Παρκόμετρου</string>
     <string name="parking_notif_channel_desc">Ειδοποιήσεις για λήξη παρκόμετρου</string>
+
+    <!-- Ειδοποιήσεις ενημέρωσης (μόνο για GitHub έκδοση) -->
+    <string name="update_notification_title">Νέα έκδοση διαθέσιμη</string>
+    <string name="update_notification_message">Το GearDex %s είναι διαθέσιμο. Πατήστε για λήψη της νέας έκδοσης.</string>
 </resources>

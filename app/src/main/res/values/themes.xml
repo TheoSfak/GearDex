@@ -11,7 +11,7 @@
         <item name="android:statusBarColor">@color/surface_dark</item>
         <item name="android:navigationBarColor">@color/nav_background</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="shapeAppearanceMediumComponent">@style/Shape.Geardex.Medium</item>
     </style>
 

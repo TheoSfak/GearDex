@@ -53,5 +53,9 @@ class VehicleRepository @Inject constructor(
     suspend fun replaceAllLocal(vehicles: List<Vehicle>) {
         vehicleDao.replaceAll(vehicles)
     }
+
+    suspend fun upsertAllLocal(vehicles: List<Vehicle>) {
+        vehicleDao.upsertAll(vehicles)
+    }
 }
 

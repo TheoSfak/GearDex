@@ -33,8 +33,6 @@ object OcrReceiptParser {
     private val datePattern = Regex(
         """(\d{2})[/\-.](\d{2})[/\-.](\d{4})"""
     )
-    private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
     // ── Fallback: extract ALL decimal numbers from the text ──────────────
 
     private val allNumbersPattern = Regex("""(\d{1,5}[.,]\d{1,3})""")
@@ -93,6 +91,7 @@ object OcrReceiptParser {
         val dateMatch = datePattern.find(rawText)
         val date = dateMatch?.let {
             val (day, month, year) = it.destructured
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
             runCatching { dateFormat.parse("$day/$month/$year")?.time }.getOrNull()
         }
 

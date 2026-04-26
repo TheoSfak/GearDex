@@ -1,7 +1,6 @@
 package com.geardex.app.data.remote
 
 import android.util.Log
-import com.geardex.app.data.local.entity.DocumentType
 import com.geardex.app.data.local.entity.FuelLog
 import com.geardex.app.data.local.entity.GloveboxDocument
 import com.geardex.app.data.local.entity.MaintenanceReminder
@@ -30,8 +29,6 @@ class FirestoreSyncRepository @Inject constructor(
     private fun fuelLogsCollection(uid: String) = userDoc(uid)?.collection("fuel_logs")
     private fun serviceLogsCollection(uid: String) = userDoc(uid)?.collection("service_logs")
     private fun remindersCollection(uid: String) = userDoc(uid)?.collection("reminders")
-    private fun documentsCollection(uid: String) = userDoc(uid)?.collection("documents")
-
     // ── Vehicle sync (existing) ─────────────────────────────────────────────
 
     suspend fun uploadVehicle(vehicle: Vehicle) {
@@ -194,38 +191,15 @@ class FirestoreSyncRepository @Inject constructor(
         }
     }
 
-    // ── Document sync (metadata only — files stay on device) ────────────────
+    // ── Document sync ───────────────────────────────────────────────────────
+    //
+    // Glovebox documents intentionally stay local-only. Syncing metadata would
+    // either leak device-local paths or create rows that cannot open on another
+    // device because the encrypted file bytes are not in Firestore.
 
-    suspend fun uploadAllDocuments(documents: List<GloveboxDocument>) {
-        val uid = firebaseManager.currentUser?.uid ?: return
-        val col = documentsCollection(uid) ?: return
-        val firestore = firebaseManager.firestore ?: return
-        documents.chunked(BATCH_LIMIT).forEach { chunk ->
-            firestore.batch().apply {
-                chunk.forEach { d -> set(col.document(d.id.toString()), d.toMap()) }
-            }.commit().await()
-        }
-    }
+    suspend fun uploadAllDocuments(documents: List<GloveboxDocument>) = Unit
 
-    suspend fun downloadDocuments(): List<GloveboxDocument> {
-        val uid = firebaseManager.currentUser?.uid ?: return emptyList()
-        val snapshot = documentsCollection(uid)?.get()?.await() ?: return emptyList()
-        return snapshot.documents.mapNotNull { doc ->
-            runCatching {
-                val typeStr = doc.getString("documentType") ?: "OTHER"
-                val type = runCatching { DocumentType.valueOf(typeStr) }.getOrElse { DocumentType.OTHER }
-                GloveboxDocument(
-                    id = doc.getLong("id") ?: 0L,
-                    vehicleId = doc.getLong("vehicleId") ?: 0L,
-                    documentType = type,
-                    localFilePath = doc.getString("localFilePath") ?: "",
-                    fileName = doc.getString("fileName") ?: "",
-                    expiryDate = doc.getLong("expiryDate"),
-                    addedAt = doc.getLong("addedAt") ?: System.currentTimeMillis()
-                )
-            }.onFailure { Log.e(TAG, "Failed to parse document ${doc.id}", it) }.getOrNull()
-        }
-    }
+    suspend fun downloadDocuments(): List<GloveboxDocument> = emptyList()
 
     // ── toMap extensions ────────────────────────────────────────────────────
 
@@ -282,13 +256,4 @@ class FirestoreSyncRepository @Inject constructor(
         "createdAt" to createdAt
     )
 
-    private fun GloveboxDocument.toMap(): Map<String, Any?> = mapOf(
-        "id" to id,
-        "vehicleId" to vehicleId,
-        "documentType" to documentType.name,
-        "localFilePath" to localFilePath,
-        "fileName" to fileName,
-        "expiryDate" to expiryDate,
-        "addedAt" to addedAt
-    )
 }

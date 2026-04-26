@@ -22,6 +22,7 @@
                 android:id="@+id/spinner_trip_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/logs_select_vehicle"
                 android:inputType="none"
                 android:textColor="@color/text_primary" />
 
@@ -91,6 +92,7 @@
                 android:id="@+id/spinner_purpose"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/trip_purpose"
                 android:inputType="none"
                 android:textColor="@color/text_primary" />
 

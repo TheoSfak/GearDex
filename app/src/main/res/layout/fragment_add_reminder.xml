@@ -22,6 +22,7 @@
                 android:id="@+id/spinner_reminder_vehicle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/reminder_vehicle"
                 android:inputType="none"
                 android:textColor="@color/text_primary" />
         </com.google.android.material.textfield.TextInputLayout>

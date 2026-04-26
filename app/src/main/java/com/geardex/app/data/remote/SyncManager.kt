@@ -21,23 +21,23 @@ class SyncManager @Inject constructor(
 
     /**
      * Called after login. Downloads all remote data.
-     * - If Firestore has vehicles: replace ALL local data (Firestore wins).
+     * - If Firestore has vehicles: merge remote data into local data.
      * - If Firestore is empty: upload all local data to Firestore.
      */
     suspend fun syncAfterLogin() {
         val remoteVehicles = firestoreSync.downloadVehicles()
         if (remoteVehicles.isNotEmpty()) {
-            // Remote has data — download everything
-            vehicleRepository.replaceAllLocal(remoteVehicles)
+            // Remote has data — merge it locally without deleting offline-only rows.
+            vehicleRepository.upsertAllLocal(remoteVehicles)
 
             val remoteFuel = firestoreSync.downloadFuelLogs()
-            if (remoteFuel.isNotEmpty()) logRepository.replaceAllFuelLogs(remoteFuel)
+            if (remoteFuel.isNotEmpty()) logRepository.upsertFuelLogs(remoteFuel)
 
             val remoteService = firestoreSync.downloadServiceLogs()
-            if (remoteService.isNotEmpty()) logRepository.replaceAllServiceLogs(remoteService)
+            if (remoteService.isNotEmpty()) logRepository.upsertServiceLogs(remoteService)
 
             val remoteReminders = firestoreSync.downloadReminders()
-            if (remoteReminders.isNotEmpty()) reminderRepository.replaceAllReminders(remoteReminders)
+            if (remoteReminders.isNotEmpty()) reminderRepository.upsertReminders(remoteReminders)
 
             val remoteDocs = firestoreSync.downloadDocuments()
             if (remoteDocs.isNotEmpty()) gloveboxRepository.replaceAllDocuments(remoteDocs)

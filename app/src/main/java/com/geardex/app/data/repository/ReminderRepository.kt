@@ -27,4 +27,5 @@ class ReminderRepository @Inject constructor(
     // Sync operations
     suspend fun getAllRemindersSync(): List<MaintenanceReminder> = dao.getAllRemindersSync()
     suspend fun replaceAllReminders(reminders: List<MaintenanceReminder>) { dao.replaceAll(reminders) }
+    suspend fun upsertReminders(reminders: List<MaintenanceReminder>) { dao.insertAll(reminders) }
 }
