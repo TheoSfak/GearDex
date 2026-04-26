@@ -176,7 +176,7 @@
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
-    <string name="settings_subtitle">Language &amp; cloud sync</string>
+    <string name="settings_subtitle">Language, reports &amp; updates</string>
     <string name="settings_language">Language</string>
     <string name="settings_language_en">English</string>
     <string name="settings_language_el">Greek / Ελληνικά</string>
