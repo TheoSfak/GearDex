@@ -123,6 +123,19 @@
 
         </HorizontalScrollView>
 
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_suggest_ekdrome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginBottom="@dimen/spacing_sm"
+            android:text="@string/community_submit_route"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/accent_ekdromes"
+            app:icon="@drawable/ic_nav_ekdromes"
+            app:iconTint="@color/white" />
+
         <!-- Empty state -->
         <TextView
             android:id="@+id/tv_empty_state"
@@ -147,18 +160,4 @@
             android:clipToPadding="false" />
 
     </LinearLayout>
-
-    <!-- Suggest FAB -->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_suggest_ekdrome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/spacing_lg"
-        android:text="@string/community_submit_route"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/accent_ekdromes"
-        app:icon="@drawable/ic_nav_ekdromes"
-        app:iconTint="@color/white" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

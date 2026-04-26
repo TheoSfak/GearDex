@@ -206,84 +206,100 @@
                     android:ellipsize="end"
                     android:visibility="gone" />
 
-                <!-- Button row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:orientation="vertical">
 
-                    <!-- View on Map button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_view_on_map"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:text="@string/ekdrome_view_on_map"
-                        android:textSize="11sp"
-                        app:icon="@drawable/ic_location"
-                        app:iconSize="14dp"
-                        app:cornerRadius="18dp" />
-
-                    <!-- Navigate button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_navigate"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="6dp"
-                        android:text="@string/ekdrome_navigate"
-                        android:textSize="11sp"
-                        app:icon="@drawable/ic_nav_ekdromes"
-                        app:iconSize="14dp"
-                        app:cornerRadius="18dp"
-                        android:visibility="gone" />
-
-                    <!-- Calculate Cost button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_calculate_cost"
-                        style="@style/Widget.Material3.Button.TonalButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="6dp"
-                        android:text="@string/trip_cost_button"
-                        android:textSize="11sp"
-                        app:icon="@drawable/ic_fuel"
-                        app:iconSize="14dp"
-                        app:cornerRadius="18dp" />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <!-- Reviews pill -->
                     <LinearLayout
-                        android:id="@+id/layout_reviews_pill"
-                        android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:background="@drawable/bg_pill_ekdrome"
-                        android:paddingHorizontal="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:clickable="true"
-                        android:focusable="true">
+                        android:gravity="center_vertical">
 
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="14dp"
-                            android:src="@drawable/ic_star"
-                            app:tint="#F9A825"
-                            android:layout_marginEnd="3dp"
-                            android:importantForAccessibility="no" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_view_on_map"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/ekdrome_view_on_map"
+                            android:textSize="11sp"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_location"
+                            app:iconSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/tv_review_count"
+                        <!-- Navigate button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_navigate"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/ekdrome_navigate"
+                            android:textSize="11sp"
+                            android:visibility="gone"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_nav_ekdromes"
+                            app:iconSize="14dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_calculate_cost"
+                            style="@style/Widget.Material3.Button.TonalButton"
+                            android:layout_width="0dp"
+                            android:layout_height="36dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/trip_cost_button"
+                            android:textSize="11sp"
+                            app:cornerRadius="18dp"
+                            app:icon="@drawable/ic_fuel"
+                            app:iconSize="14dp" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_reviews_pill"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="12sp" />
+                            android:layout_height="36dp"
+                            android:layout_marginStart="6dp"
+                            android:background="@drawable/bg_pill_ekdrome"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="10dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:layout_marginEnd="3dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_star"
+                                app:tint="#F9A825" />
+
+                            <TextView
+                                android:id="@+id/tv_review_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

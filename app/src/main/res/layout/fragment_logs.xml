@@ -36,7 +36,7 @@
                 style="@style/Widget.Geardex.Dropdown"
                 android:layout_width="156dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/logs_select_vehicle">
+                app:hintEnabled="false">
 
                 <AutoCompleteTextView
                     android:id="@+id/spinner_vehicle"
