@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.data.repository.LogRepository
+import com.geardex.app.data.repository.ParkingSpotRepository
 import com.geardex.app.data.repository.ReminderRepository
 import com.geardex.app.data.repository.VehicleRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,11 +21,15 @@ import javax.inject.Inject
 class GarageViewModel @Inject constructor(
     private val repository: VehicleRepository,
     private val logRepository: LogRepository,
-    private val reminderRepository: ReminderRepository
+    private val reminderRepository: ReminderRepository,
+    parkingSpotRepository: ParkingSpotRepository
 ) : ViewModel() {
 
     val vehicles: StateFlow<List<Vehicle>> = repository.getAllVehicles()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    val latestParkingSpot = parkingSpotRepository.getLatestSpot()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
     val scores: StateFlow<Map<Long, Int>> = combine(
         vehicles,

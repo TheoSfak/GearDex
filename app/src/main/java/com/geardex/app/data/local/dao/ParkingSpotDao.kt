@@ -16,6 +16,9 @@ interface ParkingSpotDao {
     @Query("SELECT * FROM parking_spots ORDER BY savedAt DESC")
     fun getAll(): Flow<List<ParkingSpot>>
 
+    @Query("SELECT * FROM parking_spots ORDER BY savedAt DESC LIMIT 1")
+    fun getLatest(): Flow<ParkingSpot?>
+
     @Query("SELECT * FROM parking_spots WHERE id = :id LIMIT 1")
     suspend fun getById(id: Long): ParkingSpot?
 }

@@ -27,13 +27,14 @@ class ParkingSpotAdapter(
     }
 
     inner class VH(private val b: ItemParkingSpotBinding) : RecyclerView.ViewHolder(b.root) {
-        fun bind(spot: ParkingSpot) {
+        fun bind(spot: ParkingSpot, isLatest: Boolean) {
             val dateFmt = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
             b.tvParkingDate.text = dateFmt.format(Date(spot.savedAt))
             b.tvParkingAddress.text =
                 spot.address.ifBlank { b.root.context.getString(R.string.parking_no_address) }
             b.tvParkingNotes.text = spot.notes
             b.tvParkingNotes.visibility = if (spot.notes.isBlank()) View.GONE else View.VISIBLE
+            b.tvLatestBadge.visibility = if (isLatest) View.VISIBLE else View.GONE
 
             val hasMeter = spot.meterExpiryMs > 0
             b.tvMeterExpiry.visibility = if (hasMeter) View.VISIBLE else View.GONE
@@ -53,5 +54,6 @@ class ParkingSpotAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
         VH(ItemParkingSpotBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: VH, position: Int) =
+        holder.bind(getItem(position), position == 0)
 }

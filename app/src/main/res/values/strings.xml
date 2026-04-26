@@ -520,6 +520,12 @@
     <string name="nav_parking">Parking</string>
     <string name="parking_title">Parking Saver</string>
     <string name="parking_save_current">Save Current Spot</string>
+    <string name="parking_last_title">Last Parking Spot</string>
+    <string name="parking_last_empty_title">No spot saved yet</string>
+    <string name="parking_last_empty_body">Save your position before leaving the vehicle.</string>
+    <string name="parking_last_saved_at">Saved %1$s</string>
+    <string name="parking_last_save_btn">Save / update spot</string>
+    <string name="parking_latest_badge">LAST</string>
     <string name="parking_get_location">Get My Location</string>
     <string name="parking_address_hint">Address / Location Description</string>
     <string name="parking_notes_hint">Notes (floor, section…)</string>

@@ -521,6 +521,12 @@
     <string name="nav_parking">Πάρκινγκ</string>
     <string name="parking_title">Αποθήκευση Πάρκινγκ</string>
     <string name="parking_save_current">Αποθήκευση Τρέχουσας Θέσης</string>
+    <string name="parking_last_title">Τελευταία Θέση Πάρκινγκ</string>
+    <string name="parking_last_empty_title">Δεν έχει αποθηκευτεί θέση</string>
+    <string name="parking_last_empty_body">Αποθήκευσε τη θέση πριν φύγεις από το όχημα.</string>
+    <string name="parking_last_saved_at">Αποθηκεύτηκε %1$s</string>
+    <string name="parking_last_save_btn">Αποθήκευση / ενημέρωση</string>
+    <string name="parking_latest_badge">ΤΕΛΕΥΤΑΙΑ</string>
     <string name="parking_get_location">Λήψη Τοποθεσίας</string>
     <string name="parking_address_hint">Διεύθυνση / Περιγραφή</string>
     <string name="parking_notes_hint">Σημειώσεις (όροφος, τομέα…)</string>

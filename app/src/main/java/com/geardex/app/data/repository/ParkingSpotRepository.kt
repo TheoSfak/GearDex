@@ -12,6 +12,8 @@ class ParkingSpotRepository @Inject constructor(
 ) {
     fun getAllSpots(): Flow<List<ParkingSpot>> = dao.getAll()
 
+    fun getLatestSpot(): Flow<ParkingSpot?> = dao.getLatest()
+
     suspend fun saveSpot(spot: ParkingSpot): Long = dao.insert(spot)
 
     suspend fun deleteSpot(spot: ParkingSpot) = dao.delete(spot)

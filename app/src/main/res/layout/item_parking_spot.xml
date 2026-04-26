@@ -51,6 +51,20 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_latest_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_pill_parking"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="2dp"
+                    android:text="@string/parking_latest_badge"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
                     android:id="@+id/tv_meter_expiry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
