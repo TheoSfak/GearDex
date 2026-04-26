@@ -21,6 +21,7 @@
     <string name="vehicle_type_car">Car</string>
     <string name="vehicle_type_motorcycle">Motorcycle</string>
     <string name="vehicle_type_atv">ATV</string>
+    <string name="vehicle_km_format">%1$s km</string>
     <string name="vehicle_make">Make</string>
     <string name="vehicle_model">Model</string>
     <string name="vehicle_year">Year</string>

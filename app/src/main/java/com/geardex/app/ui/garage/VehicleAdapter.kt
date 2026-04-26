@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -13,6 +14,7 @@ import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.local.entity.VehicleType
 import com.geardex.app.databinding.ItemVehicleBinding
 import java.io.File
+import java.text.NumberFormat
 
 class VehicleAdapter(
     private val onClick: (Vehicle) -> Unit
@@ -31,7 +33,10 @@ class VehicleAdapter(
             val ctx = binding.root.context
             binding.tvVehicleName.text = "${vehicle.make} ${vehicle.model} (${vehicle.year})"
             binding.tvVehiclePlate.text = vehicle.licensePlate
-            binding.tvVehicleKm.text = "${vehicle.currentKm} km"
+            binding.tvVehicleKm.text = ctx.getString(
+                R.string.vehicle_km_format,
+                NumberFormat.getIntegerInstance().format(vehicle.currentKm)
+            )
             binding.tvVehicleTypeBadge.text = when (vehicle.type) {
                 VehicleType.CAR -> ctx.getString(R.string.vehicle_type_car)
                 VehicleType.MOTORCYCLE -> ctx.getString(R.string.vehicle_type_motorcycle)
@@ -39,13 +44,29 @@ class VehicleAdapter(
             }
 
             // Per-type icon + placeholder gradient
-            val (iconRes, placeholderBgRes) = when (vehicle.type) {
-                VehicleType.CAR -> Pair(R.drawable.ic_car, R.drawable.bg_vehicle_placeholder)
-                VehicleType.MOTORCYCLE -> Pair(R.drawable.ic_motorcycle, R.drawable.bg_vehicle_placeholder_moto)
-                VehicleType.ATV -> Pair(R.drawable.ic_atv, R.drawable.bg_vehicle_placeholder_atv)
+            val (iconRes, placeholderBgRes, accentColor) = when (vehicle.type) {
+                VehicleType.CAR -> VehicleVisual(
+                    R.drawable.ic_car,
+                    R.drawable.bg_vehicle_placeholder,
+                    ContextCompat.getColor(ctx, R.color.accent_fuel)
+                )
+                VehicleType.MOTORCYCLE -> VehicleVisual(
+                    R.drawable.ic_motorcycle,
+                    R.drawable.bg_vehicle_placeholder_moto,
+                    ContextCompat.getColor(ctx, R.color.accent_ekdromes)
+                )
+                VehicleType.ATV -> VehicleVisual(
+                    R.drawable.ic_atv,
+                    R.drawable.bg_vehicle_placeholder_atv,
+                    ContextCompat.getColor(ctx, R.color.accent_marketplace)
+                )
             }
             binding.ivPlaceholderIcon.setImageResource(iconRes)
             binding.viewPlaceholderBg.setBackgroundResource(placeholderBgRes)
+            binding.root.strokeColor = accentColor
+            val badgeBg = AppCompatResources.getDrawable(ctx, R.drawable.bg_type_badge_pill)!!.mutate()
+            DrawableCompat.setTint(badgeBg, accentColor)
+            binding.tvVehicleTypeBadge.background = badgeBg
 
             // Vehicle hero image — photo sits on top of placeholder
             val imagePath = vehicle.imagePath
@@ -62,9 +83,9 @@ class VehicleAdapter(
             val score = scores[vehicle.id] ?: 100
             binding.tvHealthScore.text = score.toString()
             val color = scoreColor(score)
-            val badgeBg = AppCompatResources.getDrawable(ctx, R.drawable.bg_score_circle)!!.mutate()
-            DrawableCompat.setTint(badgeBg, color)
-            binding.tvHealthScore.background = badgeBg
+            val scoreBg = AppCompatResources.getDrawable(ctx, R.drawable.bg_score_circle)!!.mutate()
+            DrawableCompat.setTint(scoreBg, color)
+            binding.tvHealthScore.background = scoreBg
             binding.viewScoreStrip.setBackgroundColor(color)
 
             binding.root.setOnClickListener { onClick(vehicle) }
@@ -79,6 +100,12 @@ class VehicleAdapter(
             }
         }
     }
+
+    private data class VehicleVisual(
+        val iconRes: Int,
+        val placeholderBgRes: Int,
+        val accentColor: Int
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
         val binding = ItemVehicleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
