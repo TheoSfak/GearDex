@@ -13,6 +13,10 @@
         android:icon="@drawable/ic_nav_glovebox"
         android:title="@string/nav_glovebox" />
     <item
+        android:id="@+id/parkingFragment"
+        android:icon="@drawable/ic_parking"
+        android:title="@string/nav_parking" />
+    <item
         android:id="@+id/ekdromesFragment"
         android:icon="@drawable/ic_nav_ekdromes"
         android:title="@string/nav_ekdromes" />

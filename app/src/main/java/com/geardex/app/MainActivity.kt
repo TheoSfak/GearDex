@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
             R.id.garageFragment,
             R.id.logsFragment,
             R.id.gloveboxFragment,
+            R.id.parkingFragment,
             R.id.ekdromesFragment
         )
         val appBarConfig = AppBarConfiguration(topLevelIds)
