@@ -193,8 +193,18 @@
     <!-- GitHub Updates -->
     <string name="settings_update_title">GitHub Updates</string>
     <string name="settings_update_current_version">Installed version: %1$s</string>
-    <string name="settings_update_description">Open the latest GitHub release to download and install an update.</string>
+    <string name="settings_update_description">Check GitHub releases without leaving Settings.</string>
     <string name="settings_update_check">Check for updates</string>
+    <string name="settings_update_checking">Checking latest GitHub release&#8230;</string>
+    <string name="settings_update_up_to_date">You are up to date. Latest version: %1$s.</string>
+    <string name="settings_update_available">Version %1$s is available.</string>
+    <string name="settings_update_download_install">Download and install</string>
+    <string name="settings_update_install">Install update</string>
+    <string name="settings_update_downloading">Downloading update&#8230;</string>
+    <string name="settings_update_ready">Update downloaded. Android will ask you to confirm installation.</string>
+    <string name="settings_update_error">Update check failed: %1$s</string>
+    <string name="settings_update_no_apk">The latest GitHub release does not include an APK asset.</string>
+    <string name="settings_update_unknown_sources">Allow GearDex to install unknown apps, then tap Install again.</string>
 
     <!-- PDF Export -->
     <string name="pdf_export_vehicle">Export PDF Report</string>

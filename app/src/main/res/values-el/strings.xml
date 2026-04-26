@@ -193,8 +193,18 @@
     <!-- Ενημερώσεις GitHub -->
     <string name="settings_update_title">Ενημερώσεις GitHub</string>
     <string name="settings_update_current_version">Εγκατεστημένη έκδοση: %1$s</string>
-    <string name="settings_update_description">Άνοιξε την τελευταία έκδοση στο GitHub για λήψη και εγκατάσταση ενημέρωσης.</string>
+    <string name="settings_update_description">Έλεγξε τις εκδόσεις GitHub χωρίς να φύγεις από τις Ρυθμίσεις.</string>
     <string name="settings_update_check">Έλεγχος ενημερώσεων</string>
+    <string name="settings_update_checking">Έλεγχος τελευταίας έκδοσης GitHub&#8230;</string>
+    <string name="settings_update_up_to_date">Είσαι ενημερωμένος/η. Τελευταία έκδοση: %1$s.</string>
+    <string name="settings_update_available">Η έκδοση %1$s είναι διαθέσιμη.</string>
+    <string name="settings_update_download_install">Λήψη και εγκατάσταση</string>
+    <string name="settings_update_install">Εγκατάσταση ενημέρωσης</string>
+    <string name="settings_update_downloading">Γίνεται λήψη ενημέρωσης&#8230;</string>
+    <string name="settings_update_ready">Η ενημέρωση κατέβηκε. Το Android θα ζητήσει επιβεβαίωση εγκατάστασης.</string>
+    <string name="settings_update_error">Ο έλεγχος ενημέρωσης απέτυχε: %1$s</string>
+    <string name="settings_update_no_apk">Η τελευταία έκδοση GitHub δεν περιέχει APK.</string>
+    <string name="settings_update_unknown_sources">Επίτρεψε στο GearDex να εγκαθιστά άγνωστες εφαρμογές και πάτα ξανά Εγκατάσταση.</string>
 
     <!-- Εξαγωγή PDF -->
     <string name="pdf_export_vehicle">Εξαγωγή Αναφοράς PDF</string>

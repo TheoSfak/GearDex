@@ -3,13 +3,16 @@
 package com.geardex.app.ui.settings
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.FileProvider
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
@@ -26,6 +29,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.io.File
 import java.util.Locale
 
 private const val TAG = "SettingsFragment"
@@ -162,13 +166,7 @@ class SettingsFragment : Fragment() {
     private fun setupUpdateSection() {
         binding.cardGithubUpdates.visibility = if (BuildConfig.ENABLE_UPDATE_CHECK) View.VISIBLE else View.GONE
         binding.tvGithubVersion.text = getString(R.string.settings_update_current_version, BuildConfig.VERSION_NAME)
-        binding.btnCheckUpdates.setOnClickListener {
-            val intent = Intent(
-                Intent.ACTION_VIEW,
-                "https://github.com/${BuildConfig.GITHUB_REPO}/releases/latest".toUri()
-            )
-            startActivity(intent)
-        }
+        binding.btnCheckUpdates.setOnClickListener { viewModel.checkForUpdates() }
     }
 
     private fun setupGoogleApiSection() {
@@ -212,8 +210,80 @@ class SettingsFragment : Fragment() {
                         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
                     }
                 }
+                launch {
+                    viewModel.updateState.collect { state -> renderUpdateState(state) }
+                }
             }
         }
+    }
+
+    private fun renderUpdateState(state: UpdateState) {
+        binding.progressUpdate.visibility = when (state) {
+            UpdateState.Checking,
+            is UpdateState.Downloading -> View.VISIBLE
+            else -> View.GONE
+        }
+        binding.btnCheckUpdates.isEnabled = state !is UpdateState.Checking && state !is UpdateState.Downloading
+        binding.btnInstallUpdate.visibility = View.GONE
+        binding.btnInstallUpdate.setOnClickListener(null)
+
+        when (state) {
+            UpdateState.Idle -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_description)
+            }
+            UpdateState.Checking -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_checking)
+            }
+            is UpdateState.UpToDate -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_up_to_date, state.latestVersion)
+            }
+            is UpdateState.Available -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_available, state.release.version)
+                binding.btnInstallUpdate.visibility = View.VISIBLE
+                binding.btnInstallUpdate.text = getString(R.string.settings_update_download_install)
+                binding.btnInstallUpdate.setOnClickListener { viewModel.downloadUpdate(state.release) }
+            }
+            is UpdateState.Downloading -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_downloading)
+            }
+            is UpdateState.Downloaded -> {
+                binding.tvUpdateStatus.text = getString(R.string.settings_update_ready)
+                binding.btnInstallUpdate.visibility = View.VISIBLE
+                binding.btnInstallUpdate.text = getString(R.string.settings_update_install)
+                binding.btnInstallUpdate.setOnClickListener { installUpdate(state.file) }
+            }
+            is UpdateState.Error -> {
+                val message = if (state.message == "No APK found") {
+                    getString(R.string.settings_update_no_apk)
+                } else {
+                    getString(R.string.settings_update_error, state.message)
+                }
+                binding.tvUpdateStatus.text = message
+            }
+        }
+    }
+
+    private fun installUpdate(file: File) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !requireContext().packageManager.canRequestPackageInstalls()) {
+            binding.tvUpdateStatus.text = getString(R.string.settings_update_unknown_sources)
+            val intent = Intent(
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                "package:${requireContext().packageName}".toUri()
+            )
+            startActivity(intent)
+            return
+        }
+
+        val uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.provider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/vnd.android.package-archive")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+        startActivity(intent)
     }
 
     private fun renderAuthState(state: AuthState) {

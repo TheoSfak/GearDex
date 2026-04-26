@@ -472,12 +472,22 @@
                         android:textSize="13sp" />
 
                     <TextView
+                        android:id="@+id/tv_update_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/spacing_md"
                         android:text="@string/settings_update_description"
                         android:textColor="@color/text_secondary"
                         android:textSize="13sp" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_md"
+                        android:visibility="gone"
+                        app:indicatorColor="@color/geardex_orange"
+                        app:trackColor="@color/surface_dark" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_check_updates"
@@ -486,6 +496,16 @@
                         android:layout_height="@dimen/button_height"
                         android:text="@string/settings_update_check"
                         app:icon="@drawable/ic_open_in_new" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_install_update"
+                        style="@style/Widget.Geardex.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:text="@string/settings_update_download_install"
+                        android:visibility="gone"
+                        app:icon="@drawable/ic_export" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
