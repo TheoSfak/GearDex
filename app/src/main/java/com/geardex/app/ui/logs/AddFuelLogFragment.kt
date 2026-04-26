@@ -27,6 +27,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class AddFuelLogFragment : Fragment() {
@@ -36,6 +38,7 @@ class AddFuelLogFragment : Fragment() {
     private val viewModel: LogsViewModel by viewModels()
 
     private var cameraImageUri: Uri? = null
+    private var scannedReceiptDate: Long? = null
 
     private val requestCameraPermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -83,7 +86,14 @@ class AddFuelLogFragment : Fragment() {
             if (liters == null) { binding.tilLiters.error = getString(R.string.error_invalid_number); return@setOnClickListener }
             if (cost == null) { binding.tilCost.error = getString(R.string.error_invalid_number); return@setOnClickListener }
 
-            viewModel.addFuelLog(vehicleId, odometer, liters, cost, System.currentTimeMillis(), notes)
+            viewModel.addFuelLog(
+                vehicleId,
+                odometer,
+                liters,
+                cost,
+                scannedReceiptDate ?: System.currentTimeMillis(),
+                notes
+            )
             findNavController().popBackStack()
         }
     }
@@ -147,9 +157,33 @@ class AddFuelLogFragment : Fragment() {
     private fun applyOcrResult(result: OcrResult): Boolean {
         var any = false
         result.odometer?.let { binding.etOdometer.setText(it.toString()); any = true }
-        result.liters?.let { binding.etLiters.setText("%.2f".format(it)); any = true }
-        result.cost?.let { binding.etCost.setText("%.2f".format(it)); any = true }
+        result.liters?.let { binding.etLiters.setText(String.format(Locale.US, "%.2f", it)); any = true }
+        result.cost?.let { binding.etCost.setText(String.format(Locale.US, "%.2f", it)); any = true }
+        result.date?.let { scannedReceiptDate = it; any = true }
+        val noteParts = buildList {
+            result.merchantName?.let { add(it) }
+            result.unitPrice?.let { add(String.format(Locale.US, "€/L %.3f", it)) }
+        }
+        if (noteParts.isNotEmpty() && binding.etNotes.text.isNullOrBlank()) {
+            binding.etNotes.setText(noteParts.joinToString(" · "))
+            any = true
+        }
+        showScanSummary(result)
         return any
+    }
+
+    private fun showScanSummary(result: OcrResult) {
+        val parts = buildList {
+            result.date?.let { add(getString(R.string.log_ocr_summary_date, formatDate(it))) }
+            result.merchantName?.let { add(getString(R.string.log_ocr_summary_shop, it)) }
+            result.unitPrice?.let { add(String.format(Locale.US, "€/L %.3f", it)) }
+        }
+        binding.tvReceiptScanSummary.text = parts.joinToString(" · ")
+        binding.tvReceiptScanSummary.visibility = if (parts.isEmpty()) View.GONE else View.VISIBLE
+    }
+
+    private fun formatDate(timestamp: Long): String {
+        return SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(timestamp)
     }
 
     override fun onDestroyView() {

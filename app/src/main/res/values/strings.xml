@@ -292,6 +292,12 @@
     <string name="log_ocr_scanning">Scanning…</string>
     <string name="log_ocr_success">Receipt scanned — please verify the values</string>
     <string name="log_ocr_no_data">Could not read receipt data</string>
+    <string name="log_ocr_summary_date">Date: %1$s</string>
+    <string name="log_ocr_summary_shop">Shop: %1$s</string>
+    <plurals name="log_ocr_summary_checks">
+        <item quantity="one">%1$d service item detected</item>
+        <item quantity="other">%1$d service items detected</item>
+    </plurals>
 
     <!-- Home Screen Widget -->
     <string name="widget_description">Shows your vehicle health score and next reminder</string>

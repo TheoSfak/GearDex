@@ -293,6 +293,12 @@
     <string name="log_ocr_scanning">Σάρωση…</string>
     <string name="log_ocr_success">Η απόδειξη σαρώθηκε — επαληθεύστε τις τιμές</string>
     <string name="log_ocr_no_data">Δεν ήταν δυνατή η ανάγνωση της απόδειξης</string>
+    <string name="log_ocr_summary_date">Ημ/νία: %1$s</string>
+    <string name="log_ocr_summary_shop">Κατάστημα: %1$s</string>
+    <plurals name="log_ocr_summary_checks">
+        <item quantity="one">Εντοπίστηκε %1$d εργασία σέρβις</item>
+        <item quantity="other">Εντοπίστηκαν %1$d εργασίες σέρβις</item>
+    </plurals>
 
     <!-- Home Screen Widget -->
     <string name="widget_description">Εμφανίζει υγεία οχήματος και επόμενη υπενθύμνηση</string>
