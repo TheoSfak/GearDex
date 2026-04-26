@@ -52,6 +52,20 @@
         <item name="android:textColor">@color/text_secondary</item>
     </style>
 
+    <style name="TextAppearance.Geardex.AppHeaderTitle" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">31sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="TextAppearance.Geardex.AppHeaderSubtitle" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
     <!-- ── Card Styles ────────────────────────────────────────────── -->
     <style name="Widget.Geardex.Card" parent="Widget.Material3.CardView.Elevated">
         <item name="cardBackgroundColor">@color/surface_card</item>

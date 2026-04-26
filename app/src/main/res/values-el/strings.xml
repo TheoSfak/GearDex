@@ -234,6 +234,9 @@
     <string name="settings_update_error">Ο έλεγχος ενημέρωσης απέτυχε: %1$s</string>
     <string name="settings_update_no_apk">Η τελευταία έκδοση GitHub δεν περιέχει APK.</string>
     <string name="settings_update_unknown_sources">Επίτρεψε στο GearDex να εγκαθιστά άγνωστες εφαρμογές και πάτα ξανά Εγκατάσταση.</string>
+    <string name="settings_support_title">Υποστήριξη GearDex</string>
+    <string name="settings_support_description">Κάθε δωρεά βοηθά να γίνει ο καφές κώδικας για την επόμενη ενημέρωση.</string>
+    <string name="settings_donate">Δωρεά</string>
 
     <!-- Εξαγωγή PDF -->
     <string name="pdf_export_vehicle">Εξαγωγή Αναφοράς PDF</string>

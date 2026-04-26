@@ -74,6 +74,13 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNav.visibility = if (destination.id in topLevelIds) View.VISIBLE else View.GONE
+            binding.toolbar.title = ""
+            binding.toolbar.subtitle = null
+            binding.headerBrand.translationX = if (destination.id in topLevelIds) {
+                0f
+            } else {
+                resources.getDimensionPixelSize(R.dimen.spacing_xxl).toFloat()
+            }
         }
 
         requestNotificationPermissionIfNeeded()

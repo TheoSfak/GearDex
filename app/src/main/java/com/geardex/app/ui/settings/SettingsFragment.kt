@@ -3,6 +3,7 @@
 package com.geardex.app.ui.settings
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -48,6 +49,7 @@ class SettingsFragment : Fragment() {
         setupLanguageChips()
         setupExportSection()
         setupUpdateSection()
+        setupSupportSection()
         observeViewModel()
     }
 
@@ -96,6 +98,12 @@ class SettingsFragment : Fragment() {
         binding.cardGithubUpdates.visibility = if (BuildConfig.ENABLE_UPDATE_CHECK) View.VISIBLE else View.GONE
         binding.tvGithubVersion.text = getString(R.string.settings_update_current_version, BuildConfig.VERSION_NAME)
         binding.btnCheckUpdates.setOnClickListener { viewModel.checkForUpdates() }
+    }
+
+    private fun setupSupportSection() {
+        binding.btnDonate.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(DONATE_URL)))
+        }
     }
 
     private fun observeViewModel() {
@@ -180,5 +188,10 @@ class SettingsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val DONATE_URL =
+            "https://www.paypal.com/donate/?business=HRKPFT6JPU5P8&no_recurring=0&item_name=Every+donation+helps+turn+coffee+into+code+%E2%80%94+thank+you+for+supporting+the+next+update.&currency_code=EUR"
     }
 }

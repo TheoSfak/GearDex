@@ -9,18 +9,59 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
+        android:minHeight="96dp"
         android:fitsSystemWindows="true"
-        android:background="@color/surface_card"
+        android:background="@drawable/bg_app_header"
+        android:elevation="2dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="10dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/ic_geardex_header_logo"
-        app:logoDescription="@string/app_name"
-        app:titleMarginStart="8dp"
-        app:titleTextColor="@color/text_primary"
-        app:subtitleTextColor="@color/text_secondary"
-        app:navigationIconTint="@color/text_primary" />
+        app:navigationIconTint="@color/text_primary"
+        app:title="">
+
+        <LinearLayout
+            android:id="@+id/header_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingEnd="16dp">
+
+            <FrameLayout
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:background="@drawable/bg_header_logo_badge"
+                android:elevation="3dp">
+
+                <ImageView
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_geardex_header_logo" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_header_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textSize="31sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
