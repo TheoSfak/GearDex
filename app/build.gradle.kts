@@ -32,8 +32,8 @@ android {
         applicationId = "com.geardex.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 10
-        versionName = "1.5.5"
+        versionCode = 11
+        versionName = "1.5.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
