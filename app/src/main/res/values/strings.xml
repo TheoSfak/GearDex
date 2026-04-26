@@ -216,17 +216,6 @@
     <string name="pdf_share_title">Share Report</string>
     <string name="pdf_no_vehicles">No vehicles to export</string>
 
-    <!-- Google Maps API -->
-    <string name="settings_google_api_title">Google Maps API</string>
-    <string name="settings_google_api_description">Add your Google Maps API key to enable map features in excursions. The key is stored locally on your device only.</string>
-    <string name="settings_google_api_hint">API Key (e.g. AIzaSy…)</string>
-    <string name="settings_google_api_save">Save API Key</string>
-    <string name="settings_google_api_saved">API key saved ✓</string>
-    <string name="settings_google_api_cleared">API key removed</string>
-    <string name="settings_google_api_howto_title">How to get your API key</string>
-    <string name="settings_google_api_howto_steps">1. Go to Google Cloud Console\n2. Create a project (or select existing)\n3. Go to APIs &amp; Services → Library\n4. Enable "Maps SDK for Android"\n5. Go to APIs &amp; Services → Credentials\n6. Click "+ CREATE CREDENTIALS" → API Key\n7. Copy the key and paste it above\n\nFree tier: $200/month credit (≈ 28,000 map loads)</string>
-    <string name="settings_google_api_open_console">Open Google Cloud Console</string>
-
     <!-- Vehicle detail / edit -->
     <string name="vehicle_detail_label">Vehicle Details</string>
     <string name="vehicle_edit_label">Edit Vehicle</string>

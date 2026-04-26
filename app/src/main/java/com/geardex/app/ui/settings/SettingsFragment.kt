@@ -48,7 +48,6 @@ class SettingsFragment : Fragment() {
         setupLanguageChips()
         setupExportSection()
         setupUpdateSection()
-        setupGoogleApiSection()
         observeViewModel()
     }
 
@@ -97,36 +96,6 @@ class SettingsFragment : Fragment() {
         binding.cardGithubUpdates.visibility = if (BuildConfig.ENABLE_UPDATE_CHECK) View.VISIBLE else View.GONE
         binding.tvGithubVersion.text = getString(R.string.settings_update_current_version, BuildConfig.VERSION_NAME)
         binding.btnCheckUpdates.setOnClickListener { viewModel.checkForUpdates() }
-    }
-
-    private fun setupGoogleApiSection() {
-        val savedKey = viewModel.getSavedApiKey()
-        if (!savedKey.isNullOrBlank()) {
-            binding.etGoogleApiKey.setText(savedKey)
-            binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_saved)
-            binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.color_success, null))
-            binding.tvApiKeyStatus.visibility = View.VISIBLE
-        }
-
-        binding.btnSaveApiKey.setOnClickListener {
-            val key = binding.etGoogleApiKey.text?.toString()?.trim() ?: ""
-            if (key.isBlank()) {
-                viewModel.clearApiKey()
-                binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_cleared)
-                binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.text_secondary, null))
-                binding.tvApiKeyStatus.visibility = View.VISIBLE
-            } else {
-                viewModel.saveApiKey(key)
-                binding.tvApiKeyStatus.text = getString(R.string.settings_google_api_saved)
-                binding.tvApiKeyStatus.setTextColor(resources.getColor(R.color.color_success, null))
-                binding.tvApiKeyStatus.visibility = View.VISIBLE
-            }
-        }
-
-        binding.btnOpenGoogleConsole.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, "https://console.cloud.google.com/apis/credentials".toUri())
-            startActivity(intent)
-        }
     }
 
     private fun observeViewModel() {

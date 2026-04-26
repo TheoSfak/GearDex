@@ -1,8 +1,6 @@
 package com.geardex.app.ui.settings
 
 import android.content.Context
-import android.content.SharedPreferences
-import androidx.core.content.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.geardex.app.BuildConfig
@@ -58,8 +56,7 @@ class SettingsViewModel @Inject constructor(
     private val vehicleRepository: VehicleRepository,
     private val syncManager: SyncManager,
     private val logRepository: LogRepository,
-    private val pdfReportGenerator: PdfReportGenerator,
-    private val prefs: SharedPreferences
+    private val pdfReportGenerator: PdfReportGenerator
 ) : ViewModel() {
 
     private val _authState = MutableStateFlow<AuthState>(
@@ -156,16 +153,6 @@ class SettingsViewModel @Inject constructor(
             serviceMap[v.id] = logRepository.getServiceLogsSync(v.id)
         }
         return pdfReportGenerator.generateAllVehiclesReport(vehicles, fuelMap, serviceMap)
-    }
-
-    fun getSavedApiKey(): String? = prefs.getString("google_maps_api_key", null)
-
-    fun saveApiKey(key: String) {
-        prefs.edit() {putString("google_maps_api_key", key)}
-    }
-
-    fun clearApiKey() {
-        prefs.edit() {remove("google_maps_api_key")}
     }
 
     fun checkForUpdates() {

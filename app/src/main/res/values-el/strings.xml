@@ -216,18 +216,6 @@
     <string name="pdf_share_title">Κοινοποίηση Αναφοράς</string>
     <string name="pdf_no_vehicles">Δεν υπάρχουν οχήματα για εξαγωγή</string>
 
-    <!-- Google Maps API -->
-    <string name="settings_google_api_title">Google Maps API</string>
-    <string name="settings_google_api_description">Προσθέστε το Google Maps API key σας για λειτουργίες χάρτη στις εκδρομές. Το κλειδί αποθηκεύεται τοπικά στη συσκευή σας μόνο.</string>
-    <string name="settings_google_api_hint">API Key (π.χ. AIzaSy…)</string>
-    <string name="settings_google_api_save">Αποθήκευση API Key</string>
-    <string name="settings_google_api_saved">API key αποθηκεύτηκε ✓</string>
-    <string name="settings_google_api_cleared">API key αφαιρέθηκε</string>
-    <string name="settings_google_api_howto_title">Πώς να αποκτήσετε API key</string>
-    <string name="settings_google_api_howto_steps">1. Πηγαίνετε στο Google Cloud Console\n2. Δημιουργήστε project (ή επιλέξτε υπάρχον)\n3. Πηγαίνετε στο APIs &amp; Services → Library\n4. Ενεργοποιήστε "Maps SDK for Android"\n5. Πηγαίνετε στο APIs &amp; Services → Credentials\n6. Κλικ "+ CREATE CREDENTIALS" → API Key\n7. Αντιγράψτε το key και επικολλήστε παραπάνω\n\
-Δωρεάν: $200/μήνα credit (≈ 28.000 φορτώσεις χάρτη)</string>
-    <string name="settings_google_api_open_console">Άνοιγμα Google Cloud Console</string>
-
     <!-- Vehicle detail / edit -->
     <string name="vehicle_detail_label">Στοιχεία Οχήματος</string>
     <string name="vehicle_edit_label">Επεξεργασία Οχήματος</string>
