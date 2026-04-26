@@ -70,8 +70,14 @@ class SavedRouteRepository @Inject constructor(
             val waypoints = if (entity.waypoints.isBlank()) emptyList()
             else entity.waypoints.split(",").map { it.trim() }
 
+            val stableId = if (entity.routeKey.startsWith("builtin_")) {
+                entity.routeKey.removePrefix("builtin_").toIntOrNull() ?: entity.routeKey.hashCode()
+            } else {
+                entity.routeKey.hashCode()
+            }
+
             return EkdromeRoute(
-                id = entity.routeKey.hashCode(),
+                id = stableId,
                 nameEn = entity.nameEn,
                 nameEl = entity.nameEl,
                 region = region,

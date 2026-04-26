@@ -73,7 +73,15 @@ class EkdromeAdapter(
                 val label = if (greek) route.nameEl else route.nameEn
                 val geoUri = "geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})".toUri()
                 val intent = Intent(Intent.ACTION_VIEW, geoUri)
-                it.context.startActivity(intent)
+                runCatching {
+                    it.context.startActivity(Intent.createChooser(intent, it.context.getString(R.string.ekdrome_view_on_map)))
+                }.onFailure {
+                    android.widget.Toast.makeText(
+                        binding.root.context,
+                        R.string.ekdrome_no_map_app,
+                        android.widget.Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
 
             // Navigate button
@@ -86,7 +94,15 @@ class EkdromeAdapter(
                     val path = allPoints.joinToString("/") { Uri.encode(it) }
                     val mapsUrl = "https://www.google.com/maps/dir/$path"
                     val intent = Intent(Intent.ACTION_VIEW, mapsUrl.toUri())
-                    it.context.startActivity(intent)
+                    runCatching {
+                        it.context.startActivity(Intent.createChooser(intent, it.context.getString(R.string.ekdrome_navigate)))
+                    }.onFailure {
+                        android.widget.Toast.makeText(
+                            binding.root.context,
+                            R.string.ekdrome_no_map_app,
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             } else {
                 binding.btnNavigate.visibility = View.GONE

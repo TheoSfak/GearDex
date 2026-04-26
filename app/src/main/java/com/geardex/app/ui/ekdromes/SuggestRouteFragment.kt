@@ -45,8 +45,6 @@ class SuggestRouteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnBack.setOnClickListener { findNavController().popBackStack() }
-
         // Region dropdown
         val regions = EkdromeRegion.entries.filter { it != EkdromeRegion.ALL }
         val regionNames = regions.map { if (isGreek) it.displayEl else it.displayEn }

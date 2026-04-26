@@ -95,9 +95,9 @@
 
     <!-- Community Routes -->
     <string name="community_tab_builtin">Ενσωματωμένες</string>
-    <string name="community_tab_community">Κοινότητα</string>
-    <string name="community_submit_route">Υποβολή Διαδρομής</string>
-    <string name="community_submit">Υποβολή</string>
+    <string name="community_tab_community">Οι Διαδρομές μου</string>
+    <string name="community_submit_route">Προσθήκη Διαδρομής</string>
+    <string name="community_submit">Αποθήκευση</string>
     <string name="community_cancel">Άκυρο</string>
     <string name="community_name_en">Όνομα Διαδρομής (Αγγλικά)</string>
     <string name="community_name_el">Όνομα Διαδρομής (Ελληνικά)</string>
@@ -110,16 +110,17 @@
     <string name="community_latitude">Γεωγραφικό Πλάτος</string>
     <string name="community_longitude">Γεωγραφικό Μήκος</string>
     <string name="community_name_required">Το όνομα διαδρομής είναι υποχρεωτικό</string>
-    <string name="community_submit_success">Η διαδρομή υποβλήθηκε! Θα εμφανιστεί στην Κοινότητα.</string>
-    <string name="community_submit_error">Αποτυχία υποβολής. Ελέγξτε τη σύνδεσή σας.</string>
-    <string name="community_firebase_required">Οι λειτουργίες κοινότητας δεν είναι διαθέσιμες σε αυτή την έκδοση.</string>
-    <string name="community_empty">Δεν υπάρχουν διαδρομές κοινότητας ακόμα.\nΓίνετε ο πρώτος που θα υποβάλει!</string>
+    <string name="community_submit_success">Η διαδρομή αποθηκεύτηκε τοπικά.</string>
+    <string name="community_submit_error">Αποτυχία αποθήκευσης διαδρομής.</string>
+    <string name="community_firebase_required">Αυτή η λειτουργία αποθηκεύεται τοπικά στη συσκευή.</string>
+    <string name="community_empty">Δεν υπάρχουν δικές σας διαδρομές ακόμα.\nΠροσθέστε την πρώτη offline διαδρομή.</string>
     <string name="community_start_location">Αφετηρία (π.χ. Χανιά)</string>
     <string name="community_end_location">Προορισμός (π.χ. Χώρα Σφακίων)</string>
     <string name="community_waypoints">Ενδιάμεσες στάσεις (προαιρετικά)</string>
     <string name="community_add_waypoint">+ Προσθήκη Στάσης</string>
     <string name="community_waypoint_hint">Στάση %1$d</string>
     <string name="ekdrome_navigate">Πλοήγηση</string>
+    <string name="ekdrome_no_map_app">Δεν υπάρχει διαθέσιμη εφαρμογή χαρτών</string>
 
     <!-- Εκτίμηση Κόστους Διαδρομής -->
     <string name="trip_cost_button">Κόστος</string>
@@ -138,13 +139,13 @@
     <!-- Κριτικές -->
     <string name="review_title">Κριτικές</string>
     <string name="review_title_for">Κριτικές — %1$s</string>
-    <string name="review_add">Γράψε Κριτική</string>
+    <string name="review_add">Τοπική Κριτική</string>
     <string name="review_rate_route">Αξιολόγησε τη Διαδρομή</string>
     <string name="review_your_rating">Η Βαθμολογία σου</string>
     <string name="review_comment_hint">Σχόλιο (προαιρετικό)</string>
-    <string name="review_empty">Δεν υπάρχουν κριτικές ακόμα.\nΓίνετε ο πρώτος που θα αξιολογήσει!</string>
-    <string name="review_submit_success">Η κριτική υποβλήθηκε!</string>
-    <string name="review_submit_error">Αποτυχία υποβολής κριτικής.</string>
+    <string name="review_empty">Δεν υπάρχουν τοπικές κριτικές ακόμα.\nΠροσθέστε δικές σας σημειώσεις για τη διαδρομή.</string>
+    <string name="review_submit_success">Η κριτική αποθηκεύτηκε τοπικά.</string>
+    <string name="review_submit_error">Αποτυχία αποθήκευσης κριτικής.</string>
     <string name="ekdromes_filter_region">Φιλτράρισμα ανά Περιοχή</string>
     <string name="ekdromes_filter_tags">Φιλτράρισμα ανά Τύπο</string>
     <string name="ekdrome_tag_moto">Φιλικό για Μοτό</string>
@@ -170,7 +171,7 @@
     <string name="route_detail_title">Λεπτομέρειες Διαδρομής</string>
     <string name="route_detail_save">Αποθήκευση Διαδρομής</string>
     <string name="route_detail_path">Πορεία Διαδρομής</string>
-    <string name="suggest_route_title">Πρότεινε Διαδρομή</string>
+    <string name="suggest_route_title">Προσθήκη Διαδρομής</string>
     <string name="suggest_route_location_section">Τοποθεσία Διαδρομής</string>
 
     <!-- Settings -->

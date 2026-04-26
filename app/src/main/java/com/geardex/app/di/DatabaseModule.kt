@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.geardex.app.data.local.GearDexDatabase
+import com.geardex.app.data.local.dao.CustomRouteDao
 import com.geardex.app.data.local.dao.DriveSessionDao
 import com.geardex.app.data.local.dao.ExpenseDao
 import com.geardex.app.data.local.dao.FavoriteShopDao
 import com.geardex.app.data.local.dao.ParkingSpotDao
 import com.geardex.app.data.local.dao.FuelLogDao
 import com.geardex.app.data.local.dao.GloveboxDocumentDao
+import com.geardex.app.data.local.dao.LocalRouteReviewDao
 import com.geardex.app.data.local.dao.MaintenanceReminderDao
 import com.geardex.app.data.local.dao.SavedRouteDao
 import com.geardex.app.data.local.dao.ServiceLogDao
@@ -74,4 +76,10 @@ object DatabaseModule {
 
     @Provides
     fun provideParkingSpotDao(db: GearDexDatabase): ParkingSpotDao = db.parkingSpotDao()
+
+    @Provides
+    fun provideCustomRouteDao(db: GearDexDatabase): CustomRouteDao = db.customRouteDao()
+
+    @Provides
+    fun provideLocalRouteReviewDao(db: GearDexDatabase): LocalRouteReviewDao = db.localRouteReviewDao()
 }

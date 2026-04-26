@@ -95,9 +95,9 @@
 
     <!-- Community Routes -->
     <string name="community_tab_builtin">Built-in Routes</string>
-    <string name="community_tab_community">Community</string>
-    <string name="community_submit_route">Submit Route</string>
-    <string name="community_submit">Submit</string>
+    <string name="community_tab_community">My Routes</string>
+    <string name="community_submit_route">Add Route</string>
+    <string name="community_submit">Save</string>
     <string name="community_cancel">Cancel</string>
     <string name="community_name_en">Route Name (English)</string>
     <string name="community_name_el">Route Name (Greek)</string>
@@ -110,16 +110,17 @@
     <string name="community_latitude">Latitude</string>
     <string name="community_longitude">Longitude</string>
     <string name="community_name_required">Route name is required</string>
-    <string name="community_submit_success">Route submitted! It will appear in the Community tab.</string>
-    <string name="community_submit_error">Failed to submit route. Check your connection.</string>
-    <string name="community_firebase_required">Community features are not available in this build.</string>
-    <string name="community_empty">No community routes yet.\nBe the first to submit one!</string>
+    <string name="community_submit_success">Route saved locally.</string>
+    <string name="community_submit_error">Failed to save route.</string>
+    <string name="community_firebase_required">This feature is stored locally on this device.</string>
+    <string name="community_empty">No custom routes yet.\nAdd your first offline route.</string>
     <string name="community_start_location">Start Location (e.g. Chania)</string>
     <string name="community_end_location">End Location (e.g. Hora Sfakion)</string>
     <string name="community_waypoints">Waypoints (optional stops along the way)</string>
     <string name="community_add_waypoint">+ Add Waypoint</string>
     <string name="community_waypoint_hint">Waypoint %1$d</string>
     <string name="ekdrome_navigate">Navigate</string>
+    <string name="ekdrome_no_map_app">No maps app available</string>
 
     <!-- Trip Cost Estimator -->
     <string name="trip_cost_button">Cost</string>
@@ -138,13 +139,13 @@
     <!-- Reviews -->
     <string name="review_title">Reviews</string>
     <string name="review_title_for">Reviews — %1$s</string>
-    <string name="review_add">Write Review</string>
+    <string name="review_add">Add Local Review</string>
     <string name="review_rate_route">Rate This Route</string>
     <string name="review_your_rating">Your Rating</string>
     <string name="review_comment_hint">Comment (optional)</string>
-    <string name="review_empty">No reviews yet.\nBe the first to rate this route!</string>
-    <string name="review_submit_success">Review submitted!</string>
-    <string name="review_submit_error">Failed to submit review.</string>
+    <string name="review_empty">No local reviews yet.\nAdd your own notes for this route.</string>
+    <string name="review_submit_success">Review saved locally.</string>
+    <string name="review_submit_error">Failed to save review.</string>
     <string name="ekdromes_filter_region">Filter by Region</string>
     <string name="ekdromes_filter_tags">Filter by Type</string>
     <string name="ekdrome_tag_moto">Moto-Friendly</string>
@@ -170,7 +171,7 @@
     <string name="route_detail_title">Route Details</string>
     <string name="route_detail_save">Save Route</string>
     <string name="route_detail_path">Route Path</string>
-    <string name="suggest_route_title">Suggest a Route</string>
+    <string name="suggest_route_title">Add Route</string>
     <string name="suggest_route_location_section">Route Location</string>
 
     <!-- Settings -->

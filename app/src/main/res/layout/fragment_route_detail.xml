@@ -26,28 +26,17 @@
                 android:paddingTop="24dp"
                 android:paddingBottom="@dimen/spacing_lg">
 
-                <!-- Back + Title row -->
+                <!-- Title row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/btn_back"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:src="@drawable/ic_back"
-                        app:tint="@color/white"
-                        android:contentDescription="@string/community_cancel" />
-
                     <TextView
                         android:id="@+id/tv_route_name"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="8dp"
                         android:textColor="@color/white"
                         android:textSize="24sp"
                         android:textStyle="bold" />

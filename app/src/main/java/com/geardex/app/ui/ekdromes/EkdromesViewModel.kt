@@ -9,9 +9,9 @@ import com.geardex.app.data.model.EkdromeTag
 import com.geardex.app.data.model.RouteReview
 import com.geardex.app.data.local.entity.Vehicle
 import com.geardex.app.data.local.entity.VehicleType
-import com.geardex.app.data.remote.CommunityRouteRepository
-import com.geardex.app.data.remote.FirebaseManager
 import com.geardex.app.data.repository.BuiltinRouteRepository
+import com.geardex.app.data.repository.CustomRouteRepository
+import com.geardex.app.data.repository.LocalRouteReviewRepository
 import com.geardex.app.data.repository.LogRepository
 import com.geardex.app.data.repository.SavedRouteRepository
 import com.geardex.app.data.repository.VehicleRepository
@@ -32,12 +32,12 @@ enum class RouteTab { BUILTIN, COMMUNITY, SAVED }
 
 @HiltViewModel
 class EkdromesViewModel @Inject constructor(
-    private val communityRouteRepository: CommunityRouteRepository,
-    private val firebaseManager: FirebaseManager,
     private val logRepository: LogRepository,
     private val vehicleRepository: VehicleRepository,
     private val builtinRouteRepository: BuiltinRouteRepository,
-    private val savedRouteRepository: SavedRouteRepository
+    private val savedRouteRepository: SavedRouteRepository,
+    private val customRouteRepository: CustomRouteRepository,
+    private val localRouteReviewRepository: LocalRouteReviewRepository
 ) : ViewModel() {
 
     private val _selectedRegion = MutableStateFlow(EkdromeRegion.ALL)
@@ -52,28 +52,26 @@ class EkdromesViewModel @Inject constructor(
     private val _submitResult = MutableStateFlow<Boolean?>(null)
     val submitResult: StateFlow<Boolean?> = _submitResult
 
-    private val _selectedTag = MutableStateFlow<EkdromeTag?>(null)
-    val selectedTag: StateFlow<EkdromeTag?> = _selectedTag
-
-    val isFirebaseConfigured: Boolean get() = firebaseManager.isConfigured
+    private val _selectedTags = MutableStateFlow<Set<EkdromeTag>>(emptySet())
+    val selectedTags: StateFlow<Set<EkdromeTag>> = _selectedTags
 
     @OptIn(ExperimentalCoroutinesApi::class)
     val filteredRoutes: Flow<List<EkdromeRoute>> = _selectedTab.flatMapLatest { tab ->
         when (tab) {
-            RouteTab.BUILTIN -> combine(_selectedRegion, _selectedTag) { region, tag ->
+            RouteTab.BUILTIN -> combine(_selectedRegion, _selectedTags) { region, tags ->
                 builtinRouteRepository.routes.filter { route ->
                     (region == EkdromeRegion.ALL || route.region == region) &&
-                            (tag == null || tag in route.tags)
+                            (tags.isEmpty() || tags.all { it in route.tags })
                 }
             }
             RouteTab.COMMUNITY -> combine(
-                communityRouteRepository.observeRoutes(),
+                customRouteRepository.getRoutes(),
                 _selectedRegion,
-                _selectedTag
-            ) { routes, region, tag ->
+                _selectedTags
+            ) { routes, region, tags ->
                 routes.filter { route ->
                     (region == EkdromeRegion.ALL || route.region == region) &&
-                            (tag == null || tag in route.tags)
+                            (tags.isEmpty() || tags.all { it in route.tags })
                 }
             }
             RouteTab.SAVED -> combine(
@@ -81,11 +79,11 @@ class EkdromesViewModel @Inject constructor(
                     entities.map { SavedRouteRepository.toModel(it) }
                 },
                 _selectedRegion,
-                _selectedTag
-            ) { routes, region, tag ->
+                _selectedTags
+            ) { routes, region, tags ->
                 routes.filter { route ->
                     (region == EkdromeRegion.ALL || route.region == region) &&
-                            (tag == null || tag in route.tags)
+                            (tags.isEmpty() || tags.all { it in route.tags })
                 }
             }
         }
@@ -104,7 +102,15 @@ class EkdromesViewModel @Inject constructor(
     }
 
     fun selectTag(tag: EkdromeTag?) {
-        _selectedTag.value = if (_selectedTag.value == tag) null else tag
+        if (tag == null) {
+            _selectedTags.value = emptySet()
+            return
+        }
+        _selectedTags.value = if (tag in _selectedTags.value) {
+            _selectedTags.value - tag
+        } else {
+            _selectedTags.value + tag
+        }
     }
 
     fun submitRoute(
@@ -124,11 +130,13 @@ class EkdromesViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             _submitting.value = true
-            val success = communityRouteRepository.submitRoute(
-                nameEn, nameEl, region, tags, difficulty,
-                distanceKm, descriptionEn, descriptionEl,
-                latitude, longitude, startLocation, endLocation, waypoints
-            )
+            val success = runCatching {
+                customRouteRepository.addRoute(
+                    nameEn, nameEl, region, tags, difficulty,
+                    distanceKm, descriptionEn, descriptionEl,
+                    latitude, longitude, startLocation, endLocation, waypoints
+                )
+            }.isSuccess
             _submitting.value = false
             _submitResult.value = success
         }
@@ -139,7 +147,7 @@ class EkdromesViewModel @Inject constructor(
     }
 
     fun observeReviews(routeId: String): Flow<List<RouteReview>> {
-        return communityRouteRepository.observeReviews(routeId)
+        return localRouteReviewRepository.observeReviews(routeId)
     }
 
     private val _reviewSubmitResult = MutableStateFlow<Boolean?>(null)
@@ -147,7 +155,9 @@ class EkdromesViewModel @Inject constructor(
 
     fun submitReview(routeId: String, rating: Float, comment: String) {
         viewModelScope.launch {
-            val success = communityRouteRepository.submitReview(routeId, rating, comment)
+            val success = runCatching {
+                localRouteReviewRepository.addReview(routeId, rating, comment)
+            }.isSuccess
             _reviewSubmitResult.value = success
         }
     }

@@ -70,10 +70,6 @@ class EkdromesFragment : Fragment() {
         setupTabs()
 
         binding.fabSuggestEkdrome.setOnClickListener {
-            if (!viewModel.isFirebaseConfigured) {
-                Toast.makeText(requireContext(), getString(R.string.community_firebase_required), Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
             findNavController().navigate(R.id.action_ekdromes_to_suggestRoute)
         }
 
@@ -328,10 +324,6 @@ class EkdromesFragment : Fragment() {
 
         // Add review button
         sheetView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btn_add_review).setOnClickListener {
-            if (!viewModel.isFirebaseConfigured) {
-                Toast.makeText(requireContext(), getString(R.string.community_firebase_required), Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
             showRateDialog(routeId)
         }
 
@@ -456,8 +448,8 @@ class EkdromesFragment : Fragment() {
             .also { dialog ->
                 dialog.show()
                 dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                    val consumption = etConsumption.text?.toString()?.toDoubleOrNull()
-                    val fuelPrice = etFuelPrice.text?.toString()?.toDoubleOrNull()
+                    val consumption = parseFlexibleDouble(etConsumption.text?.toString())
+                    val fuelPrice = parseFlexibleDouble(etFuelPrice.text?.toString())
 
                     if (consumption == null || consumption <= 0 || fuelPrice == null || fuelPrice <= 0) {
                         Toast.makeText(requireContext(), getString(R.string.trip_cost_fill_fields), Toast.LENGTH_SHORT).show()
@@ -478,6 +470,9 @@ class EkdromesFragment : Fragment() {
                 }
             }
     }
+
+    private fun parseFlexibleDouble(value: String?): Double? =
+        value?.trim()?.replace(',', '.')?.toDoubleOrNull()
 
     override fun onDestroyView() {
         super.onDestroyView()

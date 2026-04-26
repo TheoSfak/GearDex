@@ -65,8 +65,6 @@ class RouteDetailFragment : Fragment() {
 
         bindRoute(route)
 
-        binding.btnBack.setOnClickListener { findNavController().popBackStack() }
-
         // Save FAB
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -101,10 +99,6 @@ class RouteDetailFragment : Fragment() {
         }
 
         binding.btnAddReview.setOnClickListener {
-            if (!viewModel.isFirebaseConfigured) {
-                Toast.makeText(requireContext(), getString(R.string.community_firebase_required), Toast.LENGTH_LONG).show()
-                return@setOnClickListener
-            }
             showRateDialog(routeReviewId)
         }
 
@@ -183,7 +177,16 @@ class RouteDetailFragment : Fragment() {
         binding.btnViewOnMap.setOnClickListener {
             val label = if (greek) route.nameEl else route.nameEn
             val geoUri = "geo:${route.latitude},${route.longitude}?q=${route.latitude},${route.longitude}(${Uri.encode(label)})".toUri()
-            startActivity(Intent(Intent.ACTION_VIEW, geoUri))
+            runCatching {
+                startActivity(
+                    Intent.createChooser(
+                        Intent(Intent.ACTION_VIEW, geoUri),
+                        getString(R.string.ekdrome_view_on_map)
+                    )
+                )
+            }.onFailure {
+                Toast.makeText(requireContext(), R.string.ekdrome_no_map_app, Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Navigate
@@ -195,7 +198,16 @@ class RouteDetailFragment : Fragment() {
                 allPoints.add(route.endLocation)
                 val path = allPoints.joinToString("/") { Uri.encode(it) }
                 val mapsUrl = "https://www.google.com/maps/dir/$path"
-                startActivity(Intent(Intent.ACTION_VIEW, mapsUrl.toUri()))
+                runCatching {
+                    startActivity(
+                        Intent.createChooser(
+                            Intent(Intent.ACTION_VIEW, mapsUrl.toUri()),
+                            getString(R.string.ekdrome_navigate)
+                        )
+                    )
+                }.onFailure {
+                    Toast.makeText(requireContext(), R.string.ekdrome_no_map_app, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -259,8 +271,8 @@ class RouteDetailFragment : Fragment() {
             .also { dialog ->
                 dialog.show()
                 dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener {
-                    val consumption = etConsumption.text?.toString()?.toDoubleOrNull()
-                    val fuelPrice = etFuelPrice.text?.toString()?.toDoubleOrNull()
+                    val consumption = parseFlexibleDouble(etConsumption.text?.toString())
+                    val fuelPrice = parseFlexibleDouble(etFuelPrice.text?.toString())
                     if (consumption == null || consumption <= 0 || fuelPrice == null || fuelPrice <= 0) {
                         Toast.makeText(requireContext(), getString(R.string.trip_cost_fill_fields), Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -278,6 +290,9 @@ class RouteDetailFragment : Fragment() {
                 }
             }
     }
+
+    private fun parseFlexibleDouble(value: String?): Double? =
+        value?.trim()?.replace(',', '.')?.toDoubleOrNull()
 
     private fun showRateDialog(routeId: String) {
         val dialogView = LayoutInflater.from(requireContext())
