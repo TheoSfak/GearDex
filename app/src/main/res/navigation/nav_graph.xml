@@ -163,9 +163,6 @@
             android:id="@+id/action_dashboard_to_driveMode"
             app:destination="@id/driveModeFragment" />
         <action
-            android:id="@+id/action_dashboard_to_marketplace"
-            app:destination="@id/marketplaceFragment" />
-        <action
             android:id="@+id/action_dashboard_to_shopDirectory"
             app:destination="@id/shopDirectoryFragment" />
         <action

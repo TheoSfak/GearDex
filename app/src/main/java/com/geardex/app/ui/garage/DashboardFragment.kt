@@ -97,10 +97,6 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_dashboard_to_driveMode)
         }
 
-        binding.btnMarketplace.setOnClickListener {
-            findNavController().navigate(R.id.action_dashboard_to_marketplace)
-        }
-
         binding.btnShops.setOnClickListener {
             findNavController().navigate(R.id.action_dashboard_to_shopDirectory)
         }
