@@ -60,11 +60,12 @@ class SettingsFragment : Fragment() {
         } else {
             appLocales.get(0)?.language ?: Locale.getDefault().language
         }
-        binding.chipEn.isChecked = currentLanguage != "el" && currentLanguage != "de" && currentLanguage != "fr" && currentLanguage != "it"
+        binding.chipEn.isChecked = currentLanguage != "el" && currentLanguage != "de" && currentLanguage != "fr" && currentLanguage != "it" && currentLanguage != "es"
         binding.chipEl.isChecked = currentLanguage == "el"
         binding.chipDe.isChecked = currentLanguage == "de"
         binding.chipFr.isChecked = currentLanguage == "fr"
         binding.chipIt.isChecked = currentLanguage == "it"
+        binding.chipEs.isChecked = currentLanguage == "es"
 
         binding.chipGroupLanguage.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isEmpty()) return@setOnCheckedStateChangeListener
@@ -73,6 +74,7 @@ class SettingsFragment : Fragment() {
                 R.id.chip_de -> "de"
                 R.id.chip_fr -> "fr"
                 R.id.chip_it -> "it"
+                R.id.chip_es -> "es"
                 else -> "en"
             }
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(localeTag))

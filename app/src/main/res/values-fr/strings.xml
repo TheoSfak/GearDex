@@ -208,6 +208,7 @@
     <string name="settings_language_de">Allemand / Deutsch</string>
     <string name="settings_language_fr">Français</string>
     <string name="settings_language_it">Italien / Italiano</string>
+    <string name="settings_language_es">Espagnol / Español</string>
     <string name="settings_sync_title">Synchronisation cloud</string>
     <string name="settings_sync_not_configured">La synchronisation cloud n’est pas configurée pour cette version.</string>
     <string name="settings_email">E-mail</string>

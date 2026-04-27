@@ -210,6 +210,7 @@
     <string name="settings_language_de">Γερμανικά / Deutsch</string>
     <string name="settings_language_fr">Γαλλικά / Français</string>
     <string name="settings_language_it">Ιταλικά / Italiano</string>
+    <string name="settings_language_es">Ισπανικά / Español</string>
     <string name="settings_sync_title">Συγχρονισμός Cloud</string>
     <string name="settings_sync_not_configured">Ο συγχρονισμός cloud δεν είναι διαθέσιμος.</string>
     <string name="settings_email">Email</string>

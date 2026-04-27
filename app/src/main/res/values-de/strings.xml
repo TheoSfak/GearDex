@@ -208,6 +208,7 @@
     <string name="settings_language_de">Deutsch</string>
     <string name="settings_language_fr">Französisch / Français</string>
     <string name="settings_language_it">Italienisch / Italiano</string>
+    <string name="settings_language_es">Spanisch / Español</string>
     <string name="settings_sync_title">Cloud-Sync</string>
     <string name="settings_sync_not_configured">Cloud-Sync ist für diesen Build nicht eingerichtet.</string>
     <string name="settings_email">E-Mail</string>
