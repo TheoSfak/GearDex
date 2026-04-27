@@ -32,8 +32,8 @@ android {
         applicationId = "com.geardex.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 27
-        versionName = "1.6.12"
+        versionCode = 28
+        versionName = "1.6.13"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -114,7 +114,7 @@ android {
 
     androidResources {
         // Only bundle supported app localizations
-        localeFilters += listOf("en", "el", "de")
+        localeFilters += listOf("en", "el", "de", "fr")
     }
 
     compileOptions {

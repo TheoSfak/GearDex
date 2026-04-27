@@ -60,15 +60,17 @@ class SettingsFragment : Fragment() {
         } else {
             appLocales.get(0)?.language ?: Locale.getDefault().language
         }
-        binding.chipEn.isChecked = currentLanguage != "el" && currentLanguage != "de"
+        binding.chipEn.isChecked = currentLanguage != "el" && currentLanguage != "de" && currentLanguage != "fr"
         binding.chipEl.isChecked = currentLanguage == "el"
         binding.chipDe.isChecked = currentLanguage == "de"
+        binding.chipFr.isChecked = currentLanguage == "fr"
 
         binding.chipGroupLanguage.setOnCheckedStateChangeListener { _, checkedIds ->
             if (checkedIds.isEmpty()) return@setOnCheckedStateChangeListener
             val localeTag = when (checkedIds[0]) {
                 R.id.chip_el -> "el"
                 R.id.chip_de -> "de"
+                R.id.chip_fr -> "fr"
                 else -> "en"
             }
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(localeTag))
