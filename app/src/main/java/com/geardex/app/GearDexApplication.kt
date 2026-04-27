@@ -5,6 +5,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import androidx.work.Constraints
@@ -33,10 +35,17 @@ class GearDexApplication : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        ensureDefaultEnglishLocale()
         initFirebase()
         createNotificationChannels()
         scheduleMaintenanceCheck()
         scheduleUpdateCheck()
+    }
+
+    private fun ensureDefaultEnglishLocale() {
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags("en"))
+        }
     }
 
     private fun initFirebase() {

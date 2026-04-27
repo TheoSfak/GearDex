@@ -32,8 +32,8 @@ android {
         applicationId = "com.geardex.app"
         minSdk = 24
         targetSdk = 36
-        versionCode = 26
-        versionName = "1.6.11"
+        versionCode = 27
+        versionName = "1.6.12"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -101,7 +101,7 @@ android {
 
     bundle {
         language {
-            // Keep all language splits so EN + EL both download
+            // Keep supported app languages available in generated artifacts
             enableSplit = true
         }
         density {
@@ -113,8 +113,8 @@ android {
     }
 
     androidResources {
-        // Only bundle EN + EL localizations
-        localeFilters += listOf("en", "el")
+        // Only bundle supported app localizations
+        localeFilters += listOf("en", "el", "de")
     }
 
     compileOptions {

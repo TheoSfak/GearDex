@@ -1,0 +1,589 @@
+<resources>
+    <string name="app_name">GearDex</string>
+    <string name="placeholder_dash">—</string>
+    <string name="placeholder_money_zero">€0</string>
+    <string name="placeholder_km_zero">0 km</string>
+    <string name="placeholder_distance_zero">0,0 km</string>
+    <string name="placeholder_speed_zero">0 km/h</string>
+    <string name="placeholder_timer_zero">00:00</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_garage">Garage</string>
+    <string name="nav_logs">Protokolle</string>
+    <string name="nav_glovebox">Dokumente</string>
+    <string name="nav_ekdromes">Ausflüge</string>
+
+    <!-- Garage -->
+    <string name="garage_title">Meine Garage</string>
+    <string name="garage_empty_title">Deine Garage ist leer</string>
+    <string name="garage_empty_subtitle">Füge dein erstes Fahrzeug hinzu</string>
+    <string name="garage_add_vehicle">Fahrzeug hinzufügen</string>
+    <string name="vehicle_type_car">Auto</string>
+    <string name="vehicle_type_motorcycle">Motorrad</string>
+    <string name="vehicle_type_atv">ATV</string>
+    <string name="vehicle_km_format">%1$s km</string>
+    <string name="vehicle_make">Marke</string>
+    <string name="vehicle_model">Modell</string>
+    <string name="vehicle_year">Baujahr</string>
+    <string name="vehicle_plate">Kennzeichen</string>
+    <string name="vehicle_km">Aktueller KM-Stand</string>
+    <string name="vehicle_type">Fahrzeugtyp</string>
+    <string name="vehicle_save">Fahrzeug speichern</string>
+    <string name="vehicle_hint_make">z. B. Toyota, BMW</string>
+    <string name="vehicle_hint_model">z. B. Corolla, R1200GS</string>
+    <string name="vehicle_hint_plate">z. B. AAA-1234</string>
+
+    <!-- Logs / Dex -->
+    <string name="logs_title">Protokolle</string>
+    <string name="logs_add_fuel">Tanken eintragen</string>
+    <string name="logs_add_service">Service eintragen</string>
+    <string name="logs_update_km">KM aktualisieren</string>
+    <string name="log_date">Datum</string>
+    <string name="log_cost">Kosten (€)</string>
+    <string name="log_km">Kilometerstand</string>
+    <string name="log_liters">Liter</string>
+    <string name="log_fuel_economy">Verbrauch</string>
+    <string name="log_mechanic">Werkstatt</string>
+    <string name="log_notes">Notizen</string>
+    <string name="log_save">Eintrag speichern</string>
+    <string name="service_timing_belt">Zahnriemen</string>
+    <string name="service_cabin_filter">Innenraumfilter</string>
+    <string name="service_air_filter">Luftfilter</string>
+    <string name="service_oil_change">Ölwechsel</string>
+    <string name="service_brake_pads">Bremsbeläge</string>
+    <string name="service_chain_lube">Kette schmieren</string>
+    <string name="service_valve_clearance">Ventilspiel</string>
+    <string name="service_fork_oil">Gabelöl</string>
+    <string name="service_tire_check">Reifenprüfung</string>
+    <string name="service_plan_title">Wartungsplan</string>
+    <string name="service_plan_subtitle">Verfolge wiederkehrende Wartung nach Kilometern und Monaten. Serviceeinträge aktualisieren passende Planpunkte automatisch.</string>
+    <string name="service_plan_dashboard_title">Wartungsplan</string>
+    <string name="service_plan_dashboard_all_clear">Alle geplanten Arbeiten sind im Zeitplan</string>
+    <string name="service_plan_dashboard_attention">%1$d Eintrag/Einträge brauchen Aufmerksamkeit</string>
+    <string name="service_plan_dashboard_next">Nächster Punkt: %1$s</string>
+    <string name="service_plan_empty">Noch keine aktiven Wartungspläne</string>
+    <string name="service_plan_add">Plan hinzufügen</string>
+    <string name="service_plan_type">Plantyp</string>
+    <string name="service_plan_name">Name</string>
+    <string name="service_plan_interval_km">Alle km</string>
+    <string name="service_plan_interval_months">Alle Monate</string>
+    <string name="service_plan_custom">Benutzerdefiniert</string>
+    <string name="service_plan_status_ok">OK</string>
+    <string name="service_plan_status_soon">Bald</string>
+    <string name="service_plan_status_due">Fällig</string>
+    <string name="service_plan_status_overdue">Überfällig</string>
+    <string name="service_plan_every_km">Alle %1$d km</string>
+    <string name="service_plan_every_months">Alle %1$d Mon.</string>
+    <string name="service_plan_remaining_km">Noch %1$s km</string>
+    <string name="service_plan_overdue_km">%1$s km überfällig</string>
+    <string name="service_plan_remaining_days">Noch %1$d Tage</string>
+    <string name="service_plan_overdue_days">%1$d Tage überfällig</string>
+    <string name="service_plan_done_now">Jetzt erledigt</string>
+    <string name="service_plan_marked_done">Plan mit aktuellem Kilometerstand aktualisiert</string>
+    <string name="service_plan_deleted">Plan gelöscht</string>
+    <string name="service_plan_invalid">Name und mindestens ein Intervall hinzufügen</string>
+    <string name="log_fuel_economy_result">%1$.1f L/100km</string>
+    <string name="logs_no_vehicle">Wähle zuerst ein Fahrzeug</string>
+    <string name="logs_select_vehicle">Fahrzeug auswählen</string>
+
+    <!-- Digital Glovebox -->
+    <string name="glovebox_title">Digitales Handschuhfach</string>
+    <string name="glovebox_add_document">Dokument hinzufügen</string>
+    <string name="glovebox_empty_title">Keine Dokumente gespeichert</string>
+    <string name="glovebox_empty_subtitle">Dokumente werden sicher nur auf diesem Gerät gespeichert</string>
+    <string name="glovebox_privacy_notice">Verschlüsselt und nur auf diesem Gerät gespeichert</string>
+    <string name="doc_open_failed">Dieses Dokument konnte nicht geöffnet werden</string>
+    <string name="doc_no_file_selected">Keine Datei ausgewählt</string>
+    <string name="doc_type_kteo">TÜV / KTEO</string>
+    <string name="doc_type_insurance">Versicherung</string>
+    <string name="doc_type_road_tax">Kfz-Steuer</string>
+    <string name="doc_type_receipt">Servicebeleg</string>
+    <string name="doc_type_other">Sonstiges</string>
+    <string name="doc_expiry_date">Ablaufdatum</string>
+    <string name="doc_type">Dokumenttyp</string>
+    <string name="doc_vehicle">Fahrzeug</string>
+    <string name="doc_pick_file">Datei / Foto auswählen</string>
+    <string name="doc_take_photo">Foto aufnehmen</string>
+    <string name="doc_save">Dokument speichern</string>
+    <string name="doc_export_zip">Alles als ZIP exportieren</string>
+    <string name="doc_expires_on">Läuft ab: %1$s</string>
+    <string name="doc_no_expiry">Kein Ablaufdatum</string>
+    <string name="doc_status_valid">Gültig</string>
+    <string name="doc_status_expiring">Läuft bald ab</string>
+    <string name="doc_status_expired">Abgelaufen</string>
+
+    <!-- Ekdromes -->
+    <string name="ekdromes_title">Ausflüge</string>
+    <string name="ekdromes_subtitle">Entdecke die besten Fahrstrecken</string>
+    <string name="ekdromes_suggest">Ausflug vorschlagen</string>
+    <string name="ekdrome_view_on_map">Auf Karte anzeigen</string>
+
+    <!-- Community Routes -->
+    <string name="community_tab_builtin">Integrierte Routen</string>
+    <string name="community_tab_community">Meine Routen</string>
+    <string name="community_submit_route">Route hinzufügen</string>
+    <string name="community_submit">Speichern</string>
+    <string name="community_cancel">Abbrechen</string>
+    <string name="community_name_en">Routenname (Englisch)</string>
+    <string name="community_name_el">Routenname (Griechisch)</string>
+    <string name="community_region">Region</string>
+    <string name="community_difficulty">Schwierigkeit</string>
+    <string name="community_distance">Distanz</string>
+    <string name="community_tags">Tags</string>
+    <string name="community_desc_en">Beschreibung (Englisch)</string>
+    <string name="community_desc_el">Beschreibung (Griechisch)</string>
+    <string name="community_latitude">Breitengrad</string>
+    <string name="community_longitude">Längengrad</string>
+    <string name="community_name_required">Routenname ist erforderlich</string>
+    <string name="community_submit_success">Route lokal gespeichert.</string>
+    <string name="community_submit_error">Route konnte nicht gespeichert werden.</string>
+    <string name="community_firebase_required">Diese Funktion wird lokal auf diesem Gerät gespeichert.</string>
+    <string name="community_empty">Noch keine eigenen Routen.\nFüge deine erste Offline-Route hinzu.</string>
+    <string name="community_start_location">Startort (z. B. Chania)</string>
+    <string name="community_end_location">Zielort (z. B. Hora Sfakion)</string>
+    <string name="community_waypoints">Wegpunkte (optionale Stopps)</string>
+    <string name="community_add_waypoint">+ Wegpunkt hinzufügen</string>
+    <string name="community_waypoint_hint">Wegpunkt %1$d</string>
+    <string name="ekdrome_navigate">Navigieren</string>
+    <string name="ekdrome_no_map_app">Keine Karten-App verfügbar</string>
+
+    <!-- Trip Cost Estimator -->
+    <string name="trip_cost_button">Kosten</string>
+    <string name="trip_cost_title">Reisekosten-Rechner</string>
+    <string name="trip_cost_select_vehicle">Fahrzeug auswählen</string>
+    <string name="trip_cost_route_distance">%1$s — %2$d km</string>
+    <string name="trip_cost_consumption_hint">Kraftstoffverbrauch</string>
+    <string name="trip_cost_fuel_price_hint">Kraftstoffpreis</string>
+    <string name="trip_cost_consumption_default">Standardwert für %1$s (bearbeitbar)</string>
+    <string name="trip_cost_consumption_from_logs">Basierend auf deinem Tankdurchschnitt</string>
+    <string name="trip_cost_calculate">Berechnen</string>
+    <string name="trip_cost_estimated_cost">Geschätzte Reisekosten</string>
+    <string name="trip_cost_breakdown">%1$s L benötigt · %2$s L/100km · €%3$s/L</string>
+    <string name="trip_cost_fill_fields">Bitte Verbrauch und Kraftstoffpreis ausfüllen</string>
+
+    <!-- Reviews -->
+    <string name="review_title">Bewertungen</string>
+    <string name="review_title_for">Bewertungen — %1$s</string>
+    <string name="review_add">Lokale Bewertung hinzufügen</string>
+    <string name="review_rate_route">Diese Route bewerten</string>
+    <string name="review_your_rating">Deine Bewertung</string>
+    <string name="review_comment_hint">Kommentar (optional)</string>
+    <string name="review_empty">Noch keine lokalen Bewertungen.\nFüge eigene Notizen zu dieser Route hinzu.</string>
+    <string name="review_submit_success">Bewertung lokal gespeichert.</string>
+    <string name="review_submit_error">Bewertung konnte nicht gespeichert werden.</string>
+    <string name="ekdromes_filter_region">Nach Region filtern</string>
+    <string name="ekdromes_filter_tags">Nach Typ filtern</string>
+    <string name="ekdrome_tag_moto">Motorradfreundlich</string>
+    <string name="ekdrome_tag_asphalt">Nur Asphalt</string>
+    <string name="ekdrome_tag_offroad">4x4 / Offroad</string>
+    <string name="ekdrome_tag_twisty">Kurvig</string>
+    <string name="ekdrome_tag_scenic">Malerisch</string>
+    <string name="ekdrome_region_crete">Kreta</string>
+    <string name="ekdrome_region_peloponnese">Peloponnes</string>
+    <string name="ekdrome_region_macedonia">Mazedonien</string>
+    <string name="ekdrome_region_epirus">Epirus</string>
+    <string name="ekdrome_region_attica">Attika</string>
+    <string name="ekdrome_region_thessaly">Thessalien</string>
+    <string name="ekdrome_region_dodecanese">Dodekanes</string>
+    <string name="ekdrome_difficulty_easy">Leicht</string>
+    <string name="ekdrome_difficulty_medium">Mittel</string>
+    <string name="ekdrome_difficulty_hard">Schwer</string>
+    <string name="ekdromes_coming_soon">Community-Routen kommen bald</string>
+
+    <!-- Saved Routes -->
+    <string name="community_tab_saved">Gespeichert</string>
+    <string name="saved_routes_empty">Noch keine gespeicherten Routen.\nSetze Lesezeichen, um Routen hier zu finden!</string>
+    <string name="route_detail_title">Routendetails</string>
+    <string name="route_detail_save">Route speichern</string>
+    <string name="route_detail_path">Routenverlauf</string>
+    <string name="suggest_route_title">Route hinzufügen</string>
+    <string name="suggest_route_location_section">Routenort</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_subtitle">Sprache, Berichte &amp; Updates</string>
+    <string name="settings_language">Sprache</string>
+    <string name="settings_language_en">Englisch / English</string>
+    <string name="settings_language_el">Griechisch / Ελληνικά</string>
+    <string name="settings_language_de">Deutsch</string>
+    <string name="settings_sync_title">Cloud-Sync</string>
+    <string name="settings_sync_not_configured">Cloud-Sync ist für diesen Build nicht eingerichtet.</string>
+    <string name="settings_email">E-Mail</string>
+    <string name="settings_password">Passwort</string>
+    <string name="settings_google_sign_in">Mit Google anmelden</string>
+    <string name="settings_or">oder</string>
+    <string name="settings_sign_in">Anmelden</string>
+    <string name="settings_register">Konto erstellen</string>
+    <string name="settings_sign_out">Abmelden</string>
+    <string name="settings_sync_now">Jetzt synchronisieren</string>
+    <string name="settings_signed_in_as">Angemeldet als: %1$s</string>
+
+    <!-- GitHub Updates -->
+    <string name="settings_update_title">GitHub-Updates</string>
+    <string name="settings_update_current_version">Installierte Version: %1$s</string>
+    <string name="settings_update_description">GitHub-Releases prüfen, ohne die Einstellungen zu verlassen.</string>
+    <string name="settings_update_check">Nach Updates suchen</string>
+    <string name="settings_update_checking">Neuestes GitHub-Release wird geprüft&#8230;</string>
+    <string name="settings_update_up_to_date">Du bist auf dem neuesten Stand. Neueste Version: %1$s.</string>
+    <string name="settings_update_available">Version %1$s ist verfügbar.</string>
+    <string name="settings_update_download_install">Herunterladen und installieren</string>
+    <string name="settings_update_install">Update installieren</string>
+    <string name="settings_update_downloading">Update wird heruntergeladen&#8230;</string>
+    <string name="settings_update_ready">Update heruntergeladen. Android fragt nach der Installationsbestätigung.</string>
+    <string name="settings_update_error">Updateprüfung fehlgeschlagen: %1$s</string>
+    <string name="settings_update_no_apk">Das neueste GitHub-Release enthält keine APK-Datei.</string>
+    <string name="settings_update_unknown_sources">Erlaube GearDex, unbekannte Apps zu installieren, und tippe erneut auf Installieren.</string>
+    <string name="settings_support_title">GearDex unterstützen</string>
+    <string name="settings_support_description">Jede Spende hilft, Kaffee in Code für das nächste Update zu verwandeln.</string>
+    <string name="settings_donate">Spenden</string>
+
+    <!-- PDF Export -->
+    <string name="pdf_export_vehicle">PDF-Bericht exportieren</string>
+    <string name="pdf_export_section">Berichte exportieren</string>
+    <string name="pdf_export_description">Erstelle einen PDF-Bericht mit allen Fahrzeugen, Tankprotokollen und Servicehistorie.</string>
+    <string name="pdf_export_all">Bericht für alle Fahrzeuge exportieren</string>
+    <string name="pdf_share_title">Bericht teilen</string>
+    <string name="pdf_no_vehicles">Keine Fahrzeuge zum Exportieren</string>
+
+    <!-- Vehicle detail / edit -->
+    <string name="vehicle_detail_label">Fahrzeugdetails</string>
+    <string name="vehicle_edit_label">Fahrzeug bearbeiten</string>
+    <string name="vehicle_edit">Fahrzeug bearbeiten</string>
+    <string name="vehicle_km_updated">Kilometerstand aktualisiert</string>
+    <string name="confirm_delete">Löschen bestätigen</string>
+    <string name="confirm_delete_vehicle_message">Dieses Fahrzeug löschen? Alle zugehörigen Einträge werden entfernt.</string>
+
+    <!-- Camera -->
+    <string name="camera_permission_denied">Kameraberechtigung ist erforderlich, um Fotos aufzunehmen</string>
+
+    <!-- Garage vehicle count -->
+    <plurals name="garage_vehicle_count">
+        <item quantity="one">1 Fahrzeug</item>
+        <item quantity="other">%1$d Fahrzeuge</item>
+    </plurals>
+
+    <!-- Common -->
+    <string name="cancel">Abbrechen</string>
+    <string name="save">Speichern</string>
+    <string name="delete">Löschen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="ok">OK</string>
+    <string name="error_required_field">Dieses Feld ist erforderlich</string>
+    <string name="error_invalid_number">Bitte eine gültige Zahl eingeben</string>
+    <string name="error_image_too_large">Bild zu groß (max. 5 MB)</string>
+
+    <!-- Reminders -->
+    <string name="nav_reminders">Erinnerungen</string>
+    <string name="reminder_add_title">Erinnerung hinzufügen</string>
+    <string name="reminder_title">Erinnerungstitel</string>
+    <string name="reminder_vehicle">Fahrzeug</string>
+    <string name="reminder_type">Erinnerungstyp</string>
+    <string name="reminder_type_km">Nach KM</string>
+    <string name="reminder_type_date">Nach Datum</string>
+    <string name="reminder_target_km">Ziel-KM</string>
+    <string name="reminder_pick_date">Zieldatum wählen</string>
+    <string name="reminder_save">Erinnerung speichern</string>
+    <string name="reminder_done">Erledigt</string>
+    <string name="reminders_empty_title">Keine aktiven Erinnerungen</string>
+    <string name="reminders_empty_subtitle">Tippe auf +, um eine Wartungserinnerung hinzuzufügen</string>
+
+    <!-- Analytics -->
+    <string name="nav_analytics">Analysen</string>
+    <string name="analytics_title">Kosten- &amp; Verbrauchsanalyse</string>
+    <string name="analytics_avg_economy">Ø L/100km</string>
+    <string name="analytics_total_fuel_cost">Gesamte Kraftstoffkosten</string>
+    <string name="analytics_total_service_cost">Gesamte Servicekosten</string>
+    <string name="analytics_total_km">Erfasste KM</string>
+    <string name="analytics_economy_trend">Verbrauchstrend</string>
+    <string name="analytics_monthly_spend">Monatliche Ausgaben (€)</string>
+    <string name="analytics_no_data">Noch keine Protokolldaten</string>
+    <string name="analytics_subtitle">Ausgaben &amp; Effizienz verfolgen</string>
+    <string name="analytics_no_data_hint">Füge Tank- oder Serviceeinträge hinzu, um Diagramme zu sehen</string>
+
+    <!-- Vehicle Health Score -->
+    <string name="vehicle_health_score">Zustand</string>
+    <string name="vehicle_health_good">Gut</string>
+    <string name="vehicle_health_fair">Mittel</string>
+    <string name="vehicle_health_poor">Schlecht</string>
+
+    <!-- OCR Receipt Scanner -->
+    <string name="log_scan_receipt">Beleg scannen</string>
+    <string name="log_ocr_scanning">Scannen…</string>
+    <string name="log_ocr_success">Beleg gescannt — bitte Werte prüfen</string>
+    <string name="log_ocr_no_data">Belegdaten konnten nicht gelesen werden</string>
+    <string name="log_ocr_summary_date">Datum: %1$s</string>
+    <string name="log_ocr_summary_shop">Shop: %1$s</string>
+    <plurals name="log_ocr_summary_checks">
+        <item quantity="one">%1$d Servicepunkt erkannt</item>
+        <item quantity="other">%1$d Servicepunkte erkannt</item>
+    </plurals>
+
+    <!-- Home Screen Widget -->
+    <string name="widget_description">Zeigt Fahrzeugzustand und nächste Erinnerung</string>
+    <string name="widget_all_clear">Alles klar ✓</string>
+    <string name="widget_no_vehicles">Keine Fahrzeuge hinzugefügt</string>
+
+    <!-- Vehicle Photo -->
+    <string name="vehicle_pick_photo">Galerie</string>
+    <string name="vehicle_take_photo">Kamera</string>
+    <string name="vehicle_photo_preview">Fahrzeugfoto-Vorschau</string>
+    <string name="favorite_shop">Lieblingswerkstatt</string>
+
+    <!-- Footer -->
+    <string name="footer_credit">Erstellt mit \u2764 von Theodore Sfakianakis</string>
+    <string name="footer_version">GearDex v1.0.0</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_health">Zustand</string>
+    <string name="dashboard_cost_per_km">€ / km</string>
+    <string name="dashboard_total_fuel">Kraftstoff gesamt</string>
+    <string name="dashboard_monthly_avg">Monatsdurchschnitt</string>
+    <string name="dashboard_smart_alerts">Smarte Hinweise</string>
+    <string name="dashboard_timeline">Aktivitätsverlauf</string>
+    <string name="dashboard_no_activity">Noch keine Aktivität erfasst</string>
+    <string name="dashboard_event_fuel">Tanken</string>
+    <string name="dashboard_event_service">Service</string>
+    <string name="forecast_title">Kostenprognose</string>
+    <string name="forecast_confidence">Genauigkeit: %1$d%%</string>
+    <string name="forecast_30_days">30 Tage</string>
+    <string name="forecast_90_days">90 Tage</string>
+    <string name="forecast_365_days">365 Tage</string>
+    <string name="forecast_empty">Füge Tank-, Ausgaben- oder Serviceeinträge hinzu, um die Prognose zu verbessern.</string>
+    <string name="forecast_driver_fuel">Kraftstofftrend</string>
+    <string name="forecast_driver_service_plan">Geplante Wartung</string>
+    <string name="forecast_driver_recurring">Wiederkehrende Ausgabe</string>
+    <string name="forecast_driver_routine">Service-Rücklage</string>
+    <string name="forecast_driver_format">%1$s · %2$s / Jahr</string>
+
+    <!-- Insights -->
+    <string name="insight_fuel_drop_title">Verbrauch verschlechtert</string>
+    <string name="insight_fuel_drop_desc">Verbrauch um %1$d%% verschlechtert — jetzt %2$.1f L/100km</string>
+    <string name="insight_service_due_title">Service bald fällig</string>
+    <string name="insight_service_overdue_title">Service überfällig</string>
+    <plurals name="insight_service_due_desc">
+        <item quantity="one">%1$d km seit letztem Service — ~%2$d Tag übrig</item>
+        <item quantity="other">%1$d km seit letztem Service — ~%2$d Tage übrig</item>
+    </plurals>
+    <string name="insight_doc_expiring_title">%1$s läuft ab</string>
+    <string name="insight_doc_expired_title">%1$s abgelaufen</string>
+    <plurals name="insight_doc_expiring_desc">
+        <item quantity="one">Läuft in %1$d Tag ab</item>
+        <item quantity="other">Läuft in %1$d Tagen ab</item>
+    </plurals>
+    <plurals name="insight_doc_expired_desc">
+        <item quantity="one">Vor %1$d Tag abgelaufen</item>
+        <item quantity="other">Vor %1$d Tagen abgelaufen</item>
+    </plurals>
+    <string name="insight_high_spend_title">Hohe Monatsausgaben</string>
+    <string name="insight_high_spend_desc">€%1$.0f diesen Monat vs. €%2$.0f Durchschnitt</string>
+    <string name="insight_milestone_title">Meilenstein naht</string>
+    <string name="insight_milestone_desc">%1$d-km-Meilenstein — nur noch %2$d km!</string>
+    <string name="insight_expense_spike_title">%1$s-Ausgabenspitze</string>
+    <string name="insight_expense_spike_desc">€%1$.0f diesen Monat vs. €%2$.0f Durchschnitt in dieser Kategorie</string>
+    <string name="insight_predicted_cost_title">Kostenprognose</string>
+    <string name="insight_predicted_cost_desc">Prognose nächster Monat: €%1$.0f vs. €%2$.0f historischer Durchschnitt</string>
+
+    <!-- Health Detail -->
+    <string name="health_detail_title">Fahrzeugzustand</string>
+    <string name="health_out_of_100">/ 100</string>
+    <string name="health_condition_excellent">Ausgezeichneter Zustand</string>
+    <string name="health_condition_good">Guter Zustand</string>
+    <string name="health_condition_fair">Ordentlicher Zustand</string>
+    <string name="health_condition_poor">Braucht Aufmerksamkeit</string>
+    <string name="health_predicted_cost">Prognostizierte Monatskosten</string>
+    <string name="health_per_month">/ Monat</string>
+    <string name="health_breakdown">Bewertungsdetails</string>
+    <string name="health_pillar_maintenance">Wartungstreue</string>
+    <string name="health_pillar_fuel">Kraftstoffeffizienz</string>
+    <string name="health_pillar_service">Service-Regelmäßigkeit</string>
+    <string name="health_pillar_expense">Ausgabenmuster</string>
+    <string name="health_pillar_condition">Fahrzeugzustand</string>
+    <string name="health_tips_title">Tipps zur Verbesserung</string>
+    <string name="health_tip_maintenance">Erledige überfällige Wartungserinnerungen</string>
+    <string name="health_tip_fuel">Prüfe Reifendruck und Luftfilter — der Verbrauch steigt</string>
+    <string name="health_tip_service">Plane einen Service — es ist eine Weile her</string>
+    <string name="health_tip_expense">Prüfe aktuelle Ausgaben — Ausgabenspitze erkannt</string>
+    <string name="health_tip_condition">Fahrzeuge mit hoher Laufleistung brauchen häufigere Checks</string>
+    <string name="health_tip_great">Dein Fahrzeug ist in sehr guter Form — weiter so!</string>
+    <string name="health_tap_for_details">Für Details tippen</string>
+    <string name="back">Zurück</string>
+
+    <!-- Expenses -->
+    <string name="nav_expenses">Ausgaben</string>
+    <string name="expenses_title">Ausgaben-Tracker</string>
+    <string name="expenses_add">Ausgabe hinzufügen</string>
+    <string name="expenses_empty_title">Keine Ausgaben erfasst</string>
+    <string name="expenses_empty_subtitle">Tippe auf +, um eine Ausgabe einzutragen</string>
+    <string name="expenses_this_month">Dieser Monat</string>
+    <string name="expenses_budget">Monatsbudget</string>
+    <string name="expenses_budget_remaining">Übrig</string>
+    <string name="expenses_budget_exceeded">Budget überschritten</string>
+    <string name="expenses_set_budget">Budget festlegen</string>
+    <string name="expenses_budget_hint">Monatliches Limit (€)</string>
+    <string name="expenses_no_budget">Kein Budget festgelegt</string>
+    <string name="expenses_total">Gesamt</string>
+    <string name="expense_category">Kategorie</string>
+    <string name="expense_amount">Betrag (€)</string>
+    <string name="expense_date">Datum</string>
+    <string name="expense_description">Beschreibung</string>
+    <string name="expense_recurring">Wiederkehrende Ausgabe</string>
+    <string name="expense_interval">Wiederholen alle (Monate)</string>
+    <string name="expense_save">Ausgabe speichern</string>
+    <string name="expense_cat_fuel">Kraftstoff</string>
+    <string name="expense_cat_service">Service</string>
+    <string name="expense_cat_insurance">Versicherung</string>
+    <string name="expense_cat_road_tax">Kfz-Steuer</string>
+    <string name="expense_cat_parking">Parken</string>
+    <string name="expense_cat_tolls">Maut</string>
+    <string name="expense_cat_fines">Bußgelder</string>
+    <string name="expense_cat_tires">Reifen</string>
+    <string name="expense_cat_modifications">Umbauten</string>
+    <string name="expense_cat_other">Sonstiges</string>
+    <string name="expense_budget_alert_title">Budgetwarnung</string>
+    <string name="expense_budget_alert_80">Du hast 80%% deines Monatsbudgets genutzt</string>
+    <string name="expense_budget_alert_100">Du hast dein Monatsbudget überschritten!</string>
+
+    <!-- Trip Logger -->
+    <string name="nav_trips">Fahrten</string>
+    <string name="trip_add_title">Fahrt eintragen</string>
+    <string name="trip_start_odometer">Start-Kilometerstand (km)</string>
+    <string name="trip_end_odometer">End-Kilometerstand (km)</string>
+    <string name="trip_date">Fahrtdatum</string>
+    <string name="trip_purpose">Zweck</string>
+    <string name="trip_notes">Notizen (optional)</string>
+    <string name="trip_fuel_used">Kraftstoff verbraucht (L)</string>
+    <string name="trip_cost">Fahrtkosten (€)</string>
+    <string name="trip_purpose_commute">Pendeln</string>
+    <string name="trip_purpose_leisure">Freizeit</string>
+    <string name="trip_purpose_business">Geschäftlich</string>
+    <string name="trip_purpose_other">Sonstiges</string>
+    <string name="trip_total_distance">Gesamtdistanz</string>
+    <string name="trip_total_trips">Fahrten gesamt</string>
+    <string name="trip_empty_title">Keine Fahrten erfasst</string>
+    <string name="trip_empty_subtitle">Tippe auf +, um deine erste Fahrt einzutragen</string>
+
+    <!-- Marketplace -->
+    <string name="nav_marketplace">Marktplatz</string>
+    <string name="marketplace_title">Teile-Marktplatz</string>
+    <string name="marketplace_add_part">Teil anbieten</string>
+    <string name="marketplace_part_name">Teilename</string>
+    <string name="marketplace_category">Kategorie</string>
+    <string name="marketplace_vehicle_make">Fahrzeugmarke</string>
+    <string name="marketplace_vehicle_model">Fahrzeugmodell</string>
+    <string name="marketplace_vehicle_year">Fahrzeugjahr</string>
+    <string name="marketplace_price">Preis (€)</string>
+    <string name="marketplace_condition">Zustand</string>
+    <string name="marketplace_description">Beschreibung</string>
+    <string name="marketplace_contact">Kontaktinfo</string>
+    <string name="marketplace_region">Region</string>
+    <string name="marketplace_search_hint">Teile suchen…</string>
+    <string name="marketplace_empty">Noch keine Teile gelistet</string>
+    <string name="marketplace_add_watchlist">Zur Merkliste</string>
+    <string name="marketplace_condition_new">Neu</string>
+    <string name="marketplace_condition_like_new">Gebraucht – wie neu</string>
+    <string name="marketplace_condition_good">Gebraucht – gut</string>
+    <string name="marketplace_condition_fair">Gebraucht – akzeptabel</string>
+    <string name="marketplace_condition_parts">Für Teile</string>
+    <string name="marketplace_cat_engine">Motor</string>
+    <string name="marketplace_cat_brakes">Bremsen</string>
+    <string name="marketplace_cat_suspension">Fahrwerk</string>
+    <string name="marketplace_cat_electrical">Elektrik</string>
+    <string name="marketplace_cat_body">Karosserie</string>
+    <string name="marketplace_cat_exhaust">Auspuff</string>
+    <string name="marketplace_cat_tires">Reifen</string>
+    <string name="marketplace_cat_wheels">Felgen</string>
+    <string name="marketplace_cat_interior">Innenraum</string>
+    <string name="marketplace_cat_accessories">Zubehör</string>
+    <string name="marketplace_cat_other">Sonstiges</string>
+
+    <!-- Fleet Dashboard -->
+    <string name="fleet_title">Flotten-Dashboard</string>
+    <string name="fleet_total_vehicles">Fahrzeuge gesamt</string>
+    <string name="fleet_total_km">Flotten-KM gesamt</string>
+    <string name="fleet_total_cost">Flottenkosten gesamt</string>
+    <string name="fleet_cheapest">Günstigster Betrieb</string>
+    <string name="fleet_most_driven">Meistgefahren</string>
+    <string name="fleet_cost_per_km">Kosten/km</string>
+    <string name="fleet_empty">Füge 2+ Fahrzeuge hinzu, um Flottenstatistiken zu sehen</string>
+
+    <!-- Drive Mode -->
+    <string name="nav_drive_mode">Fahrmodus</string>
+    <string name="drive_mode_title">Fahrmodus</string>
+    <string name="drive_start">Fahrt starten</string>
+    <string name="drive_stop">Fahrt beenden</string>
+    <string name="drive_speed">Geschwindigkeit</string>
+    <string name="drive_distance">Distanz</string>
+    <string name="drive_duration">Dauer</string>
+    <string name="drive_max_speed">Max. Geschwindigkeit</string>
+    <string name="drive_avg_speed">Ø Geschwindigkeit</string>
+    <string name="drive_select_vehicle">Vor dem Fahren Fahrzeug auswählen</string>
+    <string name="drive_session_saved">Fahrt gespeichert</string>
+    <string name="drive_sessions_title">Fahrthistorie</string>
+    <string name="drive_empty">Noch keine Fahrten</string>
+
+    <!-- Service Shop Directory -->
+    <string name="nav_shops">Werkstätten</string>
+    <string name="shop_directory_title">Werkstätten</string>
+    <string name="shop_add_title">Werkstatt hinzufügen</string>
+    <string name="shop_name_en">Werkstattname (Englisch)</string>
+    <string name="shop_name_el">Werkstattname (Griechisch)</string>
+    <string name="shop_category">Kategorie</string>
+    <string name="shop_region">Region</string>
+    <string name="shop_address">Adresse</string>
+    <string name="shop_phone">Telefon</string>
+    <string name="shop_search_hint">Werkstätten suchen…</string>
+    <string name="shop_empty">Noch keine Werkstätten gelistet</string>
+    <string name="shop_reviews">Bewertungen</string>
+    <string name="shop_add_review">Bewertung hinzufügen</string>
+    <string name="shop_review_hint">Schreibe deine Bewertung…</string>
+    <string name="shop_cat_general">Allgemeine Werkstatt</string>
+    <string name="shop_cat_engine">Motorspezialist</string>
+    <string name="shop_cat_body">Karosseriebau</string>
+    <string name="shop_cat_tires">Reifenservice</string>
+    <string name="shop_cat_electrical">Elektrik</string>
+    <string name="shop_cat_motorcycle">Motorrad</string>
+    <string name="shop_cat_performance">Performance</string>
+    <string name="shop_cat_detailing">Detailing</string>
+
+    <!-- Parking Saver -->
+    <string name="nav_parking">Parken</string>
+    <string name="parking_title">Parkplatz-Speicher</string>
+    <string name="parking_save_current">Aktuellen Standort speichern</string>
+    <string name="parking_last_title">Letzter Parkplatz</string>
+    <string name="parking_last_empty_title">Noch kein Standort gespeichert</string>
+    <string name="parking_last_empty_body">Speichere deine Position, bevor du das Fahrzeug verlässt.</string>
+    <string name="parking_last_saved_at">Gespeichert %1$s</string>
+    <string name="parking_last_save_btn">Speichern / aktualisieren</string>
+    <string name="parking_latest_badge">LETZTER</string>
+    <string name="parking_get_location">Meinen Standort abrufen</string>
+    <string name="parking_address_hint">Adresse / Standortbeschreibung</string>
+    <string name="parking_notes_hint">Notizen (Etage, Bereich…)</string>
+    <string name="parking_set_timer">Parkuhr-Timer setzen</string>
+    <string name="parking_set_timer_title">Parkuhr läuft ab um</string>
+    <string name="parking_save">Parkplatz speichern</string>
+    <string name="parking_history">Gespeicherte Standorte</string>
+    <string name="parking_empty">Noch keine gespeicherten Parkplätze</string>
+    <string name="parking_saved">Parkplatz gespeichert!</string>
+    <string name="parking_deleted">Parkplatz gelöscht</string>
+    <string name="parking_location_acquired">Standort erfasst ✓</string>
+    <string name="parking_location_denied">Standortberechtigung verweigert</string>
+    <string name="parking_no_address">Keine Adresse angegeben</string>
+    <string name="parking_spot_label">Parkplatz</string>
+    <string name="parking_meter_until">Bis %1$s</string>
+    <string name="parking_timer_set">Timer für %1$s gesetzt</string>
+    <string name="parking_open_map">In Karten öffnen</string>
+    <string name="parking_open_map_btn">Karte</string>
+    <string name="parking_share_btn">Teilen</string>
+    <string name="parking_share_prefix">Mein Parkplatz:</string>
+    <string name="parking_share_title">Parkstandort teilen</string>
+    <string name="parking_meter_notif_title">Parkuhr läuft bald ab!</string>
+    <string name="parking_meter_notif_body">Deine Parkuhr bei %1$s läuft in 5 Minuten ab</string>
+    <string name="parking_meter_notif_body_no_address">Deine Parkuhr läuft in 5 Minuten ab</string>
+    <string name="parking_notif_channel">Parkuhr-Warnungen</string>
+    <string name="parking_notif_channel_desc">Benachrichtigungen zum Ablauf der Parkuhr</string>
+
+    <!-- Update notifications (GitHub flavor only) -->
+    <string name="update_notification_title">Neue Version verfügbar</string>
+    <string name="update_notification_message">GearDex %s ist verfügbar. Tippe, um die neueste Version herunterzuladen.</string>
+</resources>

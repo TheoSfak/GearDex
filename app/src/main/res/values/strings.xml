@@ -207,6 +207,7 @@
     <string name="settings_language">Language</string>
     <string name="settings_language_en">English</string>
     <string name="settings_language_el">Greek / Ελληνικά</string>
+    <string name="settings_language_de">German / Deutsch</string>
     <string name="settings_sync_title">Cloud Sync</string>
     <string name="settings_sync_not_configured">Cloud sync is not set up for this build.</string>
     <string name="settings_email">Email</string>
