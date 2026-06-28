@@ -130,7 +130,9 @@ class AddDocumentFragment : Fragment() {
             val stream = requireContext().contentResolver.openInputStream(uri) ?: return@setOnClickListener
             binding.btnSaveDocument.isEnabled = false
             viewModel.saveDocument(vehicleId, stream, pickedFileName, docType, selectedExpiryDate) {
-                binding.btnSaveDocument.post { findNavController().popBackStack() }
+                if (_binding != null && isAdded) {
+                    findNavController().popBackStack()
+                }
             }
         }
 

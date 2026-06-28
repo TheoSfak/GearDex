@@ -151,7 +151,9 @@ class AddVehicleFragment : Fragment() {
 
         binding.btnSaveVehicle.isEnabled = false
         viewModel.addVehicle(selectedType, make, model, year, plate, km, selectedImagePath) {
-            binding.btnSaveVehicle.post { findNavController().popBackStack() }
+            if (_binding != null && isAdded) {
+                findNavController().popBackStack()
+            }
         }
     }
 

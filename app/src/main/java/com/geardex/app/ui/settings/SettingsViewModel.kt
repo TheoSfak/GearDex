@@ -60,10 +60,7 @@ class SettingsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _authState = MutableStateFlow<AuthState>(
-        if (firebaseManager.isLoggedIn)
-            AuthState.LoggedIn(firebaseManager.currentUser!!)
-        else
-            AuthState.LoggedOut
+        firebaseManager.currentUser?.let { AuthState.LoggedIn(it) } ?: AuthState.LoggedOut
     )
     val authState: StateFlow<AuthState> = _authState
 

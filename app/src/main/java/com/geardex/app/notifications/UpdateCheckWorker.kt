@@ -1,9 +1,13 @@
 package com.geardex.app.notifications
 
+import android.Manifest
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.edit
@@ -83,6 +87,15 @@ class UpdateCheckWorker @AssistedInject constructor(
     }
 
     private fun showUpdateNotification(newVersion: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ActivityCompat.checkSelfPermission(
+                context,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
         val intent = Intent(
             Intent.ACTION_VIEW,
             "https://github.com/${BuildConfig.GITHUB_REPO}/releases/latest".toUri()

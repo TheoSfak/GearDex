@@ -99,7 +99,9 @@ class EditVehicleFragment : Fragment() {
 
         binding.btnSaveVehicle.isEnabled = false
         viewModel.saveChanges(selectedType, make, model, year, plate, km) {
-            binding.btnSaveVehicle.post { findNavController().popBackStack() }
+            if (_binding != null && isAdded) {
+                findNavController().popBackStack()
+            }
         }
     }
 

@@ -1,6 +1,10 @@
 package com.geardex.app.notifications
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.glance.appwidget.updateAll
@@ -112,6 +116,15 @@ class MaintenanceNotificationWorker @AssistedInject constructor(
     }
 
     private fun showNotification(id: Int, title: String, message: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ActivityCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
         val notification = NotificationCompat.Builder(
             applicationContext,
             NotificationHelper.MAINTENANCE_CHANNEL_ID

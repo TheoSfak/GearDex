@@ -81,7 +81,7 @@ class VehicleDetailFragment : Fragment() {
                 .setPositiveButton(getString(R.string.delete)) { _, _ ->
                     binding.btnDeleteVehicle.isEnabled = false
                     viewModel.deleteVehicle(vehicleToDelete) {
-                        binding.btnDeleteVehicle.post {
+                        if (_binding != null && isAdded) {
                             findNavController().popBackStack(R.id.garageFragment, false)
                         }
                     }

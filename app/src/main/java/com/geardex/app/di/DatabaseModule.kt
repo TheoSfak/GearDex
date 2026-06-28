@@ -39,7 +39,6 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): GearDexDatabase =
         Room.databaseBuilder(context, GearDexDatabase::class.java, "geardex.db")
-            .fallbackToDestructiveMigration(dropAllTables = false)
             .build()
 
     @Provides

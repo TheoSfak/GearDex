@@ -336,7 +336,7 @@
 
     <!-- Footer -->
     <string name="footer_credit">Δημιουργήθηκε με \u2764 από τον Theodore Sfakianakis</string>
-    <string name="footer_version">GearDex v1.0.0</string>
+    <string name="footer_version">GearDex v1.6.16</string>
 
     <!-- Dashboard -->
     <string name="dashboard_title">Πίνακας Ελέγχου</string>
