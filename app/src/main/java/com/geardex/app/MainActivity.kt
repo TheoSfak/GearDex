@@ -17,6 +17,7 @@ import androidx.core.content.edit
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -46,9 +47,32 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Edge-to-edge: the toolbar draws behind the status bar and the dock above the
+        // navigation bar, with both kept clear of display cutouts in landscape. Base
+        // padding and margins are captured once so repeated inset passes don't compound.
+        val toolbarPaddingLeft = binding.toolbar.paddingLeft
+        val toolbarPaddingTop = binding.toolbar.paddingTop
+        val toolbarPaddingRight = binding.toolbar.paddingRight
+        ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view, insets ->
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+            view.updatePadding(
+                left = toolbarPaddingLeft + bars.left,
+                top = toolbarPaddingTop + bars.top,
+                right = toolbarPaddingRight + bars.right
+            )
+            insets
+        }
+
+        val dockMargin = (binding.bottomNav.layoutParams as ViewGroup.MarginLayoutParams).leftMargin
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNav) { view, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val bars = insets.getInsets(
+                WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+            )
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                leftMargin = dockMargin + bars.left
+                rightMargin = dockMargin + bars.right
                 bottomMargin = bars.bottom + resources.getDimensionPixelSize(R.dimen.spacing_sm)
             }
             insets

@@ -10,7 +10,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:minHeight="96dp"
-        android:fitsSystemWindows="true"
         android:background="@drawable/bg_app_header"
         android:elevation="2dp"
         android:paddingStart="0dp"

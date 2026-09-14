@@ -223,4 +223,9 @@ dependencies {
 
     // Google Sign-In
     implementation(libs.play.services.auth)
+
+    // Play Services base, pinned ahead of the version Firebase and ML Kit request:
+    // older releases call the Window.setStatusBarColor/setNavigationBarColor APIs that
+    // Android 15 deprecated, which Play Console flags against the release.
+    implementation(libs.play.services.base)
 }
