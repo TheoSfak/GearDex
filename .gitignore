@@ -21,3 +21,6 @@ keystore.properties
 *.jks
 firebase.properties
 google-services.json
+
+# Play upload packages - large build artifacts, rebuilt on demand
+play-store/*.zip
