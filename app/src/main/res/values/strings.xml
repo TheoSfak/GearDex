@@ -33,6 +33,13 @@
     <string name="vehicle_hint_model">e.g. Corolla, R1200GS</string>
     <string name="vehicle_hint_plate">e.g. AAA-1234</string>
 
+    <string name="onboarding_title">Finish setup</string>
+    <string name="onboarding_subtitle">%1$d of %2$d complete</string>
+    <string name="onboarding_complete">Setup complete</string>
+    <string name="onboarding_step_vehicle">Add your first vehicle</string>
+    <string name="onboarding_step_reminder">Create a maintenance reminder</string>
+    <string name="onboarding_step_document">Save an important document</string>
+    <string name="onboarding_step_service">Log your first service</string>
     <!-- Logs / Dex -->
     <string name="logs_title">The Logs</string>
     <string name="logs_add_fuel">Log Fuel</string>

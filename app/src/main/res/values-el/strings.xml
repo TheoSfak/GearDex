@@ -33,6 +33,13 @@
     <string name="vehicle_hint_model">π.χ. Corolla, R1200GS</string>
     <string name="vehicle_hint_plate">π.χ. ΑΑΑ-1234</string>
 
+    <string name="onboarding_title">Ολοκλήρωση ρύθμισης</string>
+    <string name="onboarding_subtitle">%1$d από %2$d ολοκληρώθηκαν</string>
+    <string name="onboarding_complete">Η ρύθμιση ολοκληρώθηκε</string>
+    <string name="onboarding_step_vehicle">Προσθέστε το πρώτο σας όχημα</string>
+    <string name="onboarding_step_reminder">Δημιουργήστε υπενθύμιση συντήρησης</string>
+    <string name="onboarding_step_document">Αποθηκεύστε ένα σημαντικό έγγραφο</string>
+    <string name="onboarding_step_service">Καταγράψτε το πρώτο σας σέρβις</string>
     <!-- Logs / Dex -->
     <string name="logs_title">Τα Αρχεία</string>
     <string name="logs_add_fuel">Καταχώρηση Καυσίμου</string>

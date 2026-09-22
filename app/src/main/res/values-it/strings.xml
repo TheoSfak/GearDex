@@ -33,6 +33,13 @@
     <string name="vehicle_hint_model">es. Corolla, R1200GS</string>
     <string name="vehicle_hint_plate">es. AAA-1234</string>
 
+    <string name="onboarding_title">Completa la configurazione</string>
+    <string name="onboarding_subtitle">%1$d di %2$d completati</string>
+    <string name="onboarding_complete">Configurazione completata</string>
+    <string name="onboarding_step_vehicle">Aggiungi il primo veicolo</string>
+    <string name="onboarding_step_reminder">Crea un promemoria manutenzione</string>
+    <string name="onboarding_step_document">Salva un documento importante</string>
+    <string name="onboarding_step_service">Registra il primo tagliando</string>
     <!-- Logs / Dex -->
     <string name="logs_title">Il registro</string>
     <string name="logs_add_fuel">Registra carburante</string>
