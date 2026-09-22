@@ -1,0 +1,3 @@
+New: a "Finish setup" checklist on the Garage screen walks you through your first four steps - add a vehicle, create a maintenance reminder, save a document, and log a service. Tap any step to go straight there, and the card disappears once all four are done.
+
+Fixed: on phones with a notch or punch-hole camera, the top bar and bottom dock now stay clear of the cutout in landscape.

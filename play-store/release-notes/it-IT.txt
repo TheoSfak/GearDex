@@ -1,0 +1,3 @@
+Novità: un elenco “Completa la configurazione” nel garage ti guida nei primi quattro passaggi: aggiungere un veicolo, creare un promemoria di manutenzione, salvare un documento e registrare un tagliando. Tocca un passaggio per andarci direttamente. La scheda scompare quando tutti e quattro sono completati.
+
+Corretto: sui telefoni con notch, la barra superiore e quella inferiore ora evitano il ritaglio in orizzontale.

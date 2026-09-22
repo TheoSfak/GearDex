@@ -1,0 +1,3 @@
+Nouveau : une liste « Terminer la configuration » dans le garage vous guide à travers les quatre premières étapes : ajouter un véhicule, créer un rappel d'entretien, enregistrer un document et saisir un entretien. Touchez une étape pour y accéder directement. La carte disparaît une fois les quatre terminées.
+
+Corrigé : sur les téléphones avec encoche, la barre supérieure et la barre inférieure évitent désormais la découpe en mode paysage.

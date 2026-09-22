@@ -1,0 +1,3 @@
+Neu: Eine Checkliste „Einrichtung abschließen“ in der Garage führt Sie durch die ersten vier Schritte: Fahrzeug hinzufügen, Wartungserinnerung erstellen, Dokument speichern und Service eintragen. Tippen Sie auf einen Schritt, um direkt dorthin zu gelangen. Die Karte verschwindet, sobald alle vier erledigt sind.
+
+Behoben: Auf Geräten mit Kameraaussparung bleiben die obere und die untere Leiste im Querformat frei von der Aussparung.

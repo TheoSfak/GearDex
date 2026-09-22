@@ -34,10 +34,10 @@
     <string name="vehicle_hint_plate">ex. AAA-1234</string>
 
     <string name="onboarding_title">Terminer la configuration</string>
-    <string name="onboarding_subtitle">%1$d sur %2$d termines</string>
-    <string name="onboarding_complete">Configuration terminee</string>
-    <string name="onboarding_step_vehicle">Ajouter votre premier vehicule</string>
-    <string name="onboarding_step_reminder">Creer un rappel d\'entretien</string>
+    <string name="onboarding_subtitle">%1$d sur %2$d terminés</string>
+    <string name="onboarding_complete">Configuration terminée</string>
+    <string name="onboarding_step_vehicle">Ajouter votre premier véhicule</string>
+    <string name="onboarding_step_reminder">Créer un rappel d\'entretien</string>
     <string name="onboarding_step_document">Enregistrer un document important</string>
     <string name="onboarding_step_service">Ajouter le premier entretien</string>
     <!-- Logs / Dex -->

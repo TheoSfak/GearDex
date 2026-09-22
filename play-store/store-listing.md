@@ -41,6 +41,22 @@ GearDex can be used offline. Optional cloud sync is available only when configur
 
 ## Release Notes
 
+Per-locale text ready to paste into Play Console lives in `release-notes/`.
+Play caps each language at 500 characters.
+
+### 1.6.17 (versionCode 32)
+
+Onboarding checklist on the Garage screen, plus display-cutout handling in
+landscape. See `release-notes/en-US.txt` and the five translations beside it.
+
+### 1.6.16 (versionCode 31)
+
+Stability update: offline/local-only Firebase handling, safer background
+notification permission checks, removal of the destructive migration
+fallback, and save/delete navigation stability.
+
+### 1.0 - Initial release
+
 Initial GearDex release.
 
 - Manage cars, motorcycles, and ATVs

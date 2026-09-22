@@ -1,0 +1,3 @@
+Nuevo: una lista «Completar configuración» en el garaje te guía por los cuatro primeros pasos: añadir un vehículo, crear un recordatorio de mantenimiento, guardar un documento y registrar un servicio. Toca cualquier paso para ir directamente. La tarjeta desaparece cuando completas los cuatro.
+
+Corregido: en teléfonos con muesca, la barra superior y la inferior ya no quedan bajo el recorte en horizontal.
