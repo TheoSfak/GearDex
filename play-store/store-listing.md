@@ -41,13 +41,14 @@ GearDex can be used offline. Optional cloud sync is available only when configur
 
 ## Release Notes
 
-Per-locale text ready to paste into Play Console lives in `release-notes/`.
-Play caps each language at 500 characters.
+Per-locale text lives in `app/src/playstore/play/release-notes/<locale>/production.txt`,
+where Gradle Play Publisher reads it. Play caps each language at 500 characters.
+See `play-publishing-setup.md` for uploading from the command line.
 
 ### 1.6.17 (versionCode 32)
 
 Onboarding checklist on the Garage screen, plus display-cutout handling in
-landscape. See `release-notes/en-US.txt` and the five translations beside it.
+landscape. See the six locale files under `app/src/playstore/play/release-notes/`.
 
 ### 1.6.16 (versionCode 31)
 

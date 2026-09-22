@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.androidx.navigation.safeargs)
+    alias(libs.plugins.play.publisher)
 }
 
 // ── Signing config (create keystore.properties to enable release signing) ──
@@ -151,6 +152,13 @@ android {
         )
     }
 
+    // The github flavour ships outside Play; never let it be published there.
+    playConfigs {
+        register("github") {
+            enabled.set(false)
+        }
+    }
+
     // Room schema export directory for AutoMigration
     defaultConfig {
         javaCompileOptions {
@@ -159,6 +167,25 @@ android {
             }
         }
     }
+}
+
+// ── Play publishing (Gradle Play Publisher) ───────────────────────────
+// Uploads the signed bundle to Play, taking release notes from
+// src/playstore/play/release-notes/<locale>/production.txt. The one-time
+// Google Cloud and Play Console setup is in play-store/play-publishing-setup.md.
+//
+// The credentials file is gitignored. Without it the publish tasks fail at
+// execution time; configuring and building the project is unaffected.
+play {
+    val credentials = rootProject.file("play-service-account.json")
+    if (credentials.exists()) {
+        serviceAccountCredentials.set(credentials)
+    }
+    defaultToAppBundles.set(true)
+    track.set("production")
+    // Upload as a draft only. Nothing goes to Google for review until someone
+    // presses the button in Play Console.
+    releaseStatus.set(com.github.triplet.gradle.androidpublisher.ReleaseStatus.DRAFT)
 }
 
 dependencies {

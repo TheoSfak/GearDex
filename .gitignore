@@ -24,3 +24,6 @@ google-services.json
 
 # Play upload packages - large build artifacts, rebuilt on demand
 play-store/*.zip
+
+# Play Developer API service account key - never commit
+play-service-account.json
